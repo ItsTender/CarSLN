@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,6 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,7 +82,8 @@ public class AddCarFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        
+
+        fbs=FireBaseServices.getInstance();
         Manufacturer = getView().findViewById(R.id.etMan);
         Model = getView().findViewById(R.id.etMod);
         Engine = getView().findViewById(R.id.etEng);
@@ -100,16 +106,28 @@ public class AddCarFragment extends Fragment {
                 String Mod= Model.getText().toString();
                 String Eng= Engine.getText().toString();
                 String HP= BHP.getText().toString();
-                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||Eng.trim().isEmpty())
+                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||Eng.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 //Adding the Car
                 Integer power= Integer.parseInt(HP);
-                AddCar= new Cars(Man,Mod,Eng,power,"");
-
-
-
-
+                String cp="carPhoto.png";
+                AddCar= new Cars(Man,Mod,Eng,power,cp);
+                FirebaseFirestore db= fbs.getStore();
+                db.collection("Cars").document().set(AddCar)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(getActivity(), "Car Added to FireBase", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Failed to Add Car to FireBase", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
     }

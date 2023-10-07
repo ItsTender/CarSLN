@@ -8,17 +8,17 @@ public class Cars {
     private String Model;
     private String Engine;
     private int BHP;
-    private String CarPhoto;
+    private String carPhoto;
 
     public Cars() {
     }
 
     public Cars(String manufacturer, String model, String engine, int BHP,String carPhoto) {
-        Manufacturer = manufacturer;
-        Model = model;
-        Engine = engine;
+        this.Manufacturer = manufacturer;
+        this.Model = model;
+        this.Engine = engine;
         this.BHP = BHP;
-        this.CarPhoto =carPhoto;
+        this.carPhoto =carPhoto;
     }
 
     public String getManufacturer() {
@@ -53,13 +53,23 @@ public class Cars {
         this.BHP = BHP;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Car{" +
+    public String getCarPhoto() {
+        return carPhoto;
+    }
+
+    public void setCarPhoto(String carPhoto) {
+        carPhoto = carPhoto;
+    }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
                 "Manufacturer='" + Manufacturer + '\'' +
                 ", Model='" + Model + '\'' +
                 ", Engine='" + Engine + '\'' +
                 ", BHP=" + BHP +
+                ", CarPhoto='" + carPhoto + '\'' +
                 '}';
     }
 }
+
