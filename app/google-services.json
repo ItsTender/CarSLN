@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "107764214909",
+    "project_id": "carsln",
+    "storage_bucket": "carsln.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107764214909:android:c502d6afda24cce0055514",
+        "android_client_info": {
+          "package_name": "com.tawfeeq.carsln"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaEPF7eB_jHl4-KLuPziC2Sqag1EnY_ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
