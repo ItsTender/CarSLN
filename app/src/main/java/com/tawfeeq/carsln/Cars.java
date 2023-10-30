@@ -6,18 +6,18 @@ public class Cars {
 
     private String Manufacturer;
     private String Model;
-    private String Engine;
     private int BHP;
-    private String carPhoto;
+    private int Price;
+    String carPhoto;
 
     public Cars() {
     }
 
-    public Cars(String manufacturer, String model, String engine, int BHP,String carPhoto) {
+    public Cars(String manufacturer, String model,int BHP,int Price,String carPhoto) {
         this.Manufacturer = manufacturer;
         this.Model = model;
-        this.Engine = engine;
         this.BHP = BHP;
+        this.Price = Price;
         this.carPhoto =carPhoto;
     }
 
@@ -37,12 +37,12 @@ public class Cars {
         Model = model;
     }
 
-    public String getEngine() {
-        return Engine;
+    public int getPrice() {
+        return Price;
     }
 
-    public void setEngine(String engine) {
-        Engine = engine;
+    public void setPrice(int Price) {
+        this.Price = Price;
     }
 
     public int getBHP() {
@@ -66,8 +66,8 @@ public class Cars {
         return "Cars{" +
                 "Manufacturer='" + Manufacturer + '\'' +
                 ", Model='" + Model + '\'' +
-                ", Engine='" + Engine + '\'' +
-                ", BHP=" + BHP +
+                ", BHP=" + BHP + '\'' +
+                ", price='" + Price + '\'' +
                 ", CarPhoto='" + carPhoto + '\'' +
                 '}';
     }

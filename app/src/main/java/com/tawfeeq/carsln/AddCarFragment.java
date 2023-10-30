@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,18 +18,22 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import io.grpc.internal.LogExceptionRunnable;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AddCarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class AddCarFragment extends Fragment {
 
     FireBaseServices fbs;
     Cars AddCar;
-    TextView Model,Manufacturer,Engine,BHP;
+    TextView Model,Manufacturer,Price,BHP;
     Button Add;
     ImageView IV;
 
@@ -86,8 +91,8 @@ public class AddCarFragment extends Fragment {
         fbs=FireBaseServices.getInstance();
         Manufacturer = getView().findViewById(R.id.etMan);
         Model = getView().findViewById(R.id.etMod);
-        Engine = getView().findViewById(R.id.etEng);
         BHP = getView().findViewById(R.id.etBHP);
+        Price = getView().findViewById(R.id.etPrice);
         IV = getView().findViewById(R.id.imageView);
         Add = getView().findViewById(R.id.btnAdd);
 
@@ -104,30 +109,30 @@ public class AddCarFragment extends Fragment {
                 // check info (....)
                 String Man= Manufacturer.getText().toString();
                 String Mod= Model.getText().toString();
-                String Eng= Engine.getText().toString();
                 String HP= BHP.getText().toString();
-                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||Eng.trim().isEmpty()) {
+                String prc= Price.getText().toString();
+                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 //Adding the Car
                 Integer power= Integer.parseInt(HP);
+                Integer price=Integer.parseInt(prc);
                 String cp="carPhoto.png";
-                AddCar= new Cars(Man,Mod,Eng,power,cp);
+                Cars Add = new Cars(Man,Mod,power,price,cp);
                 FirebaseFirestore db= fbs.getStore();
-                db.collection("Cars").document().set(AddCar)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(getActivity(), "Car Added to FireBase", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getActivity(), "Failed to Add Car to FireBase", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(getActivity(), "Car Added To Market Place", Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Couldn't Upload Car To Market Place, Try Again Later", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }
@@ -143,8 +148,13 @@ public class AddCarFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
 
-        Uri SIuri = data.getData();
-        IV.setImageURI(SIuri);
+        if(data!=null) {
+            Uri SIuri = data.getData();
+            if (SIuri != null) {
+                IV.setImageURI(SIuri);
+            } else
+                Toast.makeText(getActivity(), "Choose A Photo For Your Car", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

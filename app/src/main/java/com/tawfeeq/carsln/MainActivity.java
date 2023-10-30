@@ -14,14 +14,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GoToFragmentAdd();
+        GoToMarket();
 
-
-}
+    }
 
     private void GoToFragmentAdd() {
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
         ft.commit();
     }
+    private void GoToMarket() {
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.commit();
+    }
+
 }

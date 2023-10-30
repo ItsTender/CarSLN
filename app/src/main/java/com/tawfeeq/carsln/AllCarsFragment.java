@@ -2,11 +2,18 @@ package com.tawfeeq.carsln;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -16,6 +23,9 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class AllCarsFragment extends Fragment {
+
+    private FireBaseServices fbs;
+    private ArrayList<Cars> Market;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,4 +82,38 @@ public class AllCarsFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        fbs = FireBaseServices.getInstance();
+        Market = new ArrayList<>();
+
+        // checking accessibility to FireStore Info
+        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+
+                    Cars car = dataSnapshot.toObject(Cars.class);
+                    Market.add(car);
+
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve Information, Try Again Later!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Retrieving the Information from 'Market' Arg
+
+        String msg= Market.get(1).toString();
+
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+
+
+
+    }
 }
