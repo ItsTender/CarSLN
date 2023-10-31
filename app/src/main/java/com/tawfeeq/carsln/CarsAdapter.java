@@ -68,7 +68,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             txtMan.setText(car.getManufacturer());
             txtMod.setText(car.getModel());
             txtHP.setText("Horse Power: "+car.getBHP());
-            txtPrice.setText("Price: "+ car.getPrice());
+            txtPrice.setText("Price: "+ car.getPrice()+"$");
 
         }
 

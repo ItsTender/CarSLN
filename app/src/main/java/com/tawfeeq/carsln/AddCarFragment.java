@@ -34,7 +34,7 @@ public class AddCarFragment extends Fragment {
     FireBaseServices fbs;
     Cars AddCar;
     TextView Model,Manufacturer,Price,BHP;
-    Button Add;
+    Button Add,Return;
     ImageView IV;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -95,6 +95,17 @@ public class AddCarFragment extends Fragment {
         Price = getView().findViewById(R.id.etPrice);
         IV = getView().findViewById(R.id.imageView);
         Add = getView().findViewById(R.id.btnAdd);
+        Return=getView().findViewById(R.id.btnReturn);
+
+        Return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i= new Intent(getActivity(), RecyclerViewActivity.class);
+                startActivity(i);
+
+            }
+        });
 
         IV.setOnClickListener(new View.OnClickListener() {
             @Override

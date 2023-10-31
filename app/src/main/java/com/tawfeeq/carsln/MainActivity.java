@@ -3,6 +3,7 @@ package com.tawfeeq.carsln;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import org.checkerframework.common.reflection.qual.GetClass;
@@ -19,14 +20,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void GoToFragmentAdd() {
+
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
         ft.commit();
     }
     private void GoToMarket() {
-        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
-        ft.commit();
+
+        Intent i= new Intent(this, RecyclerViewActivity.class);
+        startActivity(i);
+
     }
 
 }
