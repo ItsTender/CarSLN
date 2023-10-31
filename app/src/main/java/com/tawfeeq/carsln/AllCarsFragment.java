@@ -3,11 +3,16 @@ package com.tawfeeq.carsln;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,8 +29,16 @@ import java.util.ArrayList;
  */
 public class AllCarsFragment extends Fragment {
 
+
+
+    RecyclerView rc;
+    private CarsAdapter adapter;
     private FireBaseServices fbs;
     private ArrayList<Cars> Market;
+
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,6 +100,7 @@ public class AllCarsFragment extends Fragment {
         super.onStop();
 
         fbs = FireBaseServices.getInstance();
+        rc= getView().findViewById(R.id.RecyclerCars);
         Market = new ArrayList<>();
 
         // checking accessibility to FireStore Info
@@ -98,6 +112,10 @@ public class AllCarsFragment extends Fragment {
                     Cars car = dataSnapshot.toObject(Cars.class);
                     Market.add(car);
 
+                    rc.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    adapter=new CarsAdapter(getActivity(),Market);
+                    rc.setAdapter(adapter);
+                    rc.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -107,13 +125,7 @@ public class AllCarsFragment extends Fragment {
             }
         });
 
-        // Retrieving the Information from 'Market' Arg
-
-        String msg= Market.get(1).toString();
-
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
-
-
-
     }
 }
+
+
