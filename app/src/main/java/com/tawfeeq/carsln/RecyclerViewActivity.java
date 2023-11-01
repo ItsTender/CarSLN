@@ -2,7 +2,6 @@ package com.tawfeeq.carsln;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,7 +25,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private RecyclerView rc;
     private CarsAdapter adapter;
     ArrayList<Cars> Market;
-    TextView tvSell;
+    ImageView ivsell;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +34,11 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         fbs = FireBaseServices.getInstance();
         rc= findViewById(R.id.rcView);
-        tvSell=findViewById(R.id.SellURCar);
         Market = new ArrayList<Cars>();
 
-        tvSell.setOnClickListener(new View.OnClickListener() {
+
+        ivsell= findViewById(R.id.ivFireStore);
+        ivsell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/black_marble"
     tools:context=".RecyclerViewActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcView"
         android:layout_width="409dp"
-        android:layout_height="725dp"
+        android:layout_height="700dp"
         android:layout_marginTop="111dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,22 +33,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/car_for_sale" />
 
-    <TextView
-        android:id="@+id/SellURCar"
-        android:layout_width="104dp"
+    <ImageView
+        android:id="@+id/ivFireStore"
+        android:layout_width="100dp"
         android:layout_height="111dp"
-        android:layout_marginEnd="307dp"
-        android:layout_marginBottom="715dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center"
-        android:text="Sell Your Car"
-        android:textSize="25sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="309dp"
+        android:layout_marginBottom="720dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:srcCompat="@drawable/arrow_removebg_preview" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
