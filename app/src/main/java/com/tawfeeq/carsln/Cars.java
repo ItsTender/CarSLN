@@ -8,7 +8,7 @@ public class Cars {
     private String Model;
     private int BHP;
     private int Price;
-    String carPhoto;
+    private String carPhoto;
 
     public Cars() {
     }

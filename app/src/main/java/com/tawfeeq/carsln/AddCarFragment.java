@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ import io.grpc.internal.LogExceptionRunnable;
 
 public class AddCarFragment extends Fragment {
 
+    Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
     TextView Model,Manufacturer,Price,BHP;
@@ -101,8 +103,9 @@ public class AddCarFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent i= new Intent(getActivity(), RecyclerViewActivity.class);
-                startActivity(i);
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                ft.commit();
 
             }
         });
@@ -149,23 +152,24 @@ public class AddCarFragment extends Fragment {
     }
 
     public void ImageChooser() {
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
 
-        startActivityForResult(Intent.createChooser(i,"SELECT PICTURE"),200);
+        Intent i = new Intent();
+        i.setType("image/");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(i,"SELECT PICTURE"),123);
+
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if(data!=null) {
-            Uri SIuri = data.getData();
-            if (SIuri != null) {
-                IV.setImageURI(SIuri);
-            } else
-                Toast.makeText(getActivity(), "Choose A Photo For Your Car", Toast.LENGTH_LONG).show();
+
+        if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            IV.setImageURI(selectedImageUri);
+            utils.uploadImage(getActivity(), selectedImageUri);
+
+
         }
     }
-
 }

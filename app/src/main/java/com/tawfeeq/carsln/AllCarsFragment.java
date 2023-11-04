@@ -1,10 +1,12 @@
 package com.tawfeeq.carsln;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -29,15 +32,11 @@ import java.util.ArrayList;
  */
 public class AllCarsFragment extends Fragment {
 
-
-
+    ImageView ivSell;
     RecyclerView rc;
     private CarsAdapter adapter;
     private FireBaseServices fbs;
     private ArrayList<Cars> Market;
-
-
-
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -92,16 +91,20 @@ public class AllCarsFragment extends Fragment {
         super.onStart();
 
         FireBaseServices fbs = FireBaseServices.getInstance();
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        fbs = FireBaseServices.getInstance();
         rc= getView().findViewById(R.id.RecyclerCars);
-        Market = new ArrayList<>();
+        Market = new ArrayList<Cars>();
+
+        ivSell= getView().findViewById(R.id.ivFireStore);
+        ivSell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
+                ft.commit();
+
+            }
+        });
 
         // checking accessibility to FireStore Info
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -112,18 +115,24 @@ public class AllCarsFragment extends Fragment {
                     Cars car = dataSnapshot.toObject(Cars.class);
                     Market.add(car);
 
-                    rc.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    adapter=new CarsAdapter(getActivity(),Market);
-                    rc.setAdapter(adapter);
-                    rc.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
+                    SettingFrame();
+
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Information, Try Again Later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void SettingFrame() {
+
+        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new CarsAdapter(getActivity(), Market);
+        rc.setAdapter(adapter);
+        rc.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
 
     }
 }

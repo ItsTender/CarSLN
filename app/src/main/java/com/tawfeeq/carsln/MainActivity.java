@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GoToMarket();
+        GoToFragmentCars();
 
     }
 
@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
+        ft.commit();
+    }
+    private void GoToFragmentCars() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
         ft.commit();
     }
     private void GoToMarket() {
