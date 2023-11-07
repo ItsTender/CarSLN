@@ -31,11 +31,5 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
         ft.commit();
     }
-    private void GoToMarket() {
-
-        Intent i= new Intent(this, RecyclerViewActivity.class);
-        startActivity(i);
-
-    }
 
 }

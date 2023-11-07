@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,7 @@ public class AddCarFragment extends Fragment {
     TextView Model,Manufacturer,Price,BHP;
     Button Add,Return;
     ImageView IV;
+    String cp;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,6 +93,7 @@ public class AddCarFragment extends Fragment {
         super.onStart();
 
         fbs=FireBaseServices.getInstance();
+        utils=Utils.getInstance();
         Manufacturer = getView().findViewById(R.id.etMan);
         Model = getView().findViewById(R.id.etMod);
         BHP = getView().findViewById(R.id.etBHP);
@@ -133,7 +136,8 @@ public class AddCarFragment extends Fragment {
                 //Adding the Car
                 Integer power= Integer.parseInt(HP);
                 Integer price=Integer.parseInt(prc);
-                String cp="carPhoto.png";
+                if(fbs.getSelectedImageURL()==null) cp ="";
+                else cp = fbs.getSelectedImageURL().toString();
                 Cars Add = new Cars(Man,Mod,power,price,cp);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -153,10 +157,8 @@ public class AddCarFragment extends Fragment {
 
     public void ImageChooser() {
 
-        Intent i = new Intent();
-        i.setType("image/");
-        i.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(i,"SELECT PICTURE"),123);
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, 123);
 
     }
 
@@ -168,7 +170,6 @@ public class AddCarFragment extends Fragment {
             Uri selectedImageUri = data.getData();
             IV.setImageURI(selectedImageUri);
             utils.uploadImage(getActivity(), selectedImageUri);
-
 
         }
     }

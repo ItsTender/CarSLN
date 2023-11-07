@@ -37,6 +37,7 @@ public class Utils {
     }
     public void uploadImage(Context context, Uri selectedImageUri) {
         if (selectedImageUri != null) {
+
             imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
             StorageReference imageRef = fbs.getStorage().getReference().child("images/" + selectedImageUri.getLastPathSegment());
 
