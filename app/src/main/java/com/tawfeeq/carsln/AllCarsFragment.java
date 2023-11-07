@@ -113,11 +113,11 @@ public class AllCarsFragment extends Fragment {
                 for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
 
                     Cars car = dataSnapshot.toObject(Cars.class);
+                    car.setCarPhoto(dataSnapshot.getString("photo"));
                     Market.add(car);
 
-                    SettingFrame();
-
                 }
+                SettingFrame();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

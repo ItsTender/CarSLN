@@ -8,7 +8,7 @@ public class Cars {
     private String Model;
     private int BHP;
     private int Price;
-    private String carPhoto;
+    private String Photo;
 
     public Cars() {
     }
@@ -18,7 +18,7 @@ public class Cars {
         this.Model = model;
         this.BHP = BHP;
         this.Price = Price;
-        this.carPhoto =carPhoto;
+        this.Photo =carPhoto;
     }
 
     public String getManufacturer() {
@@ -53,12 +53,12 @@ public class Cars {
         this.BHP = BHP;
     }
 
-    public String getCarPhoto() {
-        return carPhoto;
+    public String getPhoto() {
+        return Photo;
     }
 
     public void setCarPhoto(String carPhoto) {
-        carPhoto = carPhoto;
+        this.Photo = carPhoto;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Cars {
                 ", Model='" + Model + '\'' +
                 ", BHP=" + BHP + '\'' +
                 ", price='" + Price + '\'' +
-                ", CarPhoto='" + carPhoto + '\'' +
+                ", CarPhoto='" + Photo + '\'' +
                 '}';
     }
 }

@@ -39,7 +39,7 @@ public class AddCarFragment extends Fragment {
     TextView Model,Manufacturer,Price,BHP;
     Button Add,Return;
     ImageView IV;
-    String cp;
+    String photo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -136,14 +136,15 @@ public class AddCarFragment extends Fragment {
                 //Adding the Car
                 Integer power= Integer.parseInt(HP);
                 Integer price=Integer.parseInt(prc);
-                if(fbs.getSelectedImageURL()==null) cp ="";
-                else cp = fbs.getSelectedImageURL().toString();
-                Cars Add = new Cars(Man,Mod,power,price,cp);
+                if(fbs.getSelectedImageURL()==null) photo ="";
+                else photo = fbs.getSelectedImageURL().toString()+".jpg";
+                Cars Add = new Cars(Man,Mod,power,price,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getActivity(), "Car Added To Market Place", Toast.LENGTH_LONG).show();
+                        fbs.setSelectedImageURL(null);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

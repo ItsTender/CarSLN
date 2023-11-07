@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
@@ -62,6 +64,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             txtMod= itemView.findViewById(R.id.tvtxtMod);
             txtHP= itemView.findViewById(R.id.tvtxtHP);
             txtPrice= itemView.findViewById(R.id.tvtxtPrice);
+            ivCar= itemView.findViewById(R.id.CarRes);
 
         }
 
@@ -71,6 +74,14 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             txtMod.setText(car.getModel());
             txtHP.setText("Horse Power: "+car.getBHP());
             txtPrice.setText("Price: "+ car.getPrice()+"$");
+
+            if (car.getPhoto() == null || car.getPhoto().isEmpty())
+            {
+                Picasso.get().load(R.drawable.carplain).into(ivCar);
+            }
+            else {
+                Picasso.get().load(car.getPhoto()).into(ivCar);
+            }
 
         }
 
