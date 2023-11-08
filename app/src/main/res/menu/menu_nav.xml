@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Market"
+        android:icon="@drawable/baseline_home_24"
+        android:id="@+id/market"
+        />
+    <item
+        android:title="Add Car"
+        android:icon="@drawable/baseline_post_add_24"
+        android:id="@+id/addcar"
+        />
+</menu>

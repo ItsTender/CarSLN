@@ -92,7 +92,7 @@
             android:id="@+id/textView2"
             android:layout_width="194dp"
             android:layout_height="72dp"
-            android:layout_marginTop="47dp"
+            android:layout_marginTop="118dp"
             android:gravity="center"
             android:textSize="20dp"
             app:layout_constraintBottom_toTopOf="@+id/etMan"
@@ -100,22 +100,6 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnReturn"
-            android:layout_width="200dp"
-            android:layout_height="75dp"
-            android:layout_marginTop="704dp"
-            android:layout_marginBottom="112dp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white"
-            android:text="Return To Market Place"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

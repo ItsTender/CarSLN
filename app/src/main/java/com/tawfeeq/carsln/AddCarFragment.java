@@ -100,18 +100,6 @@ public class AddCarFragment extends Fragment {
         Price = getView().findViewById(R.id.etPrice);
         IV = getView().findViewById(R.id.imageView);
         Add = getView().findViewById(R.id.btnAdd);
-        Return=getView().findViewById(R.id.btnReturn);
-
-        Return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
-                ft.commit();
-
-            }
-        });
 
         IV.setOnClickListener(new View.OnClickListener() {
             @Override

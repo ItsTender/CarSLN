@@ -94,17 +94,6 @@ public class AllCarsFragment extends Fragment {
         rc= getView().findViewById(R.id.RecyclerCars);
         Market = new ArrayList<Cars>();
 
-        ivSell= getView().findViewById(R.id.ivFireStore);
-        ivSell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
-                ft.commit();
-
-            }
-        });
 
         // checking accessibility to FireStore Info
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
