@@ -32,7 +32,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
     @NonNull
     @Override
     public CarsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.cars_layout,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.cars_test,parent,false);
 
         return new CarsHolder(view);
     }

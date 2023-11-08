@@ -132,7 +132,6 @@ public class AllCarsFragment extends Fragment {
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new CarsAdapter(getActivity(), Market);
         rc.setAdapter(adapter);
-        rc.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
 
     }
 }
