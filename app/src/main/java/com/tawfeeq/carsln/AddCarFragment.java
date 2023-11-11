@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,6 +41,8 @@ public class AddCarFragment extends Fragment {
     Button Add,Return;
     ImageView IV;
     String photo;
+    //ProgressDialog pd = new ProgressDialog(getActivity());
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -121,6 +124,13 @@ public class AddCarFragment extends Fragment {
                     return;
                 }
 
+                /*
+                pd.setMessage("loading");
+                pd.show();
+
+
+                 */
+
                 //Adding the Car
                 Integer power= Integer.parseInt(HP);
                 Integer price=Integer.parseInt(prc);
@@ -133,11 +143,14 @@ public class AddCarFragment extends Fragment {
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getActivity(), "Car Added To Market Place", Toast.LENGTH_LONG).show();
                         fbs.setSelectedImageURL(null);
+                        //pd.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getActivity(), "Couldn't Upload Car To Market Place, Try Again Later", Toast.LENGTH_LONG).show();
+                        //pd.dismiss();
+
                     }
                 });
             }
