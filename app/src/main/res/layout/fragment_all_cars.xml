@@ -15,7 +15,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerCars"
             android:layout_width="409dp"
-            android:layout_height="750dp"
+            android:layout_height="775dp"
             android:layout_marginTop="111dp"
             android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
