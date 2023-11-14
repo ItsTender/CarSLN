@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln;
 
+import android.os.Parcelable;
 import android.widget.ImageView;
 
 public class Cars {

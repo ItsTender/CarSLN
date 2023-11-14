@@ -1,9 +1,11 @@
 package com.tawfeeq.carsln;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
+
+import kotlin.internal.UProgressionUtilKt;
 
 public class Utils {
 
@@ -38,6 +42,12 @@ public class Utils {
     public void uploadImage(Context context, Uri selectedImageUri) {
         if (selectedImageUri != null) {
 
+            ProgressDialog progressDialog= new ProgressDialog(context);
+            progressDialog.setMessage("Your Image Is Being Uploaded");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.show();
+
+
             imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
             StorageReference imageRef = fbs.getStorage().getReference().child("images/" + selectedImageUri.getLastPathSegment());
 
@@ -56,11 +66,14 @@ public class Utils {
                             Log.e("Utils: uploadImage: ", e.getMessage());
                         }
                     });
+
+                    progressDialog.dismiss();
                     Toast.makeText(context, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
                     Toast.makeText(context, "Failed to upload image", Toast.LENGTH_SHORT).show();
                 }
             });

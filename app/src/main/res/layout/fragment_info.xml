@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/ivDetailedImage"
+            android:layout_width="388dp"
+            android:layout_height="270dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="6dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.15percent"
+            tools:srcCompat="@drawable/carplain" />
+
+        <TextView
+            android:id="@+id/tvCarName"
+            android:layout_width="374dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="329dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="358dp"
+            android:text="Man"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHP"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="387dp"
+            android:layout_marginEnd="245dp"
+            android:layout_marginBottom="314dp"
+            android:text="horse power"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="242dp"
+            android:layout_marginTop="387dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="314dp"
+            android:text="price$"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
+
+

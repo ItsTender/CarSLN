@@ -45,7 +45,7 @@
             android:layout_marginBottom="30dp"
             android:ems="10"
             android:hint="Enter Price$"
-            android:inputType="text"
+            android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/etBHP"

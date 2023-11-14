@@ -9,6 +9,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -27,11 +30,41 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 // 1- Planet Adapter
 
     private Context context;
+    private  CarsAdapter.OnItemClickListener CarsListener;
     private ArrayList<Cars> cars;
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    public void setOnItemClickListener(CarsAdapter.OnItemClickListener Listener) {
+        this.CarsListener = Listener;
+    }
     public CarsAdapter(Context context, ArrayList<Cars> cars) {
         this.context = context;
         this.cars = cars;
+
+        this.CarsListener =new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+                Fragment gtn = new InfoFragment();
+                Bundle bundle= new Bundle();
+
+                int hp =cars.get(position).getBHP();
+                int price =cars.get(position).getPrice();
+
+
+                bundle.putString("Car", cars.get(position).getManufacturer()+ " " +cars.get(position).getModel());
+                bundle.putInt("HP", hp);
+                bundle.putInt("Price",price);
+                bundle.putString("Photo",cars.get(position).getPhoto() );
+
+                gtn.setArguments(bundle);
+                FragmentTransaction ft= ((MainActivity)context).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+            }
+        };
     }
 
     public CarsAdapter() {
@@ -50,6 +83,12 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
         Cars car= cars.get(position);
         holder.SetDetails(car);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (CarsListener != null) {
+                CarsListener.onItemClick(position);
+            }
+        });
 
     }
 
@@ -80,8 +119,8 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
             txtMan.setText(car.getManufacturer());
             txtMod.setText(car.getModel());
-            txtHP.setText("Horse Power: "+car.getBHP());
-            txtPrice.setText("Price: "+ car.getPrice()+"$");
+            txtHP.setText("Horse Power: " + car.getBHP());
+            txtPrice.setText("Price: " + car.getPrice()+"$");
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())
             {
