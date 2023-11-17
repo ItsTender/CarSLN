@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln;
 
+import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ImageView;
 
@@ -9,6 +10,9 @@ public class Cars {
     private String Model;
     private int BHP;
     private int Price;
+
+    // add More Args, like: Year | Transmission | kilometre/Mileage | Owners | Phone Num.
+
     private String Photo;
 
     public Cars() {
@@ -21,6 +25,10 @@ public class Cars {
         this.Price = Price;
         this.Photo =carPhoto;
     }
+
+    // protected Cars(Parcel in) {}
+
+   // @Override public void writeToParcel(Parcel dest, int flags) {}
 
     public String getManufacturer() {
         return Manufacturer;
