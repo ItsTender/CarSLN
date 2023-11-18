@@ -13,15 +13,16 @@
 
         <ImageView
             android:id="@+id/ivDetailedImage"
-            android:layout_width="388dp"
+            android:layout_width="0dp"
             android:layout_height="270dp"
-            android:layout_marginStart="13dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="44dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="577dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.15percent"
@@ -29,12 +30,12 @@
 
         <TextView
             android:id="@+id/tvCarName"
-            android:layout_width="374dp"
+            android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="329dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="358dp"
+            android:layout_marginTop="391dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="456dp"
             android:text="Man"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -44,17 +45,17 @@
 
         <TextView
             android:id="@+id/tvHP"
-            android:layout_width="180dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="387dp"
-            android:layout_marginEnd="245dp"
-            android:layout_marginBottom="314dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="517dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="344dp"
+            android:gravity="center"
             android:text="horse power"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/tvtxtTransmisson"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,17 +63,94 @@
             android:id="@+id/tvPrice"
             android:layout_width="180dp"
             android:layout_height="30dp"
-            android:layout_marginStart="242dp"
-            android:layout_marginTop="387dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="314dp"
+            android:layout_marginTop="626dp"
+            android:layout_marginBottom="235dp"
+            android:gravity="center"
             android:text="price$"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvtxtKilo"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="464dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="397dp"
+            android:gravity="center"
+            android:text="Kilometre"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvtxtYear"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvtxtYear"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="464dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="397dp"
+            android:gravity="center"
+            android:text="Year"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvtxtKilo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvtxtUsers"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="570dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="291dp"
+            android:gravity="center"
+            android:text="Users"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvtxtPhone"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvtxtTransmisson"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="517dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="344dp"
+            android:gravity="center"
+            android:text="Transmission"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvHP"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvtxtPhone"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="570dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="291dp"
+            android:gravity="center"
+            android:text="Phone"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvtxtUsers"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

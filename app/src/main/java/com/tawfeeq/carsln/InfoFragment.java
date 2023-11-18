@@ -20,9 +20,9 @@ import com.squareup.picasso.Picasso;
 public class InfoFragment extends Fragment {
 
     ImageView ivCar;
-    int HP, price;
-    String Car,CarPhoto;
-    TextView CarName,HorsePower,Price;
+    int HP, price, Yahr, userhands, Phone, KM;
+    String Car,CarPhoto, transm;
+    TextView CarName,HorsePower,Price, transmission,users,phone, year, kilo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +78,11 @@ public class InfoFragment extends Fragment {
         HP =bundle.getInt("HP");
         price= bundle.getInt("Price");
         CarPhoto=bundle.getString("Photo");
+        Yahr= bundle.getInt("Year");
+        userhands= bundle.getInt("Users");
+        Phone= bundle.getInt("Phone");
+        KM = bundle.getInt("Kilo");
+        transm=bundle.getString("Transmission");
 
 
         return view;
@@ -92,6 +97,15 @@ public class InfoFragment extends Fragment {
         HorsePower =getView().findViewById(R.id.tvHP);
         Price=getView().findViewById(R.id.tvPrice);
         ivCar=getView().findViewById(R.id.ivDetailedImage);
+        users =getView().findViewById(R.id.tvtxtUsers);
+        phone=getView().findViewById(R.id.tvtxtPhone);
+        kilo=getView().findViewById(R.id.tvtxtKilo);
+        year=getView().findViewById(R.id.tvtxtYear);
+        transmission=getView().findViewById(R.id.tvtxtTransmisson);
+
+
+
+
 
         if (CarPhoto == null || CarPhoto.isEmpty())
         {
@@ -107,6 +121,11 @@ public class InfoFragment extends Fragment {
         CarName.setText(Car);
         HorsePower.setText("Horse Power: "+ HP);
         Price.setText("Price: " + price);
+        users.setText("Users: "+userhands);
+        phone.setText(Phone);
+        kilo.setText("Kilometre: "+KM);
+        year.setText("Model Year: "+Yahr);
+        transmission.setText("Shifting Type:"+transm);
 
     }
 }

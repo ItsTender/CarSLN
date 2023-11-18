@@ -37,7 +37,7 @@ public class AddCarFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
-    TextView Model,Manufacturer,Price,BHP;
+    TextView Model,Manufacturer,Price,BHP,Year,Transmission,Users,Phone,Kilometre;
     Button Add,Return;
     ImageView IV;
     String photo;
@@ -101,6 +101,11 @@ public class AddCarFragment extends Fragment {
         Model = getView().findViewById(R.id.etMod);
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
+        Year=getView().findViewById(R.id.etYear);
+        Transmission=getView().findViewById(R.id.etTransmission);
+        Users=getView().findViewById(R.id.etUsers);
+        Phone=getView().findViewById(R.id.etPhone);
+        Kilometre=getView().findViewById(R.id.etKM);
         IV = getView().findViewById(R.id.imageView);
         Add = getView().findViewById(R.id.btnAdd);
 
@@ -119,7 +124,12 @@ public class AddCarFragment extends Fragment {
                 String Mod= Model.getText().toString();
                 String HP= BHP.getText().toString();
                 String prc= Price.getText().toString();
-                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()) {
+                String year =Year.getText().toString();
+                String transm =Transmission.getText().toString();
+                String User =Users.getText().toString();
+                String phonenum =Phone.getText().toString();
+                String Kilo =Kilometre.getText().toString();
+                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.trim().isEmpty()||transm.trim().isEmpty()||User.trim().isEmpty()||phonenum.trim().isEmpty()||Kilo.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -134,9 +144,14 @@ public class AddCarFragment extends Fragment {
                 //Adding the Car
                 Integer power= Integer.parseInt(HP);
                 Integer price=Integer.parseInt(prc);
+                Integer Yahr= Integer.parseInt(year);
+                Integer userhands= Integer.parseInt(User);
+                Integer Phone= Integer.parseInt(phonenum);
+                Integer KM= Integer.parseInt(Kilo);
+
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
-                Cars Add = new Cars(Man,Mod,power,price,photo);
+                Cars Add = new Cars(Man,Mod,power,price,Yahr,transm,KM,userhands,Phone,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
