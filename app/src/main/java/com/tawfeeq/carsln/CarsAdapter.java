@@ -47,20 +47,18 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             @Override
             public void onItemClick(int position) {
 
-                Fragment gtn = new InfoFragment();
+                Fragment gtn= new DetailedFragment();
                 Bundle bundle= new Bundle();
 
-                int hp =cars.get(position).getBHP();
-                int price =cars.get(position).getPrice();
 
 
 
                 bundle.putString("Car", cars.get(position).getManufacturer()+ " " +cars.get(position).getModel());
-                bundle.putInt("HP", hp);
-                bundle.putInt("Price",price);
+                bundle.putInt("HP", cars.get(position).getBHP());
+                bundle.putInt("Price",cars.get(position).getPrice());
                 bundle.putString("Photo",cars.get(position).getPhoto());
                 bundle.putString("Transmission", cars.get(position).getTransmission());
-                bundle.putInt("Phone", cars.get(position).getPhone());
+                bundle.putString("Phone", cars.get(position).getPhone());
                 bundle.putInt("Year", cars.get(position).getYear());
                 bundle.putInt("Kilo", cars.get(position).getKilometre());
                 bundle.putInt("Users", cars.get(position).getUsers());

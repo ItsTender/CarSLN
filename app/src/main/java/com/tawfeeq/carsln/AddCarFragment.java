@@ -106,7 +106,7 @@ public class AddCarFragment extends Fragment {
         Users=getView().findViewById(R.id.etUsers);
         Phone=getView().findViewById(R.id.etPhone);
         Kilometre=getView().findViewById(R.id.etKM);
-        IV = getView().findViewById(R.id.imageView);
+        IV = getView().findViewById(R.id.ivAddCar);
         Add = getView().findViewById(R.id.btnAdd);
 
         IV.setOnClickListener(new View.OnClickListener() {
@@ -146,12 +146,11 @@ public class AddCarFragment extends Fragment {
                 Integer price=Integer.parseInt(prc);
                 Integer Yahr= Integer.parseInt(year);
                 Integer userhands= Integer.parseInt(User);
-                Integer Phone= Integer.parseInt(phonenum);
                 Integer KM= Integer.parseInt(Kilo);
 
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
-                Cars Add = new Cars(Man,Mod,power,price,Yahr,transm,KM,userhands,Phone,photo);
+                Cars Add = new Cars(Man,Mod,power,price,Yahr,transm,KM,userhands,phonenum,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

@@ -103,6 +103,7 @@ public class AllCarsFragment extends Fragment {
 
                     Cars car = dataSnapshot.toObject(Cars.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
+                    car.setPhone(dataSnapshot.getString("phone"));
                     Market.add(car);
 
                 }

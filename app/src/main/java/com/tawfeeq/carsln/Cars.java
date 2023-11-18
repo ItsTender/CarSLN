@@ -14,13 +14,13 @@ public class Cars {
     private String Transmission;
     private int Kilometre;
     private int Users;
-    private int Phone;
+    private String Phone;
     private String Photo;
 
     public Cars() {
     }
 
-    public Cars(String manufacturer, String model,int BHP,int Price, int Year, String Transmission, int Kilometre, int Users, int Phone, String carPhoto) {
+    public Cars(String manufacturer, String model,int BHP,int Price, int Year, String Transmission, int Kilometre, int Users, String Phone, String carPhoto) {
         this.Manufacturer = manufacturer;
         this.Model = model;
         this.BHP = BHP;
@@ -109,11 +109,11 @@ public class Cars {
         Users = users;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return Phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         Phone = phone;
     }
 

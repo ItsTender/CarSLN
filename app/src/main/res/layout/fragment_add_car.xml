@@ -49,7 +49,7 @@
             android:layout_marginEnd="101dp"
             android:layout_marginBottom="480dp"
             android:ems="10"
-            android:hint="Transmission"
+            android:hint="Gear"
             android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -139,22 +139,26 @@
             android:layout_marginTop="299dp"
             android:layout_marginBottom="384dp"
             android:ems="10"
-            android:hint="Enter Phone"
-            android:inputType="number"
+            android:hint="Enter Phone/Email"
+            android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/etKM"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="161dp"
-            android:layout_height="145dp"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivAddCar"
+            android:layout_width="200dp"
+            android:layout_height="140dp"
             android:layout_marginTop="405dp"
             android:layout_marginBottom="181dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/RoundShape.App.8percent"
             android:src="@drawable/carplain"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
