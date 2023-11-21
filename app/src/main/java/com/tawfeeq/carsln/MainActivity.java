@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,31 +21,45 @@ public class MainActivity extends AppCompatActivity {
 
 
     private BottomNavigationView bnv;
+    private FireBaseServices fbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GoToFragmentCars();
+
 
         bnv= findViewById(R.id.bottomNavigationView);
-        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        fbs = FireBaseServices.getInstance();
 
-                if (item.getItemId() == R.id.market)
-                {
-                    GoToFragmentCars();
-                }
-                else if (item.getItemId() == R.id.addcar) {
-                    GoToFragmentAdd();
-                }
+            bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                @SuppressLint("NonConstantResourceId")
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                return true;
+                    if (item.getItemId() == R.id.market) {
+                        GoToFragmentCars();
+                    } else if (item.getItemId() == R.id.addcar) {
+                        GoToFragmentAdd();
+                    }
+
+                    return true;
+                }
+            });
+
+            if(fbs.getAuth().getCurrentUser()!=null) {
+
+                bnv.setVisibility(View.VISIBLE);
+                GoToFragmentCars();
+
             }
-        });
+            else {
+
+                bnv.setVisibility(View.GONE);
+                GoToLogIn();
+
+            }
 
     }
 
@@ -59,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
         ft.commit();
+    }
+
+    private void GoToLogIn() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.commit();
+
+    }
+
+    public BottomNavigationView getBottomNavigationView() {
+        return bnv;
     }
 
 }

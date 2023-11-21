@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +38,7 @@ public class AddCarFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
-    TextView Model,Manufacturer,Price,BHP,Year,Transmission,Users,Phone,Kilometre;
+    EditText Model,Manufacturer,Price,BHP,Year,Transmission,Users,Phone,Kilometre;
     Button Add,Return;
     ImageView IV;
     String photo;
