@@ -2,20 +2,15 @@ package com.tawfeeq.carsln;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import org.checkerframework.common.reflection.qual.GetClass;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                         GoToFragmentCars();
                     } else if (item.getItemId() == R.id.addcar) {
                         GoToFragmentAdd();
+                    }else if (item.getItemId() == R.id.profile){
+                        GoToFragmentProfile();
                     }
 
                     return true;
@@ -63,16 +60,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    private void GoToFragmentCars() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.commit();
+    }
+
     private void GoToFragmentAdd() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
         ft.commit();
     }
-    private void GoToFragmentCars() {
+
+    private void GoToFragmentProfile() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
         ft.commit();
     }
 
@@ -81,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new LogInFragment());
         ft.commit();
-
     }
 
     public BottomNavigationView getBottomNavigationView() {

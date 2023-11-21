@@ -16,20 +16,19 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LogInFragment#newInstance} factory method to
+ * Use the {@link SignUpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LogInFragment extends Fragment {
+public class SignUpFragment extends Fragment {
 
     FireBaseServices fbs;
-    Button btnLog;
+    Button btnSign;
     EditText etEmail, etPassword;
-    TextView tvSignup, tvForgot;
+    TextView etLog;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +39,7 @@ public class LogInFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LogInFragment() {
+    public SignUpFragment() {
         // Required empty public constructor
     }
 
@@ -50,11 +49,11 @@ public class LogInFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LogInFragment.
+     * @return A new instance of fragment ProfileFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LogInFragment newInstance(String param1, String param2) {
-        LogInFragment fragment = new LogInFragment();
+    public static SignUpFragment newInstance(String param1, String param2) {
+        SignUpFragment fragment = new SignUpFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,33 +74,30 @@ public class LogInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_log_in, container, false);
+        return inflater.inflate(R.layout.fragment_sign_up, container, false);
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        fbs=FireBaseServices.getInstance();
-        btnLog=getView().findViewById(R.id.btnLogIn);
-        etEmail =getView().findViewById(R.id.etEmailSignIn);
-        etPassword =getView().findViewById(R.id.etPasswordSignIn);
-        tvSignup =getView().findViewById(R.id.tvSignUp);
-        tvForgot =getView().findViewById(R.id.tvForgot);
+        fbs =FireBaseServices.getInstance();
+        etEmail = getView().findViewById(R.id.etEmailSignup);
+        etPassword = getView().findViewById(R.id.etPasswordSignup);
+        btnSign = getView().findViewById(R.id.btnLogOut);
+        etLog = getView().findViewById(R.id.tvSignin);
 
 
-
-        tvSignup.setOnClickListener(new View.OnClickListener() {
+        etLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoToSignup();
+                GoToLogIn();
             }
         });
 
-        btnLog.setOnClickListener(new View.OnClickListener() {
+        btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
                 String username = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 if (username.trim().isEmpty() || pass.trim().isEmpty()) {
@@ -109,42 +105,32 @@ public class LogInFragment extends Fragment {
                     return;
                 }
 
-                fbs.getAuth().signInWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                fbs.getAuth().createUserWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                        if(task.isSuccessful())
+                        {
                             // To DO
-                            Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
-                            GoToFragmentCars();
-                            setNavigationBarVisible();
-                        } else {
+                            Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_LONG).show();
+                            GoToLogIn();
+                        }
+                        else
+                        {
                             // To DO
-                            Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+
             }
         });
     }
 
+    private void GoToLogIn() {
 
-
-    private void GoToFragmentCars() {
-
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
         ft.commit();
-    }
-
-    private void GoToSignup() {
-
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new SignUpFragment());
-        ft.commit();
-    }
-
-    private void setNavigationBarVisible() {
-        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
     }
 
 }

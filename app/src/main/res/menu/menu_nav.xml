@@ -6,9 +6,23 @@
         android:icon="@drawable/baseline_home_24"
         android:id="@+id/market"
         />
+
+    <item
+        android:title="Search"
+        android:icon="@drawable/baseline_search_24"
+        android:id="@+id/searchcar"
+        />
+
     <item
         android:title="Add Car"
         android:icon="@drawable/baseline_post_add_24"
         android:id="@+id/addcar"
         />
+
+    <item
+        android:title="Profile"
+        android:icon="@drawable/baseline_person_24"
+        android:id="@+id/profile"
+        />
+
 </menu>
