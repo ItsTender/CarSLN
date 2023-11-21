@@ -16,7 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="69dp"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_nav"/>
+        app:menu="@menu/menu_nav"
+        app:itemActiveIndicatorStyle="@color/Blue700"
+        app:itemRippleColor="@color/white"
+        app:backgroundTint="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        />
 
 </RelativeLayout>
 

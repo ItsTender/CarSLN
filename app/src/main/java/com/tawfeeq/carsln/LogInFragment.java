@@ -2,6 +2,7 @@ package com.tawfeeq.carsln;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -9,8 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.AuthResult;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +25,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  */
 public class LogInFragment extends Fragment {
 
+    FireBaseServices fbs;
     Button btnLog;
+    EditText etEmail, etPassword;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,28 +80,50 @@ public class LogInFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        fbs=FireBaseServices.getInstance();
         btnLog=getView().findViewById(R.id.btnLogIn);
+        etEmail =getView().findViewById(R.id.etEmailSignIn);
+        etPassword =getView().findViewById(R.id.etPasswordSignIn);
 
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GoToFragmentCars();
-                setNavigationBarVisible();
+
+                String username = etEmail.getText().toString();
+                String pass = etPassword.getText().toString();
+                if (username.trim().isEmpty() || pass.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Some Field Are Missing!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                fbs.getAuth().signInWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // To DO
+                            Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
+                            GoToFragmentCars();
+                            setNavigationBarVisible();
+                        } else {
+                            // To DO
+                            Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+
+            }
+
+            private void GoToFragmentCars() {
+
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                ft.commit();
+            }
+
+            private void setNavigationBarVisible() {
+                ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
             }
         });
-
-
     }
-
-    private void GoToFragmentCars() {
-
-        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
-        ft.commit();
-    }
-
-    private void setNavigationBarVisible() {
-        ((MainActivity)getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
-    }
-
 }
