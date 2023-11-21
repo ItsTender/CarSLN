@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class LogInFragment extends Fragment {
 
     Button btnLog;
-    BottomNavigationView bnv;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,7 +73,6 @@ public class LogInFragment extends Fragment {
         super.onStart();
 
         btnLog=getView().findViewById(R.id.btnLogIn);
-        bnv =getView().findViewById(R.id.bottomNavigationView);
 
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +81,6 @@ public class LogInFragment extends Fragment {
                 setNavigationBarVisible();
             }
         });
-
 
 
     }
