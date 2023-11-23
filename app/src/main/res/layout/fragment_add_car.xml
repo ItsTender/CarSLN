@@ -167,7 +167,7 @@
             android:layout_width="150dp"
             android:layout_height="73dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/Shinygrey"
+            android:backgroundTint="@color/Blue700"
             android:text="Add Car"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

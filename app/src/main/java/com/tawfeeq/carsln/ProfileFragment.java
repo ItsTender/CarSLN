@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +22,7 @@ public class ProfileFragment extends Fragment {
 
     FireBaseServices fbs;
     Button btnLogout;
+    TextView tvUser;
 
 
 
@@ -76,6 +79,9 @@ public class ProfileFragment extends Fragment {
 
         fbs= FireBaseServices.getInstance();
         btnLogout= getView().findViewById(R.id.btnLogOut);
+        tvUser =getView().findViewById(R.id.tvUsername);
+
+        tvUser.setText("Hello, " + fbs.getAuth().getCurrentUser().getEmail());
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

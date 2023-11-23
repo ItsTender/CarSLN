@@ -105,7 +105,7 @@ public class LogInFragment extends Fragment {
                 String username = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 if (username.trim().isEmpty() || pass.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Some Field Are Missing!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -119,7 +119,7 @@ public class LogInFragment extends Fragment {
                             setNavigationBarVisible();
                         } else {
                             // To DO
-                            Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

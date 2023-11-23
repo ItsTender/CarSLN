@@ -101,7 +101,7 @@ public class SignUpFragment extends Fragment {
                 String username = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 if (username.trim().isEmpty() || pass.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Some Field Are Missing!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -110,14 +110,12 @@ public class SignUpFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            // To DO
-                            Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_LONG).show();
-                            GoToLogIn();
+                            Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                            LogIn(username,pass);
                         }
                         else
                         {
-                            // To DO
-                            Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -133,4 +131,31 @@ public class SignUpFragment extends Fragment {
         ft.commit();
     }
 
+    private void LogIn(String user, String password ) {
+
+        fbs.getAuth().signInWithEmailAndPassword(user,password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_LONG).show();
+                    GoToFragmentCars();
+                    setNavigationBarVisible();
+                } else {
+                    Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
+    private void GoToFragmentCars() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarVisible() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
 }
