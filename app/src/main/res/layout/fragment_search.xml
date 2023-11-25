@@ -40,24 +40,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSearchMan" />
 
-        <Spinner
-            android:id="@+id/spinnerYearFrom"
+        <EditText
+            android:id="@+id/etPriceFrom"
             android:layout_width="200dp"
             android:layout_height="48dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintEnd_toStartOf="@+id/spinnerYearTo"
+            android:ems="10"
+            android:hint="Price (From)"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintEnd_toStartOf="@+id/etPriceTo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSearchMod" />
 
-        <Spinner
-            android:id="@+id/spinnerYearTo"
+        <EditText
+            android:id="@+id/etPriceTo"
             android:layout_width="200dp"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="6dp"
+            android:ems="10"
+            android:hint="Price (Until)"
+            android:inputType="number"
+            android:text=""
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spinnerYearFrom"
+            app:layout_constraintStart_toEndOf="@+id/etPriceFrom"
             app:layout_constraintTop_toBottomOf="@+id/etSearchMod" />
 
         <Button
@@ -71,7 +79,7 @@
             android:text="Search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerYearFrom" />
+            app:layout_constraintTop_toBottomOf="@+id/etPriceFrom" />
 
         <Button
             android:id="@+id/btnResetSearch"
@@ -84,17 +92,19 @@
             android:text="Reset Search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerYearTo" />
+            app:layout_constraintTop_toBottomOf="@+id/etPriceTo" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerSearch"
             android:layout_width="400dp"
-            android:layout_height="500dp"
+            android:layout_height="465dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

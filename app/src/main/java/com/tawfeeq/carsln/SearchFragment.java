@@ -2,7 +2,9 @@ package com.tawfeeq.carsln;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -10,7 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -21,8 +28,7 @@ import java.util.ArrayList;
  */
 public class SearchFragment extends Fragment {
 
-    EditText etMan,etMod;
-    Spinner YearFrom, YearTo;
+    EditText etMan,etMod,etPriceFrom,etPriceTo;
     Button btnSearch, btnResetSearch;
     RecyclerView rc;
     FireBaseServices fbs;
@@ -81,15 +87,220 @@ public class SearchFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        fbs=FireBaseServices.getInstance();
         etMan=getView().findViewById(R.id.etSearchMan);
         etMod=getView().findViewById(R.id.etSearchMod);
         btnSearch=getView().findViewById(R.id.btnSearch);
         btnResetSearch=getView().findViewById(R.id.btnResetSearch);
-        YearFrom=getView().findViewById(R.id.spinnerYearFrom);
-        YearTo=getView().findViewById(R.id.spinnerYearTo);
+        etPriceFrom=getView().findViewById(R.id.etPriceFrom);
+        etPriceTo=getView().findViewById(R.id.etPriceTo);
         rc=getView().findViewById(R.id.RecyclerSearch);
 
+        lstRst=new ArrayList<Cars>();
 
+
+        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+
+                    Cars car = dataSnapshot.toObject(Cars.class);
+                    car.setCarPhoto(dataSnapshot.getString("photo"));
+                    car.setPhone(dataSnapshot.getString("phone"));
+                    lstRst.add(car);
+
+                }
+                SettingFullList();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        btnResetSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingFullList();
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                search=new ArrayList<Cars>();
+
+                String Man=etMan.getText().toString();
+                String Mod=etMod.getText().toString();
+                String PriceFrom=etPriceFrom.getText().toString();
+                String PriceTo=etPriceTo.getText().toString();
+
+                boolean none= PriceFrom.trim().isEmpty() && PriceTo.trim().isEmpty();
+                boolean onlyfrom=!PriceFrom.trim().isEmpty() && PriceTo.trim().isEmpty();
+                boolean onlyto=PriceFrom.trim().isEmpty() && !PriceTo.trim().isEmpty();
+
+
+                if(!PriceFrom.trim().isEmpty() && !PriceTo.trim().isEmpty()) {
+                    Integer From=Integer.parseInt(PriceFrom);
+                    Integer To=Integer.parseInt(PriceTo);
+                    if (From > To) {
+                        Toast.makeText(getActivity(), "Price Values are Inaccurate", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+                fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+
+                            Cars car = dataSnapshot.toObject(Cars.class);
+                            car.setCarPhoto(dataSnapshot.getString("photo"));
+                            car.setPhone(dataSnapshot.getString("phone"));
+
+
+                            if(Man.trim().isEmpty() && Mod.trim().isEmpty()) {
+                                // both are not in
+                                if(none)
+                                { // none are in
+                                    search = lstRst;
+                                }
+                                else
+                                {
+                                    if(onlyfrom)
+                                    { // only From is in
+                                        Integer From=Integer.parseInt(PriceFrom);
+                                        if(car.getPrice()>From) search.add(car);
+                                    }
+                                    else if(onlyto)
+                                    { // only To is in
+                                        Integer To=Integer.parseInt(PriceTo);
+                                        if(car.getPrice()<To) search.add(car);
+                                    }
+                                    else
+                                    {
+                                        Integer From=Integer.parseInt(PriceFrom);
+                                        Integer To=Integer.parseInt(PriceTo);
+                                        if(car.getPrice()>From && car.getPrice()<To) search.add(car);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if(!Man.trim().isEmpty() && Mod.trim().isEmpty())
+                                { // only man is in
+                                    if(none)
+                                    { // none are in
+                                        if(car.getManufacturer().contains(Man)) search.add(car);
+                                    }
+                                    else
+                                    {
+                                        if(onlyfrom)
+                                        { // only From is in
+                                            Integer From=Integer.parseInt(PriceFrom);
+                                            if(car.getManufacturer().contains(Man) && car.getPrice()>From) search.add(car);
+                                        }
+                                        else if(onlyto)
+                                        { // only To is in
+                                            Integer To=Integer.parseInt(PriceTo);
+                                            if(car.getPrice()<To) search.add(car);
+                                        }
+                                        else
+                                        {
+                                            Integer From=Integer.parseInt(PriceFrom);
+                                            Integer To=Integer.parseInt(PriceTo);
+                                            if(car.getManufacturer().contains(Man) && car.getPrice()>From && car.getPrice()<To) search.add(car);
+                                        }
+                                    }
+                                } else
+                                {
+                                    if(Man.trim().isEmpty() && !Mod.trim().isEmpty())
+                                    { // only mod is in
+                                        if(none)
+                                        { // none are in
+                                            if(car.getModel().contains(Mod)) search.add(car);
+                                        }
+                                        else
+                                        {
+                                            if(onlyfrom)
+                                            { // only From is in
+                                                Integer From=Integer.parseInt(PriceFrom);
+                                                if(car.getModel().contains(Mod) && car.getPrice()>From) search.add(car);
+                                            }
+                                            else if(onlyto)
+                                            { // only To is in
+                                                Integer To=Integer.parseInt(PriceTo);
+                                                if(car.getModel().contains(Mod) && car.getPrice()<To) search.add(car);
+                                            }
+                                            else
+                                            {
+                                                Integer From=Integer.parseInt(PriceFrom);
+                                                Integer To=Integer.parseInt(PriceTo);
+                                                if(car.getModel().contains(Mod) && car.getPrice()>From && car.getPrice()<To) search.add(car);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    { // Man and Mod are in
+                                        if(none)
+                                        { // none are in
+                                            if(car.getModel().contains(Mod)) search.add(car);
+                                        }
+                                        else
+                                        {
+                                            if(onlyfrom)
+                                            { // only From is in
+                                                Integer From=Integer.parseInt(PriceFrom);
+                                                if(car.getManufacturer().contains(Man) && car.getModel().contains(Mod) && car.getPrice()>From) search.add(car);
+                                            }
+                                            else if(onlyto)
+                                            { // only To is in
+                                                Integer To=Integer.parseInt(PriceTo);
+                                                if(car.getManufacturer().contains(Man) && car.getModel().contains(Mod) && car.getPrice()<To) search.add(car);
+                                            }
+                                            else
+                                            {
+                                                Integer From=Integer.parseInt(PriceFrom);
+                                                Integer To=Integer.parseInt(PriceTo);
+                                                if(car.getManufacturer().contains(Man) && car.getModel().contains(Mod) && car.getPrice()>From && car.getPrice()<To) search.add(car);
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                        SettingFrame();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
+
+    }
+
+
+    private void SettingFrame() {
+
+        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new CarsAdapter(getActivity(), search);
+        rc.setAdapter(Adapter);
+
+    }
+
+    private void SettingFullList() {
+
+        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new CarsAdapter(getActivity(), lstRst);
+        rc.setAdapter(Adapter);
 
     }
 }
