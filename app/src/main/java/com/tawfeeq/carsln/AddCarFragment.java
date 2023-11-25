@@ -131,7 +131,7 @@ public class AddCarFragment extends Fragment {
                 String phonenum =Phone.getText().toString();
                 String Kilo =Kilometre.getText().toString();
                 if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.trim().isEmpty()||transm.trim().isEmpty()||User.trim().isEmpty()||phonenum.trim().isEmpty()||Kilo.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Some Fields Are Missing!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

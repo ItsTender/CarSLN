@@ -43,7 +43,8 @@ public class Utils {
         if (selectedImageUri != null) {
 
             ProgressDialog progressDialog= new ProgressDialog(context);
-            progressDialog.setMessage("Your Image Is Being Uploaded");
+            progressDialog.setTitle("Uploading...");
+            progressDialog.setMessage("Uploading Your Image. Please Wait until this Action is Completed");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.show();
 
@@ -74,11 +75,11 @@ public class Utils {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     progressDialog.dismiss();
-                    Toast.makeText(context, "Failed to upload image", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            Toast.makeText(context, "Please choose an image first", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Choose an Image", Toast.LENGTH_SHORT).show();
         }
     }
 }
