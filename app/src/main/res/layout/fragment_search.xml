@@ -97,7 +97,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerSearch"
             android:layout_width="400dp"
-            android:layout_height="465dp"
+            android:layout_height="488dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="6dp"

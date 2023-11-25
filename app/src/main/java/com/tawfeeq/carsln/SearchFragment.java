@@ -193,25 +193,25 @@ public class SearchFragment extends Fragment {
                                 { // only man is in
                                     if(none)
                                     { // none are in
-                                        if(car.getManufacturer().contains(Man)) search.add(car);
+                                        if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase())) search.add(car);
                                     }
                                     else
                                     {
                                         if(onlyfrom)
                                         { // only From is in
                                             Integer From=Integer.parseInt(PriceFrom);
-                                            if(car.getManufacturer().contains(Man) && car.getPrice()>From) search.add(car);
+                                            if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice()>From) search.add(car);
                                         }
                                         else if(onlyto)
                                         { // only To is in
                                             Integer To=Integer.parseInt(PriceTo);
-                                            if(car.getPrice()<To) search.add(car);
+                                            if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice()<To) search.add(car);
                                         }
                                         else
                                         {
                                             Integer From=Integer.parseInt(PriceFrom);
                                             Integer To=Integer.parseInt(PriceTo);
-                                            if(car.getManufacturer().contains(Man) && car.getPrice()>From && car.getPrice()<To) search.add(car);
+                                            if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice()>From && car.getPrice()<To) search.add(car);
                                         }
                                     }
                                 } else
@@ -220,25 +220,25 @@ public class SearchFragment extends Fragment {
                                     { // only mod is in
                                         if(none)
                                         { // none are in
-                                            if(car.getModel().contains(Mod)) search.add(car);
+                                            if(car.getModel().toLowerCase().contains(Mod.toLowerCase())) search.add(car);
                                         }
                                         else
                                         {
                                             if(onlyfrom)
                                             { // only From is in
                                                 Integer From=Integer.parseInt(PriceFrom);
-                                                if(car.getModel().contains(Mod) && car.getPrice()>From) search.add(car);
+                                                if(car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice()>From) search.add(car);
                                             }
                                             else if(onlyto)
                                             { // only To is in
                                                 Integer To=Integer.parseInt(PriceTo);
-                                                if(car.getModel().contains(Mod) && car.getPrice()<To) search.add(car);
+                                                if(car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice()<To) search.add(car);
                                             }
                                             else
                                             {
                                                 Integer From=Integer.parseInt(PriceFrom);
                                                 Integer To=Integer.parseInt(PriceTo);
-                                                if(car.getModel().contains(Mod) && car.getPrice()>From && car.getPrice()<To) search.add(car);
+                                                if(car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice()>From && car.getPrice()<To) search.add(car);
                                             }
                                         }
                                     }
@@ -253,18 +253,18 @@ public class SearchFragment extends Fragment {
                                             if(onlyfrom)
                                             { // only From is in
                                                 Integer From=Integer.parseInt(PriceFrom);
-                                                if(car.getManufacturer().contains(Man) && car.getModel().contains(Mod) && car.getPrice()>From) search.add(car);
+                                                if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice()>From) search.add(car);
                                             }
                                             else if(onlyto)
                                             { // only To is in
                                                 Integer To=Integer.parseInt(PriceTo);
-                                                if(car.getManufacturer().contains(Man) && car.getModel().contains(Mod) && car.getPrice()<To) search.add(car);
+                                                if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice()<To) search.add(car);
                                             }
                                             else
                                             {
                                                 Integer From=Integer.parseInt(PriceFrom);
                                                 Integer To=Integer.parseInt(PriceTo);
-                                                if(car.getManufacturer().contains(Man) && car.getModel().contains(Mod) && car.getPrice()>From && car.getPrice()<To) search.add(car);
+                                                if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice()>From && car.getPrice()<To) search.add(car);
                                             }
                                         }
                                     }
@@ -282,8 +282,6 @@ public class SearchFragment extends Fragment {
                 });
             }
         });
-
-
 
     }
 
