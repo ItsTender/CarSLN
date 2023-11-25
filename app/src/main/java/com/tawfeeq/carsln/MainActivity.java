@@ -36,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
                     if (item.getItemId() == R.id.market) {
                         GoToFragmentCars();
-                    } else if (item.getItemId() == R.id.addcar) {
+                    }else if (item.getItemId() == R.id.searchcar){
+                        GoToFragmentSearch();
+                    }
+                    else if (item.getItemId() == R.id.addcar) {
                         GoToFragmentAdd();
                     }else if (item.getItemId() == R.id.profile){
                         GoToFragmentProfile();
@@ -66,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.commit();
+    }
+
+    private void GoToFragmentSearch() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SearchFragment());
         ft.commit();
     }
 

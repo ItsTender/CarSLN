@@ -98,6 +98,13 @@ public class LogInFragment extends Fragment {
             }
         });
 
+        tvForgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoToForgotPass();
+            }
+        });
+
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +132,9 @@ public class LogInFragment extends Fragment {
                 });
             }
         });
+
+
+
     }
 
 
@@ -140,6 +150,12 @@ public class LogInFragment extends Fragment {
 
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SignUpFragment());
+        ft.commit();
+    }
+
+    private void GoToForgotPass() {
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ForgotPassFragment());
         ft.commit();
     }
 
