@@ -246,7 +246,7 @@ public class SearchFragment extends Fragment {
                                     { // Man and Mod are in
                                         if(none)
                                         { // none are in
-                                            if(car.getModel().contains(Mod)) search.add(car);
+                                            if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().contains(Mod)) search.add(car);
                                         }
                                         else
                                         {

@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        // To Hide The Top Bar For App Name.
+        getSupportActionBar().hide();
 
         bnv= findViewById(R.id.bottomNavigationView);
         fbs = FireBaseServices.getInstance();
