@@ -95,10 +95,9 @@ public class UserListingsFragment extends Fragment {
                     Cars car = dataSnapshot.toObject(Cars.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
                     car.setPhone(dataSnapshot.getString("phone"));
-                    if(car.getManufacturer().contains("Mercedes")) {
-                        if (car.getEmail().contains(fbs.getAuth().getCurrentUser().getEmail())) {
-                            lst.add(car);
-                        }
+                    if(car.getManufacturer().contains("Mercedes")&&car.getModel().contains("A45")) {
+                        String str= "tawfeeqshahoud@gmail.com";
+                            if(str.contains(car.getEmail())) lst.add(car);
                     }
                 }
                 SettingFrame();
