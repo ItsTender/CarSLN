@@ -37,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
                     if (item.getItemId() == R.id.market) {
                         GoToFragmentCars();
-                    }else if (item.getItemId() == R.id.searchcar){
+                    }
+                    else if (item.getItemId() == R.id.searchcar){
                         GoToFragmentSearch();
                     }
                     else if (item.getItemId() == R.id.addcar) {
                         GoToFragmentAdd();
-                    }else if (item.getItemId() == R.id.profile){
+                    }
+                    else if (item.getItemId() == R.id.profile){
                         GoToFragmentProfile();
                     }
 
@@ -54,13 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
                 bnv.setVisibility(View.VISIBLE);
                 GoToFragmentCars();
-                
             }
             else {
 
                 bnv.setVisibility(View.GONE);
                 GoToLogIn();
-
             }
 
     }

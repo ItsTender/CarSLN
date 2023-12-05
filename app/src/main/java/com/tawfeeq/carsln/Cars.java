@@ -6,6 +6,8 @@ import android.widget.ImageView;
 
 public class Cars {
 
+    private boolean SellLend; // if the User wants to Sell the Car the Var will be 'TRUE' else if the User only wants to Lend his Car the Var will be 'FALSE'
+    private String Email;
     private String Manufacturer;
     private String Model;
     private int BHP;
@@ -20,7 +22,9 @@ public class Cars {
     public Cars() {
     }
 
-    public Cars(String manufacturer, String model,int BHP,int Price, int Year, String Transmission, int Kilometre, int Users, String Phone, String carPhoto) {
+    public Cars(boolean sellLend, String Email, String manufacturer, String model,int BHP,int Price, int Year, String Transmission, int Kilometre, int Users, String Phone, String carPhoto) {
+        this.SellLend=sellLend;
+        this.Email= Email;
         this.Manufacturer = manufacturer;
         this.Model = model;
         this.BHP = BHP;
@@ -36,6 +40,23 @@ public class Cars {
     // protected Cars(Parcel in) {}
 
    // @Override public void writeToParcel(Parcel dest, int flags) {}
+
+
+    public boolean getSellLend() {
+        return SellLend;
+    }
+
+    public void setSellLend(boolean sellLend) {
+        SellLend = sellLend;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
 
     public String getManufacturer() {
         return Manufacturer;

@@ -2,6 +2,7 @@ package com.tawfeeq.carsln;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -23,6 +24,8 @@ public class ProfileFragment extends Fragment {
     FireBaseServices fbs;
     Button btnLogout;
     TextView tvUser;
+
+    CardView listings;
 
 
 
@@ -80,6 +83,15 @@ public class ProfileFragment extends Fragment {
         fbs= FireBaseServices.getInstance();
         btnLogout= getView().findViewById(R.id.btnLogOut);
         tvUser =getView().findViewById(R.id.tvUsername);
+        listings = getView().findViewById(R.id.CardViewListings);
+
+        listings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoToUserListings();
+            }
+        });
+
 
         tvUser.setText("Hello, " + fbs.getAuth().getCurrentUser().getEmail());
 
@@ -94,6 +106,12 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    private void GoToUserListings() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
+        ft.commit();
+    }
 
 
     private void GoToLogIn() {

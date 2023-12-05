@@ -51,8 +51,8 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 Bundle bundle= new Bundle();
 
 
-
-
+                bundle.putBoolean("SellorLend",cars.get(position).getSellLend());
+                bundle.putString("Email", cars.get(position).getEmail());
                 bundle.putString("Car", cars.get(position).getManufacturer()+ " " +cars.get(position).getModel());
                 bundle.putInt("HP", cars.get(position).getBHP());
                 bundle.putInt("Price",cars.get(position).getPrice());

@@ -24,8 +24,8 @@ public class DetailedFragment extends Fragment {
 
     TextView tvName, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission;
     ImageView ivCar;
-
-    String Name,Phone,Photo,Transmission;
+    boolean sell_lend;
+    String Email,Name,Phone,Photo,Transmission;
     Integer Price,Power,Year,Users,Kilometre;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -76,7 +76,8 @@ public class DetailedFragment extends Fragment {
 
         Bundle bundle =this.getArguments();
 
-
+        sell_lend=bundle.getBoolean("SellorLend");
+        Email=bundle.getString("Email");
         Name=bundle.getString("Car");
         Phone=bundle.getString("Phone");
         Price=bundle.getInt("Price");

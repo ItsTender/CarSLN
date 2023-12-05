@@ -151,7 +151,7 @@ public class AddCarFragment extends Fragment {
 
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
-                Cars Add = new Cars(Man,Mod,power,price,Yahr,transm,KM,userhands,phonenum,photo);
+                Cars Add = new Cars(true,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transm,KM,userhands,phonenum,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
