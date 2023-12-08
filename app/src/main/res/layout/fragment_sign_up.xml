@@ -32,29 +32,44 @@
             android:layout_width="270dp"
             android:layout_height="49dp"
             android:layout_marginStart="70dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginBottom="30dp"
             android:ems="10"
-            android:hint="New Password"
             android:gravity="center"
+            android:hint="New Password"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/btnLogOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEmailSignup" />
 
+        <EditText
+            android:id="@+id/etPasswordSignupConfirm"
+            android:layout_width="270dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="70dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Confirm New Password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPasswordSignup" />
+
         <Button
-            android:id="@+id/btnLogOut"
+            android:id="@+id/btnSignUp"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_marginStart="65dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="66dp"
             android:backgroundTint="@color/Blue700"
             android:text="SIGNUP"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPasswordSignup" />
+            app:layout_constraintTop_toBottomOf="@+id/etPasswordSignupConfirm" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -81,7 +96,7 @@
             android:fontFamily="sans-serif"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogOut" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
         <TextView
             android:id="@+id/tv"

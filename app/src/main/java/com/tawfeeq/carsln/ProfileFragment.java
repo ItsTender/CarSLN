@@ -6,13 +6,11 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,7 +79,7 @@ public class ProfileFragment extends Fragment {
         super.onStart();
 
         fbs= FireBaseServices.getInstance();
-        btnLogout= getView().findViewById(R.id.btnLogOut);
+        btnLogout= getView().findViewById(R.id.btnSignUp);
         tvUser =getView().findViewById(R.id.tvUsername);
         listings = getView().findViewById(R.id.CardViewListings);
 
@@ -92,8 +90,11 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-        tvUser.setText("Hello, " + fbs.getAuth().getCurrentUser().getEmail());
+        // make a username out of your email address without the @Email.com
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+        tvUser.setText("Hello, " + user);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

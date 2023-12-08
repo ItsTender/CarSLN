@@ -26,8 +26,8 @@ import com.google.firebase.auth.AuthResult;
 public class SignUpFragment extends Fragment {
 
     FireBaseServices fbs;
-    Button btnSign;
-    EditText etEmail, etPassword;
+    Button btnSignUp;
+    EditText etEmail, etPassword, etConfirm;
     TextView etLog;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -84,7 +84,8 @@ public class SignUpFragment extends Fragment {
         fbs =FireBaseServices.getInstance();
         etEmail = getView().findViewById(R.id.etEmailSignup);
         etPassword = getView().findViewById(R.id.etPasswordSignup);
-        btnSign = getView().findViewById(R.id.btnLogOut);
+        etConfirm = getView().findViewById(R.id.etPasswordSignupConfirm);
+        btnSignUp = getView().findViewById(R.id.btnSignUp);
         etLog = getView().findViewById(R.id.tvSignin);
 
 
@@ -95,31 +96,32 @@ public class SignUpFragment extends Fragment {
             }
         });
 
-        btnSign.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
-                if (username.trim().isEmpty() || pass.trim().isEmpty()) {
+                String confirm = etConfirm.getText().toString();
+                if (username.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                fbs.getAuth().createUserWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                            LogIn(username,pass);
+                if(pass.contains(confirm)) {
+                    fbs.getAuth().createUserWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                                LogIn(username, pass);
+                            } else {
+                                Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else
-                        {
-                            Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
+                    });
+                } else {
+                    Toast.makeText(getActivity(), "Password Credentials Do Not Match", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -138,8 +140,9 @@ public class SignUpFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_LONG).show();
-                    GoToFragmentCars();
                     setNavigationBarVisible();
+                    setNavigationBarCarsMarket();
+                    GoToFragmentCars();
                 } else {
                     Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
                 }
@@ -157,5 +160,9 @@ public class SignUpFragment extends Fragment {
 
     private void setNavigationBarVisible() {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private void setNavigationBarCarsMarket() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 }

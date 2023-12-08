@@ -122,8 +122,9 @@ public class LogInFragment extends Fragment {
                         if (task.isSuccessful()) {
                             // To DO
                             Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
-                            GoToFragmentCars();
                             setNavigationBarVisible();
+                            setNavigationBarCarsMarket();
+                            GoToFragmentCars();
                         } else {
                             // To DO
                             Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
@@ -161,6 +162,10 @@ public class LogInFragment extends Fragment {
 
     private void setNavigationBarVisible() {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private void setNavigationBarCarsMarket() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 
 }

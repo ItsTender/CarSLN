@@ -124,6 +124,11 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 SettingFullList();
+
+                etMan.setText("");
+                etMod.setText("");
+                etPriceFrom.setText("");
+                etPriceTo.setText("");
             }
         });
 
@@ -246,7 +251,7 @@ public class SearchFragment extends Fragment {
                                     { // Man and Mod are in
                                         if(none)
                                         { // none are in
-                                            if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().contains(Mod)) search.add(car);
+                                            if(car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase())) search.add(car);
                                         }
                                         else
                                         {

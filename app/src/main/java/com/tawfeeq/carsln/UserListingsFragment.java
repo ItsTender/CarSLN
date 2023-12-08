@@ -85,6 +85,7 @@ public class UserListingsFragment extends Fragment {
         fbs=FireBaseServices.getInstance();
         rcListings= getView().findViewById(R.id.RCListings);
 
+
         lst=new ArrayList<Cars>();
 
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -95,9 +96,8 @@ public class UserListingsFragment extends Fragment {
                     Cars car = dataSnapshot.toObject(Cars.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
                     car.setPhone(dataSnapshot.getString("phone"));
-                    if(car.getManufacturer().contains("Mercedes")&&car.getModel().contains("A45")) {
-                        String str= "tawfeeqshahoud@gmail.com";
-                            if(str.contains(car.getEmail())) lst.add(car);
+                    if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
+                        lst.add(car);
                     }
                 }
                 SettingFrame();

@@ -151,6 +151,7 @@ public class AddCarFragment extends Fragment {
 
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
+                // Sell Lend; True=Sell the Car, False=Lend the Car.
                 Cars Add = new Cars(true,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transm,KM,userhands,phonenum,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
