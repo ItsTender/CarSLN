@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".StartFragment"
+    android:layout_centerInParent="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DetailedCar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="62dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sln_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="388dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text=" Welcome to Car.sln – Your Ultimate Destination for Seamless Car Transactions!"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="388dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Revolutionize the way you buy, sell, or lend your dream car with Car.sln! Whether you're on the hunt for the perfect vehicle, eager to sell your current ride, or looking to explore flexible lending options, Car.sln is your one-stop solution."
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/btnStartSignUp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="56dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="SIGNUP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+        <Button
+            android:id="@+id/btnStartLogIn"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="56dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="LOGIN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnStartSignUp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

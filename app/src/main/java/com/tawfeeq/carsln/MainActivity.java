@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             else {
 
                 bnv.setVisibility(View.GONE);
-                GoToLogIn();
+                GoToStarterScreen();
             }
 
     }
@@ -94,17 +94,15 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    private void GoToLogIn() {
+    private void GoToStarterScreen() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.replace(R.id.FrameLayoutMain, new StartFragment());
         ft.commit();
     }
 
     public BottomNavigationView getBottomNavigationView() {
         return bnv;
     }
-
-
 
 }

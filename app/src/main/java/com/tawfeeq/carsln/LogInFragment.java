@@ -78,6 +78,9 @@ public class LogInFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_log_in, container, false);
     }
 
+
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -133,10 +136,10 @@ public class LogInFragment extends Fragment {
                 });
             }
         });
-
-
-
     }
+
+
+
 
 
 

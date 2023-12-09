@@ -306,4 +306,5 @@ public class SearchFragment extends Fragment {
         rc.setAdapter(Adapter);
 
     }
+
 }

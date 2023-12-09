@@ -41,8 +41,8 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="147dp"
-            android:layout_height="134dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="56dp"
             android:layout_marginEnd="246dp"
@@ -54,11 +54,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/CardViewListings"
-            android:layout_width="400dp"
+            android:layout_width="390dp"
             android:layout_height="72dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="11dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUsername">
@@ -76,13 +76,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/CardViewFavourites"
-            android:layout_width="400dp"
+            android:layout_width="390dp"
             android:layout_height="72dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="11dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/CardViewListings">
 
