@@ -37,35 +37,7 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toStartOf="@+id/etUsers"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etMod" />
-
-        <EditText
-            android:id="@+id/etTransmission"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="56dp"
-            android:ems="10"
-            android:hint="Gear"
-            android:inputType="text"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/etYear"
-            app:layout_constraintTop_toBottomOf="@+id/etUsers" />
-
-        <EditText
-            android:id="@+id/etYear"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="Year"
-            android:inputType="number"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@+id/etTransmission"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etBHP" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerYear" />
 
         <EditText
             android:id="@+id/etUsers"
@@ -79,7 +51,7 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/etBHP"
-            app:layout_constraintTop_toBottomOf="@+id/etMod" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerGear" />
 
         <EditText
             android:id="@+id/etPrice"
@@ -89,12 +61,13 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="56dp"
             android:ems="10"
-            android:hint="Enter Price/ Monthly Payment $"
+            android:hint="Selling Price/ Monthly Payment $"
             android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPhone" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerSellLend" />
 
         <EditText
             android:id="@+id/etKM"
@@ -109,7 +82,7 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etTransmission" />
+            app:layout_constraintTop_toBottomOf="@+id/etBHP" />
 
         <EditText
             android:id="@+id/etMod"
@@ -153,7 +126,7 @@
             android:src="@drawable/carplain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerGear"
+            app:layout_constraintTop_toBottomOf="@+id/etPrice"
             app:shapeAppearance="@style/RoundShape.App.8percent" />
 
         <Button
@@ -173,12 +146,33 @@
             android:id="@+id/SpinnerGear"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginStart="205dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="56dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/SpinnerYear"
+            app:layout_constraintTop_toBottomOf="@+id/etMod" />
+
+        <Spinner
+            android:id="@+id/SpinnerYear"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/SpinnerGear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/etMod" />
+
+        <Spinner
+            android:id="@+id/SpinnerSellLend"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPhone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

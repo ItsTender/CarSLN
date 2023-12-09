@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,9 +100,17 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "Press and Hold the Button to Logout", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnLogout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
                 fbs.getAuth().signOut();
                 GoToLogIn();
                 setNavigationBarGone();
+                return true;
             }
         });
 

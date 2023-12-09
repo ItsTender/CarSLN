@@ -112,7 +112,16 @@ public class DetailedFragment extends Fragment {
 
         tvName.setText(Name);
         tvPhone.setText("Contact: " + Phone);
-        String prc= Price.toString(); tvPrice.setText("Price: " + prc + "$");
+
+        String prc= Price.toString();
+
+        if(sell_lend==true) {
+            tvPrice.setText("Selling Price: " + prc + "$");
+        }
+        else if(sell_lend==false){
+            tvPrice.setText("Monthly Payment: " + prc + "$");
+        }
+
         String power=Power.toString(); tvPower.setText("Horse Power: " + power);
         String year=Year.toString(); tvYear.setText("Model Year: " + year);
         String Kilo =Kilometre.toString(); tvKilometre.setText("Kilometre: " + Kilo);

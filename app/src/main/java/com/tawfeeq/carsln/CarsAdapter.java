@@ -127,7 +127,17 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             txtMan.setText(car.getManufacturer());
             txtMod.setText(car.getModel());
             txtHP.setText("Horse Power: " + car.getBHP());
-            txtPrice.setText("Price: " + car.getPrice()+"$");
+
+            if(car.getSellLend()==true){
+
+            txtPrice.setText("Selling Price: " + car.getPrice()+"$");
+
+            }
+            else if(car.getSellLend()==false){
+
+                txtPrice.setText("Monthly Payment: " + car.getPrice()+"$");
+
+            }
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())
             {

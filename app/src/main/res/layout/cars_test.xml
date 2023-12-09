@@ -35,9 +35,10 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10px">
 
+
         <TextView
             android:id="@+id/tvtxtMan"
-            android:layout_width="150dp"
+            android:layout_width="185dp"
             android:layout_height="42dp"
             android:text="Man"
             android:textSize="30sp"
@@ -46,12 +47,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <TextView
         android:id="@+id/tvtxtMod"
         android:layout_width="185dp"
         android:layout_height="35dp"
-
         android:text="Model"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +60,7 @@
 
     <TextView
         android:id="@+id/tvtxtHP"
-        android:layout_width="150dp"
+        android:layout_width="185dp"
         android:layout_height="30dp"
         android:text="horse power"
         android:textSize="15sp"
@@ -72,7 +71,7 @@
 
     <TextView
         android:id="@+id/tvtxtPrice"
-        android:layout_width="150dp"
+        android:layout_width="185dp"
         android:layout_height="30dp"
         android:text="price$"
         android:textSize="15sp"

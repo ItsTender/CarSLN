@@ -42,8 +42,8 @@ public class AddCarFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
-    EditText Model,Manufacturer,Price,BHP,Year,Transmission,Users,Phone,Kilometre;
-    Spinner SpinnerGear;
+    EditText Model,Manufacturer,Price,BHP,Users,Phone,Kilometre;
+    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend;
     Button Add,Return;
     ImageView IV;
     String photo;
@@ -107,21 +107,37 @@ public class AddCarFragment extends Fragment {
         Model = getView().findViewById(R.id.etMod);
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
-        Year=getView().findViewById(R.id.etYear);
-        Transmission=getView().findViewById(R.id.etTransmission);
         Users=getView().findViewById(R.id.etUsers);
         Phone=getView().findViewById(R.id.etPhone);
         Kilometre=getView().findViewById(R.id.etKM);
         IV = getView().findViewById(R.id.ivAddCar);
         Add = getView().findViewById(R.id.btnAdd);
         SpinnerGear = getView().findViewById(R.id.SpinnerGear);
-
+        SpinnerYear = getView().findViewById(R.id.SpinnerYear);
+        SpinnerSellLend= getView().findViewById(R.id.SpinnerSellLend);
 
 
         String [] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT","iManual"};
-        ArrayAdapter<String> NameCarAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, GearList);
-        NameCarAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        SpinnerGear.setAdapter(NameCarAdapter);
+        ArrayAdapter<String> GearAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, GearList);
+        GearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerGear.setAdapter(GearAdapter);
+
+
+
+        String [] Years = { "Select Year","2024","2023","2022","2021",
+                "2020","2019","2018","2017","2016","2015","2014","2013","2012","2011",
+                "2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991", "1990" };
+        ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, Years);
+        YearsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerYear.setAdapter(YearsAdapter);
+
+
+
+        String [] HowSellLend = {"What do you want to do with the Car", "Sell the Car" , "Lend the Car" };
+        ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, HowSellLend);
+        SellLendAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerSellLend.setAdapter(SellLendAdapter);
+
 
         IV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,27 +154,31 @@ public class AddCarFragment extends Fragment {
                 String Mod= Model.getText().toString();
                 String HP= BHP.getText().toString();
                 String prc= Price.getText().toString();
-                String year =Year.getText().toString();
-                String transmission = SpinnerGear.getTransitionName();
                 String User =Users.getText().toString();
                 String phonenum =Phone.getText().toString();
                 String Kilo =Kilometre.getText().toString();
-                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.trim().isEmpty()|| transmission.equals("Gear Type") ||User.trim().isEmpty()||phonenum.trim().isEmpty()||Kilo.trim().isEmpty()) {
+                String transmission = SpinnerGear.getSelectedItem().toString();
+                String year = SpinnerYear.getSelectedItem().toString();
+                String SellLend = SpinnerSellLend.getSelectedItem().toString();
+                if(SellLend.equals("What do you want to do with the Car")||Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||phonenum.trim().isEmpty()||Kilo.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 //Adding the Car
-                Integer power= Integer.parseInt(HP);
-                Integer price=Integer.parseInt(prc);
-                Integer Yahr= Integer.parseInt(year);
-                Integer userhands= Integer.parseInt(User);
-                Integer KM= Integer.parseInt(Kilo);
+                int power= Integer.parseInt(HP);
+                int price=Integer.parseInt(prc);
+                int Yahr= Integer.parseInt(year);
+                int userhands= Integer.parseInt(User);
+                int KM= Integer.parseInt(Kilo);
+                boolean selllend = true;
+                if(SellLend.equals("Sell the Car")) selllend=true;
+                else if(SellLend.equals("Lend the Car")) selllend=false;
 
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
                 // Sell Lend; True=Sell the Car, False=Lend the Car.
-                Cars Add = new Cars(true,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,KM,userhands,phonenum,photo);
+                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,KM,userhands,phonenum,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
