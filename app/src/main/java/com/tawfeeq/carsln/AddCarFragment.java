@@ -14,9 +14,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 import io.grpc.internal.LogExceptionRunnable;
 
@@ -39,6 +43,7 @@ public class AddCarFragment extends Fragment {
     FireBaseServices fbs;
     Cars AddCar;
     EditText Model,Manufacturer,Price,BHP,Year,Transmission,Users,Phone,Kilometre;
+    Spinner SpinnerGear;
     Button Add,Return;
     ImageView IV;
     String photo;
@@ -109,6 +114,14 @@ public class AddCarFragment extends Fragment {
         Kilometre=getView().findViewById(R.id.etKM);
         IV = getView().findViewById(R.id.ivAddCar);
         Add = getView().findViewById(R.id.btnAdd);
+        SpinnerGear = getView().findViewById(R.id.SpinnerGear);
+
+
+
+        String [] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT","iManual"};
+        ArrayAdapter<String> NameCarAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, GearList);
+        NameCarAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerGear.setAdapter(NameCarAdapter);
 
         IV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,21 +139,14 @@ public class AddCarFragment extends Fragment {
                 String HP= BHP.getText().toString();
                 String prc= Price.getText().toString();
                 String year =Year.getText().toString();
-                String transm =Transmission.getText().toString();
+                String transmission = SpinnerGear.getTransitionName();
                 String User =Users.getText().toString();
                 String phonenum =Phone.getText().toString();
                 String Kilo =Kilometre.getText().toString();
-                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.trim().isEmpty()||transm.trim().isEmpty()||User.trim().isEmpty()||phonenum.trim().isEmpty()||Kilo.trim().isEmpty()) {
+                if(Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.trim().isEmpty()|| transmission.equals("Gear Type") ||User.trim().isEmpty()||phonenum.trim().isEmpty()||Kilo.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                /*
-                pd.setMessage("loading");
-                pd.show();
-
-
-                 */
 
                 //Adding the Car
                 Integer power= Integer.parseInt(HP);
@@ -152,7 +158,7 @@ public class AddCarFragment extends Fragment {
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
                 // Sell Lend; True=Sell the Car, False=Lend the Car.
-                Cars Add = new Cars(true,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transm,KM,userhands,phonenum,photo);
+                Cars Add = new Cars(true,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,KM,userhands,phonenum,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

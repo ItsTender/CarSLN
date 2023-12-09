@@ -15,7 +15,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="56dp"
             android:ems="10"
             android:hint="Manufacturer"
@@ -146,14 +146,14 @@
             android:layout_width="220dp"
             android:layout_height="140dp"
             android:layout_marginStart="105dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="106dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/carplain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPrice"
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerGear"
             app:shapeAppearance="@style/RoundShape.App.8percent" />
 
         <Button
@@ -168,6 +168,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivAddCar" />
+
+        <Spinner
+            android:id="@+id/SpinnerGear"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="205dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPrice" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
