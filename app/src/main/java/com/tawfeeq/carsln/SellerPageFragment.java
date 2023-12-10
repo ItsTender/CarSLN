@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,15 +23,20 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link UserListingsFragment#newInstance} factory method to
+ * Use the {@link SellerPageFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserListingsFragment extends Fragment {
+public class SellerPageFragment extends Fragment {
 
-    RecyclerView rcListings;
+    String Email, Phone;
+    Button btnSMS, btnCarsln;
+    TextView tvSellerName;
+    RecyclerView rc;
     FireBaseServices fbs;
-    ArrayList<Cars> lst;
     CarsAdapter Adapter;
+    ArrayList<Cars> SellerCars;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +47,7 @@ public class UserListingsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public UserListingsFragment() {
+    public SellerPageFragment() {
         // Required empty public constructor
     }
 
@@ -50,11 +57,11 @@ public class UserListingsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment UserListingsFragment.
+     * @return A new instance of fragment SellerPageFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static UserListingsFragment newInstance(String param1, String param2) {
-        UserListingsFragment fragment = new UserListingsFragment();
+    public static SellerPageFragment newInstance(String param1, String param2) {
+        SellerPageFragment fragment = new SellerPageFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,18 +82,33 @@ public class UserListingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_listings, container, false);
+        View view =  inflater.inflate(R.layout.fragment_seller_page, container, false);
+
+        Bundle bundle =this.getArguments();
+
+        Email=bundle.getString("Email");
+        Phone=bundle.getString("Phone");
+
+        return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        fbs=FireBaseServices.getInstance();
-        rcListings= getView().findViewById(R.id.RecyclerListings);
+        fbs= FireBaseServices.getInstance();
+        tvSellerName = getView().findViewById(R.id.tvSellerUser);
+        btnCarsln = getView().findViewById(R.id.btnCarslnContact);
+        btnSMS = getView().findViewById(R.id.btnSMSContact);
+        rc = getView().findViewById(R.id.RecyclerSellerCars);
 
+        SellerCars =new ArrayList<Cars>();
 
-        lst=new ArrayList<Cars>();
+        String str = Email;
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+        tvSellerName.setText("Welcome to                " + user +"'s Page");
+
 
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -96,9 +118,9 @@ public class UserListingsFragment extends Fragment {
                     Cars car = dataSnapshot.toObject(Cars.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
                     car.setPhone(dataSnapshot.getString("phone"));
-                    if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
-                        lst.add(car);
-                    }
+
+                    if(car.getEmail().equals(Email)) SellerCars.add(car);
+
                 }
                 SettingFrame();
             }
@@ -108,13 +130,17 @@ public class UserListingsFragment extends Fragment {
                 Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
+
 
     private void SettingFrame() {
 
-        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), lst);
-        rcListings.setAdapter(Adapter);
+        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new CarsAdapter(getActivity(), SellerCars);
+        rc.setAdapter(Adapter);
 
     }
+
 }

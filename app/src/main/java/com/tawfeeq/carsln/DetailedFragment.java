@@ -3,6 +3,7 @@ package com.tawfeeq.carsln;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.squareup.picasso.Picasso;
 public class DetailedFragment extends Fragment {
 
 
-    TextView tvName, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission;
+    TextView tvName, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller;
     ImageView ivCar;
     boolean sell_lend;
     String Email,Name,Phone,Photo,Transmission;
@@ -99,26 +100,45 @@ public class DetailedFragment extends Fragment {
 
         ivCar=getView().findViewById(R.id.DetailedCar);
         tvName=getView().findViewById(R.id.DetailedMan);
-        tvPhone =getView().findViewById(R.id.DetailedPhone);
         tvPrice =getView().findViewById(R.id.DetailedPrice);
         tvPower =getView().findViewById(R.id.DetailedHP);
         tvYear = getView().findViewById(R.id.DetailedYear);
         tvKilometre =getView().findViewById(R.id.DetailedKilometre);
         tvUsers= getView().findViewById(R.id.DetailedUsers);
         tvTransmission =getView().findViewById(R.id.DetailedGear);
+        tvSeller = getView().findViewById(R.id.DetailedUserMail);
+
+        String str = Email;
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+        tvSeller.setText(user);
+
+        tvSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Fragment gtn= new SellerPageFragment();
+                Bundle bundle= new Bundle();
 
 
+                bundle.putString("Email", Email);
+                bundle.putString("Phone", Phone);
 
+
+                gtn.setArguments(bundle);
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+            }
+        });
 
         tvName.setText(Name);
-        tvPhone.setText("Contact: " + Phone);
 
         String prc= Price.toString();
-
-        if(sell_lend==true) {
+        if(sell_lend) {
             tvPrice.setText("Selling Price: " + prc + "$");
         }
-        else if(sell_lend==false){
+        else{
             tvPrice.setText("Monthly Payment: " + prc + "$");
         }
 
@@ -127,7 +147,6 @@ public class DetailedFragment extends Fragment {
         String Kilo =Kilometre.toString(); tvKilometre.setText("Kilometre: " + Kilo);
         String Owners= Users.toString(); tvUsers.setText("Owners: " + Owners);
         tvTransmission.setText("Transmission: " + Transmission);
-
 
 
         if ( Photo == null || Photo.isEmpty())
