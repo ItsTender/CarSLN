@@ -15,8 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -107,12 +110,13 @@ public class SignUpFragment extends Fragment {
                     return;
                 }
 
-                if(pass.contains(confirm)) {
+                if(pass.equals(confirm)) {
                     fbs.getAuth().createUserWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                                CreateUserPhoto(username);
                                 LogIn(username, pass);
                             } else {
                                 Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
@@ -122,6 +126,26 @@ public class SignUpFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), "Password Credentials Do Not Match", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void CreateUserPhoto(String username) {
+
+        String str = username;
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+
+        UserProfile userProfile = new UserProfile("",username);
+        fbs.getStore().collection("ProfilePFP").document(user).set(userProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                // creates a User with an Empty Profile Photo
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Something Goes Wrong
             }
         });
     }

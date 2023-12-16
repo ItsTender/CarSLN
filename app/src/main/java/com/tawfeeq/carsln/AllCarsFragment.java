@@ -112,7 +112,7 @@ public class AllCarsFragment extends Fragment {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
             }
         });
     }
