@@ -16,28 +16,29 @@
             android:id="@+id/tvSellerUser"
             android:layout_width="350dp"
             android:layout_height="80dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="31dp"
             android:fontFamily="sans-serif"
             android:text=""
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSellerPage" />
 
-        <ImageView
-            android:id="@+id/imageView10"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewSellerPage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="130dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="241dp"
-            android:src="@drawable/generic_icon"
+            android:layout_marginEnd="131dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent"/>
 
         <Button
             android:id="@+id/btnCarslnContact"

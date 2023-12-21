@@ -1,11 +1,14 @@
 package com.tawfeeq.carsln;
 
 public class UserProfile {
-    private String UserPhoto;
+    private String userPhoto;
     private String Email;
 
+    public UserProfile() {
+    }
+
     public UserProfile(String userPhoto, String email) {
-        UserPhoto = userPhoto;
+        this.userPhoto = userPhoto;
         Email = email;
     }
 
@@ -18,10 +21,10 @@ public class UserProfile {
     }
 
     public String getUserPhoto() {
-        return UserPhoto;
+        return userPhoto;
     }
 
     public void setUserPhoto(String userPhoto) {
-        UserPhoto = userPhoto;
+        userPhoto = userPhoto;
     }
 }

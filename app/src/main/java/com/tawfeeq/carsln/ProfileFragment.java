@@ -20,7 +20,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,10 +34,10 @@ public class ProfileFragment extends Fragment {
     FireBaseServices fbs;
     Button btnLogout;
     TextView tvUser;
-
     CardView listings;
+    ImageView ivSettings, ivPFP;
+    String pfp;
 
-    ImageView ivSettings;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,6 +94,42 @@ public class ProfileFragment extends Fragment {
         tvUser =getView().findViewById(R.id.tvUsername);
         listings = getView().findViewById(R.id.CardViewListings);
         ivSettings = getView().findViewById(R.id.imageViewSettings);
+        ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);
+
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+
+        tvUser.setText("Welcome, " + user);
+
+        // Get User Profile Photo.....
+
+        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                if(documentSnapshot.getString("Email").equals(str)) {
+                    pfp = documentSnapshot.getString("userPhoto");
+
+                    if (pfp == null || pfp.isEmpty())
+                    {
+                        Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
+                    }
+                    else {
+                        Picasso.get().load(pfp).into(ivPFP);
+                    }
+
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
+                Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
+            }
+        });
+
+        // Get Profile Photo Ends
 
         ivSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,12 +144,6 @@ public class ProfileFragment extends Fragment {
                 GoToUserListings();
             }
         });
-
-        // make a username out of your email address without the @Email.com
-        String str = fbs.getAuth().getCurrentUser().getEmail();
-        int n = str.indexOf("@");
-        String user = str.substring(0,n);
-        tvUser.setText("Welcome, " + user);
 
     }
 

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,7 +37,8 @@ public class SellerPageFragment extends Fragment {
     FireBaseServices fbs;
     CarsAdapter Adapter;
     ArrayList<Cars> SellerCars;
-
+    ImageView ivSeller;
+    String pfp;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -101,6 +104,7 @@ public class SellerPageFragment extends Fragment {
         btnCarsln = getView().findViewById(R.id.btnCarslnContact);
         btnSMS = getView().findViewById(R.id.btnSMSContact);
         rc = getView().findViewById(R.id.RecyclerSellerCars);
+        ivSeller = getView().findViewById(R.id.imageViewSellerPage);
 
         SellerCars =new ArrayList<Cars>();
 
@@ -108,6 +112,40 @@ public class SellerPageFragment extends Fragment {
         int n = str.indexOf("@");
         String user = str.substring(0,n);
         tvSellerName.setText("Welcome to                " + user +"'s Page");
+
+
+        // Get User Profile Photo.....
+
+        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                if(documentSnapshot.getString("Email").equals(str)) {
+                    pfp = documentSnapshot.getString("userPhoto");
+
+                    if (pfp == null || pfp.isEmpty())
+                    {
+                        Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                    }
+                    else {
+                        Picasso.get().load(pfp).into(ivSeller);
+                    }
+
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
+                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+            }
+        });
+
+        // Get Profile Photo Ends
+
+
+
+
 
 
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

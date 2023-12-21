@@ -2,6 +2,7 @@ package com.tawfeeq.carsln;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.protobuf.StringValue;
 import com.squareup.picasso.Picasso;
 
@@ -22,12 +26,13 @@ import com.squareup.picasso.Picasso;
  */
 public class DetailedFragment extends Fragment {
 
-
+    FireBaseServices fbs;
     TextView tvName, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller;
-    ImageView ivCar;
+    ImageView ivCar, ivSeller;
     boolean sell_lend;
     String Email,Name,Phone,Photo,Transmission;
     Integer Price,Power,Year,Users,Kilometre;
+    String pfp;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,6 +103,7 @@ public class DetailedFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        fbs = FireBaseServices.getInstance();
         ivCar=getView().findViewById(R.id.DetailedCar);
         tvName=getView().findViewById(R.id.DetailedMan);
         tvPrice =getView().findViewById(R.id.DetailedPrice);
@@ -107,11 +113,44 @@ public class DetailedFragment extends Fragment {
         tvUsers= getView().findViewById(R.id.DetailedUsers);
         tvTransmission =getView().findViewById(R.id.DetailedGear);
         tvSeller = getView().findViewById(R.id.DetailedUserMail);
+        ivSeller = getView().findViewById(R.id.imageViewSeller);
+
 
         String str = Email;
         int n = str.indexOf("@");
         String user = str.substring(0,n);
         tvSeller.setText(user);
+
+
+        // Get User Profile Photo.....
+
+        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                if(documentSnapshot.getString("Email").equals(str)) {
+                    pfp = documentSnapshot.getString("userPhoto");
+
+                    if (pfp == null || pfp.isEmpty())
+                    {
+                        Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                    }
+                    else {
+                        Picasso.get().load(pfp).into(ivSeller);
+                    }
+
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
+                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+            }
+        });
+
+        // Get Profile Photo Ends
+
 
         tvSeller.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +170,27 @@ public class DetailedFragment extends Fragment {
                 ft.commit();
             }
         });
+
+        ivSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Fragment gtn= new SellerPageFragment();
+                Bundle bundle= new Bundle();
+
+
+                bundle.putString("Email", Email);
+                bundle.putString("Phone", Phone);
+
+
+                gtn.setArguments(bundle);
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+
+            }
+        });
+
 
         tvName.setText(Name);
 

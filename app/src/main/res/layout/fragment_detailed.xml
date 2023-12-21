@@ -15,7 +15,7 @@
             android:layout_width="380dp"
             android:layout_height="250dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -28,9 +28,9 @@
         <TextView
             android:id="@+id/DetailedMan"
             android:layout_width="397dp"
-            android:layout_height="65dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="7dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
@@ -38,7 +38,7 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSeller" />
 
         <TextView
             android:id="@+id/DetailedPrice"
@@ -131,28 +131,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DetailedKilometre" />
 
-        <ImageView
-            android:id="@+id/imageView6"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewSeller"
             android:layout_width="60dp"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/generic_icon"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toStartOf="@+id/DetailedUserMail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
+            app:layout_constraintTop_toBottomOf="@+id/DetailedCar"
+            app:shapeAppearance="@style/RoundShape.App.50percent"/>
 
         <TextView
             android:id="@+id/DetailedUserMail"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginEnd="85dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="78dp"
             android:fontFamily="sans-serif"
             android:text="User/Seller"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewSeller"
             app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
 
 

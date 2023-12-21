@@ -1,11 +1,14 @@
 package com.tawfeeq.carsln;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +33,11 @@ import java.util.ArrayList;
  */
 public class SettingsFragment extends Fragment {
 
+    Utils utils;
     FireBaseServices fbs;
     Button btnLogout, Changepfp;
     ImageView ivUser;
-    String pfp;
+    String pfp, pfptst, pfpE;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,6 +90,7 @@ public class SettingsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
         btnLogout= getView().findViewById(R.id.btnLogout);
         Changepfp = getView().findViewById(R.id.btnChangePhoto);
@@ -97,22 +102,32 @@ public class SettingsFragment extends Fragment {
 
 
         // Get User Profile Photo.....
+        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
 
+                if(documentSnapshot.getString("Email").equals(str)) {
+                    pfp = documentSnapshot.getString("userPhoto");
 
+                    if (pfp == null || pfp.isEmpty())
+                    {
+                        Picasso.get().load(R.drawable.generic_icon).into(ivUser);
+                    }
+                    else {
+                        Picasso.get().load(pfp).into(ivUser);
+                    }
 
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
+                Picasso.get().load(R.drawable.generic_icon).into(ivUser);
+            }
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
+        // Get Profile Photo Ends
 
 
 
@@ -120,24 +135,22 @@ public class SettingsFragment extends Fragment {
 
         // Set New Profile Photo.....
 
+        ivUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageChooser();
+            }
+        });
+
+        Changepfp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UpdatePFP();
+            }
+        });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Set New Profile Photo Ends
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -167,4 +180,57 @@ public class SettingsFragment extends Fragment {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
     }
 
+    public void ImageChooser() {
+
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, 123);
+
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data != null) {
+
+            Uri selectedImageUri = data.getData();
+            utils.uploadImage(getActivity(), selectedImageUri);
+        }
+
+    }
+
+    public void UpdatePFP(){
+
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+
+        String photo;
+        if(fbs.getSelectedImageURL()==null) photo ="";
+        else photo = fbs.getSelectedImageURL().toString()+".jpg";
+
+        if (photo == "")
+        {
+            Picasso.get().load(R.drawable.generic_icon).into(ivUser);
+        }
+        else {
+            Picasso.get().load(photo).into(ivUser);
+        }
+
+        if(!photo.isEmpty()) {
+            fbs.getStore().collection("ProfilePFP").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
+                    fbs.setSelectedImageURL(null);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        else Toast.makeText(getActivity(), "Press Your Profile Picture to Insert a new Image Firstly", Toast.LENGTH_LONG).show();
+    }
 }
