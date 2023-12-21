@@ -3,13 +3,23 @@ package com.tawfeeq.carsln;
 public class UserProfile {
     private String userPhoto;
     private String Email;
+    private String Phone;
 
     public UserProfile() {
     }
 
-    public UserProfile(String userPhoto, String email) {
+    public UserProfile(String userPhoto, String email, String phone) {
         this.userPhoto = userPhoto;
         Email = email;
+        Phone = phone;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
     public String getEmail() {

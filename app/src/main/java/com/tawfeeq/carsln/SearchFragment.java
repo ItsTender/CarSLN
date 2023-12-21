@@ -106,7 +106,6 @@ public class SearchFragment extends Fragment {
 
                     Cars car = dataSnapshot.toObject(Cars.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setPhone(dataSnapshot.getString("phone"));
                     lstRst.add(car);
 
                 }
@@ -163,7 +162,6 @@ public class SearchFragment extends Fragment {
 
                             Cars car = dataSnapshot.toObject(Cars.class);
                             car.setCarPhoto(dataSnapshot.getString("photo"));
-                            car.setPhone(dataSnapshot.getString("phone"));
 
 
                             if(Man.trim().isEmpty() && Mod.trim().isEmpty()) {

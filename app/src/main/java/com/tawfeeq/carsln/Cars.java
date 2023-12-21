@@ -16,13 +16,12 @@ public class Cars {
     private String Transmission;
     private int Kilometre;
     private int Users;
-    private String Phone;
     private String Photo;
 
     public Cars() {
     }
 
-    public Cars(boolean sellLend, String Email, String manufacturer, String model,int BHP,int Price, int Year, String Transmission, int Kilometre, int Users, String Phone, String carPhoto) {
+    public Cars(boolean sellLend, String Email, String manufacturer, String model,int BHP,int Price, int Year, String Transmission, int Kilometre, int Users, String carPhoto) {
         this.SellLend=sellLend;
         this.Email= Email;
         this.Manufacturer = manufacturer;
@@ -33,7 +32,6 @@ public class Cars {
         this.Transmission=Transmission;
         this.Kilometre=Kilometre;
         this.Users=Users;
-        this.Phone=Phone;
         this.Photo =carPhoto;
     }
 
@@ -130,14 +128,6 @@ public class Cars {
         Users = users;
     }
 
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
-
     @Override
     public String toString() {
         return "Cars{" +
@@ -149,7 +139,6 @@ public class Cars {
                 ", Transmission='" + Transmission + '\'' +
                 ", Kilometre=" + Kilometre +
                 ", Users=" + Users +
-                ", Phone=" + Phone +
                 ", Photo='" + Photo + '\'' +
                 '}';
     }

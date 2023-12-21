@@ -108,7 +108,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                if(documentSnapshot.getString("Email").equals(str)) {
                     pfp = documentSnapshot.getString("userPhoto");
 
                     if (pfp == null || pfp.isEmpty())
@@ -119,7 +118,6 @@ public class ProfileFragment extends Fragment {
                         Picasso.get().load(pfp).into(ivPFP);
                     }
 
-                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

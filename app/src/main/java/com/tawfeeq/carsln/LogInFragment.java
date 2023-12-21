@@ -140,9 +140,6 @@ public class LogInFragment extends Fragment {
 
 
 
-
-
-
     private void GoToFragmentCars() {
 
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();

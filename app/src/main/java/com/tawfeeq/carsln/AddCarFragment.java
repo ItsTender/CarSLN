@@ -42,7 +42,7 @@ public class AddCarFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
-    EditText Model,Manufacturer,Price,BHP,Users,Phone,Kilometre;
+    EditText Model,Manufacturer,Price,BHP,Users,Kilometre;
     Spinner SpinnerGear, SpinnerYear, SpinnerSellLend;
     Button Add,Return;
     ImageView IV;
@@ -108,7 +108,6 @@ public class AddCarFragment extends Fragment {
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
         Users=getView().findViewById(R.id.etUsers);
-        Phone=getView().findViewById(R.id.etPhone);
         Kilometre=getView().findViewById(R.id.etKM);
         IV = getView().findViewById(R.id.ivAddCar);
         Add = getView().findViewById(R.id.btnAdd);
@@ -155,12 +154,11 @@ public class AddCarFragment extends Fragment {
                 String HP= BHP.getText().toString();
                 String prc= Price.getText().toString();
                 String User =Users.getText().toString();
-                String phonenum =Phone.getText().toString();
                 String Kilo =Kilometre.getText().toString();
                 String transmission = SpinnerGear.getSelectedItem().toString();
                 String year = SpinnerYear.getSelectedItem().toString();
                 String SellLend = SpinnerSellLend.getSelectedItem().toString();
-                if(SellLend.equals("What do you want to do with the Car")||Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||phonenum.trim().isEmpty()||Kilo.trim().isEmpty()) {
+                if(SellLend.equals("What do you want to do with the Car")||Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||Kilo.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -178,7 +176,7 @@ public class AddCarFragment extends Fragment {
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
                 // Sell Lend; True=Sell the Car, False=Lend the Car.
-                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,KM,userhands,phonenum,photo);
+                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,KM,userhands,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

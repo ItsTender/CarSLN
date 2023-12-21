@@ -30,7 +30,7 @@ import java.util.ArrayList;
  */
 public class SellerPageFragment extends Fragment {
 
-    String Email, Phone;
+    String Email;
     Button btnSMS, btnCarsln;
     TextView tvSellerName;
     RecyclerView rc;
@@ -38,7 +38,7 @@ public class SellerPageFragment extends Fragment {
     CarsAdapter Adapter;
     ArrayList<Cars> SellerCars;
     ImageView ivSeller;
-    String pfp;
+    String pfp, Phone;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -90,7 +90,6 @@ public class SellerPageFragment extends Fragment {
         Bundle bundle =this.getArguments();
 
         Email=bundle.getString("Email");
-        Phone=bundle.getString("Phone");
 
         return view;
     }
@@ -120,7 +119,6 @@ public class SellerPageFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                if(documentSnapshot.getString("Email").equals(str)) {
                     pfp = documentSnapshot.getString("userPhoto");
 
                     if (pfp == null || pfp.isEmpty())
@@ -131,7 +129,7 @@ public class SellerPageFragment extends Fragment {
                         Picasso.get().load(pfp).into(ivSeller);
                     }
 
-                }
+                    //Phone = documentSnapshot.getString("phone");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -144,10 +142,6 @@ public class SellerPageFragment extends Fragment {
         // Get Profile Photo Ends
 
 
-
-
-
-
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -155,7 +149,6 @@ public class SellerPageFragment extends Fragment {
 
                     Cars car = dataSnapshot.toObject(Cars.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setPhone(dataSnapshot.getString("phone"));
 
                     if(car.getEmail().equals(Email)) SellerCars.add(car);
 
@@ -171,7 +164,6 @@ public class SellerPageFragment extends Fragment {
 
 
     }
-
 
     private void SettingFrame() {
 

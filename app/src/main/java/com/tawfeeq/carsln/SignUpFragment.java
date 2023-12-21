@@ -30,7 +30,7 @@ public class SignUpFragment extends Fragment {
 
     FireBaseServices fbs;
     Button btnSignUp;
-    EditText etEmail, etPassword, etConfirm;
+    EditText etEmail, etPassword, etConfirm, etPhone;
     TextView etLog;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -88,6 +88,7 @@ public class SignUpFragment extends Fragment {
         etEmail = getView().findViewById(R.id.etEmailSignup);
         etPassword = getView().findViewById(R.id.etPasswordSignup);
         etConfirm = getView().findViewById(R.id.etPasswordSignupConfirm);
+        etPhone = getView().findViewById(R.id.etPhoneSignup);
         btnSignUp = getView().findViewById(R.id.btnSignUp);
         etLog = getView().findViewById(R.id.tvSignin);
 
@@ -105,7 +106,8 @@ public class SignUpFragment extends Fragment {
                 String username = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 String confirm = etConfirm.getText().toString();
-                if (username.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()) {
+                String phone = etPhone.getText().toString();
+                if (username.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()||phone.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -116,7 +118,7 @@ public class SignUpFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                                CreateUserPhoto(username);
+                                CreateUserProfile(username,phone);
                                 LogIn(username, pass);
                             } else {
                                 Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
@@ -130,13 +132,13 @@ public class SignUpFragment extends Fragment {
         });
     }
 
-    private void CreateUserPhoto(String username) {
+    private void CreateUserProfile(String username, String phone) {
 
         String str = username;
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
-        UserProfile userProfile = new UserProfile("",username);
+        UserProfile userProfile = new UserProfile("",username,phone);
         fbs.getStore().collection("ProfilePFP").document(user).set(userProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

@@ -30,7 +30,7 @@ public class DetailedFragment extends Fragment {
     TextView tvName, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller;
     ImageView ivCar, ivSeller;
     boolean sell_lend;
-    String Email,Name,Phone,Photo,Transmission;
+    String Email,Name,Photo,Transmission;
     Integer Price,Power,Year,Users,Kilometre;
     String pfp;
 
@@ -85,7 +85,6 @@ public class DetailedFragment extends Fragment {
         sell_lend=bundle.getBoolean("SellorLend");
         Email=bundle.getString("Email");
         Name=bundle.getString("Car");
-        Phone=bundle.getString("Phone");
         Price=bundle.getInt("Price");
         Photo=bundle.getString("Photo");
         Power =bundle.getInt("HP");
@@ -128,7 +127,6 @@ public class DetailedFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                if(documentSnapshot.getString("Email").equals(str)) {
                     pfp = documentSnapshot.getString("userPhoto");
 
                     if (pfp == null || pfp.isEmpty())
@@ -138,8 +136,6 @@ public class DetailedFragment extends Fragment {
                     else {
                         Picasso.get().load(pfp).into(ivSeller);
                     }
-
-                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -156,18 +152,25 @@ public class DetailedFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Fragment gtn= new SellerPageFragment();
-                Bundle bundle= new Bundle();
+                String str = fbs.getAuth().getCurrentUser().getEmail();
 
+                if(str.contains(Email)){
 
-                bundle.putString("Email", Email);
-                bundle.putString("Phone", Phone);
+                    GoToProfile();
+                    setNavigationBarProfile();
+                }
+                else {
 
+                    Fragment gtn = new SellerPageFragment();
+                    Bundle bundle = new Bundle();
 
-                gtn.setArguments(bundle);
-                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, gtn);
-                ft.commit();
+                    bundle.putString("Email", Email);
+
+                    gtn.setArguments(bundle);
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, gtn);
+                    ft.commit();
+                }
             }
         });
 
@@ -175,19 +178,25 @@ public class DetailedFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Fragment gtn= new SellerPageFragment();
-                Bundle bundle= new Bundle();
+                String str = fbs.getAuth().getCurrentUser().getEmail();
 
+                if(str.contains(Email)){
 
-                bundle.putString("Email", Email);
-                bundle.putString("Phone", Phone);
+                    GoToProfile();
+                    setNavigationBarProfile();
+                }
+                else {
 
+                    Fragment gtn = new SellerPageFragment();
+                    Bundle bundle = new Bundle();
 
-                gtn.setArguments(bundle);
-                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, gtn);
-                ft.commit();
+                    bundle.putString("Email", Email);
 
+                    gtn.setArguments(bundle);
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, gtn);
+                    ft.commit();
+                }
             }
         });
 
@@ -219,5 +228,15 @@ public class DetailedFragment extends Fragment {
 
         }
 
+    }
+
+    private void GoToProfile() {
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarProfile() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.profile);
     }
 }

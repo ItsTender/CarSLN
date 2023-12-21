@@ -106,7 +106,6 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                if(documentSnapshot.getString("Email").equals(str)) {
                     pfp = documentSnapshot.getString("userPhoto");
 
                     if (pfp == null || pfp.isEmpty())
@@ -117,7 +116,6 @@ public class SettingsFragment extends Fragment {
                         Picasso.get().load(pfp).into(ivUser);
                     }
 
-                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -211,7 +209,7 @@ public class SettingsFragment extends Fragment {
 
         if (photo == "")
         {
-            Picasso.get().load(R.drawable.generic_icon).into(ivUser);
+            // Does Nothing......
         }
         else {
             Picasso.get().load(photo).into(ivUser);

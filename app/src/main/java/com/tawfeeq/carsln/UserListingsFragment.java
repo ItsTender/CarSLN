@@ -95,7 +95,6 @@ public class UserListingsFragment extends Fragment {
 
                     Cars car = dataSnapshot.toObject(Cars.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setPhone(dataSnapshot.getString("phone"));
                     if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
                         lst.add(car);
                     }
