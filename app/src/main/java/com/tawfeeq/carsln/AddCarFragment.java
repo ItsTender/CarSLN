@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,8 +43,8 @@ public class AddCarFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
-    EditText Model,Manufacturer,Price,BHP,Users,Kilometre;
-    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend;
+    EditText Price,BHP,Users,Kilometre;
+    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod;
     Button Add,Return;
     ImageView IV;
     String photo;
@@ -103,8 +104,6 @@ public class AddCarFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         utils=Utils.getInstance();
-        Manufacturer = getView().findViewById(R.id.etMan);
-        Model = getView().findViewById(R.id.etMod);
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
         Users=getView().findViewById(R.id.etUsers);
@@ -114,6 +113,8 @@ public class AddCarFragment extends Fragment {
         SpinnerGear = getView().findViewById(R.id.SpinnerGear);
         SpinnerYear = getView().findViewById(R.id.SpinnerYear);
         SpinnerSellLend= getView().findViewById(R.id.SpinnerSellLend);
+        SpinnerMan = getView().findViewById(R.id.SpinnerManufacturer);
+        SpinnerMod = getView().findViewById(R.id.SpinnerModel);
 
 
         String [] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT","iManual"};
@@ -138,6 +139,79 @@ public class AddCarFragment extends Fragment {
         SpinnerSellLend.setAdapter(SellLendAdapter);
 
 
+
+        String [] ManList = {"Choose Car Manufacturer","Audi","Abarth", "Alfa Romeo", "Aston Martin","BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
+                "Dacia","Dodge", "Daihatsu","Fiat", "Ford", "GMC", "Genesis", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia","Land Rover", "Lexus", "MG",
+                "Maserati", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volvo"};
+        ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ManList);
+        ManAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerMan.setAdapter(ManAdapter);
+
+
+        // Here is the Whole list of Models For Each Car Manufacturer
+
+        String [] ModelNon = {"Choose a Manufacturer First"};
+
+        String [] ModelAudi = {"Choose Car Model", "100", "80", "A1", "A3", "A4", "A5", "A6", "A7", "A8", "E-tron", "E-tron GT", "E-tron Q4", "Q2", "Q3", "Q4", "Q5",
+                "Q6", "Q7", "Q8", "R8", "RS3", "RS4", "RS5", "RS6", "RS7", "RSQ3", "RSQ8", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "SQ7", "SQ8", "TT", "TT RS"};
+
+        String [] ModelAbarth = {"Choose Car Model", "124 Spider", "500", "500c", "595", "595c"};
+
+        String [] ModelAlfa = {"Choose Car Model", "145", "146", "147", "156", "159", "164", "166", "33", "75", "90", "4C", "4C Spider", "8C", "8C Spider", "GT", "GTV", "Giulia", "Giulietta",
+                "brera", "Tonale", "MiTO", "Stelvio", "Spider"};
+
+        String [] ModelAston = {"Choose Car Model", "DB11", "DB9", "DBS", "DBX", "Vantage", "Vanquish", "Rapide"};
+
+
+        // Ends ........
+
+        SpinnerMan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+                String item = adapterView.getSelectedItem().toString();
+
+                // For Each Manufacturer Selected gets a new String Array of Sold/Available Models
+                if(item.equals("Choose Car Manufacturer")){
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelNon);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Audi")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAudi);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Abarth")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAbarth);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Alfa Romeo")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAlfa);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Aston Martin")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAston);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+
+                // Complete the Rest Of the Manufacturers (43 of them)....
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // Does Nothing As Nothing is Selected
+            }
+        });
+
+
         IV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,9 +222,9 @@ public class AddCarFragment extends Fragment {
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // check info (....)
-                String Man= Manufacturer.getText().toString();
-                String Mod= Model.getText().toString();
+                // Check Info (....)
+                String Man= SpinnerMan.getSelectedItem().toString();
+                String Mod= SpinnerMod.getSelectedItem().toString();
                 String HP= BHP.getText().toString();
                 String prc= Price.getText().toString();
                 String User =Users.getText().toString();
@@ -158,12 +232,12 @@ public class AddCarFragment extends Fragment {
                 String transmission = SpinnerGear.getSelectedItem().toString();
                 String year = SpinnerYear.getSelectedItem().toString();
                 String SellLend = SpinnerSellLend.getSelectedItem().toString();
-                if(SellLend.equals("What do you want to do with the Car")||Man.trim().isEmpty()||Mod.trim().isEmpty()||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||Kilo.trim().isEmpty()) {
+                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose a Manufacturer First")||Mod.equals("Choose Car Model")||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||Kilo.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                //Adding the Car
+                // Adding the Car
                 int power= Integer.parseInt(HP);
                 int price=Integer.parseInt(prc);
                 int Yahr= Integer.parseInt(year);

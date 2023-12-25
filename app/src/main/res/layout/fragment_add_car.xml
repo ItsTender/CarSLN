@@ -11,21 +11,6 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/etMan"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="56dp"
-            android:ems="10"
-            android:hint="Manufacturer"
-            android:inputType="text"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
             android:id="@+id/etBHP"
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -61,7 +46,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="56dp"
             android:ems="10"
-            android:hint="Selling Price/ Monthly Payment $"
+            android:hint="Selling Price/ Monthly Payment "
             android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,20 +69,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etBHP" />
 
-        <EditText
-            android:id="@+id/etMod"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="56dp"
-            android:ems="10"
-            android:hint="Model"
-            android:inputType="text"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etMan" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivAddCar"
@@ -135,7 +106,7 @@
             android:layout_marginEnd="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/SpinnerYear"
-            app:layout_constraintTop_toBottomOf="@+id/etMod" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerModel" />
 
         <Spinner
             android:id="@+id/SpinnerYear"
@@ -145,7 +116,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toStartOf="@+id/SpinnerGear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etMod" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerModel" />
 
         <Spinner
             android:id="@+id/SpinnerSellLend"
@@ -158,6 +129,31 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etKM" />
+
+        <Spinner
+            android:id="@+id/SpinnerManufacturer"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/SpinnerModel"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerManufacturer" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

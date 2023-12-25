@@ -118,7 +118,7 @@ public class SignUpFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                                CreateUserProfile(username,phone);
+                                CreateUserProfile(username.toLowerCase(),phone);
                                 LogIn(username, pass);
                             } else {
                                 Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();

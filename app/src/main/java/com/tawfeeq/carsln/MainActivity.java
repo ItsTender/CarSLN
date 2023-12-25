@@ -1,10 +1,13 @@
 package com.tawfeeq.carsln;
 
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         // To Hide The Top Bar For App Name.
         getSupportActionBar().hide();
+
+
+        // To Make the App not Flippable
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         bnv= findViewById(R.id.bottomNavigationView);
         fbs = FireBaseServices.getInstance();
