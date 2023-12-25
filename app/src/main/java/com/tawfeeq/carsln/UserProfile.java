@@ -1,9 +1,12 @@
 package com.tawfeeq.carsln;
 
+import java.util.ArrayList;
+
 public class UserProfile {
     private String userPhoto;
     private String Email;
     private String Phone;
+    private ArrayList<String> SavedCars;
 
     public UserProfile() {
     }
@@ -12,6 +15,7 @@ public class UserProfile {
         this.userPhoto = userPhoto;
         Email = email;
         Phone = phone;
+        SavedCars = new ArrayList<String>();
     }
 
     public String getPhone() {
@@ -35,6 +39,13 @@ public class UserProfile {
     }
 
     public void setUserPhoto(String userPhoto) {
-        userPhoto = userPhoto;
+        this.userPhoto = userPhoto;
+    }
+
+    public ArrayList<String> getSavedCars() {
+        return SavedCars;
+    }
+    public void setSavedCars(ArrayList<String> savedCars) {
+        SavedCars = savedCars;
     }
 }

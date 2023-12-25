@@ -32,7 +32,7 @@ public class SearchFragment extends Fragment {
     Button btnSearch, btnResetSearch;
     RecyclerView rc;
     FireBaseServices fbs;
-    ArrayList<Cars> search, lstRst;
+    ArrayList<CarID> search, lstRst;
     CarsAdapter Adapter;
 
 
@@ -96,7 +96,7 @@ public class SearchFragment extends Fragment {
         etPriceTo=getView().findViewById(R.id.etPriceTo);
         rc=getView().findViewById(R.id.RecyclerSearch);
 
-        lstRst=new ArrayList<Cars>();
+        lstRst=new ArrayList<CarID>();
 
 
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -104,8 +104,9 @@ public class SearchFragment extends Fragment {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
 
-                    Cars car = dataSnapshot.toObject(Cars.class);
+                    CarID car = dataSnapshot.toObject(CarID.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
+                    car.setId(dataSnapshot.getId());
                     lstRst.add(car);
 
                 }
@@ -135,7 +136,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                search=new ArrayList<Cars>();
+                search=new ArrayList<CarID>();
 
                 String Man=etMan.getText().toString();
                 String Mod=etMod.getText().toString();
@@ -160,9 +161,9 @@ public class SearchFragment extends Fragment {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
 
-                            Cars car = dataSnapshot.toObject(Cars.class);
+                            CarID car = dataSnapshot.toObject(CarID.class);
                             car.setCarPhoto(dataSnapshot.getString("photo"));
-
+                            car.setId(dataSnapshot.getId());
 
                             if(Man.trim().isEmpty() && Mod.trim().isEmpty()) {
                                 // both are not in

@@ -31,7 +31,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
     private Context context;
     private  CarsAdapter.OnItemClickListener CarsListener;
-    private ArrayList<Cars> cars;
+    private ArrayList<CarID> cars;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -39,7 +39,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
     public void setOnItemClickListener(CarsAdapter.OnItemClickListener Listener) {
         this.CarsListener = Listener;
     }
-    public CarsAdapter(Context context, ArrayList<Cars> cars) {
+    public CarsAdapter(Context context, ArrayList<CarID> cars) {
         this.context = context;
         this.cars = cars;
 
@@ -51,12 +51,15 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 Bundle bundle= new Bundle();
 
 
+                bundle.putString("ID", cars.get(position).getId());
                 bundle.putBoolean("SellorLend",cars.get(position).getSellLend());
                 bundle.putString("Email", cars.get(position).getEmail());
-                bundle.putString("Car", cars.get(position).getManufacturer()+ " " +cars.get(position).getModel());
+                bundle.putString("Man", cars.get(position).getManufacturer());
+                bundle.putString("Mod", cars.get(position).getModel());
                 bundle.putInt("HP", cars.get(position).getBHP());
-                bundle.putInt("Price",cars.get(position).getPrice());
-                bundle.putString("Photo",cars.get(position).getPhoto());
+                bundle.putInt("Price", cars.get(position).getPrice());
+                bundle.putString("Photo", cars.get(position).getPhoto());
+                bundle.putString("Engine", cars.get(position).getEngine());
                 bundle.putString("Transmission", cars.get(position).getTransmission());
                 bundle.putInt("Year", cars.get(position).getYear());
                 bundle.putInt("Kilo", cars.get(position).getKilometre());
@@ -85,7 +88,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
     @Override
     public void onBindViewHolder(@NonNull CarsAdapter.CarsHolder holder, int position) {
 
-        Cars car= cars.get(position);
+        CarID car= cars.get(position);
         holder.SetDetails(car);
 
         holder.itemView.setOnClickListener(v -> {
@@ -119,7 +122,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
         }
 
-        void SetDetails (Cars car){
+        void SetDetails (CarID car){
 
             txtMan.setText(car.getManufacturer());
             txtMod.setText(car.getModel());

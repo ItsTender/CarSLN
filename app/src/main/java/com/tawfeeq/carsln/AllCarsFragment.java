@@ -36,7 +36,7 @@ public class AllCarsFragment extends Fragment {
     RecyclerView rc;
     private CarsAdapter adapter;
     private FireBaseServices fbs;
-    private ArrayList<Cars> Market;
+    private ArrayList<CarID> Market;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -92,7 +92,7 @@ public class AllCarsFragment extends Fragment {
 
         FireBaseServices fbs = FireBaseServices.getInstance();
         rc= getView().findViewById(R.id.RecyclerCars);
-        Market = new ArrayList<Cars>();
+        Market = new ArrayList<CarID>();
 
 
         // checking accessibility to FireStore Info
@@ -101,8 +101,9 @@ public class AllCarsFragment extends Fragment {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
 
-                    Cars car = dataSnapshot.toObject(Cars.class);
+                    CarID car = dataSnapshot.toObject(CarID.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
+                    car.setId(dataSnapshot.getId());
                     Market.add(car);
 
                 }

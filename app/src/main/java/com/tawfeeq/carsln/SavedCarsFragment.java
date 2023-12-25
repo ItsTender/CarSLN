@@ -16,20 +16,22 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link UserListingsFragment#newInstance} factory method to
+ * Use the {@link SavedCarsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserListingsFragment extends Fragment {
-
+public class SavedCarsFragment extends Fragment {
     RecyclerView rcListings;
     FireBaseServices fbs;
     ArrayList<CarID> lst;
     CarsAdapter Adapter;
+    UserProfile usr;
+    ArrayList<String> Saved;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +42,7 @@ public class UserListingsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public UserListingsFragment() {
+    public SavedCarsFragment() {
         // Required empty public constructor
     }
 
@@ -50,11 +52,11 @@ public class UserListingsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment UserListingsFragment.
+     * @return A new instance of fragment SavedCarsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static UserListingsFragment newInstance(String param1, String param2) {
-        UserListingsFragment fragment = new UserListingsFragment();
+    public static SavedCarsFragment newInstance(String param1, String param2) {
+        SavedCarsFragment fragment = new SavedCarsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,7 +77,7 @@ public class UserListingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_listings, container, false);
+        return inflater.inflate(R.layout.fragment_saved_cars, container, false);
     }
 
     @Override
@@ -83,8 +85,26 @@ public class UserListingsFragment extends Fragment {
         super.onStart();
 
         fbs=FireBaseServices.getInstance();
-        rcListings= getView().findViewById(R.id.RecyclerListings);
+        rcListings= getView().findViewById(R.id.RecyclerSavedCars);
         lst=new ArrayList<CarID>();
+
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                usr = documentSnapshot.toObject(UserProfile.class);
+                Saved = usr.getSavedCars();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -95,7 +115,7 @@ public class UserListingsFragment extends Fragment {
                     car.setCarPhoto(dataSnapshot.getString("photo"));
                     car.setId(dataSnapshot.getId());
 
-                    if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
+                    if(usr.getSavedCars().contains(car.getId())||Saved.contains(dataSnapshot.getId())){
                         lst.add(car);
                     }
                 }

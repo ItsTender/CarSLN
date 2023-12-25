@@ -1,11 +1,7 @@
 package com.tawfeeq.carsln;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.widget.ImageView;
-
-public class Cars {
-
+public class CarID {
+    private String id;
     private boolean SellLend; // if the User wants to Sell the Car the Var will be 'TRUE' else if the User only wants to Lend his Car the Var will be 'FALSE'
     private String Email;
     private String Manufacturer;
@@ -19,10 +15,10 @@ public class Cars {
     private int Users;
     private String Photo;
 
-    public Cars() {
+    public CarID() {
     }
 
-    public Cars(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String photo) {
+    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String photo) {
         SellLend = sellLend;
         Email = email;
         Manufacturer = manufacturer;
@@ -37,9 +33,9 @@ public class Cars {
         Photo = photo;
     }
 
-// protected Cars(Parcel in) {}
+    // protected Cars(Parcel in) {}
 
-   // @Override public void writeToParcel(Parcel dest, int flags) {}
+    // @Override public void writeToParcel(Parcel dest, int flags) {}
 
 
     public boolean getSellLend() {
@@ -142,6 +138,15 @@ public class Cars {
         Photo = photo;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
     @Override
     public String toString() {
         return "Cars{" +
@@ -157,4 +162,3 @@ public class Cars {
                 '}';
     }
 }
-

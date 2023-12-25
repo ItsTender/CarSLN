@@ -54,6 +54,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SpinnerSellLend" />
 
+
+        <EditText
+            android:id="@+id/etEngine"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="56dp"
+            android:ems="10"
+            android:hint="Engine"
+            android:inputType="text"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etBHP" />
+
         <EditText
             android:id="@+id/etKM"
             android:layout_width="300dp"
@@ -66,9 +82,9 @@
             android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etBHP" />
-
+            app:layout_constraintTop_toBottomOf="@+id/etEngine" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivAddCar"
@@ -135,7 +151,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

@@ -36,7 +36,7 @@ public class SellerPageFragment extends Fragment {
     RecyclerView rc;
     FireBaseServices fbs;
     CarsAdapter Adapter;
-    ArrayList<Cars> SellerCars;
+    ArrayList<CarID> SellerCars;
     ImageView ivSeller;
     String pfp, Phone;
 
@@ -105,7 +105,7 @@ public class SellerPageFragment extends Fragment {
         rc = getView().findViewById(R.id.RecyclerSellerCars);
         ivSeller = getView().findViewById(R.id.imageViewSellerPage);
 
-        SellerCars =new ArrayList<Cars>();
+        SellerCars =new ArrayList<CarID>();
 
         String str = Email;
         int n = str.indexOf("@");
@@ -115,7 +115,7 @@ public class SellerPageFragment extends Fragment {
 
         // Get User Profile Photo.....
 
-        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
@@ -147,8 +147,9 @@ public class SellerPageFragment extends Fragment {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
 
-                    Cars car = dataSnapshot.toObject(Cars.class);
+                    CarID car = dataSnapshot.toObject(CarID.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
+                    car.setId(dataSnapshot.getId());
 
                     if(car.getEmail().equals(Email)) SellerCars.add(car);
 

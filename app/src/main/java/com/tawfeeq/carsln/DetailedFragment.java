@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.protobuf.StringValue;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link DetailedFragment#newInstance} factory method to
@@ -27,12 +30,14 @@ import com.squareup.picasso.Picasso;
 public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
-    TextView tvName, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller;
-    ImageView ivCar, ivSeller;
+    TextView tvMan, tvMod, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvSellLend;
+    ImageView ivCar, ivSeller, ivSaved;
     boolean sell_lend;
-    String Email,Name,Photo,Transmission;
+    String Email,Man, Mod, Photo,Transmission,Engine,ID;
     Integer Price,Power,Year,Users,Kilometre;
     String pfp;
+    Boolean isFound;
+    UserProfile usr;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,17 +87,19 @@ public class DetailedFragment extends Fragment {
 
         Bundle bundle =this.getArguments();
 
+        ID=bundle.getString("ID");
         sell_lend=bundle.getBoolean("SellorLend");
         Email=bundle.getString("Email");
-        Name=bundle.getString("Car");
+        Man=bundle.getString("Man");
+        Mod=bundle.getString("Mod");
         Price=bundle.getInt("Price");
         Photo=bundle.getString("Photo");
         Power =bundle.getInt("HP");
+        Engine =bundle.getString("Engine");
         Year =bundle.getInt("Year");
         Users =bundle.getInt("Users");
         Kilometre=bundle.getInt("Kilo");
         Transmission=bundle.getString("Transmission");
-
 
         return view;
     }
@@ -104,7 +111,8 @@ public class DetailedFragment extends Fragment {
 
         fbs = FireBaseServices.getInstance();
         ivCar=getView().findViewById(R.id.DetailedCar);
-        tvName=getView().findViewById(R.id.DetailedMan);
+        tvMan=getView().findViewById(R.id.DetailedMan);
+        tvMod =getView().findViewById(R.id.DetailedMod);
         tvPrice =getView().findViewById(R.id.DetailedPrice);
         tvPower =getView().findViewById(R.id.DetailedHP);
         tvYear = getView().findViewById(R.id.DetailedYear);
@@ -113,6 +121,9 @@ public class DetailedFragment extends Fragment {
         tvTransmission =getView().findViewById(R.id.DetailedGear);
         tvSeller = getView().findViewById(R.id.DetailedUserMail);
         ivSeller = getView().findViewById(R.id.imageViewSeller);
+        tvEngine = getView().findViewById(R.id.DetailedEngine);
+        tvSellLend =getView().findViewById(R.id.DetailedPricex);
+        ivSaved = getView().findViewById(R.id.imageView4); //the Saved Icon......
 
 
         String str = Email;
@@ -123,7 +134,7 @@ public class DetailedFragment extends Fragment {
 
         // Get User Profile Photo.....
 
-        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
@@ -201,21 +212,97 @@ public class DetailedFragment extends Fragment {
         });
 
 
-        tvName.setText(Name);
+        // Bind the Saved Icon *and* Save/Remove the Car
+
+        String str1 = fbs.getAuth().getCurrentUser().getEmail();
+        int n1 = str1.indexOf("@");
+        String user1 = str1.substring(0,n1);
+        fbs.getStore().collection("Users").document(user1).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                usr = documentSnapshot.toObject(UserProfile.class);
+                ArrayList<String> Saved = usr.getSavedCars();
+
+                if(Saved.contains(ID)) {
+                    ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
+                    isFound = true;
+                }
+                else{
+                    ivSaved.setImageResource(R.drawable.saved_removebg_preview);
+                    isFound = false;
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve User Info, Try Again Later!", Toast.LENGTH_SHORT).show();
+                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+            }
+        });
+
+        ivSaved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isFound) usr.getSavedCars().remove(ID);
+                if(!isFound) usr.getSavedCars().add(ID);
+
+                fbs.getStore().collection("Users").document(user1).update("savedCars", usr.getSavedCars()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        if(isFound)
+                        {
+                            ivSaved.setImageResource(R.drawable.saved_removebg_preview);
+                            Toast.makeText(getActivity(), "Car Removed", Toast.LENGTH_SHORT).show();
+                            isFound = false;
+                        }
+                        else{
+                            ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
+                            Toast.makeText(getActivity(), "Car Saved", Toast.LENGTH_SHORT).show();
+                            isFound = true;
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Couldn't Add/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+        // Functions Ends......
+
+
+        tvMan.setText(Man);
+        tvMod.setText(Mod);
 
         String prc= Price.toString();
+        tvPrice.setText(prc + "$");
+
         if(sell_lend) {
-            tvPrice.setText("Selling Price: " + prc + "$");
+            tvSellLend.setText("Selling Price:  ");
         }
         else{
-            tvPrice.setText("Monthly Payment: " + prc + "$");
+            tvSellLend.setText("Monthly Payment:  ");
         }
 
-        String power=Power.toString(); tvPower.setText("Horse Power: " + power);
-        String year=Year.toString(); tvYear.setText("Model Year: " + year);
-        String Kilo =Kilometre.toString(); tvKilometre.setText("Kilometre: " + Kilo);
-        String Owners= Users.toString(); tvUsers.setText("Owners: " + Owners);
-        tvTransmission.setText("Transmission: " + Transmission);
+        String power=Power.toString(); tvPower.setText(power);
+        String year=Year.toString(); tvYear.setText(year);
+        String Kilo =Kilometre.toString(); tvKilometre.setText(Kilo);
+        String Owners= Users.toString(); tvUsers.setText(Owners);
+        tvTransmission.setText(Transmission);
+        tvEngine.setText(Engine);
 
 
         if ( Photo == null || Photo.isEmpty())

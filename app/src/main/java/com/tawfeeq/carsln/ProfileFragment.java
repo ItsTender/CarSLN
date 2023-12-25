@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     FireBaseServices fbs;
     Button btnLogout;
     TextView tvUser;
-    CardView listings;
+    CardView listings,SavedCars;
     ImageView ivSettings, ivPFP;
     String pfp;
 
@@ -93,6 +93,7 @@ public class ProfileFragment extends Fragment {
         fbs= FireBaseServices.getInstance();
         tvUser =getView().findViewById(R.id.tvUsername);
         listings = getView().findViewById(R.id.CardViewListings);
+        SavedCars = getView().findViewById(R.id.CardViewFavourites);
         ivSettings = getView().findViewById(R.id.imageViewSettings);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);
 
@@ -104,7 +105,7 @@ public class ProfileFragment extends Fragment {
 
         // Get User Profile Photo.....
 
-        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
@@ -143,6 +144,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        SavedCars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToSavedCars();
+            }
+        });
+
     }
 
     private void GoToSettings() {
@@ -156,6 +164,13 @@ public class ProfileFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
+        ft.commit();
+    }
+
+    private void GoToSavedCars() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SavedCarsFragment());
         ft.commit();
     }
 

@@ -43,7 +43,7 @@ public class AddCarFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
-    EditText Price,BHP,Users,Kilometre;
+    EditText Price,BHP,Users,Kilometre,Engine;
     Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod;
     Button Add,Return;
     ImageView IV;
@@ -107,6 +107,7 @@ public class AddCarFragment extends Fragment {
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
         Users=getView().findViewById(R.id.etUsers);
+        Engine = getView().findViewById(R.id.etEngine);
         Kilometre=getView().findViewById(R.id.etKM);
         IV = getView().findViewById(R.id.ivAddCar);
         Add = getView().findViewById(R.id.btnAdd);
@@ -157,8 +158,8 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelAbarth = {"Choose Car Model", "124 Spider", "500", "500c", "595", "595c"};
 
-        String [] ModelAlfa = {"Choose Car Model", "145", "146", "147", "156", "159", "164", "166", "33", "75", "90", "4C", "4C Spider", "8C", "8C Spider", "GT", "GTV", "Giulia", "Giulietta",
-                "brera", "Tonale", "MiTO", "Stelvio", "Spider"};
+        String [] ModelAlfa = {"Choose Car Model", "145", "146", "147", "156", "159", "164", "166", "33", "75", "90", "4C", "4C Spider", "8C", "8C Spider", "GT", "GTV", "Giulia", "Giulia Quadrifoglio",
+                "Giulietta", "brera", "Tonale", "MiTO", "Stelvio", "Spider"};
 
         String [] ModelAston = {"Choose Car Model", "DB11", "DB9", "DBS", "DBX", "Vantage", "Vanquish", "Rapide"};
 
@@ -228,11 +229,12 @@ public class AddCarFragment extends Fragment {
                 String HP= BHP.getText().toString();
                 String prc= Price.getText().toString();
                 String User =Users.getText().toString();
+                String engine = Engine.getText().toString();
                 String Kilo =Kilometre.getText().toString();
                 String transmission = SpinnerGear.getSelectedItem().toString();
                 String year = SpinnerYear.getSelectedItem().toString();
                 String SellLend = SpinnerSellLend.getSelectedItem().toString();
-                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose a Manufacturer First")||Mod.equals("Choose Car Model")||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||Kilo.trim().isEmpty()) {
+                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose a Manufacturer First")||Mod.equals("Choose Car Model")||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -250,7 +252,7 @@ public class AddCarFragment extends Fragment {
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
                 // Sell Lend; True=Sell the Car, False=Lend the Car.
-                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,KM,userhands,photo);
+                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,engine,KM,userhands,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

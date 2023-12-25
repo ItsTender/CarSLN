@@ -13,7 +13,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="69dp"
+        android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/menu_nav"
         app:itemRippleColor="@color/white"

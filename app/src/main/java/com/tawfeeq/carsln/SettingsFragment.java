@@ -102,7 +102,7 @@ public class SettingsFragment extends Fragment {
 
 
         // Get User Profile Photo.....
-        fbs.getStore().collection("ProfilePFP").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
@@ -216,7 +216,7 @@ public class SettingsFragment extends Fragment {
         }
 
         if(!photo.isEmpty()) {
-            fbs.getStore().collection("ProfilePFP").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
+            fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
                     Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();

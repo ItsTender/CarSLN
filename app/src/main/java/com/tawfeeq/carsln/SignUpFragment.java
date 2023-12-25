@@ -139,7 +139,7 @@ public class SignUpFragment extends Fragment {
         String user = str.substring(0,n);
 
         UserProfile userProfile = new UserProfile("",username,phone);
-        fbs.getStore().collection("ProfilePFP").document(user).set(userProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
+        fbs.getStore().collection("Users").document(user).set(userProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 // creates a User with an Empty Profile Photo

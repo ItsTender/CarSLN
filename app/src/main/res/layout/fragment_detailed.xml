@@ -15,7 +15,7 @@
             android:layout_width="380dp"
             android:layout_height="250dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -25,131 +25,265 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.8percent" />
 
+
         <TextView
-            android:id="@+id/DetailedMan"
-            android:layout_width="397dp"
+            android:id="@+id/DetailedManx"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="Manufacturer+Model"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Manufacturer:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedMan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewSeller" />
 
         <TextView
-            android:id="@+id/DetailedPrice"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="56dp"
+            android:id="@+id/DetailedMan"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
+            android:text="Manufacturer"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/DetailedManx"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/DetailedModx"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Model:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedMod"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedManx" />
+
+        <TextView
+            android:id="@+id/DetailedMod"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="3dp"
+            android:fontFamily="sans-serif"
+            android:text="Model"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/DetailedModx"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
+
+        <TextView
+            android:id="@+id/DetailedPricex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="S"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Detailedkilox" />
+
+        <TextView
+            android:id="@+id/DetailedPrice"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
             android:text="Price$"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/DetailedPricex"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedKilometre" />
+
+        <TextView
+            android:id="@+id/Detailedhpx"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Power:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedHP"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedGear" />
+            app:layout_constraintTop_toBottomOf="@+id/Detailedenginex" />
 
         <TextView
             android:id="@+id/DetailedHP"
-            android:layout_width="175dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="206dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
             android:text="Power"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Detailedhpx"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedEngine" />
+
+        <TextView
+            android:id="@+id/Detailedyearx"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Car Year:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedYear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
+            app:layout_constraintTop_toBottomOf="@+id/DetailedModx" />
 
         <TextView
             android:id="@+id/DetailedYear"
-            android:layout_width="175dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="206dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
             android:text="Year"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Detailedyearx"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedMod" />
+
+        <TextView
+            android:id="@+id/Detailedenginex"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Car Engine:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedEngine"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
+            app:layout_constraintTop_toBottomOf="@+id/Detailedyearx" />
+
+        <TextView
+            android:id="@+id/DetailedEngine"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Engine"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/Detailedenginex"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedYear" />
+
+
+        <TextView
+            android:id="@+id/Detailedkilox"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Kilometre:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedKilometre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Detailedusersx" />
 
         <TextView
             android:id="@+id/DetailedKilometre"
-            android:layout_width="175dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="206dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
             android:text="Kilometre"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Detailedkilox"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedUsers" />
+
+        <TextView
+            android:id="@+id/Detailedusersx"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Car Owners:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedUsers"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedHP" />
+            app:layout_constraintTop_toBottomOf="@+id/Detailedtransmissionx" />
 
         <TextView
             android:id="@+id/DetailedUsers"
-            android:layout_width="175dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="206dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
             android:text="Owner/Users"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Detailedusersx"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedGear" />
+
+        <TextView
+            android:id="@+id/Detailedtransmissionx"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Car Gearing:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedGear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedYear" />
+            app:layout_constraintTop_toBottomOf="@+id/Detailedhpx" />
 
         <TextView
             android:id="@+id/DetailedGear"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="81dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
             android:text="Transmission/Gear"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedKilometre" />
+            app:layout_constraintStart_toEndOf="@+id/Detailedtransmissionx"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedHP" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewSeller"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toStartOf="@+id/DetailedUserMail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DetailedCar"
-            app:shapeAppearance="@style/RoundShape.App.50percent"/>
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
         <TextView
             android:id="@+id/DetailedUserMail"
             android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="78dp"
             android:fontFamily="sans-serif"
             android:text="User/Seller"
@@ -158,7 +292,19 @@
             app:layout_constraintStart_toEndOf="@+id/imageViewSeller"
             app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/DetailedUserMail"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </RelativeLayout>
