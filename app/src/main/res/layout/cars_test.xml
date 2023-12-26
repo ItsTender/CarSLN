@@ -58,22 +58,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+        <TextView
+            android:id="@+id/tvtxtYear"
+            android:layout_width="185dp"
+            android:layout_height="30dp"
+            android:text="Year"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/tvtxtHP"
         android:layout_width="185dp"
         android:layout_height="30dp"
-        android:text="horse power"
+        android:text="Horse Power"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/tvtxtPrice"
         android:layout_width="185dp"
         android:layout_height="30dp"
-        android:text="price$"
+        android:text="Price$"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

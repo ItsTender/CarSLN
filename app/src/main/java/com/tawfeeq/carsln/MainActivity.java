@@ -13,14 +13,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private BottomNavigationView bnv;
     private FireBaseServices fbs;
+    private UserProfile usr;
+    private ArrayList<String> Saved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,20 @@ public class MainActivity extends AppCompatActivity {
         bnv= findViewById(R.id.bottomNavigationView);
         fbs = FireBaseServices.getInstance();
 
+
+
+        if(fbs.getAuth().getCurrentUser()!=null) {
+
+            bnv.setVisibility(View.VISIBLE);
+            bnv.setSelectedItemId(R.id.market);
+            GoToFragmentCars();
+            setSaved();
+        }
+        else {
+
+            bnv.setVisibility(View.GONE);
+            GoToStarterScreen();
+        }
             bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                 @SuppressLint("NonConstantResourceId")
                 @Override
@@ -52,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
                     else if (item.getItemId() == R.id.addcar) {
                         GoToFragmentAdd();
                     }
+                    else if (item.getItemId() == R.id.savedcars) {
+                        GoToFragmentSaved();
+                    }
                     else if (item.getItemId() == R.id.profile){
                         GoToFragmentProfile();
                     }
@@ -59,18 +84,27 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             });
+    }
 
-            if(fbs.getAuth().getCurrentUser()!=null) {
+    public void setSaved() {
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                bnv.setVisibility(View.VISIBLE);
-                GoToFragmentCars();
+                usr = documentSnapshot.toObject(UserProfile.class);
+                Saved = usr.getSavedCars();
+                fbs.setSaved(Saved);
+
             }
-            else {
-
-                bnv.setVisibility(View.GONE);
-                GoToStarterScreen();
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MainActivity.this, "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
             }
-
+        });
     }
 
 
@@ -92,6 +126,13 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
+        ft.commit();
+    }
+
+    private void GoToFragmentSaved() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SavedCarsFragment());
         ft.commit();
     }
 

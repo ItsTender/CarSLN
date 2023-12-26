@@ -7,8 +7,9 @@
     tools:context=".ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="315dp">
 
 
         <TextView
@@ -35,7 +36,7 @@
             android:layout_marginEnd="31dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Here You Can Manage Your Profile info, Car Listings and Favourite Cars"
+            android:text="This is Your Profile Page, Here You Can Manage Your Profile info and Car Listings"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="131dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -56,58 +57,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/CardViewListings"
-            android:layout_width="390dp"
-            android:layout_height="72dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="11dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvProfileIntro">
-
-            <TextView
-                android:id="@+id/textViewListings"
-                android:layout_width="350dp"
-                android:layout_height="33dp"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif"
-                android:text="Your Listings"
-                android:textSize="25dp" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/CardViewFavourites"
-            android:layout_width="390dp"
-            android:layout_height="72dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="11dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/CardViewListings">
-
-            <TextView
-                android:id="@+id/textViewFav"
-                android:layout_width="350dp"
-                android:layout_height="33dp"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif"
-                android:text="Saved Cars"
-                android:textSize="25dp" />
-
-        </androidx.cardview.widget.CardView>
-
         <ImageView
             android:id="@+id/imageViewSettings"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="61dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/gear_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewProfilePhoto"
@@ -115,5 +71,19 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_below="@+id/ConstraintProfile">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerListingsProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </RelativeLayout>

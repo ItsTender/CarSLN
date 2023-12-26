@@ -14,29 +14,25 @@
 
         <TextView
             android:id="@+id/textViewCarsln"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="317dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="Car.sln"
+            android:text="CarSLN"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewSLN"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="211dp"
             android:fontFamily="sans-serif-black"
             android:text="Selling, Lending, Negotiating"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCarsln" />
 

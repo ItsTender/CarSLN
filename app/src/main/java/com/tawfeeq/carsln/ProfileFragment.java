@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +24,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,11 +37,12 @@ import com.squareup.picasso.Picasso;
 public class ProfileFragment extends Fragment {
 
     FireBaseServices fbs;
-    Button btnLogout;
     TextView tvUser;
-    CardView listings,SavedCars;
     ImageView ivSettings, ivPFP;
     String pfp;
+    RecyclerView rcListings;
+    ArrayList<CarID> lst;
+    CarsAdapter Adapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -92,16 +98,15 @@ public class ProfileFragment extends Fragment {
 
         fbs= FireBaseServices.getInstance();
         tvUser =getView().findViewById(R.id.tvUsername);
-        listings = getView().findViewById(R.id.CardViewListings);
-        SavedCars = getView().findViewById(R.id.CardViewFavourites);
         ivSettings = getView().findViewById(R.id.imageViewSettings);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);
+        rcListings= getView().findViewById(R.id.RecyclerListingsProfile);
+        lst=new ArrayList<CarID>();
+
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
-
-        tvUser.setText("Welcome, " + user);
 
         // Get User Profile Photo.....
 
@@ -109,15 +114,18 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                    pfp = documentSnapshot.getString("userPhoto");
 
-                    if (pfp == null || pfp.isEmpty())
-                    {
-                        Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
-                    }
-                    else {
-                        Picasso.get().load(pfp).into(ivPFP);
-                    }
+                tvUser.setText("Welcome, " + documentSnapshot.getString("username"));
+
+                pfp = documentSnapshot.getString("userPhoto");
+
+                if (pfp == null || pfp.isEmpty())
+                {
+                    Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
+                }
+                else {
+                    Picasso.get().load(pfp).into(ivPFP);
+                }
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -130,24 +138,34 @@ public class ProfileFragment extends Fragment {
 
         // Get Profile Photo Ends
 
+
+        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+
+                    CarID car = dataSnapshot.toObject(CarID.class);
+                    car.setCarPhoto(dataSnapshot.getString("photo"));
+                    car.setId(dataSnapshot.getId());
+
+                    if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
+                        lst.add(car);
+                    }
+                }
+                SettingFrame();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         ivSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GoToSettings();
-            }
-        });
-
-        listings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GoToUserListings();
-            }
-        });
-
-        SavedCars.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GoToSavedCars();
             }
         });
 
@@ -160,20 +178,12 @@ public class ProfileFragment extends Fragment {
         ft.commit();
     }
 
-    private void GoToUserListings() {
+    private void SettingFrame() {
 
-        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
-        ft.commit();
+        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new CarsAdapter(getActivity(), lst);
+        rcListings.setAdapter(Adapter);
+
     }
-
-    private void GoToSavedCars() {
-
-        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new SavedCarsFragment());
-        ft.commit();
-    }
-
-
 
 }

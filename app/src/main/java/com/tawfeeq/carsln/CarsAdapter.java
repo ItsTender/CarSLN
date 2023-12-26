@@ -109,7 +109,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
     class CarsHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtMan,txtMod,txtHP,txtPrice;
+        private TextView txtMan,txtMod,txtHP,txtYear,txtPrice;
         private ImageView ivCar; // shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
         public CarsHolder(@NonNull View itemView) {
             super(itemView);
@@ -117,6 +117,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             txtMan= itemView.findViewById(R.id.tvtxtMan);
             txtMod= itemView.findViewById(R.id.tvtxtMod);
             txtHP= itemView.findViewById(R.id.tvtxtHP);
+            txtYear= itemView.findViewById(R.id.tvtxtYear);
             txtPrice= itemView.findViewById(R.id.tvtxtPrice);
             ivCar= itemView.findViewById(R.id.CarRes);
 
@@ -126,17 +127,17 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
             txtMan.setText(car.getManufacturer());
             txtMod.setText(car.getModel());
-            txtHP.setText("Horse Power: " + car.getBHP());
+            txtHP.setText(car.getBHP() + " Horse Power");
+            String year = String.valueOf(car.getYear());
+            txtYear.setText(year);
 
             if(car.getSellLend()==true){
 
             txtPrice.setText("Selling Price: " + car.getPrice()+"$");
-
             }
             else if(car.getSellLend()==false){
 
                 txtPrice.setText("Monthly Payment: " + car.getPrice()+"$");
-
             }
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())

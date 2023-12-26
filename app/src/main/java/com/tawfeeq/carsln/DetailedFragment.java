@@ -37,7 +37,6 @@ public class DetailedFragment extends Fragment {
     Integer Price,Power,Year,Users,Kilometre;
     String pfp;
     Boolean isFound;
-    UserProfile usr;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -131,7 +130,6 @@ public class DetailedFragment extends Fragment {
         String user = str.substring(0,n);
         tvSeller.setText(user);
 
-
         // Get User Profile Photo.....
 
         fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -165,7 +163,7 @@ public class DetailedFragment extends Fragment {
 
                 String str = fbs.getAuth().getCurrentUser().getEmail();
 
-                if(str.contains(Email)){
+                if(str.equals(Email)){
 
                     GoToProfile();
                     setNavigationBarProfile();
@@ -191,7 +189,7 @@ public class DetailedFragment extends Fragment {
 
                 String str = fbs.getAuth().getCurrentUser().getEmail();
 
-                if(str.contains(Email)){
+                if(str.equals(Email)){
 
                     GoToProfile();
                     setNavigationBarProfile();
@@ -217,48 +215,37 @@ public class DetailedFragment extends Fragment {
         String str1 = fbs.getAuth().getCurrentUser().getEmail();
         int n1 = str1.indexOf("@");
         String user1 = str1.substring(0,n1);
-        fbs.getStore().collection("Users").document(user1).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                usr = documentSnapshot.toObject(UserProfile.class);
-                ArrayList<String> Saved = usr.getSavedCars();
+        ArrayList<String> Saved = fbs.getSaved();
 
-                if(Saved.contains(ID)) {
-                    ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
-                    isFound = true;
-                }
-                else{
-                    ivSaved.setImageResource(R.drawable.saved_removebg_preview);
-                    isFound = false;
-                }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve User Info, Try Again Later!", Toast.LENGTH_SHORT).show();
-                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
-            }
-        });
+        if(Saved.contains(ID)) {
+            ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
+            isFound = true;
+        }
+        else{
+            ivSaved.setImageResource(R.drawable.saved_removebg_preview);
+            isFound = false;
+        }
 
         ivSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isFound) usr.getSavedCars().remove(ID);
-                if(!isFound) usr.getSavedCars().add(ID);
+                if(isFound) Saved.remove(ID);
+                if(!isFound) Saved.add(ID);
 
-                fbs.getStore().collection("Users").document(user1).update("savedCars", usr.getSavedCars()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         if(isFound)
                         {
                             ivSaved.setImageResource(R.drawable.saved_removebg_preview);
+                            fbs.setSaved(Saved);
                             Toast.makeText(getActivity(), "Car Removed", Toast.LENGTH_SHORT).show();
                             isFound = false;
                         }
                         else{
                             ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
+                            fbs.setSaved(Saved);
                             Toast.makeText(getActivity(), "Car Saved", Toast.LENGTH_SHORT).show();
                             isFound = true;
                         }
@@ -272,14 +259,6 @@ public class DetailedFragment extends Fragment {
 
             }
         });
-
-
-
-
-
-
-
-
 
         // Functions Ends......
 

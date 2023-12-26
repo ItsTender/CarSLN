@@ -80,6 +80,49 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <EditText
+            android:id="@+id/etPhoneSettings"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="71dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="phone"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto" />
+
+        <TextView
+            android:id="@+id/tvphonenum"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="81dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="81dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="This is Your Current Phone Number"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPhoneSettings" />
+
+        <Button
+            android:id="@+id/btnChangePhone"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="116dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="Change Your Phone Number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvphonenum" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

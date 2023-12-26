@@ -138,7 +138,7 @@ public class SignUpFragment extends Fragment {
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
-        UserProfile userProfile = new UserProfile("",username,phone);
+        UserProfile userProfile = new UserProfile("",user,phone);
         fbs.getStore().collection("Users").document(user).set(userProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -169,6 +169,7 @@ public class SignUpFragment extends Fragment {
                     setNavigationBarVisible();
                     setNavigationBarCarsMarket();
                     GoToFragmentCars();
+                    setNewSaved();
                 } else {
                     Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
                 }
@@ -190,5 +191,9 @@ public class SignUpFragment extends Fragment {
 
     private void setNavigationBarCarsMarket() {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
+    }
+
+    private void setNewSaved (){
+        ((MainActivity) getActivity()).setSaved();
     }
 }

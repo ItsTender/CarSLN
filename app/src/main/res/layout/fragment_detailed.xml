@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -86,9 +86,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="sans-serif"
             android:text="S"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/DetailedPrice"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Detailedkilox" />
@@ -98,9 +100,11 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="sans-serif"
             android:text="Price$"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/DetailedPricex"
             app:layout_constraintTop_toBottomOf="@+id/DetailedKilometre" />
 
@@ -286,7 +290,6 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="78dp"
             android:fontFamily="sans-serif"
-            android:text="User/Seller"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewSeller"
@@ -307,4 +310,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</RelativeLayout>
+</ScrollView>

@@ -91,20 +91,8 @@ public class SavedCarsFragment extends Fragment {
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
-        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                usr = documentSnapshot.toObject(UserProfile.class);
-                Saved = usr.getSavedCars();
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        Saved = fbs.getSaved();
 
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -115,7 +103,7 @@ public class SavedCarsFragment extends Fragment {
                     car.setCarPhoto(dataSnapshot.getString("photo"));
                     car.setId(dataSnapshot.getId());
 
-                    if(usr.getSavedCars().contains(car.getId())||Saved.contains(dataSnapshot.getId())){
+                    if(Saved.contains(dataSnapshot.getId())){
                         lst.add(car);
                     }
                 }

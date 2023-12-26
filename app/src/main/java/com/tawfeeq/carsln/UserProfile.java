@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class UserProfile {
     private String userPhoto;
-    private String Email;
+    private String Username;
     private String Phone;
     private ArrayList<String> SavedCars;
 
     public UserProfile() {
     }
 
-    public UserProfile(String userPhoto, String email, String phone) {
+    public UserProfile(String userPhoto, String username, String phone) {
         this.userPhoto = userPhoto;
-        Email = email;
+        Username = username;
         Phone = phone;
         SavedCars = new ArrayList<String>();
     }
@@ -26,12 +26,12 @@ public class UserProfile {
         Phone = phone;
     }
 
-    public String getEmail() {
-        return Email;
+    public String getUsername() {
+        return Username;
     }
 
-    public void setEmail(String email) {
-        Email = email;
+    public void setUsername(String username) {
+        Username = username;
     }
 
     public String getUserPhoto() {

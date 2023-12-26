@@ -6,6 +6,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.util.ArrayList;
+
 public class FireBaseServices {
     private static FireBaseServices instance;
     private FirebaseAuth auth;
@@ -15,6 +17,15 @@ public class FireBaseServices {
     private FirebaseStorage storage;
 
     private Uri selectedImageURL;
+    private ArrayList<String> Saved;
+
+    public ArrayList<String> getSaved() {
+        return Saved;
+    }
+
+    public void setSaved(ArrayList<String> saved) {
+        Saved = saved;
+    }
 
     public Uri getSelectedImageURL() {
         return selectedImageURL;

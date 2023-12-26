@@ -128,6 +128,7 @@ public class LogInFragment extends Fragment {
                             setNavigationBarVisible();
                             setNavigationBarCarsMarket();
                             GoToFragmentCars();
+                            setNewSaved();
                         } else {
                             // To DO
                             Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
@@ -166,6 +167,10 @@ public class LogInFragment extends Fragment {
 
     private void setNavigationBarCarsMarket() {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
+    }
+
+    private void setNewSaved (){
+        ((MainActivity) getActivity()).setSaved();
     }
 
 }
