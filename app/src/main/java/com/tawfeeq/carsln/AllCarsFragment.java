@@ -109,6 +109,15 @@ public class AllCarsFragment extends Fragment {
         }
 
 
+        ivPFP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarProfile();
+                GoToProfile();
+            }
+        });
+
+
         // checking accessibility to FireStore Info
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -136,8 +145,18 @@ public class AllCarsFragment extends Fragment {
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new CarsAdapter(getActivity(), Market);
         rc.setAdapter(adapter);
-
     }
+
+    private void GoToProfile() {
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarProfile() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.profile);
+    }
+
 }
 
 

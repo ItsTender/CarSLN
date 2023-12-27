@@ -34,7 +34,7 @@ public class SellerPageFragment extends Fragment {
 
     String Email;
     Button btnSMS, btnCall;
-    TextView tvSellerName;
+    TextView tvSellerName, tvintro;
     RecyclerView rc;
     FireBaseServices fbs;
     CarsAdapter Adapter;
@@ -103,6 +103,7 @@ public class SellerPageFragment extends Fragment {
 
         fbs= FireBaseServices.getInstance();
         tvSellerName = getView().findViewById(R.id.tvSellerUser);
+        tvintro = getView().findViewById(R.id.tvsellerintro);
         btnCall = getView().findViewById(R.id.btnCallSeller);
         btnSMS = getView().findViewById(R.id.btnSMSContact);
         rc = getView().findViewById(R.id.RecyclerSellerCars);
@@ -113,8 +114,6 @@ public class SellerPageFragment extends Fragment {
         String str = Email;
         int n = str.indexOf("@");
         String user = str.substring(0,n);
-        tvSellerName.setText("Welcome to                " + user +"'s Page");
-
 
         // Get User Profile.....
 
@@ -124,7 +123,10 @@ public class SellerPageFragment extends Fragment {
 
                     usr = documentSnapshot.toObject(UserProfile.class);
 
-                    pfp = usr.getUserPhoto();
+                tvSellerName.setText(usr.getUsername() +"'s Page");
+                tvintro.setText("Here You Can See his Car Listings and Contact him");
+
+                pfp = usr.getUserPhoto();
                     if (pfp == null || pfp.isEmpty())
                     {
                         Picasso.get().load(R.drawable.generic_icon).into(ivSeller);

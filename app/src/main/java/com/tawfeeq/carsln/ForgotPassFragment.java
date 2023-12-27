@@ -25,7 +25,7 @@ import com.google.android.gms.tasks.Task;
 public class ForgotPassFragment extends Fragment {
 
     FireBaseServices fbs;
-    Button btnReset;
+    Button btnReset, btnSignup;
     TextView tvLog;
 
     EditText etEmail;
@@ -86,7 +86,15 @@ public class ForgotPassFragment extends Fragment {
         btnReset =getView().findViewById(R.id.btnResetPass);
         tvLog=getView().findViewById(R.id.tvLoginForgot);
         etEmail=getView().findViewById(R.id.etEmailForgotPass);
+        btnSignup =getView().findViewById(R.id.tvSignUpForgot);
 
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToSignup();
+            }
+        });
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +139,13 @@ public class ForgotPassFragment extends Fragment {
     private void GoToLoginFragment() {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.commit();
+    }
+
+    private void GoToSignup() {
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SignUpFragment());
         ft.commit();
     }
 

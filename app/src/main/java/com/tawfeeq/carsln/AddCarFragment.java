@@ -379,7 +379,7 @@ public class AddCarFragment extends Fragment {
                     ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
-
+                
 
 
 

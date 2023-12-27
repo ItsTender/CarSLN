@@ -134,11 +134,12 @@ public class DetailedFragment extends Fragment {
         String str = Email;
         int n = str.indexOf("@");
         String user = str.substring(0,n);
-        tvSeller.setText(user);
 
         // Get User Profile Photo.....
 
         if(fbs.getUser()!=null && Email.equals(fbs.getAuth().getCurrentUser().getEmail())){
+
+            tvSeller.setText(fbs.getUser().getUsername());
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
@@ -151,6 +152,8 @@ public class DetailedFragment extends Fragment {
             fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                    tvSeller.setText(documentSnapshot.getString("username"));
 
                     pfp = documentSnapshot.getString("userPhoto");
 

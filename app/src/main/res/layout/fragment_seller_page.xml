@@ -8,24 +8,45 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="338dp"
         android:id="@+id/ConstraintSeller">
 
+        <TextView
+            android:id="@+id/tvSellerwelcome"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:text="Welcome to"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSellerPage" />
 
         <TextView
             android:id="@+id/tvSellerUser"
-            android:layout_width="350dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="31dp"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:fontFamily="sans-serif"
-            android:text=""
-            android:textSize="25sp"
+            android:text="username"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewSellerPage" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSellerwelcome" />
+
+        <TextView
+            android:id="@+id/tvsellerintro"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif"
+            android:text="See and Contact"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSellerUser" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewSellerPage"
@@ -46,28 +67,28 @@
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/Blue700"
-            android:textColor="@color/white"
             android:text="Call Seller"
+            android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/btnSMSContact"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSellerUser" />
+            app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
 
         <Button
             android:id="@+id/btnSMSContact"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Blue700"
-            android:textColor="@color/white"
             android:text="Send SMS"
+            android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnCallSeller"
-            app:layout_constraintTop_toBottomOf="@+id/tvSellerUser" />
+            app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

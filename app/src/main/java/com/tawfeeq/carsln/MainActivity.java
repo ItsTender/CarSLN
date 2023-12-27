@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         else {
 
             bnv.setVisibility(View.GONE);
-            GoToStarterScreen();
+            GoToLogin();
         }
             bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                 @SuppressLint("NonConstantResourceId")
@@ -142,10 +142,10 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    private void GoToStarterScreen() {
+    private void GoToLogin() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new StartFragment());
+        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
         ft.commit();
     }
 

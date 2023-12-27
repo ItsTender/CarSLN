@@ -27,9 +27,9 @@ import com.google.firebase.auth.AuthResult;
 public class LogInFragment extends Fragment {
 
     FireBaseServices fbs;
-    Button btnLog;
+    Button btnLog, btnSignup;
     EditText etEmail, etPassword;
-    TextView tvSignup, tvForgot;
+    TextView tvForgot;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,12 +89,12 @@ public class LogInFragment extends Fragment {
         btnLog=getView().findViewById(R.id.btnLogIn);
         etEmail =getView().findViewById(R.id.etEmailSignIn);
         etPassword =getView().findViewById(R.id.etPasswordSignIn);
-        tvSignup =getView().findViewById(R.id.tvSignUp);
+        btnSignup =getView().findViewById(R.id.tvSignUp);
         tvForgot =getView().findViewById(R.id.tvForgot);
 
 
 
-        tvSignup.setOnClickListener(new View.OnClickListener() {
+        btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GoToSignup();

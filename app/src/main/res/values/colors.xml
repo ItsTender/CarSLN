@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Blue700"> #03bafc </color>
     <color name="Shinygrey"> #696969 </color>
+    <color name="Light_Steel_Blue"> #B0C4DE </color>
+    <color name="Broncos_Navy"> #002244 </color>
 </resources>

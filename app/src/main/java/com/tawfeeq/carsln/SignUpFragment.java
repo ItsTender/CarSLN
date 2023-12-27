@@ -30,7 +30,7 @@ public class SignUpFragment extends Fragment {
 
     FireBaseServices fbs;
     Button btnSignUp;
-    EditText etEmail, etPassword, etConfirm, etPhone;
+    EditText etUsername, etEmail, etPassword, etConfirm, etPhone;
     TextView etLog;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -85,6 +85,7 @@ public class SignUpFragment extends Fragment {
         super.onStart();
 
         fbs =FireBaseServices.getInstance();
+        etUsername = getView().findViewById(R.id.etUsernameSignup);
         etEmail = getView().findViewById(R.id.etEmailSignup);
         etPassword = getView().findViewById(R.id.etPasswordSignup);
         etConfirm = getView().findViewById(R.id.etPasswordSignupConfirm);
@@ -104,10 +105,11 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String username = etEmail.getText().toString();
+                String Name = etUsername.getText().toString();
                 String pass = etPassword.getText().toString();
                 String confirm = etConfirm.getText().toString();
                 String phone = etPhone.getText().toString();
-                if (username.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()||phone.trim().isEmpty()) {
+                if (username.trim().isEmpty() || Name.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()||phone.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -118,7 +120,7 @@ public class SignUpFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                                CreateUserProfile(username.toLowerCase(),phone);
+                                CreateUserProfile(username.toLowerCase(), Name ,phone);
                                 LogIn(username, pass);
                             } else {
                                 Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
@@ -132,17 +134,17 @@ public class SignUpFragment extends Fragment {
         });
     }
 
-    private void CreateUserProfile(String username, String phone) {
+    private void CreateUserProfile(String name, String username ,String phone) {
 
-        String str = username;
+        String str = name;
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
-        UserProfile userProfile = new UserProfile("",user,phone);
+        UserProfile userProfile = new UserProfile("",username,phone);
         fbs.getStore().collection("Users").document(user).set(userProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                // creates a User with an Empty Profile Photo
+                // creates a User with an Empty Profile Photo / Custom Username / Phone Number .......
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

@@ -55,6 +55,28 @@
             app:layout_constraintTop_toBottomOf="@+id/imageViewSeller" />
 
 
+        <TextView
+            android:id="@+id/DetailedLocationArea"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Location"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
+
+        <ImageView
+            android:id="@+id/imageView40"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/pinpoint_removebg_preview"
+            app:layout_constraintStart_toEndOf="@+id/DetailedLocationArea"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
+
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
@@ -90,6 +112,7 @@
 
         </LinearLayout>
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="380dp"
@@ -99,8 +122,9 @@
             android:layout_marginEnd="16dp"
             app:cardBackgroundColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedMan">
+            app:layout_constraintTop_toBottomOf="@+id/DetailedLocationArea">
 
 
             <TextView
@@ -123,8 +147,8 @@
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:textColor="@color/black"
                 android:text="Owner/s"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -135,59 +159,22 @@
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:textColor="@color/black"
                 android:text="km"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
 
         </androidx.cardview.widget.CardView>
 
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-            <TextView
-                android:id="@+id/DetailedLocationAreax"
-                android:layout_width="120dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="sans-serif"
-                android:text="Location"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-
-            <TextView
-                android:id="@+id/DetailedLocationArea"
-                android:layout_width="150dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="sans-serif"
-                android:text="Location"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-
-        </LinearLayout>
-
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
 
             <TextView
                 android:id="@+id/Detailedenginex"
@@ -226,7 +213,7 @@
 
             <TextView
                 android:id="@+id/Detailedtransmissionx"
-                android:layout_width="120dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
@@ -239,7 +226,7 @@
                 android:id="@+id/DetailedGear"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
+                android:layout_marginStart="45dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
                 android:text="Gear"

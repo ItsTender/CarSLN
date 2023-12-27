@@ -107,11 +107,11 @@ public class ProfileFragment extends Fragment {
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
-        tvUser.setText("Welcome, " + user);
-
         // Get User Profile Photo.....
 
         if(fbs.getUser()!=null) {
+
+            tvUser.setText("Welcome, " + fbs.getUser().getUsername());
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {

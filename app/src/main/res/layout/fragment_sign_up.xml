@@ -4,11 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpFragment">
+    tools:context=".SignUpFragment"
+    android:background="@drawable/tawfeeq">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="120dp"
+            android:fontFamily="sans-serif"
+            android:text="Create Account"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView101"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:text="Signup to CarSLN and Revolutionize the Way You Buy, Sell, or Lend Your Dream Car!"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewsignup" />
+
+        <EditText
+            android:id="@+id/etUsernameSignup"
+            android:layout_width="272dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="70dp"
+            android:backgroundTint="@color/Broncos_Navy"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Username"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView101" />
 
         <EditText
             android:id="@+id/etEmailSignup"
@@ -17,18 +63,16 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/Blue700"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
-            android:hint="New Email"
             android:gravity="center"
+            android:hint="Email adress"
             android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@+id/etPasswordSignup"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/etUsernameSignup" />
 
         <EditText
             android:id="@+id/etPasswordSignup"
@@ -37,13 +81,13 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="70dp"
-            android:backgroundTint="@color/Blue700"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
             android:gravity="center"
             android:hint="New Password"
             android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEmailSignup" />
@@ -55,13 +99,13 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="70dp"
-            android:backgroundTint="@color/Blue700"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
             android:gravity="center"
-            android:hint="Confirm New Password"
+            android:hint="Confirm Password"
             android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPasswordSignup" />
@@ -73,7 +117,7 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="70dp"
-            android:backgroundTint="@color/Blue700"
+            android:backgroundTint="@color/Broncos_Navy"
             android:textColorHint="@color/black"
             android:textColor="@color/black"
             android:ems="10"
@@ -99,47 +143,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPhoneSignup" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="130dp"
-            android:src="@drawable/generic_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tvSignin"
-            android:layout_width="188dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginStart="110dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="110dp"
-            android:gravity="center"
-            android:text="Already Got an Account? "
-            android:textSize="15sp"
-            android:textColor="@color/black"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="181dp"
             android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Already Got an Account?"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
-
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="188dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="110dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="110dp"
-            android:gravity="center"
-            android:text=""
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSignin" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
