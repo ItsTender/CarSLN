@@ -1,5 +1,7 @@
 package com.tawfeeq.carsln;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,14 +33,15 @@ import java.util.ArrayList;
 public class SellerPageFragment extends Fragment {
 
     String Email;
-    Button btnSMS, btnCarsln;
+    Button btnSMS, btnCall;
     TextView tvSellerName;
     RecyclerView rc;
     FireBaseServices fbs;
     CarsAdapter Adapter;
     ArrayList<CarID> SellerCars;
     ImageView ivSeller;
-    String pfp, Phone;
+    String pfp;
+    UserProfile usr;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -100,7 +103,7 @@ public class SellerPageFragment extends Fragment {
 
         fbs= FireBaseServices.getInstance();
         tvSellerName = getView().findViewById(R.id.tvSellerUser);
-        btnCarsln = getView().findViewById(R.id.btnCarslnContact);
+        btnCall = getView().findViewById(R.id.btnCallSeller);
         btnSMS = getView().findViewById(R.id.btnSMSContact);
         rc = getView().findViewById(R.id.RecyclerSellerCars);
         ivSeller = getView().findViewById(R.id.imageViewSellerPage);
@@ -113,14 +116,15 @@ public class SellerPageFragment extends Fragment {
         tvSellerName.setText("Welcome to                " + user +"'s Page");
 
 
-        // Get User Profile Photo.....
+        // Get User Profile.....
 
         fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                    pfp = documentSnapshot.getString("userPhoto");
+                    usr = documentSnapshot.toObject(UserProfile.class);
 
+                    pfp = usr.getUserPhoto();
                     if (pfp == null || pfp.isEmpty())
                     {
                         Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
@@ -128,8 +132,6 @@ public class SellerPageFragment extends Fragment {
                     else {
                         Picasso.get().load(pfp).into(ivSeller);
                     }
-
-                    //Phone = documentSnapshot.getString("phone");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -139,7 +141,26 @@ public class SellerPageFragment extends Fragment {
             }
         });
 
-        // Get Profile Photo Ends
+        // Get Profile Ends
+
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // only fills in the number in the Phone App....
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + usr.getPhone()));
+                startActivity(intent);
+            }
+        });
+
+        btnSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Go To SMS.....
+            }
+        });
 
 
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

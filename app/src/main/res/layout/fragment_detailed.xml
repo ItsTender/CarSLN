@@ -12,11 +12,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/DetailedCar"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginStart="15dp"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/carplain"
@@ -27,230 +25,202 @@
 
 
         <TextView
-            android:id="@+id/DetailedManx"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="25dp"
-            android:fontFamily="sans-serif"
-            android:text="Manufacturer:"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedMan"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewSeller" />
-
-        <TextView
             android:id="@+id/DetailedMan"
-            android:layout_width="220dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="3dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="46dp"
             android:fontFamily="sans-serif"
-            android:text="Manufacturer"
-            android:textSize="18sp"
+            android:text="Manufacturer+Model"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/DetailedManx"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-        <TextView
-            android:id="@+id/DetailedModx"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif"
-            android:text="Model:"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedMod"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedManx" />
-
-        <TextView
-            android:id="@+id/DetailedMod"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="3dp"
-            android:fontFamily="sans-serif"
-            android:text="Model"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/DetailedModx"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
-
-        <TextView
-            android:id="@+id/DetailedPricex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="sans-serif"
-            android:text="S"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedPrice"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Detailedkilox" />
+            app:layout_constraintTop_toBottomOf="@+id/DetailedPrice" />
 
         <TextView
             android:id="@+id/DetailedPrice"
-            android:layout_width="220dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="46dp"
             android:fontFamily="sans-serif"
             android:text="Price$"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/DetailedPricex"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedKilometre" />
+            android:textSize="35sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSeller" />
 
         <TextView
             android:id="@+id/Detailedhpx"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
             android:fontFamily="sans-serif"
-            android:text="Power:"
+            android:textColor="@color/black"
+            android:text="Horse Power"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/DetailedHP"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Detailedenginex" />
 
+
         <TextView
             android:id="@+id/DetailedHP"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
             android:text="Power"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/Detailedhpx"
             app:layout_constraintTop_toBottomOf="@+id/DetailedEngine" />
 
-        <TextView
-            android:id="@+id/Detailedyearx"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif"
-            android:text="Car Year:"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedYear"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedModx" />
+            app:layout_constraintTop_toBottomOf="@+id/DetailedMan">
+
+
+            <TextView
+                android:id="@+id/DetailedYear"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="Year"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/DetailedUsers"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="Owner/s"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/DetailedKilometre"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="230dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="km"
+                android:textSize="18sp" />
+
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/DetailedYear"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="3dp"
+            android:id="@+id/DetailedLocationArea"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="sans-serif"
-            android:text="Year"
+            android:text="Location"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Detailedyearx"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedMod" />
+            app:layout_constraintStart_toEndOf="@+id/DetailedLocationAreax"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <TextView
+            android:id="@+id/DetailedLocationAreax"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="sans-serif"
+            android:text="Location"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/DetailedLocationArea"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <TextView
             android:id="@+id/Detailedenginex"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
             android:fontFamily="sans-serif"
-            android:text="Car Engine:"
+            android:text="Engine"
+            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/DetailedEngine"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Detailedyearx" />
+            app:layout_constraintTop_toBottomOf="@+id/DetailedLocationAreax" />
 
         <TextView
             android:id="@+id/DetailedEngine"
             android:layout_width="300dp"
             android:layout_height="25dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif"
             android:text="Engine"
+            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/Detailedenginex"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedYear" />
-
+            app:layout_constraintTop_toBottomOf="@+id/DetailedLocationArea" />
 
         <TextView
             android:id="@+id/Detailedkilox"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="80dp"
             android:fontFamily="sans-serif"
             android:text="Kilometre:"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedKilometre"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Detailedusersx" />
-
-        <TextView
-            android:id="@+id/DetailedKilometre"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="3dp"
-            android:fontFamily="sans-serif"
-            android:text="Kilometre"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Detailedkilox"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedUsers" />
-
-        <TextView
-            android:id="@+id/Detailedusersx"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif"
-            android:text="Car Owners:"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedUsers"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Detailedtransmissionx" />
 
-        <TextView
-            android:id="@+id/DetailedUsers"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="3dp"
-            android:fontFamily="sans-serif"
-            android:text="Owner/Users"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Detailedusersx"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedGear" />
 
         <TextView
             android:id="@+id/Detailedtransmissionx"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
             android:fontFamily="sans-serif"
-            android:text="Car Gearing:"
+            android:text="Transmission"
             android:textSize="18sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/DetailedGear"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Detailedhpx" />
@@ -259,13 +229,12 @@
             android:id="@+id/DetailedGear"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="3dp"
             android:fontFamily="sans-serif"
             android:text="Transmission/Gear"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/Detailedtransmissionx"
             app:layout_constraintTop_toBottomOf="@+id/DetailedHP" />
 
@@ -274,7 +243,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toStartOf="@+id/DetailedUserMail"
@@ -291,6 +260,7 @@
             android:layout_marginEnd="78dp"
             android:fontFamily="sans-serif"
             android:textSize="18sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewSeller"
             app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />

@@ -17,14 +17,14 @@ public class FireBaseServices {
     private FirebaseStorage storage;
 
     private Uri selectedImageURL;
-    private ArrayList<String> Saved;
+    private UserProfile user;
 
-    public ArrayList<String> getSaved() {
-        return Saved;
+    public UserProfile getUser() {
+        return user;
     }
 
-    public void setSaved(ArrayList<String> saved) {
-        Saved = saved;
+    public void setUser(UserProfile user) {
+        this.user = user;
     }
 
     public Uri getSelectedImageURL() {

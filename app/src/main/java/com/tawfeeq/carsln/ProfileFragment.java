@@ -107,34 +107,18 @@ public class ProfileFragment extends Fragment {
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
+        tvUser.setText("Welcome, " + user);
 
         // Get User Profile Photo.....
 
-        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-
-                tvUser.setText("Welcome, " + documentSnapshot.getString("username"));
-
-                pfp = documentSnapshot.getString("userPhoto");
-
-                if (pfp == null || pfp.isEmpty())
-                {
-                    Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
-                }
-                else {
-                    Picasso.get().load(pfp).into(ivPFP);
-                }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
+        if(fbs.getUser()!=null) {
+            pfp = fbs.getUser().getUserPhoto();
+            if (pfp == null || pfp.isEmpty()) {
                 Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
+            } else {
+                Picasso.get().load(pfp).into(ivPFP);
             }
-        });
+        }
 
         // Get Profile Photo Ends
 

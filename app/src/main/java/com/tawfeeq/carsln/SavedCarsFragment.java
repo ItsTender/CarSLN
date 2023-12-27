@@ -92,29 +92,31 @@ public class SavedCarsFragment extends Fragment {
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
-        Saved = fbs.getSaved();
+        if(fbs.getUser()!=null) {
 
-        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+            Saved = fbs.getUser().getSavedCars();
+            fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
 
-                    CarID car = dataSnapshot.toObject(CarID.class);
-                    car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setId(dataSnapshot.getId());
+                        CarID car = dataSnapshot.toObject(CarID.class);
+                        car.setCarPhoto(dataSnapshot.getString("photo"));
+                        car.setId(dataSnapshot.getId());
 
-                    if(Saved.contains(dataSnapshot.getId())){
-                        lst.add(car);
+                        if (Saved.contains(dataSnapshot.getId())) {
+                            lst.add(car);
+                        }
                     }
+                    SettingFrame();
                 }
-                SettingFrame();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-            }
-        });
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private void SettingFrame() {

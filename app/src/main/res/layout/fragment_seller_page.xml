@@ -41,29 +41,29 @@
             app:shapeAppearance="@style/RoundShape.App.50percent"/>
 
         <Button
-            android:id="@+id/btnCarslnContact"
-            android:layout_width="175dp"
+            android:id="@+id/btnCallSeller"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:backgroundTint="@color/Blue700"
-            android:text="Contact Through Car.sln"
-            android:textSize="12sp"
+            android:text="Call Seller"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/btnSMSContact"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSellerUser" />
 
         <Button
             android:id="@+id/btnSMSContact"
-            android:layout_width="175dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Blue700"
-            android:text="Contact Through SMS"
-            android:textSize="12sp"
+            android:text="Send SMS"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnCarslnContact"
+            app:layout_constraintStart_toEndOf="@+id/btnCallSeller"
             app:layout_constraintTop_toBottomOf="@+id/tvSellerUser" />
 
 

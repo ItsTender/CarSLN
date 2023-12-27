@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
+import android.hardware.lights.Light;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bnv;
     private FireBaseServices fbs;
     private UserProfile usr;
-    private ArrayList<String> Saved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         // To Hide The Top Bar For App Name.
         getSupportActionBar().hide();
-
 
         // To Make the App not Flippable
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -95,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
                 usr = documentSnapshot.toObject(UserProfile.class);
-                Saved = usr.getSavedCars();
-                fbs.setSaved(Saved);
+                fbs.setUser(usr);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                fbs.setUser(null);
             }
         });
     }

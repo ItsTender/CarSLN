@@ -17,12 +17,15 @@ public class Cars {
     private String Engine;
     private int Kilometre;
     private int Users;
+    private String Color;
+    private String Location;
+    private String NextTest;
     private String Photo;
 
     public Cars() {
     }
 
-    public Cars(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String photo) {
+    public Cars(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo) {
         SellLend = sellLend;
         Email = email;
         Manufacturer = manufacturer;
@@ -34,13 +37,39 @@ public class Cars {
         Engine = engine;
         Kilometre = kilometre;
         Users = users;
+        Color = color;
+        Location = location;
+        NextTest = nextTest;
         Photo = photo;
     }
 
-// protected Cars(Parcel in) {}
+    // protected Cars(Parcel in) {}
 
    // @Override public void writeToParcel(Parcel dest, int flags) {}
 
+    public String getColor() {
+        return Color;
+    }
+
+    public void setColor(String color) {
+        Color = color;
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
+    }
+
+    public String getNextTest() {
+        return NextTest;
+    }
+
+    public void setNextTest(String nextTest) {
+        NextTest = nextTest;
+    }
 
     public boolean getSellLend() {
         return SellLend;

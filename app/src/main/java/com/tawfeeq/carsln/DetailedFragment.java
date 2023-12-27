@@ -30,10 +30,10 @@ import java.util.ArrayList;
 public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
-    TextView tvMan, tvMod, tvPrice, tvPhone, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvSellLend;
+    TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor;
     ImageView ivCar, ivSeller, ivSaved;
     boolean sell_lend;
-    String Email,Man, Mod, Photo,Transmission,Engine,ID;
+    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest;
     Integer Price,Power,Year,Users,Kilometre;
     String pfp;
     Boolean isFound;
@@ -86,6 +86,7 @@ public class DetailedFragment extends Fragment {
 
         Bundle bundle =this.getArguments();
 
+
         ID=bundle.getString("ID");
         sell_lend=bundle.getBoolean("SellorLend");
         Email=bundle.getString("Email");
@@ -99,6 +100,10 @@ public class DetailedFragment extends Fragment {
         Users =bundle.getInt("Users");
         Kilometre=bundle.getInt("Kilo");
         Transmission=bundle.getString("Transmission");
+        Color=bundle.getString("Color");
+        Location=bundle.getString("Area");
+        NextTest=bundle.getString("Test");
+
 
         return view;
     }
@@ -111,7 +116,6 @@ public class DetailedFragment extends Fragment {
         fbs = FireBaseServices.getInstance();
         ivCar=getView().findViewById(R.id.DetailedCar);
         tvMan=getView().findViewById(R.id.DetailedMan);
-        tvMod =getView().findViewById(R.id.DetailedMod);
         tvPrice =getView().findViewById(R.id.DetailedPrice);
         tvPower =getView().findViewById(R.id.DetailedHP);
         tvYear = getView().findViewById(R.id.DetailedYear);
@@ -121,7 +125,6 @@ public class DetailedFragment extends Fragment {
         tvSeller = getView().findViewById(R.id.DetailedUserMail);
         ivSeller = getView().findViewById(R.id.imageViewSeller);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
-        tvSellLend =getView().findViewById(R.id.DetailedPricex);
         ivSaved = getView().findViewById(R.id.imageView4); //the Saved Icon......
 
 
@@ -132,27 +135,36 @@ public class DetailedFragment extends Fragment {
 
         // Get User Profile Photo.....
 
-        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
+        if(fbs.getUser()!=null && Email.equals(fbs.getAuth().getCurrentUser().getEmail())){
+
+            pfp = fbs.getUser().getUserPhoto();
+            if (pfp == null || pfp.isEmpty()) {
+                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+            } else {
+                Picasso.get().load(pfp).into(ivSeller);
+            }
+        }
+        else {
+            fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
 
                     pfp = documentSnapshot.getString("userPhoto");
 
-                    if (pfp == null || pfp.isEmpty())
-                    {
+                    if (pfp == null || pfp.isEmpty()) {
                         Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
-                    }
-                    else {
+                    } else {
                         Picasso.get().load(pfp).into(ivSeller);
                     }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
-                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
-            }
-        });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
+                    Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                }
+            });
+        }
 
         // Get Profile Photo Ends
 
@@ -216,7 +228,7 @@ public class DetailedFragment extends Fragment {
         int n1 = str1.indexOf("@");
         String user1 = str1.substring(0,n1);
 
-        ArrayList<String> Saved = fbs.getSaved();
+        ArrayList<String> Saved = fbs.getUser().getSavedCars();
 
         if(Saved.contains(ID)) {
             ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
@@ -239,13 +251,13 @@ public class DetailedFragment extends Fragment {
                         if(isFound)
                         {
                             ivSaved.setImageResource(R.drawable.saved_removebg_preview);
-                            fbs.setSaved(Saved);
+                            fbs.getUser().setSavedCars(Saved);
                             Toast.makeText(getActivity(), "Car Removed", Toast.LENGTH_SHORT).show();
                             isFound = false;
                         }
                         else{
                             ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
-                            fbs.setSaved(Saved);
+                            fbs.getUser().setSavedCars(Saved);
                             Toast.makeText(getActivity(), "Car Saved", Toast.LENGTH_SHORT).show();
                             isFound = true;
                         }
@@ -263,24 +275,28 @@ public class DetailedFragment extends Fragment {
         // Functions Ends......
 
 
-        tvMan.setText(Man);
-        tvMod.setText(Mod);
+        tvMan.setText(Man + " " + Mod);
 
         String prc= Price.toString();
-        tvPrice.setText(prc + "$");
-
         if(sell_lend) {
-            tvSellLend.setText("Selling Price:  ");
+            tvPrice.setText(prc + "$");
         }
         else{
-            tvSellLend.setText("Monthly Payment:  ");
+            tvPrice.setText(prc + "$" + " Monthly");
         }
 
         String power=Power.toString(); tvPower.setText(power);
         String year=Year.toString(); tvYear.setText(year);
-        String Kilo =Kilometre.toString(); tvKilometre.setText(Kilo);
-        String Owners= Users.toString(); tvUsers.setText(Owners);
+        String Kilo =Kilometre.toString(); tvKilometre.setText(Kilo+" km");
         tvTransmission.setText(Transmission);
+
+        if(Users==1){
+            String Owners= Users.toString(); tvUsers.setText(Owners + " Owner");
+        }
+        else {
+            String Owners= Users.toString(); tvUsers.setText(Owners + " Owners");
+        }
+
         tvEngine.setText(Engine);
 
 

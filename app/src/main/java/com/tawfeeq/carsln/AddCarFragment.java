@@ -44,7 +44,7 @@ public class AddCarFragment extends Fragment {
     FireBaseServices fbs;
     Cars AddCar;
     EditText Price,BHP,Users,Kilometre,Engine;
-    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod;
+    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear;
     Button Add,Return;
     ImageView IV;
     String photo;
@@ -116,6 +116,10 @@ public class AddCarFragment extends Fragment {
         SpinnerSellLend= getView().findViewById(R.id.SpinnerSellLend);
         SpinnerMan = getView().findViewById(R.id.SpinnerManufacturer);
         SpinnerMod = getView().findViewById(R.id.SpinnerModel);
+        SpinnerTestYear = getView().findViewById(R.id.SpinnerNextTestYear);
+        SpinnerTestMonth = getView().findViewById(R.id.SpinnerNextTestMonth);
+        SpinnerColor = getView().findViewById(R.id.SpinnerCarColor);
+        SpinnerLocation = getView().findViewById(R.id.SpinnerLocationArea);
 
 
         String [] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT","iManual"};
@@ -124,15 +128,36 @@ public class AddCarFragment extends Fragment {
         SpinnerGear.setAdapter(GearAdapter);
 
 
-
         String [] Years = { "Model Year","2024","2023","2022","2021",
                 "2020","2019","2018","2017","2016","2015","2014","2013","2012","2011",
-                "2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991", "1990",
-                "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980"};
+                "2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991", "1990", "1989", "1988"};
         ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, Years);
         YearsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SpinnerYear.setAdapter(YearsAdapter);
 
+
+        String [] TestYear = { "Test Year Until","2024","2025","2026"};
+        ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, TestYear);
+        TestYearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerTestYear.setAdapter(TestYearAdapter);
+
+
+        String [] TestMonth = { "Test Month Until","1","2","3","4","5","6","7","8","9","10","11","12"};
+        ArrayAdapter<String> TestMonthAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, TestMonth);
+        TestMonthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerTestMonth.setAdapter(TestMonthAdapter);
+
+
+        String [] CarColor = { "Select Car Color","White","Dark Grey","Grey","Light Grey","Silver","Black","Dark Red","Red","Light Red","Dark Green","Green","Light Green","Dark Blue","Blue","Vibrant Blue","Light Blue","Orange","Yellow","Brown","Purple"};
+        ArrayAdapter<String> ColorAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, CarColor);
+        ColorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerColor.setAdapter(ColorAdapter);
+
+
+        String [] Location = {"Select Location Area","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, Location);
+        LocationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerLocation.setAdapter(LocationAdapter);
 
 
         String [] HowSellLend = {"What do you want to do with the Car", "Sell the Car" , "Lend the Car" };
@@ -141,16 +166,16 @@ public class AddCarFragment extends Fragment {
         SpinnerSellLend.setAdapter(SellLendAdapter);
 
 
-
         String [] ManList = {"Choose Car Manufacturer","Audi","Abarth", "Alfa Romeo", "Aston Martin","BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
-                "Dacia","Dodge","Fiat", "Ford", "Ferrari", "GMC", "Genesis", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus", "MG",
+                "Dacia","Dodge","Fiat", "Ford", "Ferrari", "Genesis", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus",
                 "Maserati", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volvo"};
+        //42 Manufacturers!!
         ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ManList);
         ManAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SpinnerMan.setAdapter(ManAdapter);
 
 
-        // Here is the Whole list of Models For Each Car Manufacturer
+        // Here is the Whole list of Models For Each Car Manufacturer (42 lists and the No Manufacturer List)
 
 
         String [] ModelNon = {"Choose the Car's Manufacturer"};
@@ -166,8 +191,7 @@ public class AddCarFragment extends Fragment {
         String [] ModelAston = {"Choose Aston Martin Model", "DB11", "DB9", "DBS", "DBX", "Vantage", "Vanquish", "Rapide"};
 
         String [] ModelBMW = {"Choose BMW Model", "1 Series",  "2 Series", "3 Series", "3 Series Convertible", "4 Series", "5 Series",  "6 Series", "7 Series", "8 Series", "i3", "iX3", "i4", "i7", "i8", "iX", "M1", "M2", "M3", "M4", "M5", "M6", "M8",
-                "M2 Competition", "M3 Competition", "M4 Competition", "M5 Competition", "M6 Competition", "M8 Competition",
-                "X1", "X2", "X3", "X4", "X5", "X6", "X6M", "X7", "Z3", "Z4"};
+                "M2 Competition", "M3 Competition", "M4 Competition", "M5 Competition", "M6 Competition", "M8 Competition", "X1", "X2", "X3", "X4", "X5", "X6", "X6M", "X7", "Z3", "Z4"};
 
         String [] ModelBentley = {"Choose Bentley Model", "BE53", "Bentayga", "Continental GT", "Flying Spur"};
 
@@ -196,6 +220,15 @@ public class AddCarFragment extends Fragment {
         String [] ModelFerrari = {"Choose Ferrari Model", "296 GTB", "Roma", "F8 Tributo", "SF90 Stradale", "488 Pista", "488 GTB", "Portofino", "F12tdf", "GTC4Lusso", "812 Superfast", "458 Speciale", "458 Spider", "458 Italia",
                 "LaFerrari", "F12berlinetta", "599 GTO", "599 GTB", "F430", "360 Modena"};
 
+        String [] ModelGenesis = {"Choose Genesis Model", "G70", "G80", "G90", "GLS", "GV60", "GV70", "GV80"};
+
+        String [] ModelHonda = {"Choose Honda Model", "Acura Integra", "Acura NSX", "Acura MDX", "Shuttle", "CR-V", "CR-Z", "FR-V", "HR-V", "S2000", "Odyssey", "Accord", "Insight","Jazz", "Jazz Hybrid", "Legend", "Stream",
+                "Civic Type-R", "Civic Hybrid", "Civic Hatchback", "Civic Sedan", "Civic Station", "Pilot", "Prelude"};
+
+        String [] ModelHyundai = {"Choose Hyundai Model", "i10", "i20", "i20N", "i25", "i30", "i30CW", "i30N", "i35", "i40", "iX20", "iX35", "iX55", "Ioniq",  "Ioniq 5", "Ioniq 6", "Elantra", "Accent", "Bayon", "Getz", "Veloster", "Veloster N",
+                "Venue", "Terracan", "Tucson", "Sonata", "Sonata Hybrid", "Sonata N", "Santa Fe", "Palisade", "Kona", "Kona EV", "Coupe", "H1", "H100", "H100 Truck", "i800", "Staria"};
+
+        
 
 
 
@@ -219,11 +252,7 @@ public class AddCarFragment extends Fragment {
 
 
 
-
-
-
-
-        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911", "911 Speedster", "911 Sports Classic", "911 S/T", "911 Carrera S", "911 Carrera 4S", "911 Convertible", "911 Turbo S", "911 Targa", "911 GT2 RS", "911 GT3", "911 GT3 RS", "Taycan Turbo S", "Macan", "Macan GTS",
+        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911", "911 Speedster", "911 Sports Classic", "911 S/T", "911 Carrera S", "911 Carrera 4S", "911 Convertible", "911 Turbo S", "911 Targa", "911 GT2 RS", "911 GT3", "911 GT3 RS", "Taycan", "Macan", "Macan GTS",
                 "Panamera", "Panamera Turbo", "Cayenne", "Cayenne Turbo"};
 
 
@@ -332,8 +361,24 @@ public class AddCarFragment extends Fragment {
                     ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
+                if(item.equals("Genesis")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelGenesis);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Honda")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelHonda);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Hyundai")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelHyundai);
+                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
 
 
 
@@ -403,7 +448,11 @@ public class AddCarFragment extends Fragment {
                 String transmission = SpinnerGear.getSelectedItem().toString();
                 String year = SpinnerYear.getSelectedItem().toString();
                 String SellLend = SpinnerSellLend.getSelectedItem().toString();
-                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose a Manufacturer First")||Mod.equals("Choose Car Model")||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()) {
+                String Color = SpinnerColor.getSelectedItem().toString();
+                String area = SpinnerLocation.getSelectedItem().toString();
+                String testyear = SpinnerTestYear.getSelectedItem().toString();
+                String testmonth = SpinnerTestMonth.getSelectedItem().toString();
+                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose a Manufacturer First")||Mod.equals("Choose Car Model")||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location Area")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -418,10 +467,12 @@ public class AddCarFragment extends Fragment {
                 if(SellLend.equals("Sell the Car")) selllend=true;
                 else if(SellLend.equals("Lend the Car")) selllend=false;
 
+                String test = testmonth + "/" + testyear;
+
                 if(fbs.getSelectedImageURL()==null) photo ="";
                 else photo = fbs.getSelectedImageURL().toString()+".jpg";
                 // Sell Lend; True=Sell the Car, False=Lend the Car.
-                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,engine,KM,userhands,photo);
+                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,engine,KM,userhands,Color,area,test,photo);
                 FirebaseFirestore db= fbs.getStore();
                 db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

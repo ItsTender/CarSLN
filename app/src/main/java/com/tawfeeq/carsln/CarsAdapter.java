@@ -64,6 +64,9 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 bundle.putInt("Year", cars.get(position).getYear());
                 bundle.putInt("Kilo", cars.get(position).getKilometre());
                 bundle.putInt("Users", cars.get(position).getUsers());
+                bundle.putString("Color", cars.get(position).getColor());
+                bundle.putString("Area", cars.get(position).getLocation());
+                bundle.putString("Test", cars.get(position).getNextTest());
 
 
                 gtn.setArguments(bundle);
@@ -133,11 +136,11 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
             if(car.getSellLend()==true){
 
-            txtPrice.setText("Selling Price: " + car.getPrice()+"$");
+            txtPrice.setText(car.getPrice()+"$");
             }
             else if(car.getSellLend()==false){
 
-                txtPrice.setText("Monthly Payment: " + car.getPrice()+"$");
+                txtPrice.setText(car.getPrice()+ "$" +" Monthly");
             }
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())

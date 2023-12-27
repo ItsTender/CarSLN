@@ -20,6 +20,7 @@
             android:hint="Horse Power"
             android:inputType="number"
             android:minHeight="48dp"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/etUsers"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SpinnerYear" />
@@ -31,9 +32,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="56dp"
             android:ems="10"
-            android:hint="Users"
+            android:hint="Owners"
             android:inputType="number"
             android:minHeight="48dp"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/etBHP"
             app:layout_constraintTop_toBottomOf="@+id/SpinnerGear" />
@@ -49,6 +51,7 @@
             android:hint="Selling Price/ Monthly Payment "
             android:inputType="number"
             android:minHeight="48dp"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +69,7 @@
             android:hint="Engine"
             android:inputType="text"
             android:minHeight="48dp"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etBHP" />
@@ -81,6 +85,7 @@
             android:hint="Kilometre"
             android:inputType="number"
             android:minHeight="48dp"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,15 +95,15 @@
             android:id="@+id/ivAddCar"
             android:layout_width="220dp"
             android:layout_height="140dp"
-            android:layout_marginStart="105dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="106dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="96dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/carplain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPrice"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.8percent" />
 
         <Button
@@ -108,13 +113,14 @@
             android:layout_marginStart="130dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="131dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             android:backgroundTint="@color/Blue700"
             android:text="Add Car"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivAddCar" />
+            app:layout_constraintTop_toBottomOf="@+id/etPrice" />
 
         <Spinner
             android:id="@+id/SpinnerGear"
@@ -122,6 +128,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="56dp"
+            android:popupBackground="@color/white"
+            android:dropDownSelector="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/SpinnerYear"
             app:layout_constraintTop_toBottomOf="@+id/SpinnerModel" />
@@ -146,19 +154,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etKM" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerNextTestYear" />
 
         <Spinner
             android:id="@+id/SpinnerManufacturer"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/ivAddCar" />
 
         <Spinner
             android:id="@+id/SpinnerModel"
@@ -171,6 +179,48 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SpinnerManufacturer" />
+
+        <Spinner
+            android:id="@+id/SpinnerCarColor"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etKM" />
+
+        <Spinner
+            android:id="@+id/SpinnerLocationArea"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerCarColor" />
+
+        <Spinner
+            android:id="@+id/SpinnerNextTestYear"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/SpinnerNextTestMonth"
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerLocationArea" />
+
+        <Spinner
+            android:id="@+id/SpinnerNextTestMonth"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/SpinnerNextTestYear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerLocationArea" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

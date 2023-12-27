@@ -105,32 +105,21 @@ public class SettingsFragment extends Fragment {
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
+        if(fbs.getUser()!=null) {
 
-        // Get User Profile Photo.....
-        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
+            phone.setText(fbs.getUser().getPhone());
 
-                phone.setText(documentSnapshot.getString("phone"));
+            // Get User Profile Photo.....
 
-                    pfp = documentSnapshot.getString("userPhoto");
+            pfp = fbs.getUser().getUserPhoto();
 
-                    if (pfp == null || pfp.isEmpty())
-                    {
-                        Picasso.get().load(R.drawable.generic_icon).into(ivUser);
-                    }
-                    else {
-                        Picasso.get().load(pfp).into(ivUser);
-                    }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
+            if (pfp == null || pfp.isEmpty()) {
                 Picasso.get().load(R.drawable.generic_icon).into(ivUser);
+            } else {
+                Picasso.get().load(pfp).into(ivUser);
             }
-        });
+        }
+
 
         // Get Profile Photo Ends
 
@@ -216,7 +205,6 @@ public class SettingsFragment extends Fragment {
             Uri selectedImageUri = data.getData();
             utils.uploadImage(getActivity(), selectedImageUri);
         }
-
     }
 
     public void UpdatePFP(){
@@ -241,7 +229,9 @@ public class SettingsFragment extends Fragment {
             fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
+
                     Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
+                    fbs.getUser().setUserPhoto(photo);
                     fbs.setSelectedImageURL(null);
                 }
             }).addOnFailureListener(new OnFailureListener() {

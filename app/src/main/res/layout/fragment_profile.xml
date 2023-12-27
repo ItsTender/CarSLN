@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintProfile"
         android:layout_width="match_parent"
-        android:layout_height="315dp">
+        android:layout_height="320dp">
 
 
         <TextView
@@ -22,6 +22,7 @@
             android:gravity="center"
             android:text=""
             android:textSize="26sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +37,7 @@
             android:layout_marginEnd="31dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="This is Your Profile Page, Here You Can Manage Your Profile info and Car Listings"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
