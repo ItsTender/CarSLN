@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,11 +33,12 @@ import java.util.ArrayList;
  */
 public class AllCarsFragment extends Fragment {
 
-    ImageView ivSell;
+    ImageView ivSell,ivPFP;
     RecyclerView rc;
     private CarsAdapter adapter;
     private FireBaseServices fbs;
     private ArrayList<CarID> Market;
+    String pfp;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -91,8 +93,20 @@ public class AllCarsFragment extends Fragment {
         super.onStart();
 
         FireBaseServices fbs = FireBaseServices.getInstance();
+        ivPFP = getView().findViewById(R.id.imageViewProfilePhotoAllCars);
         rc= getView().findViewById(R.id.RecyclerCars);
         Market = new ArrayList<CarID>();
+
+
+        if(fbs.getUser()!=null) {
+
+            pfp = fbs.getUser().getUserPhoto();
+            if (pfp == null || pfp.isEmpty()) {
+                Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
+            } else {
+                Picasso.get().load(pfp).into(ivPFP);
+            }
+        }
 
 
         // checking accessibility to FireStore Info

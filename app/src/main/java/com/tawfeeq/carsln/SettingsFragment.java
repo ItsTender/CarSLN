@@ -36,9 +36,8 @@ public class SettingsFragment extends Fragment {
 
     Utils utils;
     FireBaseServices fbs;
-    Button btnLogout, Changepfp, Changephone;
+    Button btnLogout, Changepfp;
     ImageView ivUser;
-    EditText phone;
     String pfp;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -97,8 +96,6 @@ public class SettingsFragment extends Fragment {
         btnLogout= getView().findViewById(R.id.btnLogout);
         Changepfp = getView().findViewById(R.id.btnChangePhoto);
         ivUser = getView().findViewById(R.id.imageViewProfilePhotoSettings);
-        phone = getView().findViewById(R.id.etPhoneSettings);
-        Changephone = getView().findViewById(R.id.btnChangePhone);
 
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
@@ -106,8 +103,6 @@ public class SettingsFragment extends Fragment {
         String user = str.substring(0,n);
 
         if(fbs.getUser()!=null) {
-
-            phone.setText(fbs.getUser().getPhone());
 
             // Get User Profile Photo.....
 
@@ -122,24 +117,6 @@ public class SettingsFragment extends Fragment {
 
 
         // Get Profile Photo Ends
-
-        Changephone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String newphone = phone.getText().toString();
-                fbs.getStore().collection("Users").document(user).update("phone",newphone).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(getActivity(), "Phone Number Updated", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Couldn't Update Your Phone Number, Try Again Later!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
 
 
         // Set New Profile Photo.....

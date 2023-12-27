@@ -145,7 +145,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())
             {
-                Picasso.get().load(R.drawable.carplain).into(ivCar);
+                Picasso.get().load(R.drawable.photo_iv).into(ivCar);
 
             }
             else {

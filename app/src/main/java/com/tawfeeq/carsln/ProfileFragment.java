@@ -112,6 +112,7 @@ public class ProfileFragment extends Fragment {
         // Get User Profile Photo.....
 
         if(fbs.getUser()!=null) {
+
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
                 Picasso.get().load(R.drawable.generic_icon).into(ivPFP);

@@ -123,46 +123,46 @@ public class AddCarFragment extends Fragment {
 
 
         String [] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT","iManual"};
-        ArrayAdapter<String> GearAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, GearList);
-        GearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> GearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, GearList);
+        GearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerGear.setAdapter(GearAdapter);
 
 
         String [] Years = { "Model Year","2024","2023","2022","2021",
                 "2020","2019","2018","2017","2016","2015","2014","2013","2012","2011",
                 "2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991", "1990", "1989", "1988"};
-        ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, Years);
-        YearsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Years);
+        YearsAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerYear.setAdapter(YearsAdapter);
 
 
         String [] TestYear = { "Test Year Until","2024","2025","2026"};
-        ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, TestYear);
-        TestYearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestYear);
+        TestYearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerTestYear.setAdapter(TestYearAdapter);
 
 
         String [] TestMonth = { "Test Month Until","1","2","3","4","5","6","7","8","9","10","11","12"};
-        ArrayAdapter<String> TestMonthAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, TestMonth);
-        TestMonthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> TestMonthAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestMonth);
+        TestMonthAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerTestMonth.setAdapter(TestMonthAdapter);
 
 
         String [] CarColor = { "Select Car Color","White","Dark Grey","Grey","Light Grey","Silver","Black","Dark Red","Red","Light Red","Dark Green","Green","Light Green","Dark Blue","Blue","Vibrant Blue","Light Blue","Orange","Yellow","Brown","Purple"};
-        ArrayAdapter<String> ColorAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, CarColor);
-        ColorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> ColorAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, CarColor);
+        ColorAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerColor.setAdapter(ColorAdapter);
 
 
         String [] Location = {"Select Location Area","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, Location);
-        LocationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
+        LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerLocation.setAdapter(LocationAdapter);
 
 
         String [] HowSellLend = {"What do you want to do with the Car", "Sell the Car" , "Lend the Car" };
-        ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, HowSellLend);
-        SellLendAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
+        SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerSellLend.setAdapter(SellLendAdapter);
 
 
@@ -170,8 +170,8 @@ public class AddCarFragment extends Fragment {
                 "Dacia","Dodge","Fiat", "Ford", "Ferrari", "Genesis", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus",
                 "Maserati", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volvo"};
         //42 Manufacturers!!
-        ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ManList);
-        ManAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ManList);
+        ManAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerMan.setAdapter(ManAdapter);
 
 
@@ -267,116 +267,116 @@ public class AddCarFragment extends Fragment {
                 // For Each Manufacturer Selected gets a new String Array of Sold/Available Models
                 if(item.equals("Choose Car Manufacturer")){
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelNon);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelNon);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Audi")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAudi);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelAudi);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Abarth")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAbarth);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelAbarth);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Alfa Romeo")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAlfa);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelAlfa);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Aston Martin")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelAston);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelAston);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("BMW")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelBMW);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelBMW);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Bentley")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelBentley);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelBentley);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Citroen")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelCitroen);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelCitroen);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Cadillac")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelCadillac);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelCadillac);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Cupra")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelCupra);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelCupra);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Chevrolet")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelChevrolet);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelChevrolet);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Dacia")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelDacia);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelDacia);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Dodge")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelDodge);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelDodge);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Fiat")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelFiat);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelFiat);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Ford")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelFord);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelFord);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Ferrari")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelFerrari);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelFerrari);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Genesis")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelGenesis);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelGenesis);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Honda")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelHonda);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelHonda);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 if(item.equals("Hyundai")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelHyundai);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelHyundai);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
 
@@ -414,8 +414,8 @@ public class AddCarFragment extends Fragment {
 
                 if(item.equals("Porsche")) {
 
-                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, ModelPorsche);
-                    ModAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelPorsche);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
                 // Complete the Rest Of the Manufacturers (43 of them)....

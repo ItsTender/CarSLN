@@ -13,15 +13,13 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/DetailedCar"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="30dp"
+            android:layout_height="300dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/carplain"
+            android:src="@drawable/photo_iv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -56,35 +54,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewSeller" />
 
-        <TextView
-            android:id="@+id/Detailedhpx"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:text="Horse Power"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedHP"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Detailedenginex" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+            <TextView
+                android:id="@+id/Detailedhpx"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Horse Power"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/DetailedHP"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif"
-            android:text="Power"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/Detailedhpx"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedEngine" />
+            <TextView
+                android:id="@+id/DetailedHP"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Power"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/Detailedhpx" />
 
+        </LinearLayout>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -103,7 +107,7 @@
                 android:id="@+id/DetailedYear"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
@@ -113,7 +117,7 @@
 
             <TextView
                 android:id="@+id/DetailedUsers"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="110dp"
                 android:layout_marginTop="13dp"
@@ -127,7 +131,7 @@
                 android:id="@+id/DetailedKilometre"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="230dp"
+                android:layout_marginStart="240dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
@@ -138,105 +142,183 @@
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/DetailedLocationArea"
-            android:layout_width="150dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="25dp"
-            android:fontFamily="sans-serif"
-            android:text="Location"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/DetailedLocationAreax"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <TextView
-            android:id="@+id/DetailedLocationAreax"
-            android:layout_width="120dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="25dp"
-            android:fontFamily="sans-serif"
-            android:text="Location"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedLocationArea"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-        <TextView
-            android:id="@+id/Detailedenginex"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            <TextView
+                android:id="@+id/DetailedLocationAreax"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Location"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/DetailedLocationArea"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Location"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
-            android:fontFamily="sans-serif"
-            android:text="Engine"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedEngine"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedLocationAreax" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <TextView
-            android:id="@+id/DetailedEngine"
-            android:layout_width="300dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="35dp"
+            <TextView
+                android:id="@+id/Detailedenginex"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Engine"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/DetailedEngine"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Engine"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif"
-            android:text="Engine"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/Detailedenginex"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedLocationArea" />
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-        <TextView
-            android:id="@+id/Detailedkilox"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="80dp"
-            android:fontFamily="sans-serif"
-            android:text="Kilometre:"
-            android:textSize="18sp"
-            android:textColor="@color/black"
+
+            <TextView
+                android:id="@+id/Detailedtransmissionx"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Transmission"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/DetailedGear"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Gear"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <TextView
+                android:id="@+id/DetailedTestUntilx"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Test Until"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/DetailedTestUntil"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Test Date"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Detailedtransmissionx" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
+            <TextView
+                android:id="@+id/DetailedColorx"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Car Color"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/Detailedtransmissionx"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
-            android:fontFamily="sans-serif"
-            android:text="Transmission"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedGear"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Detailedhpx" />
+            <TextView
+                android:id="@+id/DetailedColor"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Color"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/DetailedGear"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif"
-            android:text="Transmission/Gear"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/Detailedtransmissionx"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedHP" />
+        </LinearLayout>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewSeller"
@@ -275,6 +357,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/DetailedUserMail"
             app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

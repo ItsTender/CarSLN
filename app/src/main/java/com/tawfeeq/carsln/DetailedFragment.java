@@ -122,6 +122,9 @@ public class DetailedFragment extends Fragment {
         tvKilometre =getView().findViewById(R.id.DetailedKilometre);
         tvUsers= getView().findViewById(R.id.DetailedUsers);
         tvTransmission =getView().findViewById(R.id.DetailedGear);
+        tvLocation = getView().findViewById(R.id.DetailedLocationArea);
+        tvTest = getView().findViewById(R.id.DetailedTestUntil);
+        tvColor = getView().findViewById(R.id.DetailedColor);
         tvSeller = getView().findViewById(R.id.DetailedUserMail);
         ivSeller = getView().findViewById(R.id.imageViewSeller);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
@@ -289,6 +292,9 @@ public class DetailedFragment extends Fragment {
         String year=Year.toString(); tvYear.setText(year);
         String Kilo =Kilometre.toString(); tvKilometre.setText(Kilo+" km");
         tvTransmission.setText(Transmission);
+        tvLocation.setText(Location);
+        tvTest.setText(NextTest);
+        tvColor.setText(Color);
 
         if(Users==1){
             String Owners= Users.toString(); tvUsers.setText(Owners + " Owner");
@@ -302,7 +308,7 @@ public class DetailedFragment extends Fragment {
 
         if ( Photo == null || Photo.isEmpty())
         {
-            Picasso.get().load(R.drawable.carplain).into(ivCar);
+            Picasso.get().load(R.drawable.photo_iv).into(ivCar);
 
         }
         else {
