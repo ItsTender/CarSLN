@@ -51,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
             bnv.setVisibility(View.VISIBLE);
             bnv.setSelectedItemId(R.id.market);
-            GoToFragmentCars();
-            setSaved();
+            setSavedGoToMarket();
         }
         else {
 
@@ -102,6 +101,34 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
                 fbs.setUser(null);
+            }
+        });
+    }
+
+    public void setSavedGoToMarket() {
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String user = str.substring(0,n);
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                usr = documentSnapshot.toObject(UserProfile.class);
+                fbs.setUser(usr);
+
+                FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                ft.commit();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                fbs.setUser(null);
+
+                FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                ft.commit();
             }
         });
     }

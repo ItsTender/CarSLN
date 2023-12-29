@@ -148,7 +148,7 @@ public class AddCarFragment extends Fragment {
         SpinnerTestMonth.setAdapter(TestMonthAdapter);
 
 
-        String [] CarColor = { "Select Car Color","White","Dark Grey","Grey","Light Grey","Silver","Black","Dark Red","Red","Light Red","Dark Green","Green","Light Green","Dark Blue","Blue","Vibrant Blue","Light Blue","Orange","Yellow","Brown","Purple"};
+        String [] CarColor = { "Select Car Color","White", "Black", "Dark Grey","Grey","Light Grey","Silver","Dark Red","Red","Light Red","Dark Green","Green", "Metallic Green","Light Green","Dark Blue","Blue","Vibrant Blue","Light Blue","Orange","Yellow", "Bright Yellow","Brown","Purple"};
         ArrayAdapter<String> ColorAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, CarColor);
         ColorAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerColor.setAdapter(ColorAdapter);
@@ -167,21 +167,21 @@ public class AddCarFragment extends Fragment {
 
 
         String [] ManList = {"Choose Car Manufacturer","Audi","Abarth", "Alfa Romeo", "Aston Martin","BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
-                "Dacia","Dodge","Fiat", "Ford", "Ferrari", "Genesis", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus",
-                "Maserati", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
-        //43 Manufacturers!!
+                "Dacia","Dodge","Fiat", "Ford", "Ferrari", "Genesis", "GMC", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus",
+                "Maserati", "Mazda", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
+        //45 Manufacturers!!
         ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ManList);
         ManAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerMan.setAdapter(ManAdapter);
 
 
-        // Here is the Whole list of Models For Each Car Manufacturer (42 lists and the No Manufacturer List)
+        // Here is the Whole list of Models For Each Car Manufacturer (45 lists and the No Manufacturer List)
 
 
         String [] ModelNon = {"Choose the Car's Manufacturer"};
 
         String [] ModelAudi = {"Choose Audi Model", "100", "80", "A1", "A3", "A4", "A5", "A6", "A7", "A8", "E-tron", "E-tron GT", "E-tron Q4", "Q2", "Q3", "Q4", "Q5",
-                "Q6", "Q7", "Q8", "R8", "RS3", "RS4", "RS5", "RS6", "RS7", "RSQ3", "RSQ8", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "SQ7", "SQ8", "TT", "TT RS"};
+                "Q6", "Q7", "Q8", "R8", "RS3 Sedan", "RS3 Hatchback", "RS4", "RS4 Avant", "RS5", "RS6", "RS6 Avant", "RS7", "RSQ3", "RSQ8", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "SQ7", "SQ8", "TT", "TT RS"};
 
         String [] ModelAbarth = {"Choose Abarth Model", "124 Spider", "500", "500c", "595", "595c"};
 
@@ -222,19 +222,21 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelGenesis = {"Choose Genesis Model", "G70", "G80", "G90", "GLS", "GV60", "GV70", "GV80"};
 
+        String [] ModelGMC = {"Choose GMC Model", "Acadia", "Jimmy", "Yukon", "Yukon Denali", "Suburban", "Hummer EV", "Envoy", "Vandura", "Savana", "Sonoma", "Sierra", "Sierra 4x4", "Safari", "Rally"};
+
         String [] ModelHonda = {"Choose Honda Model", "Acura Integra", "Acura NSX", "Acura MDX", "Shuttle", "CR-V", "CR-Z", "FR-V", "HR-V", "S2000", "Odyssey", "Accord", "Insight","Jazz", "Jazz Hybrid", "Legend", "Stream",
                 "Civic Type-R", "Civic Hybrid", "Civic Hatchback", "Civic Sedan", "Civic Station", "Pilot", "Prelude"};
 
         String [] ModelHyundai = {"Choose Hyundai Model", "i10", "i20", "i20N", "i25", "i30", "i30CW", "i30N", "i35", "i40", "iX20", "iX35", "iX55", "Ioniq",  "Ioniq 5", "Ioniq 6", "Elantra", "Accent", "Bayon", "Getz", "Veloster", "Veloster N",
                 "Venue", "Terracan", "Tucson", "Sonata", "Sonata Hybrid", "Sonata N", "Santa Fe", "Palisade", "Kona", "Kona EV", "Coupe", "H1", "H100", "H100 Truck", "i800", "Staria"};
 
-        String [] ModelInfiniti = {"Choose Infiniti Model", ""};
+        String [] ModelInfiniti = {"Choose Infiniti Model", "FX30", "FX35", "FX50", "G37", "Q30", "Q50", "Q60", "Q70", "QX30", "QX50", "QX55", "QX56", "QX60", "QX70"};
 
-        String [] ModelIsuzu = {"Choose Isuzu Model", ""};
+        String [] ModelIsuzu = {"Choose Isuzu Model", "D-Max 2x4", "D-Max 4x4", "Sumo"};
 
-        String [] ModelJeep = {"Choose Jeep Model", ""};
+        String [] ModelJeep = {"Choose Jeep Model", "Gladiator", "Wagoneer", "Grand Wagoneer", "Cherokee", "Grand Cherokee", "Grand Cherokee", "Commander", "Compass", "Renegade", "Wrangler", "Wrangler Rubicon"};
 
-        String [] ModelJaguar = {"Choose Jaguar Model", ""};
+        String [] ModelJaguar = {"Choose Jaguar Model", "E-Pace", "F-Pace", "F-Type", "I-Pace", "S-Pace", "X-Pace", "XE", "XF", "XJ", "XJ6", "XJ8", "XJR", "XK", "XKR"};
 
         String [] ModelKia = {"Choose Kia Model", ""};
 
@@ -245,6 +247,8 @@ public class AddCarFragment extends Fragment {
         String [] ModelLexus = {"Choose Lexus Model", ""};
 
         String [] ModelMaserati = {"Choose Maserati Model", ""};
+
+        String [] ModelMazda = {"Choose Mazda Model", ""};
 
         String [] ModelMini = {"Choose Mini Model", ""};
 
@@ -265,19 +269,22 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelSubaru = {"Choose Subaru Model", ""};
 
-        String [] ModelSuzuki = {"Choose Suzuki Model", ""};
+        String [] ModelSuzuki = {"Choose Suzuki Model", "SX4", "SX4 Crossover", "XL7", "Ignis", "Alto", "Baleno", "Jimny", "Grand Vitara", "Wagon", "Vitara", "Liana", "Maruti", "Swift", "Celerio", "Samurai", "Splash", "X90", "Equator", "Carry"};
 
-        String [] ModelSeat = {"Choose Seat Model", ""};
+        String [] ModelSeat = {"Choose Seat Model", "Ateca", "Ibiza", "Ibiza FR", "Alhambra", "Altea", "Altea XL", "Arona", "Arona FR", "Toledo", "Tarraco", "Leon", "Leon FR", "Mii", "Cordoba"};
 
-        String [] ModelSkoda = {"Choose Skoda Model", ""};
+        String [] ModelSkoda = {"Choose Skoda Model", "Octavia", "Octavia RS", "Octavia Space", "Enyaq", "Yeti", "Superb", "Citigo", "Scala", "Fabia", "Fabia Space", "Kamiq", "Karoq", "kodiaq", "Rapid", "Rapid Spaceback", "Roomster", "Enyaq IV"};
 
-        String [] ModelToyota = {"Choose Toyota Model", ""};
+        String [] ModelToyota = {"Choose Toyota Model", "4Runner", "BZ4X", "C-HR", "FJ Cruiser", "GR86", "GT86", "IQ", "MR2", "RAV4", "RAV4 Hybrid", "Avalon", "Avalon Hybrid", "Avensis", "Auris", "Auris Hybrid", "AYGO", "AYGO X", "Grand Highlander", "Highlander", "Venza", "Avanza", "Verso",
+                "Yaris", "Yaris Hybrid", "GR Yaris", "Land Cruiser", "Supra", "Starlet", "Sienna", "Sienna Hybrid", "Celica", "Space Verso", "Sequoia", "Previa", "Prius","Prius Hybrid", "Camry", "Corolla", "Corolla Hybrid", "Corolla Cross", "Hiace", "Hilux 2x4", "Hilux 4x4", "Tacoma", "Tundra", "Proace", "Sette"};
 
-        String [] ModelTesla = {"Choose Tesla Model", ""};
+        String [] ModelTesla = {"Choose Tesla Model", "Model S", "Model 3", "Model X", "Model Y", "Roadster"};
 
-        String [] ModelVolkswagen = {"Choose Volkswagen Model", ""};
+        String [] ModelVolkswagen = {"Choose Volkswagen Model", "ID.5", "ID3", "ID4", "ID6 CROZZ", "T-Roc", "T-Cross", "Atlas", "Eos", "UP", "Arteon", "Bora", "Jetta", "Golf", "Golf GTE", "Golf GTI", "Golf R", "Golf Sportsvan", "Vento","Beetle", "Touran", "Tiguan", "Passat", "Passat Estate",
+                "Polo", "Polo GTI", "Phaeton", "Corrado", "Scirocco", "ID.Buzz", "LT", "LT35", "Amarok", "Transporter", "Multivan", "Caddy", "Caravelle", "Crafter", "Shuttle"};
 
-        String [] ModelVolvo = {"Choose Volvo Model", ""};
+        String [] ModelVolvo = {"Choose Volvo Model", "240", "244", "740", "744", "745", "760", "850", "854", "855", "940", "944", "945", "960", "C30", "C40", "C70", "CX11", "S40", "S60", "S70", "S80", "S90", "V40", "V40 Cross Country", "V50",
+                "V60", "V70", "XC40", "XC60", "XC70", "XC90", "245", "264", "340", "345"};
 
 
         // Ends ........
@@ -391,6 +398,12 @@ public class AddCarFragment extends Fragment {
                     ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
+                if(item.equals("GMC")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelGMC);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
                 if(item.equals("Honda")) {
 
                     ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelHonda);
@@ -454,6 +467,12 @@ public class AddCarFragment extends Fragment {
                 if(item.equals("Maserati")) {
 
                     ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelMaserati);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Mazda")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelMazda);
                     ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }

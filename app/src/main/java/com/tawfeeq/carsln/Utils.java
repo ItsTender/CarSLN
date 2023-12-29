@@ -44,7 +44,7 @@ public class Utils {
 
             ProgressDialog progressDialog= new ProgressDialog(context);
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait until we Upload Your Image");
+            progressDialog.setMessage("Uploading Your Image. Please Wait!");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.show();
 

@@ -1,5 +1,7 @@
 package com.tawfeeq.carsln;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +26,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -129,19 +135,12 @@ public class SettingsFragment extends Fragment {
 
         // Set New Profile Photo.....
 
-        ivUser.setOnClickListener(new View.OnClickListener() {
+        Changepfp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                ImageChooser();
+            public void onClick(View view) {ImageChooser();
             }
         });
 
-        Changepfp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UpdatePFP();
-            }
-        });
 
         // Set New Profile Photo Ends
 
@@ -212,9 +211,6 @@ public class SettingsFragment extends Fragment {
         });
 
 
-
-
-
         btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -257,7 +253,51 @@ public class SettingsFragment extends Fragment {
         if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data != null) {
 
             Uri selectedImageUri = data.getData();
-            utils.uploadImage(getActivity(), selectedImageUri);
+            uploadImageandSave(getActivity(), selectedImageUri);
+        }
+    }
+
+    public void uploadImageandSave(Context context, Uri selectedImageUri) {
+        if (selectedImageUri != null) {
+
+            ProgressDialog progressDialog= new ProgressDialog(context);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.setMessage("Uploading New Profile Picture Image, Please Wait!");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.show();
+
+
+            String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
+            StorageReference imageRef = fbs.getStorage().getReference().child("images/" + selectedImageUri.getLastPathSegment());
+
+            UploadTask uploadTask = imageRef.putFile(selectedImageUri);
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            fbs.setSelectedImageURL(uri);
+                            UpdatePFP();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("Utils: uploadImage: ", e.getMessage());
+                        }
+                    });
+
+                    progressDialog.dismiss();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
+                    Toast.makeText(context, "Failed to Upload Image", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(context, "Choose an Image", Toast.LENGTH_SHORT).show();
         }
     }
 
