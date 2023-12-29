@@ -168,8 +168,8 @@ public class AddCarFragment extends Fragment {
 
         String [] ManList = {"Choose Car Manufacturer","Audi","Abarth", "Alfa Romeo", "Aston Martin","BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
                 "Dacia","Dodge","Fiat", "Ford", "Ferrari", "Genesis", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus",
-                "Maserati", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volvo"};
-        //42 Manufacturers!!
+                "Maserati", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
+        //43 Manufacturers!!
         ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ManList);
         ManAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerMan.setAdapter(ManAdapter);
@@ -228,32 +228,56 @@ public class AddCarFragment extends Fragment {
         String [] ModelHyundai = {"Choose Hyundai Model", "i10", "i20", "i20N", "i25", "i30", "i30CW", "i30N", "i35", "i40", "iX20", "iX35", "iX55", "Ioniq",  "Ioniq 5", "Ioniq 6", "Elantra", "Accent", "Bayon", "Getz", "Veloster", "Veloster N",
                 "Venue", "Terracan", "Tucson", "Sonata", "Sonata Hybrid", "Sonata N", "Santa Fe", "Palisade", "Kona", "Kona EV", "Coupe", "H1", "H100", "H100 Truck", "i800", "Staria"};
 
-        
+        String [] ModelInfiniti = {"Choose Infiniti Model", ""};
 
+        String [] ModelIsuzu = {"Choose Isuzu Model", ""};
 
+        String [] ModelJeep = {"Choose Jeep Model", ""};
 
+        String [] ModelJaguar = {"Choose Jaguar Model", ""};
 
+        String [] ModelKia = {"Choose Kia Model", ""};
 
+        String [] ModelLamborghini = {"Choose Lamborghini Model", ""};
 
+        String [] ModelLandRover = {"Choose Land Rover Model", ""};
 
+        String [] ModelLexus = {"Choose Lexus Model", ""};
 
+        String [] ModelMaserati = {"Choose Maserati Model", ""};
 
+        String [] ModelMini = {"Choose Mini Model", ""};
 
+        String [] ModelMitsubishi = {"Choose Mitsubishi Model", ""};
 
+        String [] ModelMercedes = {"Choose Mercedes Model", ""};
 
+        String [] ModelNissan = {"Choose Nissan Model", ""};
 
+        String [] ModelOpel = {"Choose Opel Model", ""};
 
-
-
-
-
-
-
-
-
-
-        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911", "911 Speedster", "911 Sports Classic", "911 S/T", "911 Carrera S", "911 Carrera 4S", "911 Convertible", "911 Turbo S", "911 Targa", "911 GT2 RS", "911 GT3", "911 GT3 RS", "Taycan", "Macan", "Macan GTS",
+        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911 Carrera", "911 Carrera S", "911 Carrera 4S", "911 Convertible", "911 Speedster", "911 Sports Classic", "911 S/T", "911 Turbo S", "911 Targa", "911 GT2 RS", "911 GT3", "911 GT3 RS", "Taycan", "Macan", "Macan GTS",
                 "Panamera", "Panamera Turbo", "Cayenne", "Cayenne Turbo"};
+
+        String [] ModelPeugeot = {"Choose Peugeot Model", ""};
+
+        String [] ModelRenault = {"Choose Renault Model", ""};
+
+        String [] ModelSubaru = {"Choose Subaru Model", ""};
+
+        String [] ModelSuzuki = {"Choose Suzuki Model", ""};
+
+        String [] ModelSeat = {"Choose Seat Model", ""};
+
+        String [] ModelSkoda = {"Choose Skoda Model", ""};
+
+        String [] ModelToyota = {"Choose Toyota Model", ""};
+
+        String [] ModelTesla = {"Choose Tesla Model", ""};
+
+        String [] ModelVolkswagen = {"Choose Volkswagen Model", ""};
+
+        String [] ModelVolvo = {"Choose Volvo Model", ""};
 
 
         // Ends ........
@@ -264,7 +288,7 @@ public class AddCarFragment extends Fragment {
 
                 String item = adapterView.getSelectedItem().toString();
 
-                // For Each Manufacturer Selected gets a new String Array of Sold/Available Models
+                // For Each Manufacturer Selected, The Models get a new String Array of Sold/Available Models of that Manufacturer!
                 if(item.equals("Choose Car Manufacturer")){
 
                     ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelNon);
@@ -379,46 +403,157 @@ public class AddCarFragment extends Fragment {
                     ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
-                
+                if(item.equals("Infiniti")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelInfiniti);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Isuzu")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelIsuzu);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Jeep")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelJeep);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Jaguar")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelJaguar);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Kia")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelKia);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Lamborghini")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelLamborghini);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Land Rover")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelLandRover);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Lexus")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelLexus);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Maserati")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelMaserati);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Mini")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelMini);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Mitsubishi")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelMitsubishi);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Mercedes")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelMercedes);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Nissan")) {
 
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelNissan);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Opel")) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelOpel);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
                 if(item.equals("Porsche")) {
 
                     ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelPorsche);
                     ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
-                // Complete the Rest Of the Manufacturers (43 of them)....
+                if(item.equals("Peugeot")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelPeugeot);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Renault")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelRenault);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Subaru")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelSubaru);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Suzuki")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelSuzuki);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Seat")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelSeat);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Skoda")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelSkoda);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Toyota")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelToyota);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Tesla")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelTesla);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Volkswagen")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelVolkswagen);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("Volvo")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelVolvo);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

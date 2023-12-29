@@ -114,7 +114,7 @@ public class SignUpFragment extends Fragment {
                     return;
                 }
 
-                if(pass.equals(confirm)) {
+                if(pass.equals(confirm) && fbs.getAuth().getCurrentUser()==null) {
                     fbs.getAuth().createUserWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

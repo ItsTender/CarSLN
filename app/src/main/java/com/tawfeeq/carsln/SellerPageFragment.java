@@ -150,10 +150,13 @@ public class SellerPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                // only fills in the number in the Phone App....
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + usr.getPhone()));
-                startActivity(intent);
+                // only fills in the Phone number in the Phone App....
+                if(usr!=null) {
+
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + usr.getPhone()));
+                    startActivity(intent);
+                }
             }
         });
 

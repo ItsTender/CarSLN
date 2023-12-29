@@ -70,9 +70,9 @@
 
         <ImageView
             android:id="@+id/imageView40"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
             android:src="@drawable/pinpoint_removebg_preview"
             app:layout_constraintStart_toEndOf="@+id/DetailedLocationArea"
             app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />

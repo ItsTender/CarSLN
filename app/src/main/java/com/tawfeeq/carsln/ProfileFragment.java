@@ -111,7 +111,7 @@ public class ProfileFragment extends Fragment {
 
         if(fbs.getUser()!=null) {
 
-            tvUser.setText("Welcome, " + fbs.getUser().getUsername());
+            tvUser.setText(fbs.getUser().getUsername());
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {

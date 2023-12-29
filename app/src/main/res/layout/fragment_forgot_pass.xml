@@ -31,7 +31,7 @@
             android:id="@+id/textViewforgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif"
             android:text="Reset Password"
@@ -43,9 +43,9 @@
 
         <TextView
             android:id="@+id/textView100"
-            android:layout_width="320dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="5dp"
             android:fontFamily="sans-serif"
             android:text="Please Enter Your Email Adress, We Will Send You an email to Reset Your Password"
@@ -90,14 +90,12 @@
             android:id="@+id/tvLoginForgot"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginEnd="161dp"
+            android:layout_marginStart="66dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Remember Your Password?"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnResetPass" />
 

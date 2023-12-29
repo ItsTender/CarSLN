@@ -119,22 +119,24 @@ public class LogInFragment extends Fragment {
                     return;
                 }
 
-                fbs.getAuth().signInWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // To DO
-                            Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
-                            setNavigationBarVisible();
-                            setNavigationBarCarsMarket();
-                            GoToFragmentCars();
-                            setNewSaved();
-                        } else {
-                            // To DO
-                            Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
+                if (fbs.getAuth().getCurrentUser() == null) {
+                    fbs.getAuth().signInWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // To DO
+                                Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
+                                setNavigationBarVisible();
+                                setNavigationBarCarsMarket();
+                                GoToFragmentCars();
+                                setNewSaved();
+                            } else {
+                                // To DO
+                                Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
     }

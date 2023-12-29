@@ -36,7 +36,8 @@ public class SettingsFragment extends Fragment {
 
     Utils utils;
     FireBaseServices fbs;
-    Button btnLogout, Changepfp;
+    EditText etChangeUsername, etChangePhone;
+    Button btnLogout, Changepfp, btnChangePhone, btnChangeUsername;
     ImageView ivUser;
     String pfp;
 
@@ -94,6 +95,10 @@ public class SettingsFragment extends Fragment {
         utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
         btnLogout= getView().findViewById(R.id.btnLogout);
+        btnChangePhone = getView().findViewById(R.id.btnChangePhone);
+        btnChangeUsername = getView().findViewById(R.id.btnChangeUsername);
+        etChangePhone = getView().findViewById(R.id.etChangePhone);
+        etChangeUsername =getView().findViewById(R.id.etChangeUsername);
         Changepfp = getView().findViewById(R.id.btnChangePhoto);
         ivUser = getView().findViewById(R.id.imageViewProfilePhotoSettings);
 
@@ -113,8 +118,11 @@ public class SettingsFragment extends Fragment {
             } else {
                 Picasso.get().load(pfp).into(ivUser);
             }
-        }
 
+            etChangeUsername.setText(fbs.getUser().getUsername());
+            etChangePhone.setText(fbs.getUser().getPhone());
+
+        }
 
         // Get Profile Photo Ends
 
@@ -135,8 +143,77 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
         // Set New Profile Photo Ends
+
+
+        btnChangeUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String newusername = etChangeUsername.getText().toString();
+                if(newusername.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Please Enter a Valid Username", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(fbs.getUser()!=null) {
+
+                    if (newusername.equals(fbs.getUser().getUsername())) {
+                        return;
+                    }
+
+                    fbs.getStore().collection("Users").document(user).update("username", newusername).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            Toast.makeText(getActivity(), "Username Updated", Toast.LENGTH_LONG).show();
+                            fbs.getUser().setUsername(newusername);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Username, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        });
+
+
+        btnChangePhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String newphone = etChangePhone.getText().toString();
+                if(newphone.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(fbs.getUser()!=null) {
+
+                    if (newphone.equals(fbs.getUser().getPhone())) {
+                        return;
+                    }
+
+                    fbs.getStore().collection("Users").document(user).update("phone", newphone).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            Toast.makeText(getActivity(), "Phone Number Updated", Toast.LENGTH_LONG).show();
+                            fbs.getUser().setPhone(newphone);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Phone Number, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        });
+
+
+
+
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
