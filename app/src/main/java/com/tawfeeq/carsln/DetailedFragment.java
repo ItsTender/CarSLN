@@ -182,12 +182,12 @@ public class DetailedFragment extends Fragment {
                 String str = fbs.getAuth().getCurrentUser().getEmail();
 
                 if(str.equals(Email)){
-
+                    // Always will be like that!
                     GoToProfile();
                     setNavigationBarProfile();
                 }
                 else {
-
+                    // might make it a popup with (UserPhoto, Username, Phone-"Call,Whatsapp").......
                     Fragment gtn = new SellerPageFragment();
                     Bundle bundle = new Bundle();
 
