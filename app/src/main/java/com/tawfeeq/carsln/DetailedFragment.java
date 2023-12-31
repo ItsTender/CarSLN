@@ -177,6 +177,43 @@ public class DetailedFragment extends Fragment {
         // Get Profile Photo Ends
 
 
+        ivCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Fragment gtn= new DetailedPhotosFragment();
+                Bundle bundle= new Bundle();
+
+
+                bundle.putString("ID", ID);
+                bundle.putBoolean("SellorLend", sell_lend);
+                bundle.putString("Email", Email);
+                bundle.putString("Man", Man);
+                bundle.putString("Mod", Mod);
+                bundle.putInt("HP", Power);
+                bundle.putInt("Price", Price);
+                bundle.putString("Photo", Photo);
+                bundle.putString("Second", SecondPhoto);
+                bundle.putString("Third", ThirdPhoto);
+                bundle.putString("Engine", Engine);
+                bundle.putString("Transmission", Transmission);
+                bundle.putInt("Year", Year);
+                bundle.putInt("Kilo", Kilometre);
+                bundle.putInt("Users", Users);
+                bundle.putString("Color", Color);
+                bundle.putString("Area", Location);
+                bundle.putString("Test", NextTest);
+
+
+                gtn.setArguments(bundle);
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+
+            }
+        });
+
+
         tvSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
