@@ -17,11 +17,14 @@ public class CarID {
     private String Location;
     private String NextTest;
     private String Photo;
+    private String Secondphoto;
+    private String ThirdPhoto;
 
     public CarID() {
     }
 
-    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo) {
+    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto) {
+
         SellLend = sellLend;
         Email = email;
         Manufacturer = manufacturer;
@@ -37,6 +40,9 @@ public class CarID {
         Location = location;
         NextTest = nextTest;
         Photo = photo;
+        Secondphoto =secondphoto;
+        Transmission =thirdPhoto;
+
     }
 
     // protected Cars(Parcel in) {}
@@ -175,6 +181,21 @@ public class CarID {
         this.id = id;
     }
 
+    public String getSecondphoto() {
+        return Secondphoto;
+    }
+
+    public void setSecondphoto(String secondphoto) {
+        Secondphoto = secondphoto;
+    }
+
+    public String getThirdPhoto() {
+        return ThirdPhoto;
+    }
+
+    public void setThirdPhoto(String thirdPhoto) {
+        ThirdPhoto = thirdPhoto;
+    }
 
     @Override
     public String toString() {

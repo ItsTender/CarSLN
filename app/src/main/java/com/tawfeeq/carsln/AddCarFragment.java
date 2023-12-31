@@ -109,7 +109,6 @@ public class AddCarFragment extends Fragment {
         Users=getView().findViewById(R.id.etUsers);
         Engine = getView().findViewById(R.id.etEngine);
         Kilometre=getView().findViewById(R.id.etKM);
-        IV = getView().findViewById(R.id.ivAddCar);
         Add = getView().findViewById(R.id.btnAdd);
         SpinnerGear = getView().findViewById(R.id.SpinnerGear);
         SpinnerYear = getView().findViewById(R.id.SpinnerYear);
@@ -587,13 +586,6 @@ public class AddCarFragment extends Fragment {
         });
 
 
-        IV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageChooser();
-            }
-        });
-
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -626,29 +618,34 @@ public class AddCarFragment extends Fragment {
                 boolean selllend = true;
                 if(SellLend.equals("Sell the Car")) selllend=true;
                 else if(SellLend.equals("Lend the Car")) selllend=false;
-
                 String test = testmonth + "/" + testyear;
 
-                if(fbs.getSelectedImageURL()==null) photo ="";
-                else photo = fbs.getSelectedImageURL().toString()+".jpg";
-                // Sell Lend; True=Sell the Car, False=Lend the Car.
-                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,engine,KM,userhands,Color,area,test,photo);
-                FirebaseFirestore db= fbs.getStore();
-                db.collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(getActivity(), "Car Added To Market Place", Toast.LENGTH_LONG).show();
-                        fbs.setSelectedImageURL(null);
-                        //pd.dismiss();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Couldn't Upload Car To Market Place, Try Again Later", Toast.LENGTH_LONG).show();
-                        //pd.dismiss();
 
-                    }
-                });
+                Fragment gtn= new AddPhotosFragment();
+                Bundle bundle= new Bundle();
+
+
+                bundle.putBoolean("SellorLend",selllend);
+                bundle.putString("Man", Man);
+                bundle.putString("Mod", Mod);
+                bundle.putInt("HP", power);
+                bundle.putInt("Price", price);
+                bundle.putString("Engine", engine);
+                bundle.putString("Transmission", transmission);
+                bundle.putInt("Year", Yahr);
+                bundle.putInt("Kilo", KM);
+                bundle.putInt("Users", userhands);
+                bundle.putString("Color", Color);
+                bundle.putString("Area", area);
+                bundle.putString("Test", test);
+
+                // Text Car Characteristics.
+
+                gtn.setArguments(bundle);
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+
             }
         });
     }
@@ -665,10 +662,10 @@ public class AddCarFragment extends Fragment {
 
 
         if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data != null) {
+
             Uri selectedImageUri = data.getData();
             IV.setImageURI(selectedImageUri);
             utils.uploadImage(getActivity(), selectedImageUri);
-
         }
     }
 }

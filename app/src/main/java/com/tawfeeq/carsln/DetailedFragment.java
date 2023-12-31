@@ -33,7 +33,7 @@ public class DetailedFragment extends Fragment {
     TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor;
     ImageView ivCar, ivSeller, ivSaved;
     boolean sell_lend;
-    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest;
+    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto;
     Integer Price,Power,Year,Users,Kilometre;
     String pfp;
     Boolean isFound;
@@ -94,6 +94,8 @@ public class DetailedFragment extends Fragment {
         Mod=bundle.getString("Mod");
         Price=bundle.getInt("Price");
         Photo=bundle.getString("Photo");
+        SecondPhoto=bundle.getString("Second");
+        ThirdPhoto=bundle.getString("Third");
         Power =bundle.getInt("HP");
         Engine =bundle.getString("Engine");
         Year =bundle.getInt("Year");

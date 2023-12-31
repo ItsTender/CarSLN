@@ -59,6 +59,8 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 bundle.putInt("HP", cars.get(position).getBHP());
                 bundle.putInt("Price", cars.get(position).getPrice());
                 bundle.putString("Photo", cars.get(position).getPhoto());
+                bundle.putString("Second", cars.get(position).getSecondphoto());
+                bundle.putString("Third", cars.get(position).getThirdPhoto());
                 bundle.putString("Engine", cars.get(position).getEngine());
                 bundle.putString("Transmission", cars.get(position).getTransmission());
                 bundle.putInt("Year", cars.get(position).getYear());
