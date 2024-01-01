@@ -1,14 +1,19 @@
 package com.tawfeeq.carsln;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +37,8 @@ import java.util.ArrayList;
  */
 public class SellerPageFragment extends Fragment {
 
-    String Email;
-    Button btnSMS, btnCall;
+    String Email, CarName;
+    Button btnSMS, btnCall, btnWhatsapp;
     TextView tvSellerName, tvintro;
     RecyclerView rc;
     FireBaseServices fbs;
@@ -42,7 +47,7 @@ public class SellerPageFragment extends Fragment {
     ImageView ivSeller;
     String pfp;
     UserProfile usr;
-
+    private static final int PERMISSION_SEND_SMS = 1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -93,6 +98,7 @@ public class SellerPageFragment extends Fragment {
         Bundle bundle =this.getArguments();
 
         Email=bundle.getString("Email");
+        CarName =bundle.getString("CarName");
 
         return view;
     }
@@ -106,6 +112,7 @@ public class SellerPageFragment extends Fragment {
         tvintro = getView().findViewById(R.id.tvsellerintro);
         btnCall = getView().findViewById(R.id.btnCallSeller);
         btnSMS = getView().findViewById(R.id.btnSMSContact);
+        btnWhatsapp =getView().findViewById(R.id.btnWhatsapp);
         rc = getView().findViewById(R.id.RecyclerSellerCars);
         ivSeller = getView().findViewById(R.id.imageViewSellerPage);
 
@@ -163,7 +170,23 @@ public class SellerPageFragment extends Fragment {
         btnSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Go To SMS.....
+                //Sends a full on Message to the seller in the SMS App....
+                if(usr!=null) PermissionSendSMS();
+            }
+        });
+
+        btnWhatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(usr!=null) {
+
+                    String phoneNumber = usr.getPhone();
+                    String message = "Hello, I Saw Your " + CarName + " Listed for Sale On CarSLN and I'm Interested in it";
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
+                    startActivity(intent);
+                }
             }
         });
 
@@ -198,6 +221,58 @@ public class SellerPageFragment extends Fragment {
         Adapter = new CarsAdapter(getActivity(), SellerCars);
         rc.setAdapter(Adapter);
 
+    }
+
+
+//    private boolean IsWhatsappInstalled(){
+//
+//        boolean isInstalled;
+//
+//        try{
+//
+//            getActivity().getPackageManager().getPackageInfo("com.whatsapp", 0);
+//            isInstalled = true;
+//
+//        }catch (PackageManager.NameNotFoundException e){
+//
+//            isInstalled = false;
+//        }
+//        return isInstalled;
+//    }
+
+
+    private void PermissionSendSMS() {
+        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.SEND_SMS}, PERMISSION_SEND_SMS);
+        } else {
+            SendSMS();
+        }
+    }
+
+    private void SendSMS() {
+
+        String phoneNumber = usr.getPhone();
+        String message = "Hello, I Saw Your " + CarName +" Listed for Sale On CarSLN and I'm Interested in it";
+
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+            Toast.makeText(getActivity(), "Successfully Sent a Message to The Seller, Check The SMS App", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "Failed to Send SMS to The Seller", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            SendSMS();
+        } else {
+            Toast.makeText(requireContext(), "Permission Denied, Cannot Send SMS", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

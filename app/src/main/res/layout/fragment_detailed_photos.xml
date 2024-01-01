@@ -13,7 +13,7 @@
         <ImageView
             android:id="@+id/DetailedPhotosFirstCar"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/photo_iv"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/DetailedGoBack"
+            android:id="@+id/DetailedPhotosGoBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"

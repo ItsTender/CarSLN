@@ -31,7 +31,7 @@ public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
     TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor;
-    ImageView ivCar, ivSeller, ivSaved;
+    ImageView ivCar, ivSeller, ivSaved, ivBack;
     boolean sell_lend;
     String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto;
     Integer Price,Power,Year,Users,Kilometre;
@@ -131,6 +131,7 @@ public class DetailedFragment extends Fragment {
         ivSeller = getView().findViewById(R.id.imageViewSeller);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
         ivSaved = getView().findViewById(R.id.imageView4); //the Saved Icon......
+        ivBack =getView().findViewById(R.id.DetailedGoBack);
 
 
         String str = Email;
@@ -213,6 +214,12 @@ public class DetailedFragment extends Fragment {
             }
         });
 
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToAllCars();
+            }
+        });
 
         tvSeller.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,7 +237,10 @@ public class DetailedFragment extends Fragment {
                     Fragment gtn = new SellerPageFragment();
                     Bundle bundle = new Bundle();
 
+
                     bundle.putString("Email", Email);
+                    bundle.putString("CarName", Year.toString() + " " + Man + " " + Mod);
+
 
                     gtn.setArguments(bundle);
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -256,7 +266,10 @@ public class DetailedFragment extends Fragment {
                     Fragment gtn = new SellerPageFragment();
                     Bundle bundle = new Bundle();
 
+
                     bundle.putString("Email", Email);
+                    bundle.putString("CarName", Year.toString() + " " + Man + " " + Mod);
+
 
                     gtn.setArguments(bundle);
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -324,10 +337,10 @@ public class DetailedFragment extends Fragment {
 
         String prc= Price.toString();
         if(sell_lend) {
-            tvPrice.setText(prc + "$");
+            tvPrice.setText(prc + "₪");
         }
         else{
-            tvPrice.setText(prc + "$" + " Monthly");
+            tvPrice.setText(prc + "₪" + " Monthly");
         }
 
         String power=Power.toString(); tvPower.setText(power);
@@ -363,6 +376,12 @@ public class DetailedFragment extends Fragment {
     private void GoToProfile() {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
+    }
+
+    private void GoToAllCars() {
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
         ft.commit();
     }
 

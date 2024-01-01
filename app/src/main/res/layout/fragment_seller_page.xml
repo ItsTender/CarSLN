@@ -62,30 +62,43 @@
 
         <Button
             android:id="@+id/btnCallSeller"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
             android:backgroundTint="@color/Blue700"
-            android:text="Call Seller"
+            android:text="Call"
             android:textColor="@color/white"
             android:textSize="15sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnSMSContact"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
 
         <Button
-            android:id="@+id/btnSMSContact"
+            android:id="@+id/btnWhatsapp"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
             android:backgroundTint="@color/Blue700"
-            android:text="Send SMS"
+            android:text="Whatsapp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnSMSContact"
+            app:layout_constraintStart_toEndOf="@+id/btnCallSeller"
+            app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
+
+        <Button
+            android:id="@+id/btnSMSContact"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="SMS"
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnCallSeller"
             app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
 
 

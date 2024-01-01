@@ -18,8 +18,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/CarRes"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_margin="20px"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -41,7 +41,7 @@
 
             <TextView
                 android:id="@+id/tvtxtMan"
-                android:layout_width="185dp"
+                android:layout_width="150dp"
                 android:layout_height="35dp"
                 android:text="Man"
                 android:textColor="@color/black"
@@ -50,6 +50,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/tvtxtMod"
@@ -94,7 +95,7 @@
                 android:id="@+id/tvtxtPrice"
                 android:layout_width="185dp"
                 android:layout_height="30dp"
-                android:text="Price$"
+                android:text="Price₪"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -104,6 +105,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
+
+
         </LinearLayout>
 
     </LinearLayout>

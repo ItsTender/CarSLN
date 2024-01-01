@@ -22,6 +22,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DetailedGoBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/arrow_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
         <TextView
             android:id="@+id/DetailedMan"
             android:layout_width="350dp"
@@ -46,7 +60,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="46dp"
             android:fontFamily="sans-serif"
-            android:text="Price$"
+            android:text="Price₪"
             android:textSize="35sp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -118,20 +132,27 @@
             android:layout_width="380dp"
             android:layout_height="50dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             app:cardBackgroundColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DetailedLocationArea">
+
+            <ImageView
+                android:id="@+id/imageView41"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/caryear" />
 
 
             <TextView
                 android:id="@+id/DetailedYear"
-                android:layout_width="50dp"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="43dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
@@ -139,27 +160,41 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
+            <ImageView
+                android:id="@+id/imageView42"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="115dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/handowners" />
+
             <TextView
                 android:id="@+id/DetailedUsers"
-                android:layout_width="110dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
+                android:layout_marginStart="142dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="Owner/s"
+                android:text="Owners"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
+            <ImageView
+                android:id="@+id/imageView43"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/kilometrevector" />
+
             <TextView
                 android:id="@+id/DetailedKilometre"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="240dp"
+                android:layout_marginStart="275dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="km"
+                android:text="kilometre"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 

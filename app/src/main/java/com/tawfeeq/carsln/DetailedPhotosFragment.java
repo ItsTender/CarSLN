@@ -104,7 +104,7 @@ public class DetailedPhotosFragment extends Fragment {
         ivFirst = getView().findViewById(R.id.DetailedPhotosFirstCar);
         ivSecond =getView().findViewById(R.id.DetailedPhotosSecondCar);
         ivThird =getView().findViewById(R.id.DetailedPhotosThirdCar);
-        Back =getView().findViewById(R.id.DetailedGoBack);
+        Back =getView().findViewById(R.id.DetailedPhotosGoBack);
 
 
         if (Photo == null || Photo.isEmpty()) {

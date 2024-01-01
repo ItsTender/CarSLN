@@ -77,6 +77,9 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 ft.commit();
             }
         };
+
+
+
     }
 
     public CarsAdapter() {
@@ -138,11 +141,11 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
             if(car.getSellLend()==true){
 
-            txtPrice.setText(car.getPrice()+"$");
+            txtPrice.setText(car.getPrice()+"₪");
             }
             else if(car.getSellLend()==false){
 
-                txtPrice.setText(car.getPrice()+ "$" +" Monthly");
+                txtPrice.setText(car.getPrice()+ "₪" +" Monthly");
             }
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())
@@ -157,8 +160,6 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
         }
 
-
     }
-
 
 }

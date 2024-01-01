@@ -263,7 +263,7 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelOpel = {"Choose Opel Model", "Adam", "Omega", "Insignia", "Astra", "Grandland", "Vectra", "Zafira", "Tigra", "Mokka", "Mokka X", "Meriva", "Frontera", "Corsa", "Cascada", "Crossland X", "Vivaro", "Movano", "Combo"};
 
-        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911 Carrera", "911 Carrera S", "911 Carrera 4S", "911 Convertible", "911 Speedster", "911 Sports Classic", "911 S/T", "911 Turbo S", "911 Targa", "911 GT2 RS", "911 GT3", "911 GT3 RS", "Taycan", "Macan", "Macan GTS",
+        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911 Carrera", "911 Carrera T", "911 Carrera S", "911 Carrera GTS", "911 Cabriolet", "911 Speedster", "911 Sports Classic", "911 S/T", "911 Turbo", "911 Turbo S", "911 Targa", "911 GT2 RS", "911 GT3", "911 GT3 RS", "Taycan", "Macan", "Macan GTS",
                 "Panamera", "Panamera Turbo", "Cayenne", "Cayenne Turbo"};
 
         String [] ModelPeugeot = {"Choose Peugeot Model", "106", "107", "108", "2008", "205", "206", "206+", "206CC", "207", "208", "208 GTI", "3008", "301", "305", "306", "307", "307CC", "308", "308CC", "309", "405", "406", "407", "408", "5008",
