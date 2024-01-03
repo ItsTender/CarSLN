@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintProfile"
         android:layout_width="match_parent"
-        android:layout_height="320dp">
+        android:layout_height="288dp">
 
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="131dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -62,14 +62,12 @@
 
         <ImageView
             android:id="@+id/imageViewSettings"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/gear_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/settings"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewProfilePhoto"
             app:layout_constraintTop_toTopOf="parent" />
 
 

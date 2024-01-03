@@ -36,6 +36,19 @@
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DetailedDeleteListing"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/trash_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
         <TextView
             android:id="@+id/DetailedMan"
             android:layout_width="350dp"
@@ -141,9 +154,9 @@
 
             <ImageView
                 android:id="@+id/imageView41"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="12dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="14dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/caryear" />
 
@@ -152,7 +165,7 @@
                 android:id="@+id/DetailedYear"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="43dp"
+                android:layout_marginStart="44dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
@@ -164,7 +177,7 @@
                 android:id="@+id/imageView42"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="115dp"
+                android:layout_marginStart="113dp"
                 android:layout_marginTop="13dp"
                 android:src="@drawable/handowners" />
 
@@ -172,7 +185,7 @@
                 android:id="@+id/DetailedUsers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="142dp"
+                android:layout_marginStart="140dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:text="Owners"
@@ -183,7 +196,7 @@
                 android:id="@+id/imageView43"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginStart="240dp"
+                android:layout_marginStart="238dp"
                 android:layout_marginTop="7dp"
                 android:src="@drawable/kilometrevector" />
 
@@ -191,7 +204,7 @@
                 android:id="@+id/DetailedKilometre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="275dp"
+                android:layout_marginStart="273dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:text="kilometre"

@@ -214,7 +214,7 @@ public class SettingsFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Hold the Button to Logout", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Hold the Button to Logout", Toast.LENGTH_LONG).show();
                 }
             });
         btnLogout.setOnLongClickListener(new View.OnLongClickListener() {
@@ -264,6 +264,7 @@ public class SettingsFragment extends Fragment {
             progressDialog.setTitle("Uploading...");
             progressDialog.setMessage("Uploading New Profile Picture Image, Please Wait!");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
 
 

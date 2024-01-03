@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.hardware.lights.Light;
 import android.os.Bundle;
@@ -106,12 +107,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setSavedGoToMarket() {
+
+        ProgressDialog progressDialog= new ProgressDialog(MainActivity.this);
+        progressDialog.setTitle("Loading...");
+        progressDialog.setMessage("Loading CarSLN MarketPlace");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setIcon(R.drawable.slnround);
+        progressDialog.show();
+
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
         fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                progressDialog.dismiss();
 
                 usr = documentSnapshot.toObject(UserProfile.class);
                 fbs.setUser(usr);
@@ -123,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+
+                progressDialog.dismiss();
+
                 Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
                 fbs.setUser(null);
 
@@ -131,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
             }
         });
+
     }
 
 

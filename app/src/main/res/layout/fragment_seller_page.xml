@@ -16,7 +16,6 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif"
             android:text="Welcome to"
             android:textColor="@color/black"
@@ -51,14 +50,14 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="131dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent"/>
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
         <Button
             android:id="@+id/btnCallSeller"

@@ -1,9 +1,9 @@
 package com.tawfeeq.carsln;
 
 public class CarID {
-    private String id;
+    private String id; // the ID of the Listing in the FireStore.
     private boolean SellLend; // if the User wants to Sell the Car the Var will be 'TRUE' else if the User only wants to Lend his Car the Var will be 'FALSE'
-    private String Email;
+    private String Email; // The User's Email Address according to the Listing.
     private String Manufacturer;
     private String Model;
     private int BHP;
@@ -14,11 +14,11 @@ public class CarID {
     private int Kilometre;
     private int Users;
     private String Color;
-    private String Location;
+    private String Location; // Only the Provinces of Palestine.
     private String NextTest;
-    private String Photo;
-    private String Secondphoto;
-    private String ThirdPhoto;
+    private String Photo; // First Photo of Three (Maximum).
+    private String Secondphoto; // Second Photo of Three
+    private String ThirdPhoto; // Third Photo of Three
 
     public CarID() {
     }

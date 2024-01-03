@@ -167,7 +167,7 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Welcome To CarSLN", Toast.LENGTH_LONG).show();
                     setNavigationBarVisible();
                     setNavigationBarCarsMarket();
                     setNewSavedandGoToMaketPlace();

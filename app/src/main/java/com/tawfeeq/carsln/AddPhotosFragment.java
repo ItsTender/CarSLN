@@ -222,6 +222,7 @@ public class AddPhotosFragment extends Fragment {
             progressDialog.setTitle("Uploading...");
             progressDialog.setMessage("Uploading Your Image. Please Wait!");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
 
 
@@ -268,6 +269,7 @@ public class AddPhotosFragment extends Fragment {
             progressDialog.setTitle("Uploading...");
             progressDialog.setMessage("Uploading Your Image. Please Wait!");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
 
 
@@ -314,6 +316,7 @@ public class AddPhotosFragment extends Fragment {
             progressDialog.setTitle("Uploading...");
             progressDialog.setMessage("Uploading Your Image. Please Wait!");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
 
 

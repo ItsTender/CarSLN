@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/DetailedCar"
+            android:id="@+id/sln_start"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="61dp"
@@ -40,7 +40,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
+            app:layout_constraintTop_toBottomOf="@+id/sln_start" />
 
         <TextView
             android:id="@+id/textView1"

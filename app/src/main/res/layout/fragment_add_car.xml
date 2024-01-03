@@ -171,7 +171,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="56dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
