@@ -132,7 +132,7 @@ public class DetailedFragment extends Fragment {
         tvSeller = getView().findViewById(R.id.DetailedUserMail);
         ivSeller = getView().findViewById(R.id.imageViewSeller);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
-        ivSaved = getView().findViewById(R.id.imageView4); //the Saved Icon......
+        ivSaved = getView().findViewById(R.id.ivSavedCar); //the Saved Icon......
         ivBack =getView().findViewById(R.id.DetailedGoBack); // Goes Back To Where ever the User Was.
         ivDelete =getView().findViewById(R.id.DetailedDeleteListing);
 
@@ -149,7 +149,7 @@ public class DetailedFragment extends Fragment {
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
             } else {
                 Picasso.get().load(pfp).into(ivSeller);
             }
@@ -233,7 +233,7 @@ public class DetailedFragment extends Fragment {
                     pfp = documentSnapshot.getString("userPhoto");
 
                     if (pfp == null || pfp.isEmpty()) {
-                        Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                        Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
                     } else {
                         Picasso.get().load(pfp).into(ivSeller);
                     }
@@ -242,7 +242,7 @@ public class DetailedFragment extends Fragment {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
-                    Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                    Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
                 }
             });
         }
@@ -372,48 +372,51 @@ public class DetailedFragment extends Fragment {
         String str1 = fbs.getAuth().getCurrentUser().getEmail();
         int n1 = str1.indexOf("@");
         String user1 = str1.substring(0,n1);
+        ArrayList<String> Saved;
 
-        ArrayList<String> Saved = fbs.getUser().getSavedCars();
+        if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
+        else Saved = new ArrayList<String>();
 
         if(Saved.contains(ID)) {
-            ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
+            ivSaved.setImageResource(R.drawable.bookmark_filled);
             isFound = true;
         }
         else{
-            ivSaved.setImageResource(R.drawable.saved_removebg_preview);
+            ivSaved.setImageResource(R.drawable.bookmark_unfilled);
             isFound = false;
         }
 
         ivSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isFound) Saved.remove(ID);
-                if(!isFound) Saved.add(ID);
 
-                fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        if(isFound)
-                        {
-                            ivSaved.setImageResource(R.drawable.saved_removebg_preview);
-                            fbs.getUser().setSavedCars(Saved);
-                            isFound = false;
-                        }
-                        else{
-                            ivSaved.setImageResource(R.drawable.saved_removebg_preview__1_);
-                            fbs.getUser().setSavedCars(Saved);
-                            isFound = true;
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Couldn't Add/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
-                    }
-                });
+                if(fbs.getUser()!=null) {
+                    if (isFound) Saved.remove(ID);
+                    if (!isFound) Saved.add(ID);
 
+                    fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            if (isFound) {
+                                ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                                fbs.getUser().setSavedCars(Saved);
+                                isFound = false;
+                            } else {
+                                ivSaved.setImageResource(R.drawable.bookmark_filled);
+                                fbs.getUser().setSavedCars(Saved);
+                                isFound = true;
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Add/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
+
 
         // Functions Ends......
 

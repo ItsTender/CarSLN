@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
 import android.util.Log;
@@ -128,15 +129,27 @@ public class AddPhotosFragment extends Fragment {
 
                 Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,Color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto);
 
+                ProgressDialog progressDialog= new ProgressDialog(getActivity());
+                progressDialog.setTitle("Posting...");
+                progressDialog.setMessage("Adding Your Car Listing to the CarSLN MarketPlace, Please Wait");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.setIcon(R.drawable.slnround);
+                progressDialog.show();
+
+
                 fbs.getStore().collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getActivity(), "Car Added to MarketPlace", Toast.LENGTH_SHORT).show();
+                        setNavigationCarsMarket();
+                        GoToFragmentCars();
+                        progressDialog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getActivity(), "Couldn't Add Car to MarketPlace", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     }
                 });
 
@@ -213,6 +226,23 @@ public class AddPhotosFragment extends Fragment {
         }
     }
 
+    public void GoToAddCar(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
+        ft.commit();
+    }
+
+    public void GoToFragmentCars(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.commit();
+    }
+
+    private void setNavigationCarsMarket() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
+    }
 
     private void UploadFirstPhoto(Uri selectedImageUri) {
 

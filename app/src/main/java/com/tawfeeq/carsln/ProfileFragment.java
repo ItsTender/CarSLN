@@ -38,7 +38,7 @@ public class ProfileFragment extends Fragment {
 
     FireBaseServices fbs;
     TextView tvUser;
-    ImageView ivSettings, ivPFP;
+    ImageView ivSettings, ivPFP, ivSaved, ivSearch;
     String pfp;
     RecyclerView rcListings;
     ArrayList<CarID> lst;
@@ -100,6 +100,8 @@ public class ProfileFragment extends Fragment {
         tvUser =getView().findViewById(R.id.tvUsername);
         ivSettings = getView().findViewById(R.id.imageViewSettings);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);
+        ivSaved = getView().findViewById(R.id.imageViewSavedProfile);
+        ivSearch = getView().findViewById(R.id.imageViewSearchProfile);
         rcListings= getView().findViewById(R.id.RecyclerListingsProfile);
         lst=new ArrayList<CarID>();
 
@@ -107,6 +109,7 @@ public class ProfileFragment extends Fragment {
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
+
         // Get User Profile Photo.....
 
         if(fbs.getUser()!=null) {
@@ -115,7 +118,7 @@ public class ProfileFragment extends Fragment {
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
+                Picasso.get().load(R.drawable.slnpfp).into(ivPFP);
             } else {
                 Picasso.get().load(pfp).into(ivPFP);
             }
@@ -154,6 +157,22 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        ivSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarSearch();
+                GoToSearch();
+            }
+        });
+
+        ivSaved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarSaved();
+                GoToSaved();
+            }
+        });
+
     }
 
     private void GoToSettings() {
@@ -169,6 +188,28 @@ public class ProfileFragment extends Fragment {
         Adapter = new CarsAdapter(getActivity(), lst);
         rcListings.setAdapter(Adapter);
 
+    }
+
+    private void setNavigationBarSearch() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.searchcar);
+    }
+
+    private void GoToSearch(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SearchFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarSaved() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.savedcars);
+    }
+
+    private void GoToSaved(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SavedCarsFragment());
+        ft.commit();
     }
 
 }

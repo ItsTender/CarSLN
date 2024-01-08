@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="338dp"
+        android:layout_height="330dp"
         android:id="@+id/ConstraintSeller">
 
         <TextView
@@ -47,11 +47,11 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewSellerPage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="131dp"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="138dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"

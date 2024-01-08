@@ -135,7 +135,7 @@ public class AddCarFragment extends Fragment {
         SpinnerYear.setAdapter(YearsAdapter);
 
 
-        String [] TestYear = { "Test Year Until","2024","2025","2026","2027","2028"};
+        String [] TestYear = { "Test Year Until","2024","2025","2026","2027"};
         ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestYear);
         TestYearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerTestYear.setAdapter(TestYearAdapter);
@@ -197,7 +197,7 @@ public class AddCarFragment extends Fragment {
         String [] ModelCitroen = {"Choose Citroen Model", "AX", "C Elysee", "C Zero", "C1", "C2", "C3", "C3 Aircross", "C4", "C4 X", "C5", "C6", "C8", "CX", "DS3", "DS3 Convertible", "DS4", "DS5", "XM", "ZX",
                 "BX", "C15", "Berlingo", "Berlingo Electric", "Jumper"};
 
-        String [] ModelCadillac = {"Choose Cadillac Model", "ATS", "CT4", "CT5", "CT4 V Blackwing", "CT5 V Blackwing", "CT6", "CTS", "DTS", "SRX", "STS", "XLR", "XT4", "XT5", "XT6", "XTS", "Escalade"};
+        String [] ModelCadillac = {"Choose Cadillac Model", "ATS", "CT4", "CT5", "CT6", "CTS", "DTS", "SRX", "STS", "XLR", "XT4", "XT5", "XT6", "XTS", "Escalade"};
 
         String [] ModelCupra = {"Choose Cupra Model", "Ateca", "Leon", "Formentor", "Born"};
 
@@ -255,7 +255,7 @@ public class AddCarFragment extends Fragment {
         String [] ModelMitsubishi = {"Choose Mitsubishi Model", "ASX", "GT3000", "I-MIEV", "Outlander", "Outlander PHEV", "Attrage", "Eclipse", "Eclipse Cross", "Galant", "Grandis", "Lancer", "Lancer EVO", "Lancer Sportback", "Super Lancer", "Montero Sport", "Space Star", "Pajero", "Colt", "Hunter 2x4", "Hunter 4x4",
                 "L300", "L400", "Triton 2x4", "Triton 4x4", "Magnum 2x4", "Magnum 4x4", "Space Gear", "Canter"};
 
-        String [] ModelMercedes = {"Choose Mercedes Model", "A-Class", "A45 AMG", "B-Class", "C-Class", "CE", "CL", "CLA", "CLC", "CLK", "CLS", "E-Class", "E63 AMG", "EQA", "EQA250 Plus", "EQB", "EQC", "EQE", "EQS", "EQV", "G-Class", "GL-Class", "GLA", "GLB", "GLC", "GLC Coupe", "GLE", "GLE-Coupe", "GLK-Class", "GLS-Class", "AMG GT Sedan", "AMG GT S", "AMG GT R", "ML-Class", "R-Class",
+        String [] ModelMercedes = {"Choose Mercedes Model", "A-Class", "A45 AMG", "B-Class", "C-Class", "CE", "CL", "CLA", "CLC", "CLK", "CLS", "E-Class", "E63 AMG", "EQA", "EQA250 Plus", "EQB", "EQC", "EQE", "EQS", "EQV", "G-Class", "GL-Class", "GLA", "GLB", "GLC", "GLC Coupe", "GLE", "GLE-Coupe", "GLK-Class", "GLS-Class", "AMG GT Sedan", "AMG GT Coupe", "AMG GT S", "AMG GT R", "ML-Class", "R-Class",
                 "S-Class", "S-Class Coupe", "S-Class Cabrio", "SE", "SL", "SLC", "SLK", "SLK 55 AMG", "SLS", "CL65 AMG", "C63 AMG", "V-Class", "Metris", "313", "316", "319", "413", "X-Class", "Atego", "Viano", "Vito", "Vito Electric", "Unimog", "Citan", "Sprinter"};
 
         String [] ModelNissan = {"Choose Nissan Model", "370Z", "Z350", "GT-R", "SX200", "Altima", "Almera", "X Trail", "Armada", "Juke", "Tiida", "Terrano", "Leaf", "Murano", "Micra" , "Maxima", "Note", "Sunny", "Sentra", "Pathfinder", "Pulsar", "Patrol", "Primera", "Kavak", "Quest", "Qashqai", "Qashqai +2", "NV200", "Xterra", "Winner 2x4", "Winner 4x4",
@@ -263,8 +263,8 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelOpel = {"Choose Opel Model", "Adam", "Omega", "Insignia", "Astra", "Grandland", "Vectra", "Zafira", "Tigra", "Mokka", "Mokka X", "Meriva", "Frontera", "Corsa", "Cascada", "Crossland X", "Vivaro", "Movano", "Combo"};
 
-        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911 Carrera", "911 Carrera T", "911 Carrera S", "911 Carrera GTS", "911 Cabriolet", "911 Speedster", "911 Sports Classic", "911 S/T", "911 Turbo", "911 Turbo S", "911 Targa", "911 GT2 RS", "911 GT3", "911 GT3 RS", "Taycan", "Macan", "Macan GTS",
-                "Panamera", "Panamera Turbo", "Cayenne", "Cayenne Turbo"};
+        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911 Carrera", "911 Carrera 4", "911 Carrera T", "911 Carrera S", "911 Carrera 4S", "911 Carrera GTS", "911 Carrera 4 GTS", "911 Cabriolet", "911 Speedster", "911 Sport Classic", "911 S/T", "911 Turbo", "911 Turbo S", "911 Targa", "911 Dakar", "911 GT2 RS", "911 GT3", "911 GT3 RS",
+                "Taycan", "Macan", "Macan GTS", "Panamera", "Panamera Turbo", "Cayenne", "Cayenne Turbo"};
 
         String [] ModelPeugeot = {"Choose Peugeot Model", "106", "107", "108", "2008", "205", "206", "206+", "206CC", "207", "208", "208 GTI", "3008", "301", "305", "306", "307", "307CC", "308", "308CC", "309", "405", "406", "407", "408", "5008",
                 "504", "505", "508", "605", "607", "E-Rifter", "RCZ", "E-2008", "E-208", "iON", "Traveller", "204", "J5", "J9", "Expert", "Boxer", "Partner", "Landtrek", "Bipper"};

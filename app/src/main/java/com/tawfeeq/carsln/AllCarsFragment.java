@@ -102,7 +102,7 @@ public class AllCarsFragment extends Fragment {
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.generic_icon).into(ivPFP);
+                Picasso.get().load(R.drawable.slnpfp).into(ivPFP);
             } else {
                 Picasso.get().load(pfp).into(ivPFP);
             }

@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 usr = documentSnapshot.toObject(UserProfile.class);
                 fbs.setUser(usr);
 
+                bnv.setSelectedItemId(R.id.market);
                 FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
                 ft.commit();

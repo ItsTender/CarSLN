@@ -136,7 +136,7 @@ public class SellerPageFragment extends Fragment {
                 pfp = usr.getUserPhoto();
                     if (pfp == null || pfp.isEmpty())
                     {
-                        Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                        Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
                     }
                     else {
                         Picasso.get().load(pfp).into(ivSeller);
@@ -146,7 +146,7 @@ public class SellerPageFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Photo", Toast.LENGTH_SHORT).show();
-                Picasso.get().load(R.drawable.generic_icon).into(ivSeller);
+                Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
             }
         });
 

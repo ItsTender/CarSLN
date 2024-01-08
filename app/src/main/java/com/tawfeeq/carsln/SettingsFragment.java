@@ -43,7 +43,7 @@ public class SettingsFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     EditText etChangeUsername, etChangePhone;
-    Button btnLogout, Changepfp, btnChangePhone, btnChangeUsername;
+    Button btnLogout, Changepfp, Resetpfp, btnChangePhone, btnChangeUsername;
     ImageView ivUser;
     String pfp;
 
@@ -106,6 +106,7 @@ public class SettingsFragment extends Fragment {
         etChangePhone = getView().findViewById(R.id.etChangePhone);
         etChangeUsername =getView().findViewById(R.id.etChangeUsername);
         Changepfp = getView().findViewById(R.id.btnChangePhoto);
+        Resetpfp = getView().findViewById(R.id.btnResetPhoto);
         ivUser = getView().findViewById(R.id.imageViewProfilePhotoSettings);
 
 
@@ -120,7 +121,7 @@ public class SettingsFragment extends Fragment {
             pfp = fbs.getUser().getUserPhoto();
 
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.generic_icon).into(ivUser);
+                Picasso.get().load(R.drawable.slnpfp).into(ivUser);
             } else {
                 Picasso.get().load(pfp).into(ivUser);
             }
@@ -137,9 +138,53 @@ public class SettingsFragment extends Fragment {
 
         Changepfp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {ImageChooser();
+            public void onClick(View view) {ImageChooser();}
+        });
+
+        Resetpfp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Hold the Button to Confirm Resetting Your Profile Photo", Toast.LENGTH_LONG).show();
             }
         });
+
+        Resetpfp.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                ProgressDialog progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setTitle("Uploading...");
+                progressDialog.setMessage("Resetting Your Profile Picture, Please Wait");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.setIcon(R.drawable.slnround);
+                progressDialog.show();
+
+                String photo = "";
+                Picasso.get().load(R.drawable.slnpfp).into(ivUser);
+
+                if (fbs.getUser() != null) {
+                    fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
+                            fbs.getUser().setUserPhoto(photo);
+                            Picasso.get().load(R.drawable.slnpfp).into(ivUser);
+                            progressDialog.dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                        }
+                    });
+                }
+
+                return true;
+            }
+        });
+
 
 
         // Set New Profile Photo Ends
@@ -279,7 +324,8 @@ public class SettingsFragment extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             fbs.setSelectedImageURL(uri);
-                            UpdatePFP();
+                            if(fbs.getUser() != null) UpdatePFP();
+                            else Toast.makeText(context, "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

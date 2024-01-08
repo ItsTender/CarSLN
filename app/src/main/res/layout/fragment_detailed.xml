@@ -49,6 +49,49 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSellerInfo"
+            android:layout_width="330dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedCar">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewSeller"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="6dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+            <TextView
+                android:id="@+id/DetailedUserMail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/ivSavedCar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
+
         <TextView
             android:id="@+id/DetailedMan"
             android:layout_width="350dp"
@@ -70,16 +113,16 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="46dp"
             android:fontFamily="sans-serif"
             android:text="Price₪"
-            android:textSize="35sp"
             android:textColor="@color/black"
+            android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewSeller" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSellerInfo" />
 
 
         <TextView
@@ -354,45 +397,6 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewSeller"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toStartOf="@+id/DetailedUserMail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedCar"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
-
-        <TextView
-            android:id="@+id/DetailedUserMail"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="78dp"
-            android:fontFamily="sans-serif"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewSeller"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="6dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/DetailedUserMail"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedCar" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
