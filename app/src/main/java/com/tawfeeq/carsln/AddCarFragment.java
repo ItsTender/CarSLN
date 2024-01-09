@@ -43,7 +43,7 @@ public class AddCarFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
-    EditText Price,BHP,Users,Kilometre,Engine;
+    EditText Price,BHP,Users,Kilometre,Engine,etNotes;
     Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear;
     Button Add,Return;
     ImageView IV;
@@ -106,6 +106,7 @@ public class AddCarFragment extends Fragment {
         utils=Utils.getInstance();
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
+        etNotes = getView().findViewById(R.id.etMultiLineNotes);
         Users=getView().findViewById(R.id.etUsers);
         Engine = getView().findViewById(R.id.etEngine);
         Kilometre=getView().findViewById(R.id.etKM);
@@ -177,7 +178,7 @@ public class AddCarFragment extends Fragment {
         // Here is the Whole list of Models For Each Car Manufacturer (45 lists and the No Manufacturer List)
 
 
-        String [] ModelNon = {"Choose the Car's Manufacturer"};
+        String [] ModelNon = {"Choose Manufacturer"};
 
         String [] ModelAudi = {"Choose Audi Model", "100", "80", "A1", "A3", "A4", "A5", "A6", "A7", "A8", "E-tron", "E-tron GT", "E-tron Q4", "Q2", "Q3", "Q4", "Q5",
                 "Q6", "Q7", "Q8", "R8", "RS3 Sedan", "RS3 Hatchback", "RS4", "RS4 Avant", "RS5", "RS6", "RS6 Avant", "RS7", "RSQ3", "RSQ8", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "SQ7", "SQ8", "TT", "TT RS"};
@@ -272,7 +273,7 @@ public class AddCarFragment extends Fragment {
         String [] ModelRenault = {"Choose Renault Model", "Austral", "Espace", "Arkana", "Arkana Hybrid", "Grand Scenic", "Zoe", "Twingo", "Laguna", "Logan", "Latitude", "Megane", "Megane Grand Coupe", "Megane E-Tech", "Megane R.S.", "Symbol", "Sandero", "Scenic", "Fluence", "Fluence Z.E.", "Kadjar", "Koleos", "Clio", "Clio R.S.", "Captur", "Expert", "Trafic",
                 "Master", "Kangoo"};
 
-        String [] ModelSubaru = {"Choose Subaru Model", "B3 Sedan", "B3 Hatchback", "B4", "B9", "BRZ", "SVX", "XV", "Outback", "Impreza", "impreza WRX", "impreza WRX STI", "Leone", "Levorg", "Legacy", "Forester", "Crosstrek", "E10", "E12", "GLF", "Baja", "Rex"};
+        String [] ModelSubaru = {"Choose Subaru Model", "B3 Sedan", "B3 Hatchback", "B4", "B9", "BRZ", "SVX", "XV", "Outback", "Impreza", "Impreza WRX", "Impreza WRX STI", "Leone", "Levorg", "Legacy", "Forester", "Crosstrek", "E10", "E12", "GLF", "Baja", "Rex"};
 
         String [] ModelSuzuki = {"Choose Suzuki Model", "SX4", "SX4 Crossover", "XL7", "Ignis", "Alto", "Baleno", "Jimny", "Grand Vitara", "Wagon", "Vitara", "Liana", "Maruti", "Swift", "Celerio", "Samurai", "Splash", "X90", "Equator", "Carry"};
 
@@ -597,6 +598,7 @@ public class AddCarFragment extends Fragment {
                 String User =Users.getText().toString();
                 String engine = Engine.getText().toString();
                 String Kilo =Kilometre.getText().toString();
+                String notes = etNotes.getText().toString();
                 String transmission = SpinnerGear.getSelectedItem().toString();
                 String year = SpinnerYear.getSelectedItem().toString();
                 String SellLend = SpinnerSellLend.getSelectedItem().toString();
@@ -604,7 +606,7 @@ public class AddCarFragment extends Fragment {
                 String area = SpinnerLocation.getSelectedItem().toString();
                 String testyear = SpinnerTestYear.getSelectedItem().toString();
                 String testmonth = SpinnerTestMonth.getSelectedItem().toString();
-                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose a Manufacturer First")||Mod.equals("Choose Car Model")||HP.trim().isEmpty()||prc.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location Area")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
+                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location Area")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -638,6 +640,7 @@ public class AddCarFragment extends Fragment {
                 bundle.putString("Color", Color);
                 bundle.putString("Area", area);
                 bundle.putString("Test", test);
+                bundle.putString("Notes", notes);
 
                 // Text Car Characteristics.
 

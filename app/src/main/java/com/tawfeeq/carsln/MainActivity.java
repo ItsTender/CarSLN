@@ -36,16 +36,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // To Hide The Top Bar For App Name.
+        // To Hide The Top Bar For The App's Name.
         getSupportActionBar().hide();
 
-        // To Make the App not Flippable
+        // To Make the App not Flip.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         bnv= findViewById(R.id.bottomNavigationView);
         fbs = FireBaseServices.getInstance();
-
 
 
         if(fbs.getAuth().getCurrentUser()!=null) {

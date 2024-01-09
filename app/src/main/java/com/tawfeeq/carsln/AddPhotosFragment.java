@@ -34,12 +34,12 @@ import java.util.UUID;
 public class AddPhotosFragment extends Fragment {
 
     FireBaseServices fbs;
-    String Man, Mod,Transmission,Engine,Color,Location,NextTest;
+    String Man, Mod,Transmission,Engine,Color,Location,NextTest,Notes;
     Integer Price,Power,Year,Users,Kilometre;
     Boolean selllend;
     Button AddCar, Reset;
-    ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto;
-    String FirstPhoto, SecondPhoto, ThirdPhoto;
+    ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto, ivFourthPhoto, ivFifthPhoto;
+    String FirstPhoto, SecondPhoto, ThirdPhoto, FourthPhoto, FifthPhoto;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,6 +103,7 @@ public class AddPhotosFragment extends Fragment {
         Color=bundle.getString("Color");
         Location=bundle.getString("Area");
         NextTest=bundle.getString("Test");
+        Notes=bundle.getString("Notes");
 
 
         return view;
@@ -116,6 +117,8 @@ public class AddPhotosFragment extends Fragment {
         ivFirstPhoto = getView().findViewById(R.id.ivFirstCarPhoto);
         ivSecondPhoto = getView().findViewById(R.id.ivSecondCarPhoto);
         ivThirdPhoto =getView().findViewById(R.id.ivThirdCarPhoto);
+        ivFourthPhoto = getView().findViewById(R.id.ivFourthCarPhoto);
+        ivFifthPhoto = getView().findViewById(R.id.ivFifthCarPhoto);
         AddCar = getView().findViewById(R.id.btnAddCarListing);
         Reset = getView().findViewById(R.id.btnRemoveImages);
 
@@ -126,6 +129,8 @@ public class AddPhotosFragment extends Fragment {
                 if(FirstPhoto == null) FirstPhoto ="";
                 if(SecondPhoto == null) SecondPhoto="";
                 if(ThirdPhoto == null ) ThirdPhoto ="";
+                if(FourthPhoto == null ) FourthPhoto ="";
+                if(FifthPhoto == null ) FifthPhoto ="";
 
                 Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,Color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto);
 
@@ -184,10 +189,13 @@ public class AddPhotosFragment extends Fragment {
                 FirstPhoto= null;
                 SecondPhoto= null;
                 ThirdPhoto= null;
+                FourthPhoto= null;
+                FifthPhoto= null;
                 ivFirstPhoto.setImageResource(R.drawable.photo_iv);
                 ivSecondPhoto.setImageResource(R.drawable.photo_iv);
                 ivThirdPhoto.setImageResource(R.drawable.photo_iv);
-
+                ivFourthPhoto.setImageResource(R.drawable.photo_iv);
+                ivFifthPhoto.setImageResource(R.drawable.photo_iv);
             }
         });
 
@@ -222,7 +230,7 @@ public class AddPhotosFragment extends Fragment {
                 ivThirdPhoto.setImageURI(selectedImageUri);
                 UploadThirdPhoto(selectedImageUri);
 
-            }
+            } // Continue 4th and 5th car Photo.
         }
     }
 
