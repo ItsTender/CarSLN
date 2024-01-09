@@ -16,15 +16,19 @@ public class CarID {
     private String Color;
     private String Location; // Only the Provinces of Palestine.
     private String NextTest;
-    private String Photo; // First Photo of Three (Maximum).
-    private String Secondphoto; // Second Photo of Three
-    private String ThirdPhoto; // Third Photo of Three
+    private String Photo; // First Photo of Five (Maximum).
+    private String Secondphoto; // Second Photo of Five
+    private String ThirdPhoto; // Third Photo of Five
+    private String FourthPhoto; // Fourth Photo of Five
+
+    private String FifthPhoto; // Fifth Photo of Five
+    private String Notes; // The Seller's Notes about the Car.
+
 
     public CarID() {
     }
 
-    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto) {
-
+    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto, String fourthPhoto, String fifthPhoto, String notes) {
         SellLend = sellLend;
         Email = email;
         Manufacturer = manufacturer;
@@ -40,9 +44,11 @@ public class CarID {
         Location = location;
         NextTest = nextTest;
         Photo = photo;
-        Secondphoto =secondphoto;
-        Transmission =thirdPhoto;
-
+        Secondphoto = secondphoto;
+        ThirdPhoto = thirdPhoto;
+        FourthPhoto = fourthPhoto;
+        FifthPhoto = fifthPhoto;
+        Notes = notes;
     }
 
     // protected Cars(Parcel in) {}
@@ -195,6 +201,30 @@ public class CarID {
 
     public void setThirdPhoto(String thirdPhoto) {
         ThirdPhoto = thirdPhoto;
+    }
+
+    public String getFourthPhoto() {
+        return FourthPhoto;
+    }
+
+    public void setFourthPhoto(String fourthPhoto) {
+        FourthPhoto = fourthPhoto;
+    }
+
+    public String getFifthPhoto() {
+        return FifthPhoto;
+    }
+
+    public void setFifthPhoto(String fifthPhoto) {
+        FifthPhoto = fifthPhoto;
+    }
+
+    public String getNotes() {
+        return Notes;
+    }
+
+    public void setNotes(String notes) {
+        Notes = notes;
     }
 
     @Override

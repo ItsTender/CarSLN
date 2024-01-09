@@ -23,12 +23,14 @@ public class Cars {
     private String Photo;
     private String Secondphoto;
     private String ThirdPhoto;
+    private String FourthPhoto;
+    private String FifthPhoto;
+    private String Notes;
 
     public Cars() {
     }
 
-    public Cars(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto) {
-
+    public Cars(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto, String fourthPhoto, String fifthPhoto, String notes) {
         SellLend = sellLend;
         Email = email;
         Manufacturer = manufacturer;
@@ -44,14 +46,41 @@ public class Cars {
         Location = location;
         NextTest = nextTest;
         Photo = photo;
-        Secondphoto =secondphoto;
-        ThirdPhoto =thirdPhoto;
-
+        Secondphoto = secondphoto;
+        ThirdPhoto = thirdPhoto;
+        FourthPhoto = fourthPhoto;
+        FifthPhoto = fifthPhoto;
+        Notes = notes;
     }
 
     // protected Cars(Parcel in) {}
 
    // @Override public void writeToParcel(Parcel dest, int flags) {}
+
+
+    public String getFourthPhoto() {
+        return FourthPhoto;
+    }
+
+    public void setFourthPhoto(String fourthPhoto) {
+        FourthPhoto = fourthPhoto;
+    }
+
+    public String getFifthPhoto() {
+        return FifthPhoto;
+    }
+
+    public void setFifthPhoto(String fifthPhoto) {
+        FifthPhoto = fifthPhoto;
+    }
+
+    public String getNotes() {
+        return Notes;
+    }
+
+    public void setNotes(String notes) {
+        Notes = notes;
+    }
 
     public String getColor() {
         return Color;

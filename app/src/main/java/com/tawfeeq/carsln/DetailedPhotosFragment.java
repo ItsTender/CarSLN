@@ -20,9 +20,9 @@ import com.squareup.picasso.Picasso;
 public class DetailedPhotosFragment extends Fragment {
 
     boolean sell_lend;
-    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto;
+    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes;
     Integer Price,Power,Year,Users,Kilometre;
-    ImageView ivFirst, ivSecond,ivThird, Back;
+    ImageView ivFirst, ivSecond,ivThird, Back ,ivFourth, ivFifth;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,6 +83,8 @@ public class DetailedPhotosFragment extends Fragment {
         Photo=bundle.getString("Photo");
         SecondPhoto=bundle.getString("Second");
         ThirdPhoto=bundle.getString("Third");
+        FourthPhoto= bundle.getString("Fourth");
+        FifthPhoto=bundle.getString("Fifth");
         Power =bundle.getInt("HP");
         Engine =bundle.getString("Engine");
         Year =bundle.getInt("Year");
@@ -92,6 +94,7 @@ public class DetailedPhotosFragment extends Fragment {
         Color=bundle.getString("Color");
         Location=bundle.getString("Area");
         NextTest=bundle.getString("Test");
+        Notes=bundle.getString("Notes");
 
 
         return view;
@@ -104,6 +107,8 @@ public class DetailedPhotosFragment extends Fragment {
         ivFirst = getView().findViewById(R.id.DetailedPhotosFirstCar);
         ivSecond =getView().findViewById(R.id.DetailedPhotosSecondCar);
         ivThird =getView().findViewById(R.id.DetailedPhotosThirdCar);
+        ivFourth =getView().findViewById(R.id.DetailedPhotosFourthCar);
+        ivFifth =getView().findViewById(R.id.DetailedPhotosFifthCar);
         Back =getView().findViewById(R.id.DetailedPhotosGoBack);
 
 
@@ -127,6 +132,22 @@ public class DetailedPhotosFragment extends Fragment {
             ivThird.setMaxHeight(0);
         } else {
             Picasso.get().load(ThirdPhoto).into(ivThird);
+        }
+
+        if (FourthPhoto == null || FourthPhoto.isEmpty()) {
+            ivFourth.setImageResource(R.color.white);
+            ivFourth.setVisibility(View.INVISIBLE);
+            ivFourth.setMaxHeight(0);
+        } else {
+            Picasso.get().load(FourthPhoto).into(ivFourth);
+        }
+
+        if (FifthPhoto == null || FifthPhoto.isEmpty()) {
+            ivFifth.setImageResource(R.color.white);
+            ivFifth.setVisibility(View.INVISIBLE);
+            ivFifth.setMaxHeight(0);
+        } else {
+            Picasso.get().load(FifthPhoto).into(ivFifth);
         }
 
         Back.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +176,9 @@ public class DetailedPhotosFragment extends Fragment {
                 bundle.putString("Color", Color);
                 bundle.putString("Area", Location);
                 bundle.putString("Test", NextTest);
+                bundle.putString("Notes", Notes);
+                bundle.putString("Fourth", FourthPhoto);
+                bundle.putString("Fifth", FifthPhoto);
 
 
                 gtn.setArguments(bundle);

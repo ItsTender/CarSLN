@@ -606,8 +606,13 @@ public class AddCarFragment extends Fragment {
                 String area = SpinnerLocation.getSelectedItem().toString();
                 String testyear = SpinnerTestYear.getSelectedItem().toString();
                 String testmonth = SpinnerTestMonth.getSelectedItem().toString();
+
                 if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location Area")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(notes.length()>200){
+                    Toast.makeText(getActivity(), "Notes Field Characters are over 200", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -641,6 +646,7 @@ public class AddCarFragment extends Fragment {
                 bundle.putString("Area", area);
                 bundle.putString("Test", test);
                 bundle.putString("Notes", notes);
+
 
                 // Text Car Characteristics.
 

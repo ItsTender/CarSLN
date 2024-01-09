@@ -115,7 +115,7 @@ public class LogInFragment extends Fragment {
                 String username = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 if (username.trim().isEmpty() || pass.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Email Or Password Field is Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

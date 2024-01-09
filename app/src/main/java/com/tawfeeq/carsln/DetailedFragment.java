@@ -32,10 +32,10 @@ import java.util.ArrayList;
 public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
-    TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor;
+    TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor, tvNotes;
     ImageView ivCar, ivSeller, ivSaved, ivBack, ivDelete;
     boolean sell_lend;
-    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto;
+    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes;
     Integer Price,Power,Year,Users,Kilometre;
     String pfp;
     Boolean isFound;
@@ -98,6 +98,8 @@ public class DetailedFragment extends Fragment {
         Photo=bundle.getString("Photo");
         SecondPhoto=bundle.getString("Second");
         ThirdPhoto=bundle.getString("Third");
+        FourthPhoto= bundle.getString("Fourth");
+        FifthPhoto=bundle.getString("Fifth");
         Power =bundle.getInt("HP");
         Engine =bundle.getString("Engine");
         Year =bundle.getInt("Year");
@@ -107,7 +109,7 @@ public class DetailedFragment extends Fragment {
         Color=bundle.getString("Color");
         Location=bundle.getString("Area");
         NextTest=bundle.getString("Test");
-
+        Notes=bundle.getString("Notes");
 
         return view;
     }
@@ -129,6 +131,7 @@ public class DetailedFragment extends Fragment {
         tvLocation = getView().findViewById(R.id.DetailedLocationArea);
         tvTest = getView().findViewById(R.id.DetailedTestUntil);
         tvColor = getView().findViewById(R.id.DetailedColor);
+        tvNotes = getView().findViewById(R.id.DetailedNotes);
         tvSeller = getView().findViewById(R.id.DetailedUserMail);
         ivSeller = getView().findViewById(R.id.imageViewSeller);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
@@ -277,6 +280,9 @@ public class DetailedFragment extends Fragment {
                     bundle.putString("Color", Color);
                     bundle.putString("Area", Location);
                     bundle.putString("Test", NextTest);
+                    bundle.putString("Notes", Notes);
+                    bundle.putString("Fourth", FourthPhoto);
+                    bundle.putString("Fifth", FifthPhoto);
 
 
                     gtn.setArguments(bundle);
@@ -448,6 +454,7 @@ public class DetailedFragment extends Fragment {
 
         tvEngine.setText(Engine);
 
+        tvNotes.setText(Notes);
 
         if ( Photo == null || Photo.isEmpty())
         {

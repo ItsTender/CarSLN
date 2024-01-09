@@ -188,7 +188,7 @@
             android:layout_width="380dp"
             android:layout_height="50dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="16dp"
             app:cardBackgroundColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -257,15 +257,31 @@
 
         </androidx.cardview.widget.CardView>
 
+
+        <TextView
+            android:id="@+id/DetailedNotes"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="46dp"
+            android:fontFamily="sans-serif"
+            android:text="Notes"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView">
+            app:layout_constraintTop_toBottomOf="@+id/DetailedNotes">
 
             <TextView
                 android:id="@+id/Detailedenginex"

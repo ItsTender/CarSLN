@@ -54,10 +54,34 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/photo_iv"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DetailedPhotosSecondCar" />
+
+        <ImageView
+            android:id="@+id/DetailedPhotosFourthCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/photo_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedPhotosThirdCar" />
+
+        <ImageView
+            android:id="@+id/DetailedPhotosFifthCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/photo_iv"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailedPhotosFourthCar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

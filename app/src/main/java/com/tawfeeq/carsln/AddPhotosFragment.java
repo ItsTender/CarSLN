@@ -132,7 +132,7 @@ public class AddPhotosFragment extends Fragment {
                 if(FourthPhoto == null ) FourthPhoto ="";
                 if(FifthPhoto == null ) FifthPhoto ="";
 
-                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,Color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto);
+                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,Color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes);
 
                 ProgressDialog progressDialog= new ProgressDialog(getActivity());
                 progressDialog.setTitle("Posting...");
@@ -179,6 +179,20 @@ public class AddPhotosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!(SecondPhoto == null)) ImageChooser();
+            }
+        });
+
+        ivFourthPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!(ThirdPhoto == null)) ImageChooser();
+            }
+        });
+
+        ivFifthPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!(FourthPhoto == null)) ImageChooser();
             }
         });
 
@@ -230,7 +244,17 @@ public class AddPhotosFragment extends Fragment {
                 ivThirdPhoto.setImageURI(selectedImageUri);
                 UploadThirdPhoto(selectedImageUri);
 
-            } // Continue 4th and 5th car Photo.
+            }else if(FourthPhoto == null){
+
+                ivFourthPhoto.setImageURI(selectedImageUri);
+                UploadFourthPhoto(selectedImageUri);
+
+            }else if(FifthPhoto == null){
+
+                ivFifthPhoto.setImageURI(selectedImageUri);
+                UploadFifthPhoto(selectedImageUri);
+
+            }
         }
     }
 
@@ -370,6 +394,100 @@ public class AddPhotosFragment extends Fragment {
                         public void onSuccess(Uri uri) {
 
                             ThirdPhoto = uri.toString();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("Utils: uploadImage: ", e.getMessage());
+                        }
+                    });
+
+                    progressDialog.dismiss();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), "Failed to Upload Image", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "Choose an Image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void UploadFourthPhoto(Uri selectedImageUri) {
+
+        if (selectedImageUri != null) {
+
+            ProgressDialog progressDialog= new ProgressDialog(getActivity());
+            progressDialog.setTitle("Uploading...");
+            progressDialog.setMessage("Uploading Your Image. Please Wait!");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIcon(R.drawable.slnround);
+            progressDialog.show();
+
+
+            String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
+            StorageReference imageRef = fbs.getStorage().getReference().child("images/" + selectedImageUri.getLastPathSegment());
+
+            UploadTask uploadTask = imageRef.putFile(selectedImageUri);
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+
+                            FourthPhoto = uri.toString();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("Utils: uploadImage: ", e.getMessage());
+                        }
+                    });
+
+                    progressDialog.dismiss();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), "Failed to Upload Image", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "Choose an Image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void UploadFifthPhoto(Uri selectedImageUri) {
+
+        if (selectedImageUri != null) {
+
+            ProgressDialog progressDialog= new ProgressDialog(getActivity());
+            progressDialog.setTitle("Uploading...");
+            progressDialog.setMessage("Uploading Your Image. Please Wait!");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIcon(R.drawable.slnround);
+            progressDialog.show();
+
+
+            String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
+            StorageReference imageRef = fbs.getStorage().getReference().child("images/" + selectedImageUri.getLastPathSegment());
+
+            UploadTask uploadTask = imageRef.putFile(selectedImageUri);
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+
+                            FifthPhoto = uri.toString();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

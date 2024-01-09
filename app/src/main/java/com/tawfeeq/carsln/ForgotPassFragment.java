@@ -103,7 +103,7 @@ public class ForgotPassFragment extends Fragment {
                     // Data Validation ( The Given Info is Correct )
                     String Mail = etEmail.getText().toString();
                     if (Mail.trim().isEmpty()) {
-                        Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Email Field is Missing", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
