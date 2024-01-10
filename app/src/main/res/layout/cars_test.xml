@@ -93,11 +93,11 @@
 
             <TextView
                 android:id="@+id/tvtxtPrice"
-                android:layout_width="185dp"
+                android:layout_width="200dp"
                 android:layout_height="30dp"
                 android:text="Price₪"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

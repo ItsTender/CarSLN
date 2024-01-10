@@ -54,12 +54,12 @@
             android:id="@+id/imageViewProfilePhotoAllCars"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginTop="18dp"
             android:layout_marginEnd="12dp"
+            android:layout_marginBottom="10dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

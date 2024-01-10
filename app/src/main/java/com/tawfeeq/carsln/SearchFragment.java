@@ -28,7 +28,7 @@ import java.util.ArrayList;
  */
 public class SearchFragment extends Fragment {
 
-    EditText etMan,etMod,etPriceFrom,etPriceTo;
+    EditText etPriceFrom,etPriceTo, etMan, etMod;
     Button btnSearch, btnResetSearch;
     RecyclerView rc;
     FireBaseServices fbs;

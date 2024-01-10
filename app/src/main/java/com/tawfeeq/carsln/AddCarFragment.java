@@ -190,7 +190,7 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelAston = {"Choose Aston Martin Model", "DB12", "DB11", "DB9", "DBS", "DBX", "Vantage", "Vanquish", "Rapide"};
 
-        String [] ModelBMW = {"Choose BMW Model", "1 Series",  "2 Series", "3 Series", "3 Series Convertible", "4 Series", "5 Series",  "6 Series", "7 Series", "8 Series", "i3", "iX3", "i4", "i7", "i8", "iX", "M1", "M2", "M3", "M4", "M5", "M6", "M8",
+        String [] ModelBMW = {"Choose BMW Model", "1 Series",  "2 Series", "3 Series", "3 Series Convertible", "4 Series", "5 Series",  "6 Series", "7 Series", "8 Series", "i3", "iX3", "i4", "i7", "i8", "iX", "1 Series M", "M2", "M3", "M4", "M5", "M6", "M8",
                 "M2 Competition", "M3 Competition", "M4 Competition", "M5 Competition", "M6 Competition", "M8 Competition", "X1", "X2", "X3", "X4", "X5", "X6", "X6M", "X7", "Z3", "Z4"};
 
         String [] ModelBentley = {"Choose Bentley Model", "BE53", "Bentayga", "Continental GT", "Flying Spur"};
