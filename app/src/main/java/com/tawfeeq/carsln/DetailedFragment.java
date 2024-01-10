@@ -331,8 +331,27 @@ public class DetailedFragment extends Fragment {
                     Bundle bundle = new Bundle();
 
 
+                    bundle.putString("ID", ID);
+                    bundle.putBoolean("SellorLend", sell_lend);
                     bundle.putString("Email", Email);
-                    bundle.putString("CarName", Year.toString() + " " + Man + " " + Mod);
+                    bundle.putString("Man", Man);
+                    bundle.putString("Mod", Mod);
+                    bundle.putInt("HP", Power);
+                    bundle.putInt("Price", Price);
+                    bundle.putString("Photo", Photo);
+                    bundle.putString("Second", SecondPhoto);
+                    bundle.putString("Third", ThirdPhoto);
+                    bundle.putString("Engine", Engine);
+                    bundle.putString("Transmission", Transmission);
+                    bundle.putInt("Year", Year);
+                    bundle.putInt("Kilo", Kilometre);
+                    bundle.putInt("Users", Users);
+                    bundle.putString("Color", Color);
+                    bundle.putString("Area", Location);
+                    bundle.putString("Test", NextTest);
+                    bundle.putString("Notes", Notes);
+                    bundle.putString("Fourth", FourthPhoto);
+                    bundle.putString("Fifth", FifthPhoto);
 
 
                     gtn.setArguments(bundle);
@@ -360,8 +379,27 @@ public class DetailedFragment extends Fragment {
                     Bundle bundle = new Bundle();
 
 
+                    bundle.putString("ID", ID);
+                    bundle.putBoolean("SellorLend", sell_lend);
                     bundle.putString("Email", Email);
-                    bundle.putString("CarName", Year.toString() + " " + Man + " " + Mod);
+                    bundle.putString("Man", Man);
+                    bundle.putString("Mod", Mod);
+                    bundle.putInt("HP", Power);
+                    bundle.putInt("Price", Price);
+                    bundle.putString("Photo", Photo);
+                    bundle.putString("Second", SecondPhoto);
+                    bundle.putString("Third", ThirdPhoto);
+                    bundle.putString("Engine", Engine);
+                    bundle.putString("Transmission", Transmission);
+                    bundle.putInt("Year", Year);
+                    bundle.putInt("Kilo", Kilometre);
+                    bundle.putInt("Users", Users);
+                    bundle.putString("Color", Color);
+                    bundle.putString("Area", Location);
+                    bundle.putString("Test", NextTest);
+                    bundle.putString("Notes", Notes);
+                    bundle.putString("Fourth", FourthPhoto);
+                    bundle.putString("Fifth", FifthPhoto);
 
 
                     gtn.setArguments(bundle);

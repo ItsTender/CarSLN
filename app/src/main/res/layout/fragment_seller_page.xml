@@ -11,6 +11,19 @@
         android:layout_height="330dp"
         android:id="@+id/ConstraintSeller">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/SellerGoBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/arrow_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
         <TextView
             android:id="@+id/tvSellerwelcome"
             android:layout_width="350dp"
@@ -69,6 +82,7 @@
             android:text="Call"
             android:textColor="@color/white"
             android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
 
@@ -76,9 +90,9 @@
             android:id="@+id/btnWhatsapp"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="@color/Blue700"
             android:text="Whatsapp"
             android:textColor="@color/white"
@@ -98,6 +112,7 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnWhatsapp"
             app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
 
 

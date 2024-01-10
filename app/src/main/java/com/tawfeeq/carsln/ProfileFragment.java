@@ -173,6 +173,33 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        ivPFP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                GoToViewPhoto();
+            }
+        });
+
+    }
+
+    private void GoToViewPhoto() {
+
+        if(fbs.getUser()!=null) {
+
+            Fragment gtn= new ViewPhotoFragment();
+            Bundle bundle = new Bundle();
+
+            bundle.putString("Email", fbs.getAuth().getCurrentUser().getEmail());
+            bundle.putString("Username", fbs.getUser().getUsername());
+            bundle.putString("PFP", fbs.getUser().getUserPhoto());
+            bundle.putString("From", "Profile");
+
+            gtn.setArguments(bundle);
+            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.FrameLayoutMain, gtn);
+            ft.commit();
+        }
     }
 
     private void GoToSettings() {

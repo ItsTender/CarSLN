@@ -136,6 +136,13 @@ public class SettingsFragment extends Fragment {
 
         // Set New Profile Photo.....
 
+        ivUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToViewPhoto();
+            }
+        });
+
         Changepfp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {ImageChooser();}
@@ -282,6 +289,25 @@ public class SettingsFragment extends Fragment {
 
     private void setNavigationBarGone() {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+    }
+
+    private void GoToViewPhoto() {
+
+        if(fbs.getUser()!=null) {
+
+            Fragment gtn= new ViewPhotoFragment();
+            Bundle bundle = new Bundle();
+
+            bundle.putString("Email", fbs.getAuth().getCurrentUser().getEmail());
+            bundle.putString("Username", fbs.getUser().getUsername());
+            bundle.putString("PFP", fbs.getUser().getUserPhoto());
+            bundle.putString("From", "Settings");
+
+            gtn.setArguments(bundle);
+            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.FrameLayoutMain, gtn);
+            ft.commit();
+        }
     }
 
     public void ImageChooser() {

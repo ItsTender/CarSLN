@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,14 +38,17 @@ import java.util.ArrayList;
  */
 public class SellerPageFragment extends Fragment {
 
-    String Email, CarName;
+    boolean sell_lend;
+    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes;
+    Integer Price,Power,Year,Users,Kilometre;
+    String CarName; // Custom Car Name String.....
     Button btnSMS, btnCall, btnWhatsapp;
     TextView tvSellerName, tvintro;
     RecyclerView rc;
     FireBaseServices fbs;
     CarsAdapter Adapter;
     ArrayList<CarID> SellerCars;
-    ImageView ivSeller;
+    ImageView ivSeller, Back;
     String pfp;
     UserProfile usr;
     private static final int PERMISSION_SEND_SMS = 1;
@@ -97,8 +101,29 @@ public class SellerPageFragment extends Fragment {
 
         Bundle bundle =this.getArguments();
 
+        ID=bundle.getString("ID");
+        sell_lend=bundle.getBoolean("SellorLend");
         Email=bundle.getString("Email");
-        CarName =bundle.getString("CarName");
+        Man=bundle.getString("Man");
+        Mod=bundle.getString("Mod");
+        Price=bundle.getInt("Price");
+        Photo=bundle.getString("Photo");
+        SecondPhoto=bundle.getString("Second");
+        ThirdPhoto=bundle.getString("Third");
+        FourthPhoto= bundle.getString("Fourth");
+        FifthPhoto=bundle.getString("Fifth");
+        Power =bundle.getInt("HP");
+        Engine =bundle.getString("Engine");
+        Year =bundle.getInt("Year");
+        Users =bundle.getInt("Users");
+        Kilometre=bundle.getInt("Kilo");
+        Transmission=bundle.getString("Transmission");
+        Color=bundle.getString("Color");
+        Location=bundle.getString("Area");
+        NextTest=bundle.getString("Test");
+        Notes=bundle.getString("Notes");
+
+        CarName = Year.toString() + " " + Man + " " + Mod;
 
         return view;
     }
@@ -115,6 +140,8 @@ public class SellerPageFragment extends Fragment {
         btnWhatsapp =getView().findViewById(R.id.btnWhatsapp);
         rc = getView().findViewById(R.id.RecyclerSellerCars);
         ivSeller = getView().findViewById(R.id.imageViewSellerPage);
+        Back = getView().findViewById(R.id.SellerGoBack);
+
 
         SellerCars =new ArrayList<CarID>();
 
@@ -152,6 +179,12 @@ public class SellerPageFragment extends Fragment {
 
         // Get Profile Ends
 
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToDetailedCar();
+            }
+        });
 
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +224,14 @@ public class SellerPageFragment extends Fragment {
         });
 
 
+        ivSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToViewPhoto();
+            }
+        });
+
+
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -215,12 +256,83 @@ public class SellerPageFragment extends Fragment {
 
     }
 
+    private void GoToDetailedCar() {
+
+        Fragment gtn= new DetailedFragment();
+        Bundle bundle= new Bundle();
+
+
+        bundle.putString("ID", ID);
+        bundle.putBoolean("SellorLend", sell_lend);
+        bundle.putString("Email", Email);
+        bundle.putString("Man", Man);
+        bundle.putString("Mod", Mod);
+        bundle.putInt("HP", Power);
+        bundle.putInt("Price", Price);
+        bundle.putString("Photo", Photo);
+        bundle.putString("Second", SecondPhoto);
+        bundle.putString("Third", ThirdPhoto);
+        bundle.putString("Engine", Engine);
+        bundle.putString("Transmission", Transmission);
+        bundle.putInt("Year", Year);
+        bundle.putInt("Kilo", Kilometre);
+        bundle.putInt("Users", Users);
+        bundle.putString("Color", Color);
+        bundle.putString("Area", Location);
+        bundle.putString("Test", NextTest);
+        bundle.putString("Notes", Notes);
+        bundle.putString("Fourth", FourthPhoto);
+        bundle.putString("Fifth", FifthPhoto);
+
+
+        gtn.setArguments(bundle);
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, gtn);
+        ft.commit();
+    }
+
     private void SettingFrame() {
 
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new CarsAdapter(getActivity(), SellerCars);
         rc.setAdapter(Adapter);
 
+    }
+
+    private void GoToViewPhoto() {
+
+            Fragment gtn= new ViewPhotoFragment();
+            Bundle bundle = new Bundle();
+
+            bundle.putString("ID", ID);
+            bundle.putBoolean("SellorLend", sell_lend);
+            bundle.putString("Email", Email);
+            bundle.putString("Man", Man);
+            bundle.putString("Mod", Mod);
+            bundle.putInt("HP", Power);
+            bundle.putInt("Price", Price);
+            bundle.putString("Photo", Photo);
+            bundle.putString("Second", SecondPhoto);
+            bundle.putString("Third", ThirdPhoto);
+            bundle.putString("Engine", Engine);
+            bundle.putString("Transmission", Transmission);
+            bundle.putInt("Year", Year);
+            bundle.putInt("Kilo", Kilometre);
+            bundle.putInt("Users", Users);
+            bundle.putString("Color", Color);
+            bundle.putString("Area", Location);
+            bundle.putString("Test", NextTest);
+            bundle.putString("Notes", Notes);
+            bundle.putString("Fourth", FourthPhoto);
+            bundle.putString("Fifth", FifthPhoto);
+            bundle.putString("Username", usr.getUsername());
+            bundle.putString("PFP", usr.getUserPhoto());
+            bundle.putString("From", "Seller");
+
+            gtn.setArguments(bundle);
+            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.FrameLayoutMain, gtn);
+            ft.commit();
     }
 
 
