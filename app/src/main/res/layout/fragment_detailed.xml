@@ -78,7 +78,7 @@
                 android:layout_marginTop="17dp"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -193,18 +193,18 @@
 
             <ImageView
                 android:id="@+id/imageView41"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/caryear" />
+                android:src="@drawable/baseline_calendar_today_24" />
 
 
             <TextView
                 android:id="@+id/DetailedYear"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
+                android:layout_marginStart="42dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"

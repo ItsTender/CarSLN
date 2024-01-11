@@ -227,7 +227,7 @@ public class SellerPageFragment extends Fragment {
         ivSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoToViewPhoto();
+                if(!usr.getUserPhoto().equals("")) GoToViewPhoto();
             }
         });
 

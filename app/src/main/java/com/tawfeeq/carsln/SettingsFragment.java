@@ -139,7 +139,8 @@ public class SettingsFragment extends Fragment {
         ivUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoToViewPhoto();
+
+                if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) GoToViewPhoto();
             }
         });
 

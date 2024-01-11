@@ -95,7 +95,7 @@
 
         <Button
             android:id="@+id/btnSearch"
-            android:layout_width="160dp"
+            android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
@@ -109,13 +109,13 @@
 
         <Button
             android:id="@+id/btnResetSearch"
-            android:layout_width="160dp"
+            android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/Blue700"
-            android:text="Reset Search"
+            android:text="Reset"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnSearch"
