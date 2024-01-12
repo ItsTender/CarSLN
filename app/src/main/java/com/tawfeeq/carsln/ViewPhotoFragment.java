@@ -21,6 +21,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
@@ -93,26 +94,6 @@ public class ViewPhotoFragment extends Fragment {
         Bundle bundle =this.getArguments();
 
 
-        ID=bundle.getString("ID");
-        sell_lend=bundle.getBoolean("SellorLend");
-        Man=bundle.getString("Man");
-        Mod=bundle.getString("Mod");
-        Price=bundle.getInt("Price");
-        Photo=bundle.getString("Photo");
-        SecondPhoto=bundle.getString("Second");
-        ThirdPhoto=bundle.getString("Third");
-        FourthPhoto= bundle.getString("Fourth");
-        FifthPhoto=bundle.getString("Fifth");
-        Power =bundle.getInt("HP");
-        Engine =bundle.getString("Engine");
-        Year =bundle.getInt("Year");
-        Users =bundle.getInt("Users");
-        Kilometre=bundle.getInt("Kilo");
-        Transmission=bundle.getString("Transmission");
-        Color=bundle.getString("Color");
-        Location=bundle.getString("Area");
-        NextTest=bundle.getString("Test");
-        Notes=bundle.getString("Notes");
         Email = bundle.getString("Email");
         username = bundle.getString("Username");
         pfp = bundle.getString("PFP");
@@ -152,9 +133,9 @@ public class ViewPhotoFragment extends Fragment {
         tvUsername.setText(username);
 
         if (pfp == null || pfp.isEmpty()) {
-            Picasso.get().load(R.drawable.slnpfp).into(ivUser);
+            ivUser.setImageResource(R.drawable.slnpfp);
         } else {
-            Picasso.get().load(pfp).into(ivUser);
+            Glide.with(getActivity()).load(pfp).into(ivUser);
         }
 
         Back.setOnClickListener(new View.OnClickListener() {
@@ -172,33 +153,6 @@ public class ViewPhotoFragment extends Fragment {
     private void GoToSellerPage() {
 
         Fragment gtn = new SellerPageFragment();
-        Bundle bundle = new Bundle();
-
-
-        bundle.putString("ID", ID);
-        bundle.putBoolean("SellorLend", sell_lend);
-        bundle.putString("Email", Email);
-        bundle.putString("Man", Man);
-        bundle.putString("Mod", Mod);
-        bundle.putInt("HP", Power);
-        bundle.putInt("Price", Price);
-        bundle.putString("Photo", Photo);
-        bundle.putString("Second", SecondPhoto);
-        bundle.putString("Third", ThirdPhoto);
-        bundle.putString("Engine", Engine);
-        bundle.putString("Transmission", Transmission);
-        bundle.putInt("Year", Year);
-        bundle.putInt("Kilo", Kilometre);
-        bundle.putInt("Users", Users);
-        bundle.putString("Color", Color);
-        bundle.putString("Area", Location);
-        bundle.putString("Test", NextTest);
-        bundle.putString("Notes", Notes);
-        bundle.putString("Fourth", FourthPhoto);
-        bundle.putString("Fifth", FifthPhoto);
-
-
-        gtn.setArguments(bundle);
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, gtn);
         ft.commit();
@@ -298,7 +252,7 @@ public class ViewPhotoFragment extends Fragment {
             // Does Nothing......
         }
         else {
-            Picasso.get().load(photo).into(ivUser);
+            Glide.with(getActivity()).load(photo).into(ivUser);
         }
 
         if(!photo.isEmpty()) {

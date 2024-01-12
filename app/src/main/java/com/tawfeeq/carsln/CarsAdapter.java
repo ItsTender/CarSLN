@@ -21,17 +21,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
-// 1- Planet Adapter
+// 1- Cars Adapter
 
     private Context context;
     private  CarsAdapter.OnItemClickListener CarsListener;
     private ArrayList<CarID> cars;
+    private FireBaseServices fbs;
+
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -47,37 +50,43 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             @Override
             public void onItemClick(int position) {
 
-                Fragment gtn= new DetailedFragment();
-                Bundle bundle= new Bundle();
+                fbs = FireBaseServices.getInstance();
+                if(cars.get(position)!=null) {
+                    Fragment gtn = new DetailedFragment();
+                    //Bundle bundle = new Bundle();
+
+                    fbs.setSelectedCar(cars.get(position));
 
 
-                bundle.putString("ID", cars.get(position).getId());
-                bundle.putBoolean("SellorLend",cars.get(position).getSellLend());
-                bundle.putString("Email", cars.get(position).getEmail());
-                bundle.putString("Man", cars.get(position).getManufacturer());
-                bundle.putString("Mod", cars.get(position).getModel());
-                bundle.putInt("HP", cars.get(position).getBHP());
-                bundle.putInt("Price", cars.get(position).getPrice());
-                bundle.putString("Photo", cars.get(position).getPhoto());
-                bundle.putString("Second", cars.get(position).getSecondphoto());
-                bundle.putString("Third", cars.get(position).getThirdPhoto());
-                bundle.putString("Fourth", cars.get(position).getFourthPhoto());
-                bundle.putString("Fifth", cars.get(position).getFifthPhoto());
-                bundle.putString("Engine", cars.get(position).getEngine());
-                bundle.putString("Transmission", cars.get(position).getTransmission());
-                bundle.putInt("Year", cars.get(position).getYear());
-                bundle.putInt("Kilo", cars.get(position).getKilometre());
-                bundle.putInt("Users", cars.get(position).getUsers());
-                bundle.putString("Color", cars.get(position).getColor());
-                bundle.putString("Area", cars.get(position).getLocation());
-                bundle.putString("Test", cars.get(position).getNextTest());
-                bundle.putString("Notes", cars.get(position).getNotes());
+                    //bundle.putString("ID", cars.get(position).getId());
+                    //bundle.putBoolean("SellorLend", cars.get(position).getSellLend());
+                    //bundle.putString("Email", cars.get(position).getEmail());
+                    //bundle.putString("Man", cars.get(position).getManufacturer());
+                    //bundle.putString("Mod", cars.get(position).getModel());
+                    //bundle.putInt("HP", cars.get(position).getBHP());
+                    //bundle.putInt("Price", cars.get(position).getPrice());
+                    //bundle.putString("Photo", cars.get(position).getPhoto());
+                    //bundle.putString("Second", cars.get(position).getSecondphoto());
+                    //bundle.putString("Third", cars.get(position).getThirdPhoto());
+                    //bundle.putString("Fourth", cars.get(position).getFourthPhoto());
+                    //bundle.putString("Fifth", cars.get(position).getFifthPhoto());
+                    //bundle.putString("Engine", cars.get(position).getEngine());
+                    //bundle.putString("Transmission", cars.get(position).getTransmission());
+                    //bundle.putInt("Year", cars.get(position).getYear());
+                    //bundle.putInt("Kilo", cars.get(position).getKilometre());
+                    //bundle.putInt("Users", cars.get(position).getUsers());
+                    //bundle.putString("Color", cars.get(position).getColor());
+                    //bundle.putString("Area", cars.get(position).getLocation());
+                    //bundle.putString("Test", cars.get(position).getNextTest());
+                    //bundle.putString("Notes", cars.get(position).getNotes());
 
 
-                gtn.setArguments(bundle);
-                FragmentTransaction ft= ((MainActivity)context).getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, gtn);
-                ft.commit();
+                    //gtn.setArguments(bundle);
+                    FragmentTransaction ft = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.replace(R.id.FrameLayoutMain, gtn);
+                    ft.commit();
+                }
             }
         };
 
@@ -153,12 +162,10 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())
             {
-                Picasso.get().load(R.drawable.photo_iv).into(ivCar);
-
+                ivCar.setImageResource(R.drawable.photo_iv);
             }
             else {
-                Picasso.get().load(car.getPhoto()).into(ivCar);
-
+                Glide.with(context).load(car.getPhoto()).into(ivCar);
             }
 
         }

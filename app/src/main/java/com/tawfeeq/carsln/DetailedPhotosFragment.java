@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -19,10 +20,10 @@ import com.squareup.picasso.Picasso;
  */
 public class DetailedPhotosFragment extends Fragment {
 
-    boolean sell_lend;
-    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes;
-    Integer Price,Power,Year,Users,Kilometre;
+    FireBaseServices fbs;
+    String Photo,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto;
     ImageView ivFirst, ivSecond,ivThird, Back ,ivFourth, ivFifth;
+    CarID currentCar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,34 +70,6 @@ public class DetailedPhotosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_detailed_photos, container, false);
-
-
-        Bundle bundle =this.getArguments();
-
-
-        ID=bundle.getString("ID");
-        sell_lend=bundle.getBoolean("SellorLend");
-        Email=bundle.getString("Email");
-        Man=bundle.getString("Man");
-        Mod=bundle.getString("Mod");
-        Price=bundle.getInt("Price");
-        Photo=bundle.getString("Photo");
-        SecondPhoto=bundle.getString("Second");
-        ThirdPhoto=bundle.getString("Third");
-        FourthPhoto= bundle.getString("Fourth");
-        FifthPhoto=bundle.getString("Fifth");
-        Power =bundle.getInt("HP");
-        Engine =bundle.getString("Engine");
-        Year =bundle.getInt("Year");
-        Users =bundle.getInt("Users");
-        Kilometre=bundle.getInt("Kilo");
-        Transmission=bundle.getString("Transmission");
-        Color=bundle.getString("Color");
-        Location=bundle.getString("Area");
-        NextTest=bundle.getString("Test");
-        Notes=bundle.getString("Notes");
-
-
         return view;
     }
 
@@ -104,6 +77,7 @@ public class DetailedPhotosFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        fbs=FireBaseServices.getInstance();
         ivFirst = getView().findViewById(R.id.DetailedPhotosFirstCar);
         ivSecond =getView().findViewById(R.id.DetailedPhotosSecondCar);
         ivThird =getView().findViewById(R.id.DetailedPhotosThirdCar);
@@ -112,10 +86,20 @@ public class DetailedPhotosFragment extends Fragment {
         Back =getView().findViewById(R.id.DetailedPhotosGoBack);
 
 
+        currentCar = fbs.getSelectedCar();
+
+
+        Photo = currentCar.getPhoto();
+        SecondPhoto = currentCar.getSecondphoto();
+        ThirdPhoto = currentCar.getThirdPhoto();
+        FourthPhoto = currentCar.getFourthPhoto();
+        FifthPhoto = currentCar.getFifthPhoto();
+
+
         if (Photo == null || Photo.isEmpty()) {
-            Picasso.get().load(R.drawable.photo_iv).into(ivFirst);
+            ivFirst.setImageResource(R.drawable.photo_iv);
         } else {
-            Picasso.get().load(Photo).into(ivFirst);
+            Glide.with(getActivity()).load(Photo).into(ivFirst);
         }
 
         if (SecondPhoto == null || SecondPhoto.isEmpty()) {
@@ -155,34 +139,8 @@ public class DetailedPhotosFragment extends Fragment {
             public void onClick(View view) {
 
                 Fragment gtn= new DetailedFragment();
-                Bundle bundle= new Bundle();
-
-
-                bundle.putString("ID", ID);
-                bundle.putBoolean("SellorLend", sell_lend);
-                bundle.putString("Email", Email);
-                bundle.putString("Man", Man);
-                bundle.putString("Mod", Mod);
-                bundle.putInt("HP", Power);
-                bundle.putInt("Price", Price);
-                bundle.putString("Photo", Photo);
-                bundle.putString("Second", SecondPhoto);
-                bundle.putString("Third", ThirdPhoto);
-                bundle.putString("Engine", Engine);
-                bundle.putString("Transmission", Transmission);
-                bundle.putInt("Year", Year);
-                bundle.putInt("Kilo", Kilometre);
-                bundle.putInt("Users", Users);
-                bundle.putString("Color", Color);
-                bundle.putString("Area", Location);
-                bundle.putString("Test", NextTest);
-                bundle.putString("Notes", Notes);
-                bundle.putString("Fourth", FourthPhoto);
-                bundle.putString("Fifth", FifthPhoto);
-
-
-                gtn.setArguments(bundle);
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.replace(R.id.FrameLayoutMain, gtn);
                 ft.commit();
 

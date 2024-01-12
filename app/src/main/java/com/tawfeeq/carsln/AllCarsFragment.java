@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -102,9 +103,9 @@ public class AllCarsFragment extends Fragment {
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.slnpfp).into(ivPFP);
+                ivPFP.setImageResource(R.drawable.slnpfp);
             } else {
-                Picasso.get().load(pfp).into(ivPFP);
+                Glide.with(getActivity()).load(pfp).into(ivPFP);
             }
         }
 

@@ -18,7 +18,19 @@ public class FireBaseServices {
 
     private Uri selectedImageURL;
     private UserProfile user;
+
+    //-----------------------------------
+
+    private CarID selectedCar;
     private ArrayList<CarID> CarList;
+
+    public CarID getSelectedCar() {
+        return selectedCar;
+    }
+
+    public void setSelectedCar(CarID selectedCar) {
+        this.selectedCar = selectedCar;
+    }
 
     public ArrayList<CarID> getCarList() {
         return CarList;

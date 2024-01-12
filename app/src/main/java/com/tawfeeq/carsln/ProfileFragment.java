@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -118,9 +119,9 @@ public class ProfileFragment extends Fragment {
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.slnpfp).into(ivPFP);
+                ivPFP.setImageResource(R.drawable.slnpfp);
             } else {
-                Picasso.get().load(pfp).into(ivPFP);
+                Glide.with(getActivity()).load(pfp).into(ivPFP);
             }
         }
 
@@ -196,6 +197,7 @@ public class ProfileFragment extends Fragment {
 
             gtn.setArguments(bundle);
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.replace(R.id.FrameLayoutMain, gtn);
             ft.commit();
         }

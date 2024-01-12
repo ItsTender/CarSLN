@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
                         GoToFragmentCars();
                     }
                     else if (item.getItemId() == R.id.searchcar){
-                        GoToFragmentSearch();
+                        if(fbs.getCarList()!=null) GoToFragmentCarSearchList();
+                        else GoToFragmentSearch();
                     }
                     else if (item.getItemId() == R.id.addcar) {
                         GoToFragmentAdd();
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 bnv.setSelectedItemId(R.id.market);
                 FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -163,6 +165,13 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
+    private void GoToFragmentCarSearchList() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
+        ft.commit();
+    }
+
     private void GoToFragmentAdd() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
@@ -188,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 

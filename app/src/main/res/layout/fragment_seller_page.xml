@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="500dp"
         android:id="@+id/ConstraintSeller">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -25,27 +25,17 @@
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
         <TextView
-            android:id="@+id/tvSellerwelcome"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="sans-serif"
-            android:text="Welcome to"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewSellerPage" />
-
-        <TextView
             android:id="@+id/tvSellerUser"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="sans-serif"
             android:textColor="@color/black"
             android:textSize="25sp"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSellerwelcome" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSellerPage" />
 
         <TextView
             android:id="@+id/tvsellerintro"
@@ -55,6 +45,8 @@
             android:fontFamily="sans-serif"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:gravity="center"
+            android:text="Here You Can See his Car Listings and Contact him"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSellerUser" />
 
@@ -63,7 +55,7 @@
             android:layout_width="135dp"
             android:layout_height="135dp"
             android:layout_marginStart="138dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="138dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"

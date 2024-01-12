@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -34,11 +35,9 @@ public class DetailedFragment extends Fragment {
     FireBaseServices fbs;
     TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor, tvNotes;
     ImageView ivCar, ivSeller, ivSaved, ivBack, ivDelete;
-    boolean sell_lend;
-    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes;
-    Integer Price,Power,Year,Users,Kilometre;
+    boolean isFound;
     String pfp;
-    Boolean isFound;
+    CarID currentCar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,32 +84,6 @@ public class DetailedFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_detailed, container, false);
-
-        Bundle bundle =this.getArguments();
-
-
-        ID=bundle.getString("ID");
-        sell_lend=bundle.getBoolean("SellorLend");
-        Email=bundle.getString("Email");
-        Man=bundle.getString("Man");
-        Mod=bundle.getString("Mod");
-        Price=bundle.getInt("Price");
-        Photo=bundle.getString("Photo");
-        SecondPhoto=bundle.getString("Second");
-        ThirdPhoto=bundle.getString("Third");
-        FourthPhoto= bundle.getString("Fourth");
-        FifthPhoto=bundle.getString("Fifth");
-        Power =bundle.getInt("HP");
-        Engine =bundle.getString("Engine");
-        Year =bundle.getInt("Year");
-        Users =bundle.getInt("Users");
-        Kilometre=bundle.getInt("Kilo");
-        Transmission=bundle.getString("Transmission");
-        Color=bundle.getString("Color");
-        Location=bundle.getString("Area");
-        NextTest=bundle.getString("Test");
-        Notes=bundle.getString("Notes");
-
         return view;
     }
 
@@ -139,14 +112,15 @@ public class DetailedFragment extends Fragment {
         ivBack =getView().findViewById(R.id.DetailedGoBack); // Goes Back To Where ever the User Was.
         ivDelete =getView().findViewById(R.id.DetailedDeleteListing);
 
+        currentCar = fbs.getSelectedCar();
 
-        String str = Email;
+        String str = fbs.getSelectedCar().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
         // Get User Profile Photo.....
 
-        if(fbs.getUser()!=null && Email.equals(fbs.getAuth().getCurrentUser().getEmail())){
+        if(fbs.getUser()!=null && str.equals(fbs.getAuth().getCurrentUser().getEmail())){
 
             tvSeller.setText(fbs.getUser().getUsername());
 
@@ -177,7 +151,7 @@ public class DetailedFragment extends Fragment {
                     progressDialog.setIcon(R.drawable.slnround);
                     progressDialog.show();
 
-                    fbs.getStore().collection("MarketPlace").document(ID).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    fbs.getStore().collection("MarketPlace").document(currentCar.getId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getActivity(), "Successfully Deleted Your Car Listing", Toast.LENGTH_SHORT).show();
@@ -222,16 +196,16 @@ public class DetailedFragment extends Fragment {
                     pfp = documentSnapshot.getString("userPhoto");
 
                     if (pfp == null || pfp.isEmpty()) {
-                        Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
+                        ivSeller.setImageResource(R.drawable.slnpfp);
                     } else {
-                        Picasso.get().load(pfp).into(ivSeller);
+                        Glide.with(getActivity()).load(pfp).into(ivSeller);
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
-                    Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
+                    ivSeller.setImageResource(R.drawable.slnpfp);
                 }
             });
         }
@@ -239,40 +213,14 @@ public class DetailedFragment extends Fragment {
         // Get Profile Photo Ends
 
 
-        if(!Photo.equals("")) {
+        if(!currentCar.getPhoto().equals("")) {
             ivCar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     Fragment gtn = new DetailedPhotosFragment();
-                    Bundle bundle = new Bundle();
-
-
-                    bundle.putString("ID", ID);
-                    bundle.putBoolean("SellorLend", sell_lend);
-                    bundle.putString("Email", Email);
-                    bundle.putString("Man", Man);
-                    bundle.putString("Mod", Mod);
-                    bundle.putInt("HP", Power);
-                    bundle.putInt("Price", Price);
-                    bundle.putString("Photo", Photo);
-                    bundle.putString("Second", SecondPhoto);
-                    bundle.putString("Third", ThirdPhoto);
-                    bundle.putString("Engine", Engine);
-                    bundle.putString("Transmission", Transmission);
-                    bundle.putInt("Year", Year);
-                    bundle.putInt("Kilo", Kilometre);
-                    bundle.putInt("Users", Users);
-                    bundle.putString("Color", Color);
-                    bundle.putString("Area", Location);
-                    bundle.putString("Test", NextTest);
-                    bundle.putString("Notes", Notes);
-                    bundle.putString("Fourth", FourthPhoto);
-                    bundle.putString("Fifth", FifthPhoto);
-
-
-                    gtn.setArguments(bundle);
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                     ft.replace(R.id.FrameLayoutMain, gtn);
                     ft.commit();
                 }
@@ -306,42 +254,16 @@ public class DetailedFragment extends Fragment {
 
                 String str = fbs.getAuth().getCurrentUser().getEmail();
 
-                if(str.equals(Email)){
+                if(str.equals(currentCar.getEmail())){
                     // Always will be like that!
                     GoToProfile();
                     setNavigationBarProfile();
                 }
                 else {
-                    // might make it a popup with (UserPhoto, Username, Phone-"Call,Whatsapp").......
+
                     Fragment gtn = new SellerPageFragment();
-                    Bundle bundle = new Bundle();
-
-
-                    bundle.putString("ID", ID);
-                    bundle.putBoolean("SellorLend", sell_lend);
-                    bundle.putString("Email", Email);
-                    bundle.putString("Man", Man);
-                    bundle.putString("Mod", Mod);
-                    bundle.putInt("HP", Power);
-                    bundle.putInt("Price", Price);
-                    bundle.putString("Photo", Photo);
-                    bundle.putString("Second", SecondPhoto);
-                    bundle.putString("Third", ThirdPhoto);
-                    bundle.putString("Engine", Engine);
-                    bundle.putString("Transmission", Transmission);
-                    bundle.putInt("Year", Year);
-                    bundle.putInt("Kilo", Kilometre);
-                    bundle.putInt("Users", Users);
-                    bundle.putString("Color", Color);
-                    bundle.putString("Area", Location);
-                    bundle.putString("Test", NextTest);
-                    bundle.putString("Notes", Notes);
-                    bundle.putString("Fourth", FourthPhoto);
-                    bundle.putString("Fifth", FifthPhoto);
-
-
-                    gtn.setArguments(bundle);
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                     ft.replace(R.id.FrameLayoutMain, gtn);
                     ft.commit();
                 }
@@ -354,7 +276,7 @@ public class DetailedFragment extends Fragment {
 
                 String str = fbs.getAuth().getCurrentUser().getEmail();
 
-                if(str.equals(Email)){
+                if(str.equals(currentCar.getEmail())){
 
                     GoToProfile();
                     setNavigationBarProfile();
@@ -362,34 +284,8 @@ public class DetailedFragment extends Fragment {
                 else {
 
                     Fragment gtn = new SellerPageFragment();
-                    Bundle bundle = new Bundle();
-
-
-                    bundle.putString("ID", ID);
-                    bundle.putBoolean("SellorLend", sell_lend);
-                    bundle.putString("Email", Email);
-                    bundle.putString("Man", Man);
-                    bundle.putString("Mod", Mod);
-                    bundle.putInt("HP", Power);
-                    bundle.putInt("Price", Price);
-                    bundle.putString("Photo", Photo);
-                    bundle.putString("Second", SecondPhoto);
-                    bundle.putString("Third", ThirdPhoto);
-                    bundle.putString("Engine", Engine);
-                    bundle.putString("Transmission", Transmission);
-                    bundle.putInt("Year", Year);
-                    bundle.putInt("Kilo", Kilometre);
-                    bundle.putInt("Users", Users);
-                    bundle.putString("Color", Color);
-                    bundle.putString("Area", Location);
-                    bundle.putString("Test", NextTest);
-                    bundle.putString("Notes", Notes);
-                    bundle.putString("Fourth", FourthPhoto);
-                    bundle.putString("Fifth", FifthPhoto);
-
-
-                    gtn.setArguments(bundle);
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                     ft.replace(R.id.FrameLayoutMain, gtn);
                     ft.commit();
                 }
@@ -407,7 +303,7 @@ public class DetailedFragment extends Fragment {
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
         else Saved = new ArrayList<String>();
 
-        if(Saved.contains(ID)) {
+        if(Saved.contains(currentCar.getId())) {
             ivSaved.setImageResource(R.drawable.bookmark_filled);
             isFound = true;
         }
@@ -421,8 +317,8 @@ public class DetailedFragment extends Fragment {
             public void onClick(View view) {
 
                 if(fbs.getUser()!=null) {
-                    if (isFound) Saved.remove(ID);
-                    if (!isFound) Saved.add(ID);
+                    if (isFound) Saved.remove(currentCar.getId());
+                    if (!isFound) Saved.add(currentCar.getId());
 
                     fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -451,42 +347,42 @@ public class DetailedFragment extends Fragment {
         // Functions Ends......
 
 
-        tvMan.setText(Man + " " + Mod);
+        tvMan.setText(currentCar.getManufacturer() + " " + currentCar.getModel());
 
-        String prc= Price.toString();
-        if(sell_lend) {
+        String prc= String.valueOf(currentCar.getPrice());
+        if(currentCar.getSellLend()) {
             tvPrice.setText(prc + "₪");
         }
         else{
             tvPrice.setText(prc + "₪" + " Monthly");
         }
 
-        String power=Power.toString(); tvPower.setText(power);
-        String year=Year.toString(); tvYear.setText(year);
-        String Kilo =Kilometre.toString(); tvKilometre.setText(Kilo+" km");
-        tvTransmission.setText(Transmission);
-        tvLocation.setText(Location);
-        tvTest.setText(NextTest);
-        tvColor.setText(Color);
+        String power=String.valueOf(currentCar.getBHP()); tvPower.setText(power);
+        String year=String.valueOf(currentCar.getYear()); tvYear.setText(year);
+        String Kilo =String.valueOf(currentCar.getKilometre()); tvKilometre.setText(Kilo+" km");
+        tvTransmission.setText(currentCar.getTransmission());
+        tvLocation.setText(currentCar.getLocation());
+        tvTest.setText(currentCar.getNextTest());
+        tvColor.setText(currentCar.getColor());
 
-        if(Users==1){
-            String Owners= Users.toString(); tvUsers.setText(Owners + " Owner");
+        if(currentCar.getUsers()==1){
+            String Owners= String.valueOf(currentCar.getUsers()); tvUsers.setText(Owners + " Owner");
         }
         else {
-            String Owners= Users.toString(); tvUsers.setText(Owners + " Owners");
+            String Owners= String.valueOf(currentCar.getUsers()); tvUsers.setText(Owners + " Owners");
         }
 
-        tvEngine.setText(Engine);
+        tvEngine.setText(currentCar.getEngine());
 
-        tvNotes.setText(Notes);
+        tvNotes.setText(currentCar.getNotes());
 
-        if ( Photo == null || Photo.isEmpty())
+        if ( currentCar.getPhoto() == null || currentCar.getPhoto().isEmpty())
         {
-            Picasso.get().load(R.drawable.photo_iv).into(ivCar);
+            ivCar.setImageResource(R.drawable.photo_iv);
 
         }
         else {
-            Picasso.get().load(Photo).into(ivCar);
+            Glide.with(getActivity()).load(currentCar.getPhoto()).into(ivCar);
 
         }
 
@@ -496,6 +392,7 @@ public class DetailedFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
@@ -503,6 +400,7 @@ public class DetailedFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
@@ -517,12 +415,14 @@ public class DetailedFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SavedCarsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
     private void GoToProfile() {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 

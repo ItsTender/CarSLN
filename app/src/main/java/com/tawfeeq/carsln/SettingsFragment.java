@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -121,9 +122,9 @@ public class SettingsFragment extends Fragment {
             pfp = fbs.getUser().getUserPhoto();
 
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.slnpfp).into(ivUser);
+                ivUser.setImageResource(R.drawable.slnpfp);
             } else {
-                Picasso.get().load(pfp).into(ivUser);
+                Glide.with(getActivity()).load(pfp).into(ivUser);
             }
 
             etChangeUsername.setText(fbs.getUser().getUsername());
@@ -285,6 +286,7 @@ public class SettingsFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
@@ -306,6 +308,7 @@ public class SettingsFragment extends Fragment {
 
             gtn.setArguments(bundle);
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.replace(R.id.FrameLayoutMain, gtn);
             ft.commit();
         }
@@ -390,7 +393,7 @@ public class SettingsFragment extends Fragment {
             // Does Nothing......
         }
         else {
-            Picasso.get().load(photo).into(ivUser);
+            Glide.with(getActivity()).load(photo).into(ivUser);
         }
 
         if(!photo.isEmpty()) {

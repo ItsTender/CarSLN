@@ -135,6 +135,13 @@ public class SearchFragment extends Fragment {
             }
         });
 
+        btnResetSearch.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(getActivity(), "Reset Search", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
         btnResetSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +174,14 @@ public class SearchFragment extends Fragment {
                 ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
                 SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                 SellLend.setAdapter(SellLendAdapter);
+            }
+        });
+
+        btnSearch.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(getActivity(), "Search For a Car", Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
 
