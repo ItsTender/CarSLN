@@ -18,6 +18,15 @@ public class FireBaseServices {
 
     private Uri selectedImageURL;
     private UserProfile user;
+    private ArrayList<CarID> CarList;
+
+    public ArrayList<CarID> getCarList() {
+        return CarList;
+    }
+
+    public void setCarList(ArrayList<CarID> carList) {
+        CarList = carList;
+    }
 
     public UserProfile getUser() {
         return user;

@@ -201,20 +201,6 @@ public class DetailedFragment extends Fragment {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getActivity(), "Couldn't Deleted Your Car Listing, Try Again Later", Toast.LENGTH_SHORT).show();
-                            BottomNavigationView bnv = getNavigationBar();
-
-                            if (bnv.getSelectedItemId() == R.id.market) {
-                                GoToFragmentCars();
-                            }
-                            else if (bnv.getSelectedItemId() == R.id.searchcar){
-                                GoToFragmentSearch();
-                            }
-                            else if (bnv.getSelectedItemId() == R.id.savedcars) {
-                                GoToFragmentSaved();
-                            }
-                            else if (bnv.getSelectedItemId() == R.id.profile){
-                                GoToProfile();
-                            }
                             progressDialog.dismiss();
                         }
                     });
@@ -516,7 +502,7 @@ public class DetailedFragment extends Fragment {
     private void GoToFragmentSearch() {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new SearchFragment());
+        ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
         ft.commit();
     }
 

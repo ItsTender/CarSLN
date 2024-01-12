@@ -2,4 +2,23 @@
     <string name="app_name">CarSLN</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="rangesliderprice">
+        <item>0</item>
+        <item>200000</item>
+    </string-array>
+
+    <string-array name="rangesliderkilotere">
+        <item>0</item>
+        <item>200000</item>
+    </string-array>
+
+    <string-array name="rangeslideryears">
+        <item>1988</item>
+        <item>2024</item>
+    </string-array>
+
+    <string name="Search">Search</string>
+    <string name="Reset">Reset Search</string>
+
 </resources>

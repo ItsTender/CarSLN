@@ -8,8 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:id="@+id/ConstraintSearch">
+        android:layout_height="match_parent">
 
 
         <TextView
@@ -29,9 +28,9 @@
         <EditText
             android:id="@+id/etSearchMan"
             android:layout_width="380dp"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
@@ -47,8 +46,9 @@
         <EditText
             android:id="@+id/etSearchMod"
             android:layout_width="380dp"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
@@ -61,86 +61,213 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSearchMan" />
 
-        <EditText
-            android:id="@+id/etPriceFrom"
-            android:layout_width="190dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="15dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:hint="Price (From)"
-            android:inputType="number"
-            android:text=""
+        <TextView
+            android:id="@+id/textViewprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="105dp"
+            android:fontFamily="sans-serif"
+            android:text="Price Range"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/etPriceTo"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewpricemax"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSearchMod" />
 
-        <EditText
-            android:id="@+id/etPriceTo"
-            android:layout_width="190dp"
-            android:layout_height="48dp"
+        <TextView
+            android:id="@+id/textViewpricemax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:hint="Price (Until)"
-            android:inputType="number"
-            android:text=""
+            android:fontFamily="sans-serif"
+            android:text="+200,000"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/etPriceFrom"
+            app:layout_constraintStart_toEndOf="@+id/textViewprice"
             app:layout_constraintTop_toBottomOf="@+id/etSearchMod" />
 
-        <Button
-            android:id="@+id/btnSearch"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/rngPrice"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Search"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/btnResetSearch"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPriceFrom" />
-
-        <Button
-            android:id="@+id/btnResetSearch"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Reset"
-            android:textColor="@color/white"
+            android:layout_marginEnd="31dp"
+            android:stepSize="10"
+            android:value="0"
+            android:valueFrom="0"
+            android:valueTo="200000"
+            app:haloColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnSearch"
-            app:layout_constraintTop_toBottomOf="@+id/etPriceTo" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewprice"
+            app:thumbColor="@color/Blue700"
+            app:tickColor="@color/Light_Steel_Blue"
+            app:trackColor="@color/Light_Steel_Blue"
+            app:values="@array/rangesliderprice" />
+
+        <TextView
+            android:id="@+id/textViewmilage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="88dp"
+            android:fontFamily="sans-serif"
+            android:text="Kilometre Range"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewkilomax"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rngPrice" />
+
+        <TextView
+            android:id="@+id/textViewkilomax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif"
+            android:text="+200,000"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewmilage"
+            app:layout_constraintTop_toBottomOf="@+id/rngPrice" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/rngKilometre"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="31dp"
+            android:stepSize="10"
+            android:value="0"
+            android:valueFrom="0"
+            android:valueTo="200000"
+            app:haloColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewmilage"
+            app:thumbColor="@color/Blue700"
+            app:tickColor="@color/Light_Steel_Blue"
+            app:trackColor="@color/Light_Steel_Blue"
+            app:values="@array/rangesliderkilotere" />
+
+        <TextView
+            android:id="@+id/textViewyear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="125dp"
+            android:fontFamily="sans-serif"
+            android:text="Year Range"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewyearmax"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rngKilometre" />
+
+        <TextView
+            android:id="@+id/textViewyearmax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif"
+            android:text="2024"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewyear"
+            app:layout_constraintTop_toBottomOf="@+id/rngKilometre" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/rngYears"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="31dp"
+            android:stepSize="1"
+            android:value="0"
+            android:valueFrom="1988"
+            android:valueTo="2024"
+            app:haloColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewyear"
+            app:thumbColor="@color/Blue700"
+            app:tickColor="@color/Light_Steel_Blue"
+            app:trackColor="@color/Light_Steel_Blue"
+            app:values="@array/rangeslideryears" />
+
+        <TextView
+            android:id="@+id/textViewoffertype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="313dp"
+            android:fontFamily="sans-serif"
+            android:text="Offer Type"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rngYears" />
+
+        <Spinner
+            android:id="@+id/Spinnersellingtype"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="31dp"
+            android:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewoffertype" />
+
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="@color/Bluegrey"
+            android:contentDescription="@string/Search"
+            android:src="@drawable/baseline_search_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnResetSearch"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnResetSearch"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="@color/Bluegrey"
+            android:contentDescription="@string/Reset"
+            android:src="@drawable/baseline_clear_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnSearch" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_below="@+id/ConstraintSearch">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecyclerSearch"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="6dp"/>
-
-    </LinearLayout>
 
 </RelativeLayout>

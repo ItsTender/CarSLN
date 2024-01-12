@@ -108,27 +108,13 @@
             android:id="@+id/btnAddCarListing"
             android:layout_width="150dp"
             android:layout_height="75dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="131dp"
             android:backgroundTint="@color/Blue700"
             android:text="Add Car"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnRemoveImages"
-            app:layout_constraintTop_toBottomOf="@+id/ivFifthCarPhoto" />
-
-        <Button
-            android:id="@+id/btnRemoveImages"
-            android:layout_width="150dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="10dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Reset Images"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/btnAddCarListing"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivFifthCarPhoto" />
 

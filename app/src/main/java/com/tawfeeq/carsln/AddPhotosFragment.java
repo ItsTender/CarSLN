@@ -120,7 +120,7 @@ public class AddPhotosFragment extends Fragment {
         ivFourthPhoto = getView().findViewById(R.id.ivFourthCarPhoto);
         ivFifthPhoto = getView().findViewById(R.id.ivFifthCarPhoto);
         AddCar = getView().findViewById(R.id.btnAddCarListing);
-        Reset = getView().findViewById(R.id.btnRemoveImages);
+
 
         AddCar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,22 +196,6 @@ public class AddPhotosFragment extends Fragment {
             }
         });
 
-        Reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FirstPhoto= null;
-                SecondPhoto= null;
-                ThirdPhoto= null;
-                FourthPhoto= null;
-                FifthPhoto= null;
-                ivFirstPhoto.setImageResource(R.drawable.photo_iv);
-                ivSecondPhoto.setImageResource(R.drawable.photo_iv);
-                ivThirdPhoto.setImageResource(R.drawable.photo_iv);
-                ivFourthPhoto.setImageResource(R.drawable.photo_iv);
-                ivFifthPhoto.setImageResource(R.drawable.photo_iv);
-            }
-        });
 
     }
 

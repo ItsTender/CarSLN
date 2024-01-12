@@ -136,7 +136,7 @@ public class AddCarFragment extends Fragment {
         SpinnerYear.setAdapter(YearsAdapter);
 
 
-        String [] TestYear = { "Test Year Until","2024","2025","2026","2027"};
+        String [] TestYear = { "Test Year Until","2024","2025","2026","2027","2028"};
         ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestYear);
         TestYearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerTestYear.setAdapter(TestYearAdapter);
@@ -160,7 +160,7 @@ public class AddCarFragment extends Fragment {
         SpinnerLocation.setAdapter(LocationAdapter);
 
 
-        String [] HowSellLend = {"What do you want to do with the Car", "Sell the Car" , "Lend the Car" };
+        String [] HowSellLend = {"Car Offer Type", "Sell the Car" , "Lend the Car" };
         ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
         SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerSellLend.setAdapter(SellLendAdapter);
@@ -180,116 +180,116 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelNon = {"Choose Manufacturer"};
 
-        String [] ModelAudi = {"Choose Audi Model", "100", "80", "A1", "A3", "A4", "A5", "A6", "A7", "A8", "E-tron", "E-tron GT", "E-tron Q4", "Q2", "Q3", "Q4", "Q5",
+        String [] ModelAudi = { "100", "80", "A1", "A3", "A4", "A5", "A6", "A7", "A8", "E-tron", "E-tron GT", "E-tron Q4", "Q2", "Q3", "Q4", "Q5",
                 "Q6", "Q7", "Q8", "R8", "RS3 Sedan", "RS3 Hatchback", "RS4", "RS4 Avant", "RS5", "RS6", "RS6 Avant", "RS7", "RSQ3", "RSQ8", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "SQ7", "SQ8", "TT", "TT RS"};
 
-        String [] ModelAbarth = {"Choose Abarth Model", "124 Spider", "500", "500c", "595", "595c"};
+        String [] ModelAbarth = { "124 Spider", "500", "500c", "595", "595c"};
 
-        String [] ModelAlfa = {"Choose Alfa Romeo Model", "145", "146", "147", "156", "159", "164", "166", "33", "75", "90", "4C", "4C Spider", "8C", "8C Spider", "GT", "GTV", "Giulia", "Giulia Quadrifoglio",
+        String [] ModelAlfa = { "145", "146", "147", "156", "159", "164", "166", "33", "75", "90", "4C", "4C Spider", "8C", "8C Spider", "GT", "GTV", "Giulia", "Giulia Quadrifoglio",
                 "Giulietta", "brera", "Tonale", "MiTO", "Stelvio", "Spider"};
 
-        String [] ModelAston = {"Choose Aston Martin Model", "DB12", "DB11", "DB9", "DBS", "DBX", "Vantage", "Vanquish", "Rapide"};
+        String [] ModelAston = { "DB12", "DB11", "DB9", "DBS", "DBX", "Vantage", "Vanquish", "Rapide"};
 
-        String [] ModelBMW = {"Choose BMW Model", "1 Series",  "2 Series", "3 Series", "3 Series Convertible", "4 Series", "5 Series",  "6 Series", "7 Series", "8 Series", "i3", "iX3", "i4", "i7", "i8", "iX", "1 Series M", "M2", "M3", "M4", "M5", "M6", "M8",
+        String [] ModelBMW = { "1 Series",  "2 Series", "3 Series", "3 Series Convertible", "4 Series", "5 Series",  "6 Series", "7 Series", "8 Series", "i3", "iX3", "i4", "i7", "i8", "iX", "1 Series M", "M2", "M3", "M4", "M5", "M6", "M8",
                 "M2 Competition", "M3 Competition", "M4 Competition", "M5 Competition", "M6 Competition", "M8 Competition", "X1", "X2", "X3", "X4", "X5", "X6", "X6M", "X7", "Z3", "Z4"};
 
-        String [] ModelBentley = {"Choose Bentley Model", "BE53", "Bentayga", "Continental GT", "Flying Spur"};
+        String [] ModelBentley = { "BE53", "Bentayga", "Continental GT", "Flying Spur"};
 
-        String [] ModelCitroen = {"Choose Citroen Model", "AX", "C Elysee", "C Zero", "C1", "C2", "C3", "C3 Aircross", "C4", "C4 X", "C5", "C6", "C8", "CX", "DS3", "DS3 Convertible", "DS4", "DS5", "XM", "ZX",
+        String [] ModelCitroen = { "AX", "C Elysee", "C Zero", "C1", "C2", "C3", "C3 Aircross", "C4", "C4 X", "C5", "C6", "C8", "CX", "DS3", "DS3 Convertible", "DS4", "DS5", "XM", "ZX",
                 "BX", "C15", "Berlingo", "Berlingo Electric", "Jumper"};
 
-        String [] ModelCadillac = {"Choose Cadillac Model", "ATS", "CT4", "CT5", "CT6", "CTS", "DTS", "SRX", "STS", "XLR", "XT4", "XT5", "XT6", "XTS", "Escalade"};
+        String [] ModelCadillac = { "ATS", "CT4", "CT5", "CT6", "CTS", "DTS", "SRX", "STS", "XLR", "XT4", "XT5", "XT6", "XTS", "Escalade"};
 
-        String [] ModelCupra = {"Choose Cupra Model", "Ateca", "Leon", "Formentor", "Born"};
+        String [] ModelCupra = { "Ateca", "Leon", "Formentor", "Born"};
 
-        String [] ModelChevrolet = {"Choose Chevrolet Model", "Optra", "Orlando", "Impala", "Uplander", "Equinox", "Bolt", "Blaze", "Volt", "Tahoe", "Traverse", "Trax", "Trailblazer", "Malibu", "Suburban",
+        String [] ModelChevrolet = { "Optra", "Orlando", "Impala", "Uplander", "Equinox", "Bolt", "Blaze", "Volt", "Tahoe", "Traverse", "Trax", "Trailblazer", "Malibu", "Suburban",
                 "Sonic", "Spark", "Camaro", "Camaro ZL1", "Camaro ZL1 1LE", "Corvette", "Corvette ZO6", "Corvette ZL1", "Cruze", "Nevada", "Savana", "Silverado 1500", "Silverado 2500", "Silverado 3500",
                 "Colorado", "Colorado ZR2"};
 
-        String [] ModelDacia = {"Choose Dacia Model", "Duster", "Jogger", "Logan MCV", "Lodgy", "Sandero", "Sandero Stepway", "Spring", "Dokker"};
+        String [] ModelDacia = { "Duster", "Jogger", "Logan MCV", "Lodgy", "Sandero", "Sandero Stepway", "Spring", "Dokker"};
 
-        String [] ModelDodge = {"Choose Dodge Model", "Avenger", "Journey", "Durango", "Durango SRT", "Nitro", "Challenger", "Challenger Hellcat", "Challenger Demon", "Charger", "Charger Hellcat", "Caliber",
+        String [] ModelDodge = { "Avenger", "Journey", "Durango", "Durango SRT", "Nitro", "Challenger", "Challenger Hellcat", "Challenger Demon", "Charger", "Charger Hellcat", "Caliber",
                 "Dart", "Viper", "SRT Viper", "SRT Viper GTS", "Ram", "Ram TRX", "Ram 1500", "Ram 2500", "Ram 3500"};
 
-        String [] ModelFiat = {"Choose Fiat Model", "500", "500C", "500L", "500X", "Bravo", "Tipo", "Croma", "Linea", "Multipla", "Ponto", "Panda", "Doblo", "Ducato", "Scudo", "QUBO"};
+        String [] ModelFiat = { "500", "500C", "500L", "500X", "Bravo", "Tipo", "Croma", "Linea", "Multipla", "Ponto", "Panda", "Doblo", "Ducato", "Scudo", "QUBO"};
 
-        String [] ModelFord = {"Choose Ford Model", "Edge", "S Max", "Escort", "Escape", "Expedition", "Explorer", "Bronco", "Bronco R", "Galaxy", "Taurus", "Lincoln MKC", "Lincoln MKS", "Lincoln MKT", "Lincoln MKZ",
+        String [] ModelFord = { "Edge", "S Max", "Escort", "Escape", "Expedition", "Explorer", "Bronco", "Bronco R", "Galaxy", "Taurus", "Lincoln MKC", "Lincoln MKS", "Lincoln MKT", "Lincoln MKZ",
                 "Mondeo", "Mustang", "Mustang GT", "Mustang SVT Cobra", "Mustang Mach E", "Mustang Shelby GT500", "Mustang Shelby GT350", "Puma", "Focus", "Fiesta", "Fusion", "Kuga", "Excrusion", "F-150", "F-150 Lightning",
                 "F-250", "F-350", "GT", "Transit", "Maverick", "Connect", "Ranger"};
 
-        String [] ModelFerrari = {"Choose Ferrari Model", "296 GTB", "Roma", "F8 Tributo", "SF90 Stradale", "488 Pista", "488 GTB", "Portofino", "F12tdf", "GTC4Lusso", "812 Superfast", "458 Speciale", "458 Spider", "458 Italia",
+        String [] ModelFerrari = { "296 GTB", "Roma", "F8 Tributo", "SF90 Stradale", "488 Pista", "488 GTB", "Portofino", "F12tdf", "GTC4Lusso", "812 Superfast", "458 Speciale", "458 Spider", "458 Italia",
                 "LaFerrari", "F12berlinetta", "599 GTO", "599 GTB", "F430", "360 Modena"};
 
-        String [] ModelGenesis = {"Choose Genesis Model", "G70", "G80", "G90", "GLS", "GV60", "GV70", "GV80"};
+        String [] ModelGenesis = { "G70", "G80", "G90", "GLS", "GV60", "GV70", "GV80"};
 
-        String [] ModelGMC = {"Choose GMC Model", "Acadia", "Jimmy", "Yukon", "Yukon Denali", "Suburban", "Hummer EV", "Envoy", "Vandura", "Savana", "Sonoma", "Sierra", "Sierra 4x4", "Safari", "Rally"};
+        String [] ModelGMC = { "Acadia", "Jimmy", "Yukon", "Yukon Denali", "Suburban", "Hummer EV", "Envoy", "Vandura", "Savana", "Sonoma", "Sierra", "Sierra 4x4", "Safari", "Rally"};
 
-        String [] ModelHonda = {"Choose Honda Model", "Acura Integra", "Acura NSX", "Acura MDX", "Shuttle", "CR-V", "CR-Z", "FR-V", "HR-V", "S2000", "Odyssey", "Accord", "Insight","Jazz", "Jazz Hybrid", "Legend", "Stream",
+        String [] ModelHonda = { "Acura Integra", "Acura NSX", "Acura MDX", "Shuttle", "CR-V", "CR-Z", "FR-V", "HR-V", "S2000", "Odyssey", "Accord", "Insight","Jazz", "Jazz Hybrid", "Legend", "Stream",
                 "Civic Type-R", "Civic Hybrid", "Civic Hatchback", "Civic Sedan", "Civic Station", "Pilot", "Prelude"};
 
-        String [] ModelHyundai = {"Choose Hyundai Model", "i10", "i20", "i20N", "i25", "i30", "i30CW", "i30N", "i35", "i40", "iX20", "iX35", "iX55", "Ioniq",  "Ioniq 5", "Ioniq 6", "Elantra", "Accent", "Bayon", "Getz", "Veloster", "Veloster N",
+        String [] ModelHyundai = { "i10", "i20", "i20N", "i25", "i30", "i30CW", "i30N", "i35", "i40", "iX20", "iX35", "iX55", "Ioniq",  "Ioniq 5", "Ioniq 6", "Elantra", "Accent", "Bayon", "Getz", "Veloster", "Veloster N",
                 "Venue", "Terracan", "Tucson", "Sonata", "Sonata Hybrid", "Sonata N", "Santa Fe", "Palisade", "Kona", "Kona EV", "Coupe", "H1", "H100", "H100 Truck", "i800", "Staria"};
 
-        String [] ModelInfiniti = {"Choose Infiniti Model", "FX30", "FX35", "FX50", "G37", "Q30", "Q50", "Q60", "Q70", "QX30", "QX50", "QX55", "QX56", "QX60", "QX70"};
+        String [] ModelInfiniti = { "FX30", "FX35", "FX50", "G37", "Q30", "Q50", "Q60", "Q70", "QX30", "QX50", "QX55", "QX56", "QX60", "QX70"};
 
-        String [] ModelIsuzu = {"Choose Isuzu Model", "D-Max 2x4", "D-Max 4x4", "Sumo"};
+        String [] ModelIsuzu = { "D-Max 2x4", "D-Max 4x4", "Sumo"};
 
-        String [] ModelJeep = {"Choose Jeep Model", "Gladiator", "Wagoneer", "Grand Wagoneer", "Cherokee", "Grand Cherokee", "Grand Cherokee", "Commander", "Compass", "Renegade", "Wrangler", "Wrangler Rubicon"};
+        String [] ModelJeep = { "Gladiator", "Wagoneer", "Grand Wagoneer", "Cherokee", "Grand Cherokee", "Grand Cherokee", "Commander", "Compass", "Renegade", "Wrangler", "Wrangler Rubicon"};
 
-        String [] ModelJaguar = {"Choose Jaguar Model", "E-Pace", "F-Pace", "F-Type", "I-Pace", "S-Pace", "X-Pace", "XE", "XF", "XJ", "XJ6", "XJ8", "XJR", "XK", "XKR"};
+        String [] ModelJaguar = { "E-Pace", "F-Pace", "F-Type", "I-Pace", "S-Pace", "X-Pace", "XE", "XF", "XJ", "XJ6", "XJ8", "XJR", "XK", "XKR"};
 
-        String [] ModelKia = {"Choose Kia Model", "EV6", "K900", "XCEED", "Optima", "Telluride", "Magentis", "Niro", "Niro EV", "Niro PHEV", "Niro Hybrid", "Niro Plus", "Soul", "Sorento", "Stonic", "Stinger", "CEED", "ProCeed", "Seltos", "Sportage", "Cerato", "Forte", "Picanto",
+        String [] ModelKia = { "EV6", "K900", "XCEED", "Optima", "Telluride", "Magentis", "Niro", "Niro EV", "Niro PHEV", "Niro Hybrid", "Niro Plus", "Soul", "Sorento", "Stonic", "Stinger", "CEED", "ProCeed", "Seltos", "Sportage", "Cerato", "Forte", "Picanto",
                 "Carens", "Cadenza", "Carnival", "Rio", "K2500", "Borrego", "Creta"};
 
-        String [] ModelLamborghini = {"Choose Lamborghini Model", "Diablo", "Diablo SV", "Gallardo", "Gallardo Superleggera", "Gallardo Spyder", "Murcielago", "Murcielago SV", "Urus", "Aventador", "Aventador Roadster", "Aventador SV", "Aventador SVJ", "Huracan", "Huracan Spyder", "Huracan Performante", "Huracan Evo", "Huracan STO", "Huracan Tecnica", "Sian"};
+        String [] ModelLamborghini = { "Diablo", "Diablo SV", "Gallardo", "Gallardo Superleggera", "Gallardo Spyder", "Murcielago", "Murcielago SV", "Urus", "Aventador", "Aventador Roadster", "Aventador SV", "Aventador SVJ", "Huracan", "Huracan Spyder", "Huracan Performante", "Huracan Evo", "Huracan STO", "Huracan Tecnica", "Sian"};
 
-        String [] ModelLandRover = {"Choose Land Rover Model", "Discovery 1", "Discovery 2", "Discovery 3", "Discovery 4", "Discovery 5", "Discovery Sport", "Defender", "Freelander 1", "Freelander 2", "Range Rover", "Evoque", "Velar", "Sport", "Sport SVR"};
+        String [] ModelLandRover = { "Discovery 1", "Discovery 2", "Discovery 3", "Discovery 4", "Discovery 5", "Discovery Sport", "Defender", "Freelander 1", "Freelander 2", "Range Rover", "Evoque", "Velar", "Sport", "Sport SVR"};
 
-        String [] ModelLexus = {"Choose Lexus Model", "CS", "CT200H", "ES300H", "GS250", "GS300", "GS300H", "GS450H", "GX460", "IS250", "IS300", "IS300H", "LC500", "LS400", "LS430", "LS460", "LS500", "LS600HL", "LX570", "LX600", "NX", "RC", "RCF", "LFA", "RX200t", "RX300", "RX330", "RX350", "RX400H", "RX450H", "RX500H", "RZ450e", "SC430", "UX", "GX470"};
+        String [] ModelLexus = { "CS", "CT200H", "ES300H", "GS250", "GS300", "GS300H", "GS450H", "GX460", "IS250", "IS300", "IS300H", "LC500", "LS400", "LS430", "LS460", "LS500", "LS600HL", "LX570", "LX600", "NX", "RC", "RCF", "LFA", "RX200t", "RX300", "RX330", "RX350", "RX400H", "RX450H", "RX500H", "RZ450e", "SC430", "UX", "GX470"};
 
-        String [] ModelMaserati = {"Choose Maserati Model", "MC20", "Ghibli", "Granturismo", "Grancabrio", "Gransport", "Grecale", "Levante", "Quattroporte"};
+        String [] ModelMaserati = { "MC20", "Ghibli", "Granturismo", "Grancabrio", "Gransport", "Grecale", "Levante", "Quattroporte"};
 
-        String [] ModelMazda = {"Choose Mazda Model", "Mazda2", "Mazda2 Demio", "Mazda3", "323", "Mazda5", "Mazda6", "626", "CX-3", "CX-30", "CX-5", "CX-50", "CX-60", "CX-07", "CX-9", "CX-90", "MPV", "MX-3", "MX-30", "MX-5", "MX-6", "RX-7", "RX-8", "Demio", "Tribute", "Premacy", "B2500 2x4", "B2500 4x4", "BT50 2x4", "BT50 4x4"};
+        String [] ModelMazda = { "Mazda2", "Mazda2 Demio", "Mazda3", "323", "Mazda5", "Mazda6", "626", "CX-3", "CX-30", "CX-5", "CX-50", "CX-60", "CX-07", "CX-9", "CX-90", "MPV", "MX-3", "MX-30", "MX-5", "MX-6", "RX-7", "RX-8", "Demio", "Tribute", "Premacy", "B2500 2x4", "B2500 4x4", "BT50 2x4", "BT50 4x4"};
 
-        String [] ModelMini = {"Choose Mini Model", "JCW", "ONE", "Paceman", "Countryman", "Coupe", "Cooper", "Cooper Cabriolet", "Clubman", "Roadster"};
+        String [] ModelMini = { "JCW", "ONE", "Paceman", "Countryman", "Coupe", "Cooper", "Cooper Cabriolet", "Clubman", "Roadster"};
 
-        String [] ModelMitsubishi = {"Choose Mitsubishi Model", "ASX", "GT3000", "I-MIEV", "Outlander", "Outlander PHEV", "Attrage", "Eclipse", "Eclipse Cross", "Galant", "Grandis", "Lancer", "Lancer EVO", "Lancer Sportback", "Super Lancer", "Montero Sport", "Space Star", "Pajero", "Colt", "Hunter 2x4", "Hunter 4x4",
+        String [] ModelMitsubishi = { "ASX", "GT3000", "I-MIEV", "Outlander", "Outlander PHEV", "Attrage", "Eclipse", "Eclipse Cross", "Galant", "Grandis", "Lancer", "Lancer EVO", "Lancer Sportback", "Super Lancer", "Montero Sport", "Space Star", "Pajero", "Colt", "Hunter 2x4", "Hunter 4x4",
                 "L300", "L400", "Triton 2x4", "Triton 4x4", "Magnum 2x4", "Magnum 4x4", "Space Gear", "Canter"};
 
-        String [] ModelMercedes = {"Choose Mercedes Model", "A-Class", "A45 AMG", "B-Class", "C-Class", "CE", "CL", "CLA", "CLC", "CLK", "CLS", "E-Class", "E63 AMG", "EQA", "EQA250 Plus", "EQB", "EQC", "EQE", "EQS", "EQV", "G-Class", "GL-Class", "GLA", "GLB", "GLC", "GLC Coupe", "GLE", "GLE-Coupe", "GLK-Class", "GLS-Class", "AMG GT Sedan", "AMG GT Coupe", "AMG GT S", "AMG GT R", "ML-Class", "R-Class",
+        String [] ModelMercedes = { "A-Class", "A45 AMG", "B-Class", "C-Class", "CE", "CL", "CLA", "CLC", "CLK", "CLS", "E-Class", "E63 AMG", "EQA", "EQA250 Plus", "EQB", "EQC", "EQE", "EQS", "EQV", "G-Class", "GL-Class", "GLA", "GLB", "GLC", "GLC Coupe", "GLE", "GLE-Coupe", "GLK-Class", "GLS-Class", "AMG GT Sedan", "AMG GT Coupe", "AMG GT S", "AMG GT R", "ML-Class", "R-Class",
                 "S-Class", "S-Class Coupe", "S-Class Cabrio", "SE", "SL", "SLC", "SLK", "SLK 55 AMG", "SLS", "CL65 AMG", "C63 AMG", "V-Class", "Metris", "313", "316", "319", "413", "X-Class", "Atego", "Viano", "Vito", "Vito Electric", "Unimog", "Citan", "Sprinter"};
 
-        String [] ModelNissan = {"Choose Nissan Model", "370Z", "Z350", "GT-R", "SX200", "Altima", "Almera", "X Trail", "Armada", "Juke", "Tiida", "Terrano", "Leaf", "Murano", "Micra" , "Maxima", "Note", "Sunny", "Sentra", "Pathfinder", "Pulsar", "Patrol", "Primera", "Kavak", "Quest", "Qashqai", "Qashqai +2", "NV200", "Xterra", "Winner 2x4", "Winner 4x4",
+        String [] ModelNissan = { "370Z", "Z350", "GT-R", "SX200", "Altima", "Almera", "X Trail", "Armada", "Juke", "Tiida", "Terrano", "Leaf", "Murano", "Micra" , "Maxima", "Note", "Sunny", "Sentra", "Pathfinder", "Pulsar", "Patrol", "Primera", "Kavak", "Quest", "Qashqai", "Qashqai +2", "NV200", "Xterra", "Winner 2x4", "Winner 4x4",
                 "Navara", "Frontier", "Largo", "Serena", "Cabstar"};
 
-        String [] ModelOpel = {"Choose Opel Model", "Adam", "Omega", "Insignia", "Astra", "Grandland", "Vectra", "Zafira", "Tigra", "Mokka", "Mokka X", "Meriva", "Frontera", "Corsa", "Cascada", "Crossland X", "Vivaro", "Movano", "Combo"};
+        String [] ModelOpel = { "Adam", "Omega", "Insignia", "Astra", "Grandland", "Vectra", "Zafira", "Tigra", "Mokka", "Mokka X", "Meriva", "Frontera", "Corsa", "Cascada", "Crossland X", "Vivaro", "Movano", "Combo"};
 
-        String [] ModelPorsche = {"Choose Porsche Model", "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911 Carrera", "911 Carrera 4", "911 Carrera T", "911 Carrera S", "911 Carrera 4S", "911 Carrera GTS", "911 Carrera 4 GTS", "911 Cabriolet", "911 Speedster", "911 Sport Classic", "911 S/T", "911 Turbo", "911 Turbo S", "911 Targa", "911 Dakar", "911 GT2 RS", "911 GT3", "911 GT3 RS",
+        String [] ModelPorsche = { "718 Boxster", "718 Cayman", "Cayman GT4", "Cayman GT4 RS", "Carrera GT", "918 Spyder", "911 Carrera", "911 Carrera 4", "911 Carrera T", "911 Carrera S", "911 Carrera 4S", "911 Carrera GTS", "911 Carrera 4 GTS", "911 Cabriolet", "911 Speedster", "911 Sport Classic", "911 S/T", "911 Turbo", "911 Turbo S", "911 Targa", "911 Dakar", "911 GT2 RS", "911 GT3", "911 GT3 RS",
                 "Taycan", "Macan", "Macan GTS", "Panamera", "Panamera Turbo", "Cayenne", "Cayenne Turbo"};
 
-        String [] ModelPeugeot = {"Choose Peugeot Model", "106", "107", "108", "2008", "205", "206", "206+", "206CC", "207", "208", "208 GTI", "3008", "301", "305", "306", "307", "307CC", "308", "308CC", "309", "405", "406", "407", "408", "5008",
+        String [] ModelPeugeot = { "106", "107", "108", "2008", "205", "206", "206+", "206CC", "207", "208", "208 GTI", "3008", "301", "305", "306", "307", "307CC", "308", "308CC", "309", "405", "406", "407", "408", "5008",
                 "504", "505", "508", "605", "607", "E-Rifter", "RCZ", "E-2008", "E-208", "iON", "Traveller", "204", "J5", "J9", "Expert", "Boxer", "Partner", "Landtrek", "Bipper"};
 
-        String [] ModelRenault = {"Choose Renault Model", "Austral", "Espace", "Arkana", "Arkana Hybrid", "Grand Scenic", "Zoe", "Twingo", "Laguna", "Logan", "Latitude", "Megane", "Megane Grand Coupe", "Megane E-Tech", "Megane R.S.", "Symbol", "Sandero", "Scenic", "Fluence", "Fluence Z.E.", "Kadjar", "Koleos", "Clio", "Clio R.S.", "Captur", "Expert", "Trafic",
+        String [] ModelRenault = { "Austral", "Espace", "Arkana", "Arkana Hybrid", "Grand Scenic", "Zoe", "Twingo", "Laguna", "Logan", "Latitude", "Megane", "Megane Grand Coupe", "Megane E-Tech", "Megane R.S.", "Symbol", "Sandero", "Scenic", "Fluence", "Fluence Z.E.", "Kadjar", "Koleos", "Clio", "Clio R.S.", "Captur", "Expert", "Trafic",
                 "Master", "Kangoo"};
 
-        String [] ModelSubaru = {"Choose Subaru Model", "B3 Sedan", "B3 Hatchback", "B4", "B9", "BRZ", "SVX", "XV", "Outback", "Impreza", "Impreza WRX", "Impreza WRX STI", "Leone", "Levorg", "Legacy", "Forester", "Crosstrek", "E10", "E12", "GLF", "Baja", "Rex"};
+        String [] ModelSubaru = { "B3 Sedan", "B3 Hatchback", "B4", "B9", "BRZ", "SVX", "XV", "Outback", "Impreza", "Impreza WRX", "Impreza WRX STI", "Leone", "Levorg", "Legacy", "Forester", "Crosstrek", "E10", "E12", "GLF", "Baja", "Rex"};
 
-        String [] ModelSuzuki = {"Choose Suzuki Model", "SX4", "SX4 Crossover", "XL7", "Ignis", "Alto", "Baleno", "Jimny", "Grand Vitara", "Wagon", "Vitara", "Liana", "Maruti", "Swift", "Celerio", "Samurai", "Splash", "X90", "Equator", "Carry"};
+        String [] ModelSuzuki = { "SX4", "SX4 Crossover", "XL7", "Ignis", "Alto", "Baleno", "Jimny", "Grand Vitara", "Wagon", "Vitara", "Liana", "Maruti", "Swift", "Celerio", "Samurai", "Splash", "X90", "Equator", "Carry"};
 
-        String [] ModelSeat = {"Choose Seat Model", "Ateca", "Ibiza", "Ibiza FR", "Alhambra", "Altea", "Altea XL", "Arona", "Arona FR", "Toledo", "Tarraco", "Leon", "Leon FR", "Mii", "Cordoba"};
+        String [] ModelSeat = { "Ateca", "Ibiza", "Ibiza FR", "Alhambra", "Altea", "Altea XL", "Arona", "Arona FR", "Toledo", "Tarraco", "Leon", "Leon FR", "Mii", "Cordoba"};
 
-        String [] ModelSkoda = {"Choose Skoda Model", "Octavia", "Octavia RS", "Octavia Space", "Enyaq", "Yeti", "Superb", "Citigo", "Scala", "Fabia", "Fabia Space", "Kamiq", "Karoq", "kodiaq", "Rapid", "Rapid Spaceback", "Roomster", "Enyaq IV"};
+        String [] ModelSkoda = { "Octavia", "Octavia RS", "Octavia Space", "Enyaq", "Yeti", "Superb", "Citigo", "Scala", "Fabia", "Fabia Space", "Kamiq", "Karoq", "kodiaq", "Rapid", "Rapid Spaceback", "Roomster", "Enyaq IV"};
 
-        String [] ModelToyota = {"Choose Toyota Model", "4Runner", "BZ4X", "C-HR", "FJ Cruiser", "GR86", "GT86", "IQ", "MR2", "RAV4", "RAV4 Hybrid", "Avalon", "Avalon Hybrid", "Avensis", "Auris", "Auris Hybrid", "AYGO", "AYGO X", "Grand Highlander", "Highlander", "Venza", "Avanza", "Verso",
+        String [] ModelToyota = { "4Runner", "BZ4X", "C-HR", "FJ Cruiser", "GR86", "GT86", "IQ", "MR2", "RAV4", "RAV4 Hybrid", "Avalon", "Avalon Hybrid", "Avensis", "Auris", "Auris Hybrid", "AYGO", "AYGO X", "Grand Highlander", "Highlander", "Venza", "Avanza", "Verso",
                 "Yaris", "Yaris Hybrid", "GR Yaris", "Land Cruiser", "Supra", "Starlet", "Sienna", "Sienna Hybrid", "Celica", "Space Verso", "Sequoia", "Previa", "Prius","Prius Hybrid", "Camry", "Corolla", "Corolla Hybrid", "Corolla Cross", "Hiace", "Hilux 2x4", "Hilux 4x4", "Tacoma", "Tundra", "Proace", "Sette"};
 
-        String [] ModelTesla = {"Choose Tesla Model", "Model S", "Model 3", "Model X", "Model Y", "Roadster"};
+        String [] ModelTesla = { "Model S", "Model 3", "Model X", "Model Y", "Roadster"};
 
-        String [] ModelVolkswagen = {"Choose Volkswagen Model", "ID.5", "ID3", "ID4", "ID6 CROZZ", "T-Roc", "T-Cross", "Atlas", "Eos", "UP", "Arteon", "Bora", "Jetta", "Golf", "Golf GTE", "Golf GTI", "Golf R", "Golf Sportsvan", "Vento","Beetle", "Touran", "Tiguan", "Passat", "Passat Estate",
+        String [] ModelVolkswagen = { "ID.5", "ID3", "ID4", "ID6 CROZZ", "T-Roc", "T-Cross", "Atlas", "Eos", "UP", "Arteon", "Bora", "Jetta", "Golf", "Golf GTE", "Golf GTI", "Golf R", "Golf Sportsvan", "Vento","Beetle", "Touran", "Tiguan", "Passat", "Passat Estate",
                 "Polo", "Polo GTI", "Phaeton", "Corrado", "Scirocco", "ID.Buzz", "LT", "LT35", "Amarok", "Transporter", "Multivan", "Caddy", "Caravelle", "Crafter", "Shuttle"};
 
-        String [] ModelVolvo = {"Choose Volvo Model", "240", "244", "740", "744", "745", "760", "850", "854", "855", "940", "944", "945", "960", "C30", "C40", "C70", "CX11", "S40", "S60", "S70", "S80", "S90", "V40", "V40 Cross Country", "V50",
+        String [] ModelVolvo = { "240", "244", "740", "744", "745", "760", "850", "854", "855", "940", "944", "945", "960", "C30", "C40", "C70", "CX11", "S40", "S60", "S70", "S80", "S90", "V40", "V40 Cross Country", "V50",
                 "V60", "V70", "XC40", "XC60", "XC70", "XC90", "245", "264", "340", "345"};
 
 
@@ -607,7 +607,7 @@ public class AddCarFragment extends Fragment {
                 String testyear = SpinnerTestYear.getSelectedItem().toString();
                 String testmonth = SpinnerTestMonth.getSelectedItem().toString();
 
-                if(SellLend.equals("What do you want to do with the Car")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location Area")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
+                if(SellLend.equals("Car Offer Type")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location Area")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
