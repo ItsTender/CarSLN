@@ -1,22 +1,30 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.adapters.CarsAdapter;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.UserProfile;
 
 import java.util.ArrayList;
 
@@ -28,6 +36,8 @@ import java.util.ArrayList;
 public class SavedCarsFragment extends Fragment {
     RecyclerView rcListings;
     FireBaseServices fbs;
+    String pfp;
+    ImageView ivPFP, ivSearch;
     ArrayList<CarID> lst;
     CarsAdapter Adapter;
     UserProfile usr;
@@ -86,7 +96,36 @@ public class SavedCarsFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         rcListings= getView().findViewById(R.id.RecyclerSavedCars);
+        ivPFP = getView().findViewById(R.id.imageViewProfilePhotoSaved);
+        ivSearch = getView().findViewById(R.id.imageViewSearchSaved);
         lst=new ArrayList<CarID>();
+
+
+        if(fbs.getUser()!=null) {
+
+            pfp = fbs.getUser().getUserPhoto();
+            if (pfp == null || pfp.isEmpty()) {
+                ivPFP.setImageResource(R.drawable.slnpfp);
+            } else {
+                Glide.with(getActivity()).load(pfp).into(ivPFP);
+            }
+        }
+
+        ivPFP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarProfile();
+                GoToProfile();
+            }
+        });
+
+        ivSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarSearch();
+                GoToSearch();
+            }
+        });
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
@@ -126,4 +165,26 @@ public class SavedCarsFragment extends Fragment {
         rcListings.setAdapter(Adapter);
 
     }
+
+    private void GoToProfile() {
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarProfile() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.profile);
+    }
+
+    private void setNavigationBarSearch() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.searchcar);
+    }
+
+    private void GoToSearch(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SearchFragment());
+        ft.commit();
+    }
+
 }

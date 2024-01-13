@@ -1,7 +1,6 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.app.ProgressDialog;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,8 +19,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.protobuf.StringValue;
 import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.R;
 
 import java.util.ArrayList;
 

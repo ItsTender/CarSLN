@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.Manifest;
 import android.content.Intent;
@@ -29,6 +29,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.adapters.CarsAdapter;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.UserProfile;
 
 import java.util.ArrayList;
 

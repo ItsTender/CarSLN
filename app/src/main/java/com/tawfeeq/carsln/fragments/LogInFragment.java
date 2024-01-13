@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
@@ -16,8 +16,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.R;
 
 /**
  * A simple {@link Fragment} subclass.

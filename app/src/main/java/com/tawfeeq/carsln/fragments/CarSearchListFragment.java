@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
@@ -13,6 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.adapters.CarsAdapter;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.R;
 
 import java.util.ArrayList;
 

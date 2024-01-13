@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,6 +23,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tawfeeq.carsln.objects.Cars;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.R;
 
 import java.util.UUID;
 
@@ -266,7 +270,7 @@ public class AddPhotosFragment extends Fragment {
 
             ProgressDialog progressDialog= new ProgressDialog(getActivity());
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait!");
+            progressDialog.setMessage("Uploading Your Image. Please Wait");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
@@ -313,7 +317,7 @@ public class AddPhotosFragment extends Fragment {
 
             ProgressDialog progressDialog= new ProgressDialog(getActivity());
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait!");
+            progressDialog.setMessage("Uploading Your Image. Please Wait");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
@@ -360,7 +364,7 @@ public class AddPhotosFragment extends Fragment {
 
             ProgressDialog progressDialog= new ProgressDialog(getActivity());
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait!");
+            progressDialog.setMessage("Uploading Your Image. Please Wait");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
@@ -407,7 +411,7 @@ public class AddPhotosFragment extends Fragment {
 
             ProgressDialog progressDialog= new ProgressDialog(getActivity());
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait!");
+            progressDialog.setMessage("Uploading Your Image. Please Wait");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();
@@ -454,7 +458,7 @@ public class AddPhotosFragment extends Fragment {
 
             ProgressDialog progressDialog= new ProgressDialog(getActivity());
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait!");
+            progressDialog.setMessage("Uploading Your Image. Please Wait");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();

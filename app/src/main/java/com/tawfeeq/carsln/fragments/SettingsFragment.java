@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,17 +21,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.Utils;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -337,7 +336,7 @@ public class SettingsFragment extends Fragment {
 
             ProgressDialog progressDialog= new ProgressDialog(context);
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading New Profile Picture Image, Please Wait!");
+            progressDialog.setMessage("Uploading New Profile Picture Image, Please Wait");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();

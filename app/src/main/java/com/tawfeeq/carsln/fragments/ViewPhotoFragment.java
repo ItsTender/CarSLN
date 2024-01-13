@@ -1,9 +1,8 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +24,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.R;
 
 import java.util.UUID;
 
@@ -154,6 +153,7 @@ public class ViewPhotoFragment extends Fragment {
 
         Fragment gtn = new SellerPageFragment();
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.replace(R.id.FrameLayoutMain, gtn);
         ft.commit();
 
@@ -162,6 +162,7 @@ public class ViewPhotoFragment extends Fragment {
     private void GoToSettings() {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.replace(R.id.FrameLayoutMain, new SettingsFragment());
         ft.commit();
     }
@@ -169,6 +170,7 @@ public class ViewPhotoFragment extends Fragment {
     private void GoToProfile() {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
         ft.commit();
     }
@@ -196,7 +198,7 @@ public class ViewPhotoFragment extends Fragment {
 
             ProgressDialog progressDialog= new ProgressDialog(context);
             progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading New Profile Picture Image, Please Wait!");
+            progressDialog.setMessage("Uploading New Profile Picture Image, Please Wait");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
             progressDialog.show();

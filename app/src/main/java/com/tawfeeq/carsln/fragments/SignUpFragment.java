@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
@@ -19,7 +19,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.UserProfile;
 
 /**
  * A simple {@link Fragment} subclass.

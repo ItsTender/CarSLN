@@ -1,35 +1,46 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.adapters.CarsAdapter;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.R;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link UserListingsFragment#newInstance} factory method to
+ * Use the {@link AllCarsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserListingsFragment extends Fragment {
+public class AllCarsFragment extends Fragment {
 
-    RecyclerView rcListings;
-    FireBaseServices fbs;
-    ArrayList<CarID> lst;
-    CarsAdapter Adapter;
+    ImageView ivSell,ivPFP;
+    RecyclerView rc;
+    private CarsAdapter adapter;
+    private FireBaseServices fbs;
+    private ArrayList<CarID> Market;
+    String pfp;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +51,7 @@ public class UserListingsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public UserListingsFragment() {
+    public AllCarsFragment() {
         // Required empty public constructor
     }
 
@@ -50,11 +61,11 @@ public class UserListingsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment UserListingsFragment.
+     * @return A new instance of fragment AllCarsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static UserListingsFragment newInstance(String param1, String param2) {
-        UserListingsFragment fragment = new UserListingsFragment();
+    public static AllCarsFragment newInstance(String param1, String param2) {
+        AllCarsFragment fragment = new AllCarsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,17 +86,40 @@ public class UserListingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_listings, container, false);
+        return inflater.inflate(R.layout.fragment_all_cars, container, false);
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        fbs=FireBaseServices.getInstance();
-        rcListings= getView().findViewById(R.id.RecyclerListings);
-        lst=new ArrayList<CarID>();
+        FireBaseServices fbs = FireBaseServices.getInstance();
+        ivPFP = getView().findViewById(R.id.imageViewProfilePhotoAllCars);
+        rc= getView().findViewById(R.id.RecyclerCars);
+        Market = new ArrayList<CarID>();
 
+
+        if(fbs.getUser()!=null) {
+
+            pfp = fbs.getUser().getUserPhoto();
+            if (pfp == null || pfp.isEmpty()) {
+                ivPFP.setImageResource(R.drawable.slnpfp);
+            } else {
+                Glide.with(getActivity()).load(pfp).into(ivPFP);
+            }
+        }
+
+
+        ivPFP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarProfile();
+                GoToProfile();
+            }
+        });
+
+
+        // checking accessibility to FireStore Info
         fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -94,26 +128,36 @@ public class UserListingsFragment extends Fragment {
                     CarID car = dataSnapshot.toObject(CarID.class);
                     car.setCarPhoto(dataSnapshot.getString("photo"));
                     car.setId(dataSnapshot.getId());
+                    Market.add(car);
 
-                    if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
-                        lst.add(car);
-                    }
                 }
                 SettingFrame();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void SettingFrame() {
 
-        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), lst);
-        rcListings.setAdapter(Adapter);
-
+        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new CarsAdapter(getActivity(), Market);
+        rc.setAdapter(adapter);
     }
+
+    private void GoToProfile() {
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarProfile() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.profile);
+    }
+
 }
+
+

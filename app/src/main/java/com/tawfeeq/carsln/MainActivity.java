@@ -1,7 +1,5 @@
 package com.tawfeeq.carsln;
 
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -9,7 +7,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
-import android.hardware.lights.Light;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +17,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
+import com.tawfeeq.carsln.fragments.AddCarFragment;
+import com.tawfeeq.carsln.fragments.AllCarsFragment;
+import com.tawfeeq.carsln.fragments.CarSearchListFragment;
+import com.tawfeeq.carsln.fragments.LogInFragment;
+import com.tawfeeq.carsln.fragments.ProfileFragment;
+import com.tawfeeq.carsln.fragments.SavedCarsFragment;
+import com.tawfeeq.carsln.fragments.SearchFragment;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.objects.UserProfile;
 
 public class MainActivity extends AppCompatActivity {
 

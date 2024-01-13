@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.R;
 
 /**
  * A simple {@link Fragment} subclass.

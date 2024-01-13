@@ -1,15 +1,6 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +13,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.fragments.DetailedFragment;
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.objects.FireBaseServices;
 
 import java.util.ArrayList;
 

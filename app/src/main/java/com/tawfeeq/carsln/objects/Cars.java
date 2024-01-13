@@ -1,9 +1,13 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.objects;
 
-public class CarID {
-    private String id; // the ID of the Listing in the FireStore.
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.widget.ImageView;
+
+public class Cars {
+
     private boolean SellLend; // if the User wants to Sell the Car the Var will be 'TRUE' else if the User only wants to Lend his Car the Var will be 'FALSE'
-    private String Email; // The User's Email Address according to the Listing.
+    private String Email;
     private String Manufacturer;
     private String Model;
     private int BHP;
@@ -14,21 +18,19 @@ public class CarID {
     private int Kilometre;
     private int Users;
     private String Color;
-    private String Location; // Only the Provinces of Palestine.
+    private String Location;
     private String NextTest;
-    private String Photo; // First Photo of Five (Maximum).
-    private String Secondphoto; // Second Photo of Five
-    private String ThirdPhoto; // Third Photo of Five
-    private String FourthPhoto; // Fourth Photo of Five
+    private String Photo;
+    private String Secondphoto;
+    private String ThirdPhoto;
+    private String FourthPhoto;
+    private String FifthPhoto;
+    private String Notes;
 
-    private String FifthPhoto; // Fifth Photo of Five
-    private String Notes; // The Seller's Notes about the Car.
-
-
-    public CarID() {
+    public Cars() {
     }
 
-    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto, String fourthPhoto, String fifthPhoto, String notes) {
+    public Cars(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto, String fourthPhoto, String fifthPhoto, String notes) {
         SellLend = sellLend;
         Email = email;
         Manufacturer = manufacturer;
@@ -53,7 +55,32 @@ public class CarID {
 
     // protected Cars(Parcel in) {}
 
-    // @Override public void writeToParcel(Parcel dest, int flags) {}
+   // @Override public void writeToParcel(Parcel dest, int flags) {}
+
+
+    public String getFourthPhoto() {
+        return FourthPhoto;
+    }
+
+    public void setFourthPhoto(String fourthPhoto) {
+        FourthPhoto = fourthPhoto;
+    }
+
+    public String getFifthPhoto() {
+        return FifthPhoto;
+    }
+
+    public void setFifthPhoto(String fifthPhoto) {
+        FifthPhoto = fifthPhoto;
+    }
+
+    public String getNotes() {
+        return Notes;
+    }
+
+    public void setNotes(String notes) {
+        Notes = notes;
+    }
 
     public String getColor() {
         return Color;
@@ -179,14 +206,6 @@ public class CarID {
         Photo = photo;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getSecondphoto() {
         return Secondphoto;
     }
@@ -201,30 +220,6 @@ public class CarID {
 
     public void setThirdPhoto(String thirdPhoto) {
         ThirdPhoto = thirdPhoto;
-    }
-
-    public String getFourthPhoto() {
-        return FourthPhoto;
-    }
-
-    public void setFourthPhoto(String fourthPhoto) {
-        FourthPhoto = fourthPhoto;
-    }
-
-    public String getFifthPhoto() {
-        return FifthPhoto;
-    }
-
-    public void setFifthPhoto(String fifthPhoto) {
-        FifthPhoto = fifthPhoto;
-    }
-
-    public String getNotes() {
-        return Notes;
-    }
-
-    public void setNotes(String notes) {
-        Notes = notes;
     }
 
     @Override
@@ -242,3 +237,4 @@ public class CarID {
                 '}';
     }
 }
+

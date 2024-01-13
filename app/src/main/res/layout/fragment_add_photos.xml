@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPhotosFragment">
+    tools:context=".fragments.AddPhotosFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -107,7 +107,7 @@
         <Button
             android:id="@+id/btnAddCarListing"
             android:layout_width="150dp"
-            android:layout_height="75dp"
+            android:layout_height="65dp"
             android:layout_marginStart="130dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="131dp"

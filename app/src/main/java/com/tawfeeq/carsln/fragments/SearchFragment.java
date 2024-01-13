@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -24,6 +23,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.slider.RangeSlider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.adapters.CarsAdapter;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,28 +116,6 @@ public class SearchFragment extends Fragment {
         SellLend.setAdapter(SellLendAdapter);
 
 
-        lstRst=new ArrayList<CarID>();
-
-
-        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
-
-                    CarID car = dataSnapshot.toObject(CarID.class);
-                    car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setId(dataSnapshot.getId());
-                    lstRst.add(car);
-
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         btnResetSearch.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -147,7 +128,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                fbs.setCarList(lstRst);
+                fbs.setCarList(null);
 
                 etMan.setText("");
                 etMod.setText("");

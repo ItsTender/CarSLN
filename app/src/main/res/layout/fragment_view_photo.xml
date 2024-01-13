@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewPhotoFragment"
+    tools:context=".fragments.ViewPhotoFragment"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +35,7 @@
             android:fontFamily="sans-serif"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/ViewPhotoGoBack"
             app:layout_constraintTop_toTopOf="parent" />
 

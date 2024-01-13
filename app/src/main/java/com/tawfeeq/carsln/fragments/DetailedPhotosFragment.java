@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
@@ -12,6 +12,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.R;
 
 /**
  * A simple {@link Fragment} subclass.
