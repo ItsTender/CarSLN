@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class AllCarsFragment extends Fragment {
     private CarsAdapter adapter;
     private FireBaseServices fbs;
     private ArrayList<CarID> Market;
+    ArrayList<String> Saved;
     String pfp;
 
 
@@ -99,6 +101,12 @@ public class AllCarsFragment extends Fragment {
         Market = new ArrayList<CarID>();
 
 
+
+
+        if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
+        else Saved = new ArrayList<String>();
+
+
         if(fbs.getUser()!=null) {
 
             pfp = fbs.getUser().getUserPhoto();
@@ -120,31 +128,51 @@ public class AllCarsFragment extends Fragment {
 
 
         // checking accessibility to FireStore Info
-        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
 
-                    CarID car = dataSnapshot.toObject(CarID.class);
-                    car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setId(dataSnapshot.getId());
-                    Market.add(car);
+        if(fbs.getMarketList()==null) {
 
+            ProgressDialog progressDialog= new ProgressDialog(getActivity());
+            progressDialog.setTitle("Loading...");
+            progressDialog.setMessage("Loading CarSLN MarketPlace");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setIcon(R.drawable.slnround);
+            progressDialog.show();
+
+            fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+
+                        CarID car = dataSnapshot.toObject(CarID.class);
+                        car.setCarPhoto(dataSnapshot.getString("photo"));
+                        car.setId(dataSnapshot.getId());
+                        Market.add(car);
+
+                    }
+                    fbs.setMarketList(Market);
+                    SettingFrame();
+
+                    progressDialog.dismiss();
                 }
-                SettingFrame();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
-            }
-        });
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                    fbs.setMarketList(new ArrayList<CarID>());
+
+                    progressDialog.dismiss();
+                }
+            });
+        } else {
+            Market = fbs.getMarketList();
+            SettingFrame();
+        }
     }
 
     private void SettingFrame() {
 
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new CarsAdapter(getActivity(), Market);
+        adapter = new CarsAdapter(getActivity(), Market, Saved);
         rc.setAdapter(adapter);
     }
 

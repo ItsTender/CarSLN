@@ -42,6 +42,8 @@ public class ProfileFragment extends Fragment {
     RecyclerView rcListings;
     ArrayList<CarID> lst;
     CarsAdapter Adapter;
+    ArrayList<String> Saved;
+    ArrayList<CarID> Market;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -102,7 +104,13 @@ public class ProfileFragment extends Fragment {
         ivSaved = getView().findViewById(R.id.imageViewSavedProfile);
         ivSearch = getView().findViewById(R.id.imageViewSearchProfile);
         rcListings= getView().findViewById(R.id.RecyclerListingsProfile);
+
+
         lst=new ArrayList<CarID>();
+
+
+        if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
+        else Saved = new ArrayList<String>();
 
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
@@ -126,27 +134,17 @@ public class ProfileFragment extends Fragment {
         // Get Profile Photo Ends
 
 
-        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+        if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
+        else Market = new ArrayList<CarID>();
+        int i;
 
-                    CarID car = dataSnapshot.toObject(CarID.class);
-                    car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setId(dataSnapshot.getId());
-
-                    if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
-                        lst.add(car);
-                    }
-                }
-                SettingFrame();
+        if(Market!=null) {
+            for (i = 0; i < Market.size(); i++) {
+                CarID car = Market.get(i);
+                if (car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) lst.add(car);
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        }
+        SettingFrame();
 
 
         ivSettings.setOnClickListener(new View.OnClickListener() {
@@ -211,7 +209,7 @@ public class ProfileFragment extends Fragment {
     private void SettingFrame() {
 
         rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), lst);
+        Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcListings.setAdapter(Adapter);
 
     }

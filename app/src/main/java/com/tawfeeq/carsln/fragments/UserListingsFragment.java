@@ -115,9 +115,9 @@ public class UserListingsFragment extends Fragment {
 
     private void SettingFrame() {
 
-        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), lst);
-        rcListings.setAdapter(Adapter);
+        //rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //Adapter = new CarsAdapter(getActivity(), lst);
+        //rcListings.setAdapter(Adapter);
 
     }
 }

@@ -26,6 +26,8 @@ import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.UserProfile;
 
+import org.checkerframework.checker.units.qual.C;
+
 import java.util.ArrayList;
 
 /**
@@ -42,6 +44,7 @@ public class SavedCarsFragment extends Fragment {
     CarsAdapter Adapter;
     UserProfile usr;
     ArrayList<String> Saved;
+    ArrayList<CarID> Market;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,6 +101,8 @@ public class SavedCarsFragment extends Fragment {
         rcListings= getView().findViewById(R.id.RecyclerSavedCars);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhotoSaved);
         ivSearch = getView().findViewById(R.id.imageViewSearchSaved);
+
+
         lst=new ArrayList<CarID>();
 
 
@@ -134,34 +139,29 @@ public class SavedCarsFragment extends Fragment {
         if(fbs.getUser()!=null) {
 
             Saved = fbs.getUser().getSavedCars();
-            fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
 
-                        CarID car = dataSnapshot.toObject(CarID.class);
-                        car.setCarPhoto(dataSnapshot.getString("photo"));
-                        car.setId(dataSnapshot.getId());
+            if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
+            else Market = new ArrayList<CarID>();
+            int i;
 
-                        if (Saved.contains(dataSnapshot.getId())) {
-                            lst.add(car);
-                        }
-                    }
-                    SettingFrame();
+            if(Saved!=null) {
+
+                for (i = 0; i < Market.size(); i++) {
+                    CarID car = Market.get(i);
+                    String id = Market.get(i).getId();
+                    if (Saved.contains(id)) lst.add(car);
                 }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-                }
-            });
+
+            }
+            SettingFrame();
+
         }
     }
 
     private void SettingFrame() {
 
         rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), lst);
+        Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcListings.setAdapter(Adapter);
 
     }

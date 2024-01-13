@@ -267,18 +267,14 @@ public class SettingsFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Hold the Button to Logout", Toast.LENGTH_LONG).show();
+                    fbs.getAuth().signOut();
+                    fbs.setMarketList(null);
+                    GoToLogIn();
+                    setNavigationBarGone();
+
                 }
-            });
-        btnLogout.setOnLongClickListener(new View.OnLongClickListener() {
-               @Override
-               public boolean onLongClick(View view) {
-                   fbs.getAuth().signOut();
-                   GoToLogIn();
-                   setNavigationBarGone();
-                  return true;
-                }
-            });
+        });
+        
     }
 
     private void GoToLogIn() {

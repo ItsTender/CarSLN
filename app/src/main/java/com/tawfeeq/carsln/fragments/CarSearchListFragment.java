@@ -35,6 +35,7 @@ public class CarSearchListFragment extends Fragment {
     CarsAdapter Adapter;
     ImageButton btnSearch;
     TextView tvSearch;
+    ArrayList<String> Saved;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,6 +101,9 @@ public class CarSearchListFragment extends Fragment {
         tvSearch = getView().findViewById(R.id.textViewsearchcustom);
 
 
+        if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
+        else Saved = new ArrayList<String>();
+
 
         search = fbs.getCarList();
         SettingFrame();
@@ -130,7 +134,7 @@ public class CarSearchListFragment extends Fragment {
     private void SettingFrame() {
 
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), search);
+        Adapter = new CarsAdapter(getActivity(), search, Saved);
         rc.setAdapter(Adapter);
     }
 

@@ -128,9 +128,9 @@ public class DetailedFragment extends Fragment {
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
-                Picasso.get().load(R.drawable.slnpfp).into(ivSeller);
+                ivSeller.setImageResource(R.drawable.slnpfp);
             } else {
-                Picasso.get().load(pfp).into(ivSeller);
+                Glide.with(getActivity()).load(pfp).into(ivSeller);
             }
 
             ivDelete.setVisibility(View.VISIBLE);
@@ -158,6 +158,10 @@ public class DetailedFragment extends Fragment {
                         public void onSuccess(Void unused) {
                             Toast.makeText(getActivity(), "Successfully Deleted Your Car Listing", Toast.LENGTH_SHORT).show();
                             BottomNavigationView bnv = getNavigationBar();
+
+                            ArrayList<CarID> Market = fbs.getMarketList();
+                            Market.remove(currentCar);
+                            fbs.setMarketList(Market);
 
                             if (bnv.getSelectedItemId() == R.id.market) {
                                 GoToFragmentCars();
@@ -380,7 +384,7 @@ public class DetailedFragment extends Fragment {
 
         if ( currentCar.getPhoto() == null || currentCar.getPhoto().isEmpty())
         {
-            ivCar.setImageResource(R.drawable.photo_iv);
+            ivCar.setImageResource(R.drawable.photo_iv_null);
 
         }
         else {
@@ -427,7 +431,6 @@ public class DetailedFragment extends Fragment {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-
 
     private void setNavigationBarProfile() {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.profile);

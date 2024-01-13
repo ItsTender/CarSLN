@@ -138,6 +138,7 @@
             android:backgroundTint="@color/Blue700"
             android:textColor="@color/white"
             android:text="SIGNUP"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

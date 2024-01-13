@@ -1,11 +1,13 @@
 package com.tawfeeq.carsln.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,12 +15,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.squareup.picasso.Picasso;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.fragments.DetailedFragment;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
@@ -27,9 +33,10 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
     private Context context;
     private  CarsAdapter.OnItemClickListener CarsListener;
+    private CarsAdapter.OnItemClickListener SavedListener;
     private ArrayList<CarID> cars;
     private FireBaseServices fbs;
-
+    private ArrayList<String> Saved;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -37,9 +44,10 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
     public void setOnItemClickListener(CarsAdapter.OnItemClickListener Listener) {
         this.CarsListener = Listener;
     }
-    public CarsAdapter(Context context, ArrayList<CarID> cars) {
+    public CarsAdapter(Context context, ArrayList<CarID> cars, ArrayList<String> Saved) {
         this.context = context;
         this.cars = cars;
+        this.Saved = Saved;
 
         this.CarsListener =new OnItemClickListener() {
             @Override
@@ -85,8 +93,6 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             }
         };
 
-
-
     }
 
     public CarsAdapter() {
@@ -101,7 +107,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CarsAdapter.CarsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CarsAdapter.CarsHolder holder, @SuppressLint("RecyclerView") int position) {
 
         CarID car= cars.get(position);
         holder.SetDetails(car);
@@ -109,6 +115,52 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
         holder.itemView.setOnClickListener(v -> {
             if (CarsListener != null) {
                 CarsListener.onItemClick(position);
+            }
+        });
+
+        holder.ivSaved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                fbs= FireBaseServices.getInstance();
+
+                String str1 = fbs.getAuth().getCurrentUser().getEmail();
+                int n1 = str1.indexOf("@");
+                String user1 = str1.substring(0,n1);
+
+                final Boolean[] isFound = new Boolean[1];
+
+                if(Saved.contains(cars.get(position).getId())) {
+                    isFound[0] = true;
+                }
+                else{
+                    isFound[0] = false;
+                }
+
+                if(fbs.getUser()!=null) {
+                    if (isFound[0]) Saved.remove(cars.get(position).getId());
+                    if (!isFound[0]) Saved.add(cars.get(position).getId());
+                    fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            if (isFound[0]) {
+                                holder.ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                                fbs.getUser().setSavedCars(Saved);
+                                isFound[0] = false;
+                            } else {
+                                holder.ivSaved.setImageResource(R.drawable.bookmark_filled);
+                                fbs.getUser().setSavedCars(Saved);
+                                isFound[0] = true;
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Couldn't Add/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+
             }
         });
 
@@ -124,27 +176,29 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
     class CarsHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtMan,txtMod,txtHP,txtYear,txtPrice;
-        private ImageView ivCar; // shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
+        private TextView txtCar,txtHP,txtYear,txtKilo,txtPrice;
+        private ImageView ivCar;// shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
+        private ImageView ivSaved;
         public CarsHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtMan= itemView.findViewById(R.id.tvtxtMan);
-            txtMod= itemView.findViewById(R.id.tvtxtMod);
+            txtCar= itemView.findViewById(R.id.tvtxtCarName);
             txtHP= itemView.findViewById(R.id.tvtxtHP);
             txtYear= itemView.findViewById(R.id.tvtxtYear);
+            txtKilo = itemView.findViewById(R.id.tvtxtKilometre);
             txtPrice= itemView.findViewById(R.id.tvtxtPrice);
             ivCar= itemView.findViewById(R.id.CarRes);
+            ivSaved = itemView.findViewById(R.id.ivSavedCarAdapter);
 
         }
 
         void SetDetails (CarID car){
 
-            txtMan.setText(car.getManufacturer());
-            txtMod.setText(car.getModel());
-            txtHP.setText(car.getBHP() + " Horse Power");
+            txtCar.setText(car.getManufacturer() + " " + car.getModel());
+            txtHP.setText(car.getBHP() + " horse power");
             String year = String.valueOf(car.getYear());
             txtYear.setText(year);
+            txtKilo.setText(car.getKilometre() + " km");
 
             if(car.getSellLend()==true){
 
@@ -157,10 +211,18 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())
             {
-                ivCar.setImageResource(R.drawable.photo_iv);
+                ivCar.setImageResource(R.drawable.photo_iv_null);
             }
             else {
                 Glide.with(context).load(car.getPhoto()).into(ivCar);
+            }
+
+
+            if(Saved.contains(car.getId())) {
+                ivSaved.setImageResource(R.drawable.bookmark_filled);
+            }
+            else{
+                ivSaved.setImageResource(R.drawable.bookmark_unfilled);
             }
 
         }

@@ -18,10 +18,11 @@
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/menu_nav"
-        app:itemRippleColor="@color/white"
+        app:itemRippleColor="@color/Light_Grey"
         app:backgroundTint="@color/white"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
+        app:itemActiveIndicatorStyle="@color/Broncos_Navy"
         />
 
 </RelativeLayout>

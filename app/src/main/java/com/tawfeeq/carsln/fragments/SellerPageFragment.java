@@ -46,7 +46,7 @@ public class SellerPageFragment extends Fragment {
 
     String CarName; // Custom Car Name String.....
     Button btnSMS, btnCall, btnWhatsapp;
-    TextView tvSellerName;
+    TextView tvSellerName, tvEmail;
     RecyclerView rc;
     FireBaseServices fbs;
     CarsAdapter Adapter;
@@ -111,6 +111,7 @@ public class SellerPageFragment extends Fragment {
 
         fbs= FireBaseServices.getInstance();
         tvSellerName = getView().findViewById(R.id.tvSellerUser);
+        tvEmail = getView().findViewById(R.id.tvselleremail);
         btnCall = getView().findViewById(R.id.btnCallSeller);
         btnSMS = getView().findViewById(R.id.btnSMSContact);
         btnWhatsapp =getView().findViewById(R.id.btnWhatsapp);
@@ -118,7 +119,9 @@ public class SellerPageFragment extends Fragment {
         ivSeller = getView().findViewById(R.id.imageViewSellerPage);
         Back = getView().findViewById(R.id.SellerGoBack);
 
+
         SellerCars =new ArrayList<CarID>();
+
 
         currentCar = fbs.getSelectedCar();
         CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
@@ -136,6 +139,7 @@ public class SellerPageFragment extends Fragment {
                 usr = documentSnapshot.toObject(UserProfile.class);
 
                 tvSellerName.setText(usr.getUsername());
+                tvEmail.setText(str);
 
                 pfp = usr.getUserPhoto();
                     if (pfp == null || pfp.isEmpty())
@@ -244,7 +248,7 @@ public class SellerPageFragment extends Fragment {
     private void SettingFrame() {
 
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), new ArrayList<CarID>());
+        Adapter = new CarsAdapter(getActivity(), new ArrayList<CarID>(), new ArrayList<String>());
         rc.setAdapter(Adapter);
 
     }

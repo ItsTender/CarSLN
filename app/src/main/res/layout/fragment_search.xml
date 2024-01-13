@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,51 +15,77 @@
             android:id="@+id/textViewAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="117dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="117dp"
             android:fontFamily="sans-serif"
             android:text="Seach For a Car"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/etSearchMan"
-            android:layout_width="380dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="15dp"
+        <ImageView
+            android:id="@+id/imageViewSearchClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewchooseman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:hint="Manufacturer"
-            android:inputType="text"
-            android:text=""
+            android:layout_marginEnd="254dp"
+            android:fontFamily="sans-serif"
+            android:text="Car Manufacturer"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewAdd" />
 
-        <EditText
-            android:id="@+id/etSearchMod"
+        <Spinner
+            android:id="@+id/SpinnerManufacturerSearch"
             android:layout_width="380dp"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
+            android:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewchooseman" />
+
+        <TextView
+            android:id="@+id/textViewchoosemod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:hint="Model"
-            android:inputType="text"
-            android:text=""
+            android:layout_marginEnd="313dp"
+            android:fontFamily="sans-serif"
+            android:text="Car Model"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSearchMan" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerManufacturerSearch" />
+
+        <Spinner
+            android:id="@+id/SpinnerModelSearch"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewchoosemod" />
 
         <TextView
             android:id="@+id/textViewprice"
@@ -74,7 +100,7 @@
             android:textSize="18dp"
             app:layout_constraintEnd_toStartOf="@+id/textViewpricemax"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSearchMod" />
+            app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
 
         <TextView
             android:id="@+id/textViewpricemax"
@@ -89,7 +115,7 @@
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewprice"
-            app:layout_constraintTop_toBottomOf="@+id/etSearchMod" />
+            app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rngPrice"
@@ -220,54 +246,35 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rngYears" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerModelSearch" />
 
         <Spinner
             android:id="@+id/Spinnersellingtype"
-            android:layout_width="350dp"
+            android:layout_width="380dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="31dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewoffertype" />
 
-        <ImageButton
+        <Button
             android:id="@+id/btnSearch"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/Bluegrey"
+            android:layout_width="380dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/Blue700"
             android:contentDescription="@string/Search"
-            android:src="@drawable/baseline_search_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnResetSearch"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
-
-        <ImageButton
-            android:id="@+id/btnResetSearch"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/Bluegrey"
-            android:contentDescription="@string/Reset"
-            android:src="@drawable/baseline_clear_24"
+            android:text="Show Results"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnSearch"
-            app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</ScrollView>
+</RelativeLayout>

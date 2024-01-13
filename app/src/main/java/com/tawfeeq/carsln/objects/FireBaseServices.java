@@ -11,18 +11,27 @@ import java.util.ArrayList;
 public class FireBaseServices {
     private static FireBaseServices instance;
     private FirebaseAuth auth;
-
     private FirebaseFirestore store;
-
     private FirebaseStorage storage;
 
+    //--------------------------------------
     private Uri selectedImageURL;
     private UserProfile user;
 
-    //-----------------------------------
-
+    //--------------------------------------
     private CarID selectedCar;
     private ArrayList<CarID> CarList;
+    private ArrayList<CarID> MarketList;
+
+    //--------------------------------------
+
+    public ArrayList<CarID> getMarketList() {
+        return MarketList;
+    }
+
+    public void setMarketList(ArrayList<CarID> marketList) {
+        MarketList = marketList;
+    }
 
     public CarID getSelectedCar() {
         return selectedCar;

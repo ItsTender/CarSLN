@@ -51,6 +51,7 @@
             android:ems="10"
             android:inputType="phone"
             android:minHeight="48dp"
+            android:hint="Enter New Phone Number"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/btnChangePhone"
@@ -68,6 +69,7 @@
             android:text="Save"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintStart_toEndOf="@+id/etChangePhone"
             app:layout_constraintTop_toBottomOf="@+id/etChangeUsername" />
 
@@ -80,6 +82,7 @@
             android:layout_marginEnd="5dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
+            android:hint="Enter New Username"
             android:inputType="text"
             android:minHeight="48dp"
             android:textColor="@color/black"
@@ -100,6 +103,7 @@
             android:text="Save"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintStart_toEndOf="@+id/etChangeUsername"
             app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto" />
 
@@ -114,6 +118,7 @@
             android:text="Change Profile Photo"
             android:textColor="@color/white"
             android:textSize="12sp"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnResetPhoto"
             app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhotoSettings" />
@@ -129,19 +134,21 @@
             android:text="Remove Profile Photo"
             android:textColor="@color/white"
             android:textSize="12sp"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toStartOf="@+id/btnChangePhoto"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhotoSettings" />
 
         <Button
             android:id="@+id/btnLogout"
-            android:layout_width="380dp"
+            android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/white"
             android:text="Logout"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

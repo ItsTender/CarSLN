@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             });
     }
 
-    public void setSaved() {
+    public void setCarsMarket() {
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
         ProgressDialog progressDialog= new ProgressDialog(MainActivity.this);
         progressDialog.setTitle("Loading...");
-        progressDialog.setMessage("Loading CarSLN MarketPlace");
+        progressDialog.setMessage("Loading CarSLN");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setIcon(R.drawable.slnround);
         progressDialog.show();
@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -146,8 +147,10 @@ public class MainActivity extends AppCompatActivity {
                 fbs.setUser(null);
 
                 FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
                 ft.commit();
+
             }
         });
 

@@ -23,11 +23,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -44,6 +46,7 @@ public class AddPhotosFragment extends Fragment {
     Button AddCar, Reset;
     ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto, ivFourthPhoto, ivFifthPhoto;
     String FirstPhoto, SecondPhoto, ThirdPhoto, FourthPhoto, FifthPhoto;
+    ArrayList<CarID> Market;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -145,11 +148,11 @@ public class AddPhotosFragment extends Fragment {
                 progressDialog.setIcon(R.drawable.slnround);
                 progressDialog.show();
 
-
                 fbs.getStore().collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getActivity(), "Car Added to MarketPlace", Toast.LENGTH_SHORT).show();
+                        fbs.setMarketList(null);
                         setNavigationCarsMarket();
                         GoToFragmentCars();
                         progressDialog.dismiss();

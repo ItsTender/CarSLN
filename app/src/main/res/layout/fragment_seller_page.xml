@@ -7,16 +7,16 @@
     tools:context=".fragments.SellerPageFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintSeller"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:id="@+id/ConstraintSeller">
+        android:layout_height="380dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SellerGoBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/arrow_logo"
@@ -30,23 +30,26 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
             android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:textSize="25sp"
             android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewSellerPage" />
 
         <TextView
-            android:id="@+id/tvsellerintro"
-            android:layout_width="395dp"
+            android:id="@+id/tvselleremail"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="15dp"
             android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:textSize="15sp"
             android:gravity="center"
-            android:text="Here You Can See his Car Listings and Contact him"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSellerUser" />
 
@@ -76,7 +79,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
+            app:layout_constraintTop_toBottomOf="@+id/tvselleremail" />
 
         <Button
             android:id="@+id/btnWhatsapp"
@@ -91,7 +94,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/btnSMSContact"
             app:layout_constraintStart_toEndOf="@+id/btnCallSeller"
-            app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
+            app:layout_constraintTop_toBottomOf="@+id/tvselleremail" />
 
         <Button
             android:id="@+id/btnSMSContact"
@@ -105,7 +108,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnWhatsapp"
-            app:layout_constraintTop_toBottomOf="@+id/tvsellerintro" />
+            app:layout_constraintTop_toBottomOf="@+id/tvselleremail" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

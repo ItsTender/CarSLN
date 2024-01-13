@@ -99,6 +99,7 @@
             android:backgroundTint="@color/Blue700"
             android:textColor="@color/white"
             android:text="LOGIN"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPasswordSignIn" />
@@ -127,6 +128,7 @@
             android:backgroundTint="@color/white"
             android:text="Create New Account"
             android:textColor="@color/black"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

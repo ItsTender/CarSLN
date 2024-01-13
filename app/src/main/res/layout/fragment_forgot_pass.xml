@@ -82,6 +82,7 @@
             android:backgroundTint="@color/Blue700"
             android:textColor="@color/white"
             android:text="RESET"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEmailForgotPass" />
@@ -109,6 +110,7 @@
             android:backgroundTint="@color/white"
             android:text="Create New Account"
             android:textColor="@color/black"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
