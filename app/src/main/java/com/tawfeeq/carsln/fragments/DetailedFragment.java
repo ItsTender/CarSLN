@@ -223,6 +223,9 @@ public class DetailedFragment extends Fragment {
             ivCar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    BottomNavigationView bnv = getNavigationBar();
+
+                    bnv.setVisibility(View.GONE);
 
                     Fragment gtn = new DetailedPhotosFragment();
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();

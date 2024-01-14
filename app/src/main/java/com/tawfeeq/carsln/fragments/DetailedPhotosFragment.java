@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
@@ -142,6 +144,10 @@ public class DetailedPhotosFragment extends Fragment {
             public void onClick(View view) {
 
                 Fragment gtn= new DetailedFragment();
+
+                BottomNavigationView bnv = getNavigationBar();
+                bnv.setVisibility(View.VISIBLE);
+
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.replace(R.id.FrameLayoutMain, gtn);
@@ -150,5 +156,9 @@ public class DetailedPhotosFragment extends Fragment {
             }
         });
 
+    }
+
+    private BottomNavigationView getNavigationBar(){
+        return ((MainActivity) getActivity()).getBottomNavigationView();
     }
 }

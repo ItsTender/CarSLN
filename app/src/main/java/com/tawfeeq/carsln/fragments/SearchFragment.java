@@ -50,7 +50,7 @@ public class SearchFragment extends Fragment {
     ArrayList<CarID> search, lstRst;
     CarsAdapter Adapter;
     RangeSlider rngPrice, rngKilo, rngYear;
-    Spinner SellLend, SpinnerMan, SpinnerMod;
+    Spinner SellLend, SpinnerMan, SpinnerMod, SpinnerArea;
     ArrayList<String> Saved;
 
 
@@ -114,6 +114,7 @@ public class SearchFragment extends Fragment {
         ivClose = getView().findViewById(R.id.imageViewSearchClose);
         SpinnerMan = getView().findViewById(R.id.SpinnerManufacturerSearch);
         SpinnerMod = getView().findViewById(R.id.SpinnerModelSearch);
+        SpinnerArea = getView().findViewById(R.id.SpinnerAreaSearch);
 
 
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
@@ -124,6 +125,12 @@ public class SearchFragment extends Fragment {
         ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
         SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SellLend.setAdapter(SellLendAdapter);
+
+
+        String [] Location = {"Any Location Area","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
+        LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+        SpinnerArea.setAdapter(LocationAdapter);
 
 
         String [] ManList = {"All Car Manufacturers","Audi","Abarth", "Alfa Romeo", "Aston Martin","BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
@@ -547,16 +554,25 @@ public class SearchFragment extends Fragment {
         });
 
 
+
+        if(fbs.getCarList() != null) {
+
+            ivClose.setVisibility(View.VISIBLE);
+            ivClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    GoToFragmentSearchCar();
+                }
+            });
+        }
+        else {
+            ivClose.setVisibility(View.INVISIBLE);
+        }
+
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(fbs.getCarList() != null) {
-                    GoToFragmentSearchCar();
-                }
-                else {
-                    setNavigationBarCarsMarket();
-                    GoToCarsMarket();
-                }
+                GoToFragmentSearchCar();
             }
         });
 
@@ -577,6 +593,9 @@ public class SearchFragment extends Fragment {
 
                 String Man= SpinnerMan.getSelectedItem().toString();
                 String Mod= SpinnerMod.getSelectedItem().toString();
+
+                String area = SpinnerArea.getSelectedItem().toString();
+                String [] location = new String[1];
 
                 List<Float> price = rngPrice.getValues();
                 Float PriceFrom=price.get(0);
@@ -605,7 +624,7 @@ public class SearchFragment extends Fragment {
                 progressDialog.setIcon(R.drawable.slnround);
                 progressDialog.show();
 
-                fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
@@ -619,21 +638,24 @@ public class SearchFragment extends Fragment {
                             if(type.equals("Purchase a Car")) selllend[0] = true;
                             if(type.equals("Rent a Car")) selllend[0] = false;
 
+                            if(area.equals("Any Location Area")) location[0] = car.getLocation();
+                            else location[0] = area;
+
 
                             if (Man.equals("All Car Manufacturers") && Mod.equals("All Car Models")) { // All Car Manufacturers and Models!
 
-                                if (car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0])
+                                if (car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0] && car.getLocation().equals(location[0]))
                                     search.add(car);
 
                             } else {
                                 if (!Man.equals("All Car Manufacturers") && Mod.equals("All Models")) { // All Models of The Selected Manufacturer!
 
-                                    if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0])
+                                    if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0] && car.getLocation().equals(location[0]))
                                         search.add(car);
 
                                 }  else { // Specific Car Manufacturer and Model!
 
-                                        if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0])
+                                        if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0] && car.getLocation().equals(location[0]))
                                             search.add(car);
 
                                 }

@@ -6,13 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SearchFragment">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <TextView
-            android:id="@+id/textViewAdd"
+            android:id="@+id/textViewsearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="117dp"
@@ -32,30 +37,45 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="12dp"
             android:src="@drawable/baseline_close_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewsearch"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
 
         <TextView
             android:id="@+id/textViewchooseman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="254dp"
             android:fontFamily="sans-serif"
             android:text="Car Manufacturer"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAdd" />
+            app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <Spinner
             android:id="@+id/SpinnerManufacturerSearch"
             android:layout_width="380dp"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
@@ -67,12 +87,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="313dp"
             android:fontFamily="sans-serif"
             android:text="Car Model"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SpinnerManufacturerSearch" />
@@ -81,6 +102,7 @@
             android:id="@+id/SpinnerModelSearch"
             android:layout_width="380dp"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.516"
@@ -92,12 +114,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="105dp"
             android:fontFamily="sans-serif"
             android:text="Price Range"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewpricemax"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
@@ -107,12 +130,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif"
             android:text="+200,000"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewprice"
             app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
@@ -122,6 +146,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="31dp"
             android:stepSize="10"
             android:value="0"
@@ -132,8 +157,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewprice"
             app:thumbColor="@color/Blue700"
-            app:tickColor="@color/Light_Steel_Blue"
-            app:trackColor="@color/Light_Steel_Blue"
+            app:tickColor="@color/Light_Grey"
+            app:trackColor="@color/Light_Grey"
             app:values="@array/rangesliderprice" />
 
         <TextView
@@ -141,42 +166,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="88dp"
             android:fontFamily="sans-serif"
             android:text="Kilometre Range"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewkilomax"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rngPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerAreaSearch" />
 
         <TextView
             android:id="@+id/textViewkilomax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="87dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif"
             android:text="+200,000"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewmilage"
-            app:layout_constraintTop_toBottomOf="@+id/rngPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerAreaSearch" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rngKilometre"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="31dp"
+            android:layout_marginBottom="100dp"
             android:stepSize="10"
             android:value="0"
             android:valueFrom="0"
             android:valueTo="200000"
             app:haloColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewmilage"
@@ -190,36 +220,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="125dp"
             android:fontFamily="sans-serif"
             android:text="Year Range"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewyearmax"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rngKilometre" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerModelSearch" />
 
         <TextView
             android:id="@+id/textViewyearmax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="124dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif"
             android:text="2024"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewyear"
-            app:layout_constraintTop_toBottomOf="@+id/rngKilometre" />
+            app:layout_constraintTop_toBottomOf="@+id/SpinnerModelSearch" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rngYears"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="31dp"
             android:stepSize="1"
             android:value="0"
@@ -239,31 +272,72 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="313dp"
             android:fontFamily="sans-serif"
             android:text="Offer Type"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerModelSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/rngYears" />
 
         <Spinner
             android:id="@+id/Spinnersellingtype"
             android:layout_width="380dp"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/black"
+            android:outlineAmbientShadowColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewoffertype" />
+
+        <TextView
+            android:id="@+id/textViewAreaSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="260dp"
+            android:fontFamily="sans-serif"
+            android:text="Location By Area"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rngPrice" />
+
+        <Spinner
+            android:id="@+id/SpinnerAreaSearch"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAreaSearch" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
 
         <Button
             android:id="@+id/btnSearch"
             android:layout_width="380dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/Blue700"
             android:contentDescription="@string/Search"
             android:text="Show Results"
@@ -271,6 +345,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 

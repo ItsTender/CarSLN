@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintProfile"
         android:layout_width="match_parent"
-        android:layout_height="282dp">
+        android:layout_height="285dp">
 
         <TextView
             android:id="@+id/tvUsername"

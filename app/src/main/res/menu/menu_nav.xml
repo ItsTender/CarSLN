@@ -14,7 +14,7 @@
         />
 
     <item
-        android:title="Add Car"
+        android:title="Post"
         android:icon="@drawable/baseline_post_add_24"
         android:id="@+id/addcar"
         />

@@ -6,16 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AddCarFragment">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAdd"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
 
         <EditText
             android:id="@+id/etBHP"
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
             android:hint="Horse Power"
@@ -32,7 +44,7 @@
             android:id="@+id/etUsers"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
@@ -50,7 +62,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
@@ -68,7 +80,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
@@ -86,7 +98,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
@@ -113,28 +125,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="131dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Next Step"
-            android:textColor="@color/white"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etMultiLineNotes" />
-
         <Spinner
             android:id="@+id/SpinnerGear"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +141,7 @@
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/SpinnerGear"
             app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +152,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,20 +163,18 @@
             android:id="@+id/SpinnerManufacturer"
             android:layout_width="350dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAdd" />
+            app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <Spinner
             android:id="@+id/SpinnerModel"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -193,7 +186,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -205,7 +198,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -216,7 +209,7 @@
             android:id="@+id/SpinnerNextTestYear"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -228,7 +221,7 @@
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/SpinnerNextTestYear"
             app:layout_constraintStart_toStartOf="parent"
@@ -239,7 +232,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="31dp"
             android:backgroundTint="@color/Broncos_Navy"
             android:ems="10"
@@ -253,6 +246,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPrice" />
 
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="Next Step"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etMultiLineNotes"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

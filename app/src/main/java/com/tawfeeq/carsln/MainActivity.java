@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.tawfeeq.carsln.fragments.AddCarFragment;
+import com.tawfeeq.carsln.fragments.AddCarIntroFragment;
 import com.tawfeeq.carsln.fragments.AllCarsFragment;
 import com.tawfeeq.carsln.fragments.CarSearchListFragment;
 import com.tawfeeq.carsln.fragments.LogInFragment;
