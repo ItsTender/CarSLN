@@ -622,6 +622,7 @@ public class SearchFragment extends Fragment {
                 progressDialog.setMessage("Completing Search in the CarSLN MarketPlace, Please Wait");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.setIcon(R.drawable.slnround);
+                progressDialog.setCancelable(false);
                 progressDialog.show();
 
                 fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

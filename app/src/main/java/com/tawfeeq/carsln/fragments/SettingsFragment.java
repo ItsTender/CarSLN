@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
@@ -15,9 +17,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -43,9 +47,10 @@ public class SettingsFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     EditText etChangeUsername, etChangePhone;
-    Button btnLogout, Changepfp, Resetpfp, btnChangePhone, btnChangeUsername;
+    Button logout, Changepfp, Resetpfp, btnChangePhone, btnChangeUsername, btnChangeLocation;
     ImageView ivUser;
     String pfp;
+    Spinner SpinnerLocation;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,14 +105,28 @@ public class SettingsFragment extends Fragment {
 
         utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
-        btnLogout= getView().findViewById(R.id.btnLogout);
+        logout= getView().findViewById(R.id.btnLogout);
         btnChangePhone = getView().findViewById(R.id.btnChangePhone);
         btnChangeUsername = getView().findViewById(R.id.btnChangeUsername);
+        btnChangeLocation = getView().findViewById(R.id.btnChangeLocation);
         etChangePhone = getView().findViewById(R.id.etChangePhone);
         etChangeUsername =getView().findViewById(R.id.etChangeUsername);
         Changepfp = getView().findViewById(R.id.btnChangePhoto);
         Resetpfp = getView().findViewById(R.id.btnResetPhoto);
         ivUser = getView().findViewById(R.id.imageViewProfilePhotoSettings);
+        SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSettings);
+
+
+        String [] Location = {"Select Your District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String[] Golan = {"Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String[] Galil = {"Galil","Golan","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String[] Haifa = {"Haifa","Golan","Galil","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String[] Central = {"Central","Golan","Galil","Haifa","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String[] TelAviv = {"Tel Aviv","Golan","Galil","Haifa","Central","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String[] Jerusalem = {"Jerusalem","Golan","Galil","Haifa","Central","Tel Aviv","Be'er Sheva","Central Southern","Eilat"};
+        String[] Ber = {"Be'er Sheva","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Central Southern","Eilat"};
+        String[] south = {"Central Southern","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Eilat"};
+        String[] eilat = {"Eilat","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
 
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
@@ -129,6 +148,58 @@ public class SettingsFragment extends Fragment {
             etChangeUsername.setText(fbs.getUser().getUsername());
             etChangePhone.setText(fbs.getUser().getPhone());
 
+            String area = fbs.getUser().getLocation();
+            if(area.equals("Golan")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Golan);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Galil")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Galil);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Haifa")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Haifa);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Central")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Central);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Tel Aviv")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TelAviv);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Jerusalem")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Jerusalem);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Be'er Sheva")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Ber);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Central Southern")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, south);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+            if(area.equals("Eilat")){
+                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, eilat);
+                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                SpinnerLocation.setAdapter(LocationAdapter);
+            }
+
+        }else {
+
+            ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
+            LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerLocation.setAdapter(LocationAdapter);
         }
 
         // Get Profile Photo Ends
@@ -141,6 +212,39 @@ public class SettingsFragment extends Fragment {
             public void onClick(View view) {
 
                 if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) GoToViewPhoto();
+            }
+        });
+
+        btnChangeLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String location = SpinnerLocation.getSelectedItem().toString();
+
+                if(location.equals("")) {
+                    Toast.makeText(getActivity(), "Please Choose Your District", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(fbs.getUser()!=null) {
+
+                    if (location.equals(fbs.getUser().getLocation())) {
+                        return;
+                    }
+
+                    fbs.getStore().collection("Users").document(user).update("location", location).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            Toast.makeText(getActivity(), "Location District Updated", Toast.LENGTH_LONG).show();
+                            fbs.getUser().setLocation(location);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Location, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+
+                    });
+                }
             }
         });
 
@@ -264,21 +368,46 @@ public class SettingsFragment extends Fragment {
         });
 
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    fbs.getAuth().signOut();
-                    fbs.setMarketList(null);
-                    GoToLogIn();
-                    setNavigationBarGone();
+        // Custom Logout Dialog!
+        Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog_logout);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialog.setCancelable(false);
 
-                }
+        Button btnLogout = dialog.findViewById(R.id.btnConfirmLogout);
+        Button btnCancel = dialog.findViewById(R.id.btnCancelLogout);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fbs.getAuth().signOut();
+                fbs.setMarketList(null);
+                GoToLogIn();
+                setNavigationBarGone();
+                dialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
         });
         
     }
 
     private void GoToLogIn() {
 
+        FragmentManager ftm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new LogInFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

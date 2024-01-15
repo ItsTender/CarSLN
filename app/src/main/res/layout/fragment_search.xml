@@ -46,7 +46,7 @@
             android:id="@+id/view"
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:background="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,16 +71,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <Spinner
-            android:id="@+id/SpinnerManufacturerSearch"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewmanSearch"
             android:layout_width="380dp"
             android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewchooseman" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewchooseman">
+
+        <Spinner
+            android:id="@+id/SpinnerManufacturerSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textViewchoosemod"
@@ -96,18 +105,27 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerManufacturerSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewmanSearch" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewmodSearch"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewchoosemod">
 
         <Spinner
             android:id="@+id/SpinnerModelSearch"
-            android:layout_width="380dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewchoosemod" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textViewprice"
@@ -123,7 +141,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewpricemax"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewselllendSearch" />
 
         <TextView
             android:id="@+id/textViewpricemax"
@@ -139,7 +157,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewprice"
-            app:layout_constraintTop_toBottomOf="@+id/Spinnersellingtype" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewselllendSearch" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rngPrice"
@@ -175,7 +193,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewkilomax"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerAreaSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewlocationSearch" />
 
         <TextView
             android:id="@+id/textViewkilomax"
@@ -191,7 +209,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewmilage"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerAreaSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewlocationSearch" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rngKilometre"
@@ -211,8 +229,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewmilage"
             app:thumbColor="@color/Blue700"
-            app:tickColor="@color/Light_Steel_Blue"
-            app:trackColor="@color/Light_Steel_Blue"
+            app:tickColor="@color/Light_Grey"
+            app:trackColor="@color/Light_Grey"
             app:values="@array/rangesliderkilotere" />
 
         <TextView
@@ -229,7 +247,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewyearmax"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerModelSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewmodSearch" />
 
         <TextView
             android:id="@+id/textViewyearmax"
@@ -245,7 +263,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewyear"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerModelSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewmodSearch" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rngYears"
@@ -263,8 +281,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewyear"
             app:thumbColor="@color/Blue700"
-            app:tickColor="@color/Light_Steel_Blue"
-            app:trackColor="@color/Light_Steel_Blue"
+            app:tickColor="@color/Light_Grey"
+            app:trackColor="@color/Light_Grey"
             app:values="@array/rangeslideryears" />
 
         <TextView
@@ -284,16 +302,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rngYears" />
 
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewselllendSearch"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewoffertype">
+
         <Spinner
             android:id="@+id/Spinnersellingtype"
             android:layout_width="380dp"
             android:layout_height="50dp"
-            android:layout_marginTop="5dp"
             android:backgroundTint="@color/black"
-            android:outlineAmbientShadowColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewoffertype" />
+            android:outlineAmbientShadowColor="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textViewAreaSearch"
@@ -311,15 +339,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rngPrice" />
 
-        <Spinner
-            android:id="@+id/SpinnerAreaSearch"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewlocationSearch"
             android:layout_width="380dp"
             android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAreaSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewAreaSearch">
+
+        <Spinner
+            android:id="@+id/SpinnerAreaSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

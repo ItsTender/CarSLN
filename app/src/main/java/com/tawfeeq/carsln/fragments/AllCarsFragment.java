@@ -136,6 +136,7 @@ public class AllCarsFragment extends Fragment {
             progressDialog.setMessage("Loading CarSLN MarketPlace");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIcon(R.drawable.slnround);
+            progressDialog.setCancelable(false);
             progressDialog.show();
 
             fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

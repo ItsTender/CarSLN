@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading CarSLN");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setIcon(R.drawable.slnround);
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         String str = fbs.getAuth().getCurrentUser().getEmail();

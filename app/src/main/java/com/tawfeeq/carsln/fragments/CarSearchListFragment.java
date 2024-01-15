@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.tawfeeq.carsln.objects.CarID;
@@ -34,8 +36,9 @@ public class CarSearchListFragment extends Fragment {
     RecyclerView rc;
     CarsAdapter Adapter;
     ImageButton btnSearch;
-    TextView tvSearch;
+    TextView tvSearch, tvResults;
     ArrayList<String> Saved;
+    Spinner Filter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,16 +102,25 @@ public class CarSearchListFragment extends Fragment {
         rc = getView().findViewById(R.id.RecyclerSearch);
         btnSearch = getView().findViewById(R.id.btngoSearch);
         tvSearch = getView().findViewById(R.id.textViewsearchcustom);
+        tvResults = getView().findViewById(R.id.textViewcountresults);
+        Filter =getView().findViewById(R.id.SpinnerFiltering);
 
 
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
         else Saved = new ArrayList<String>();
 
 
+        String [] FilterList = {"By Manufacturer", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
+        ArrayAdapter<String> FilterAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, FilterList);
+        FilterAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+        Filter.setAdapter(FilterAdapter);
+
+
         search = fbs.getCarList();
         SettingFrame();
 
-
+        String str = String.valueOf(search.size());
+        tvResults.setText(str + " Results");
 
         tvSearch.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -54,23 +54,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewforgot" />
 
-        <EditText
-            android:id="@+id/etEmailForgotPass"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewresetpassmail"
             android:layout_width="272dp"
             android:layout_height="50dp"
-            android:layout_marginStart="69dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="70dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Enter Your Email"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView100" />
+            app:layout_constraintTop_toBottomOf="@+id/textView100">
+
+            <EditText
+                android:id="@+id/etEmailForgotPass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Enter Your Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btnResetPass"
@@ -85,18 +92,20 @@
             app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmailForgotPass" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewresetpassmail" />
 
         <TextView
             android:id="@+id/tvLoginForgot"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="66dp"
+            android:layout_marginEnd="163dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Remember Your Password?"
             android:textColor="@color/black"
             android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnResetPass" />
 
@@ -110,10 +119,10 @@
             android:backgroundTint="@color/white"
             android:text="Create New Account"
             android:textColor="@color/black"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

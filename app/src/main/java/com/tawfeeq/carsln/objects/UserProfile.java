@@ -6,16 +6,26 @@ public class UserProfile {
     private String userPhoto;
     private String Username;
     private String Phone;
+    private String Location;
     private ArrayList<String> SavedCars;
 
     public UserProfile() {
     }
 
-    public UserProfile(String userPhoto, String username, String phone) {
+    public UserProfile(String userPhoto, String username, String phone, String Location) {
         this.userPhoto = userPhoto;
         Username = username;
         Phone = phone;
+        this.Location = Location;
         SavedCars = new ArrayList<String>();
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
     }
 
     public String getPhone() {

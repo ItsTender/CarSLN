@@ -22,94 +22,140 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewAdd"
             app:shapeAppearance="@style/RoundShape.App.8percent" />
 
-        <EditText
-            android:id="@+id/etBHP"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewbhp"
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:hint="Horse Power"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/etUsers"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardViewowners"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerYear" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewyear">
+
+            <EditText
+                android:id="@+id/etBHP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Horse Power"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
 
-        <EditText
-            android:id="@+id/etUsers"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewowners"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:hint="Owners"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/etBHP"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerGear" />
+            app:layout_constraintStart_toEndOf="@+id/cardViewbhp"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewgear">
+
+            <EditText
+                android:id="@+id/etUsers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="Owners"
+                android:gravity="center"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewprice"
+            android:layout_width="354dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewselllend">
 
         <EditText
             android:id="@+id/etPrice"
             android:layout_width="350dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/Broncos_Navy"
+            android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Selling Price / Monthly Payment "
+            android:hint="Selling Price / Monthly Payment"
             android:inputType="number"
             android:minHeight="48dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewengine"
+            android:layout_width="354dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerSellLend" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewbhp">
 
         <EditText
             android:id="@+id/etEngine"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/Broncos_Navy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Engine"
             android:inputType="text"
             android:minHeight="48dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewkm"
+            android:layout_width="354dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etBHP" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewengine">
 
         <EditText
             android:id="@+id/etKM"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/Broncos_Navy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Kilometre"
             android:inputType="number"
             android:minHeight="48dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEngine" />
+            android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textViewAdd"
@@ -125,140 +171,234 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/SpinnerGear"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewgear"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/SpinnerYear"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerModel" />
+            app:layout_constraintStart_toEndOf="@+id/cardViewyear"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
 
-        <Spinner
-            android:id="@+id/SpinnerYear"
+            <Spinner
+                android:id="@+id/SpinnerGear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewyear"
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/SpinnerGear"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardViewgear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerModel" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
+
+            <Spinner
+                android:id="@+id/SpinnerYear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewselllend"
+            android:layout_width="354dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewtestmonth">
 
         <Spinner
             android:id="@+id/SpinnerSellLend"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerNextTestYear" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black" />
 
-        <Spinner
-            android:id="@+id/SpinnerManufacturer"
-            android:layout_width="350dp"
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewman"
+            android:layout_width="354dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+            <Spinner
+                android:id="@+id/SpinnerManufacturer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewmod"
+            android:layout_width="354dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewman">
 
         <Spinner
             android:id="@+id/SpinnerModel"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewcolor"
+            android:layout_width="354dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerManufacturer" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewkm">
 
         <Spinner
             android:id="@+id/SpinnerCarColor"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewlocation"
+            android:layout_width="354dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etKM" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewcolor">
 
         <Spinner
             android:id="@+id/SpinnerLocationArea"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerCarColor" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black" />
 
-        <Spinner
-            android:id="@+id/SpinnerNextTestYear"
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewtestyear"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/SpinnerNextTestMonth"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerLocationArea" />
+            app:layout_constraintStart_toEndOf="@+id/cardViewtestmonth"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewlocation">
 
-        <Spinner
-            android:id="@+id/SpinnerNextTestMonth"
+            <Spinner
+                android:id="@+id/SpinnerNextTestYear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewtestmonth"
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/SpinnerNextTestYear"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardViewtestyear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SpinnerLocationArea" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewlocation">
 
-        <EditText
-            android:id="@+id/etMultiLineNotes"
-            android:layout_width="350dp"
+            <Spinner
+                android:id="@+id/SpinnerNextTestMonth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewnotes"
+            android:layout_width="354dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="31dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Notes (Up To 200 Characters)"
-            android:inputType="textMultiLine"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewprice">
+
+            <EditText
+                android:id="@+id/etMultiLineNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Notes (Up To 200 Characters)"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="350dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             android:backgroundTint="@color/Blue700"
             android:text="Next Step"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etMultiLineNotes"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewnotes"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

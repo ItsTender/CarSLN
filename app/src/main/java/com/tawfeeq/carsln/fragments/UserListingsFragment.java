@@ -4,12 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,8 +34,10 @@ public class UserListingsFragment extends Fragment {
 
     RecyclerView rcListings;
     FireBaseServices fbs;
-    ArrayList<CarID> lst;
+    ArrayList<CarID> lst, Market;
     CarsAdapter Adapter;
+    ArrayList<String> Saved;
+    ImageView Back;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,36 +92,41 @@ public class UserListingsFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         rcListings= getView().findViewById(R.id.RecyclerListings);
+
+
         lst=new ArrayList<CarID>();
 
-        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+        if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
+        else Saved = new ArrayList<String>();
 
-                    CarID car = dataSnapshot.toObject(CarID.class);
-                    car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setId(dataSnapshot.getId());
 
-                    if(car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) {
-                        lst.add(car);
-                    }
-                }
-                SettingFrame();
+        if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
+        else Market = new ArrayList<CarID>();
+        int i;
+
+        if(Market!=null) {
+            for (i = 0; i < Market.size(); i++) {
+                CarID car = Market.get(i);
+                if (car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) lst.add(car);
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        }
+        SettingFrame();
+
+
+    }
+
+    private void GoToProfile() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
     }
 
     private void SettingFrame() {
 
-        //rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //Adapter = new CarsAdapter(getActivity(), lst);
-        //rcListings.setAdapter(Adapter);
+        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new CarsAdapter(getActivity(), lst, Saved);
+        rcListings.setAdapter(Adapter);
 
     }
 }

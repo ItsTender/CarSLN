@@ -53,8 +53,8 @@
         <LinearLayout
             android:id="@+id/linearLayoutSellerInfo"
             android:layout_width="330dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DetailedCar">
@@ -62,10 +62,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageViewSeller"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="0dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:shapeAppearance="@style/RoundShape.App.50percent" />
@@ -75,18 +75,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/black"
-                android:textSize="19sp" />
+                android:textSize="17sp" />
 
         </LinearLayout>
 
 
         <ImageView
             android:id="@+id/ivSavedCar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +186,7 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="16dp"
-            app:cardCornerRadius="18dp"
+            app:cardCornerRadius="8dp"
             app:cardBackgroundColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -291,7 +291,7 @@
 
             <TextView
                 android:id="@+id/DetailedEngine"
-                android:layout_width="300dp"
+                android:layout_width="215dp"
                 android:layout_height="25dp"
                 android:layout_marginStart="55dp"
                 android:layout_marginTop="5dp"

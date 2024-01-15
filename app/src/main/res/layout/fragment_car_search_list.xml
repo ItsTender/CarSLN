@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintCustom"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="100dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewsearch"
@@ -49,6 +49,55 @@
                 android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/textViewSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="sans-serif"
+            android:text="Sort"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivfilterlist"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsearch" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+
+            android:id="@+id/ivfilterlist"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_filter_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsearch" />
+
+        <Spinner
+            android:id="@+id/SpinnerFiltering"
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsearch" />
+
+        <TextView
+            android:id="@+id/textViewcountresults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="73dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/Shinygrey"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

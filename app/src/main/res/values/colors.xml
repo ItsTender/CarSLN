@@ -9,4 +9,6 @@
     <color name="Broncos_Navy"> #002244 </color>
     <color name="Bluegrey"> #BEBEBE </color>
     <color name="Light_Grey"> #BEBEBE </color>
+    <color name="Shadow"> #CDCDCD </color>
+    <color name="RedLogout"> #D00000 </color>
 </resources>

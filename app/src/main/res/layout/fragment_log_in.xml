@@ -53,41 +53,57 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewforgot" />
 
-        <EditText
-            android:id="@+id/etEmailSignIn"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewsignmail"
             android:layout_width="272dp"
             android:layout_height="50dp"
-            android:layout_marginStart="69dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="70dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Enter Your Email"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <EditText
-            android:id="@+id/etPasswordSignIn"
-            android:layout_width="270dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="71dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Enter Your Password"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmailSignIn" />
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <EditText
+                android:id="@+id/etEmailSignIn"
+                android:layout_width="272dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Enter Your Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewsignpass"
+            android:layout_width="272dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsignmail">
+
+            <EditText
+                android:id="@+id/etPasswordSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Enter Your Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
         android:id="@+id/btnLogIn"
@@ -102,7 +118,7 @@
             app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPasswordSignIn" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsignpass" />
 
 
         <TextView
@@ -110,11 +126,13 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="66dp"
+            android:layout_marginEnd="192dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Forgot Your Password?"
             android:textColor="@color/black"
             android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLogIn" />
 
@@ -128,10 +146,10 @@
             android:backgroundTint="@color/white"
             android:text="Create New Account"
             android:textColor="@color/black"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

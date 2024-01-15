@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -135,23 +137,20 @@ public class DetailedFragment extends Fragment {
 
             ivDelete.setVisibility(View.VISIBLE);
 
-            ivDelete.setOnClickListener(new View.OnClickListener() {
+
+            // Custom Delete Dialog!
+            Dialog dialog = new Dialog(getActivity());
+            dialog.setContentView(R.layout.dialog_delete_listing);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+            dialog.setCancelable(false);
+
+            Button btnDelete = dialog.findViewById(R.id.btnConfirmDelete);
+            Button btnCancel = dialog.findViewById(R.id.btnCancelDelete);
+
+            btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Hold The Remove Listing Button to Delete This Car Listing", Toast.LENGTH_LONG).show();
-                }
-            });
-
-            ivDelete.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-
-                    ProgressDialog progressDialog= new ProgressDialog(getActivity());
-                    progressDialog.setTitle("Deleting...");
-                    progressDialog.setMessage("Deleting Your Car Listing, Please Wait!");
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                    progressDialog.setIcon(R.drawable.slnround);
-                    progressDialog.show();
 
                     fbs.getStore().collection("MarketPlace").document(currentCar.getId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -164,7 +163,7 @@ public class DetailedFragment extends Fragment {
                             fbs.setMarketList(Market);
 
                             if (bnv.getSelectedItemId() == R.id.market) {
-                                GoToFragmentCars();
+                                GoToFragmentCars(); // Maybe One of the Many Show All Options.
                             }
                             else if (bnv.getSelectedItemId() == R.id.searchcar){
                                 GoToFragmentSearch();
@@ -173,19 +172,32 @@ public class DetailedFragment extends Fragment {
                                 GoToFragmentSaved();
                             }
                             else if (bnv.getSelectedItemId() == R.id.profile){
-                                GoToProfile();
+                                GoToProfile(); // Profile/ User Listings.
                             }
-                            progressDialog.dismiss();
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getActivity(), "Couldn't Deleted Your Car Listing, Try Again Later", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
                         }
                     });
 
-                    return true;
+                    dialog.dismiss();
+                }
+            });
+
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.show();
                 }
             });
 
@@ -243,7 +255,7 @@ public class DetailedFragment extends Fragment {
                 BottomNavigationView bnv = getNavigationBar();
 
                 if (bnv.getSelectedItemId() == R.id.market) {
-                    GoToFragmentCars();
+                    GoToFragmentCars();// Maybe One of the Many Show All Options.
                 }
                 else if (bnv.getSelectedItemId() == R.id.searchcar){
                     GoToFragmentSearch();
@@ -252,7 +264,7 @@ public class DetailedFragment extends Fragment {
                     GoToFragmentSaved();
                 }
                 else if (bnv.getSelectedItemId() == R.id.profile){
-                    GoToProfile();
+                    GoToProfile();// Maybe One of the Many Show All Options.
                 }
             }
         });

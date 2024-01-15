@@ -9,8 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ public class SignUpFragment extends Fragment {
     Button btnSignUp;
     EditText etUsername, etEmail, etPassword, etConfirm, etPhone;
     TextView etLog;
+    Spinner SpinnerLocation;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -95,6 +98,13 @@ public class SignUpFragment extends Fragment {
         etPhone = getView().findViewById(R.id.etPhoneSignup);
         btnSignUp = getView().findViewById(R.id.btnSignUp);
         etLog = getView().findViewById(R.id.tvSignin);
+        SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSignup);
+
+
+        String [] Location = {"Select Your District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
+        LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+        SpinnerLocation.setAdapter(LocationAdapter);
 
 
         etLog.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +122,8 @@ public class SignUpFragment extends Fragment {
                 String pass = etPassword.getText().toString();
                 String confirm = etConfirm.getText().toString();
                 String phone = etPhone.getText().toString();
-                if (username.trim().isEmpty() || Name.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()||phone.trim().isEmpty()) {
+                String location = SpinnerLocation.getSelectedItem().toString();
+                if (username.trim().isEmpty() || Name.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()||phone.trim().isEmpty()||location.equals("Select Your District")) {
                     Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -123,7 +134,7 @@ public class SignUpFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                                CreateUserProfile(username.toLowerCase(), Name ,phone);
+                                CreateUserProfile(username.toLowerCase(), Name ,phone, location);
                                 LogIn(username, pass);
                             } else {
                                 Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
@@ -137,13 +148,13 @@ public class SignUpFragment extends Fragment {
         });
     }
 
-    private void CreateUserProfile(String name, String username ,String phone) {
+    private void CreateUserProfile(String name, String username ,String phone, String location) {
 
         String str = name;
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
-        UserProfile userProfile = new UserProfile("",username,phone);
+        UserProfile userProfile = new UserProfile("",username,phone,location);
         fbs.getStore().collection("Users").document(user).set(userProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

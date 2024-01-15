@@ -1,9 +1,11 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +29,7 @@ import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.InfoMessage;
 
 import java.util.ArrayList;
 
@@ -36,14 +41,17 @@ import java.util.ArrayList;
 public class ProfileFragment extends Fragment {
 
     FireBaseServices fbs;
+    InfoMessage infomsg;
     TextView tvUser;
-    ImageView ivSettings, ivPFP, ivSaved, ivSearch;
+    ImageView ivPFP;
     String pfp;
     RecyclerView rcListings;
     ArrayList<CarID> lst;
     CarsAdapter Adapter;
     ArrayList<String> Saved;
     ArrayList<CarID> Market;
+    Button addcar;
+    LinearLayout userlistings, saved, search, settings, logout;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -98,12 +106,16 @@ public class ProfileFragment extends Fragment {
         super.onStart();
 
         fbs= FireBaseServices.getInstance();
+        infomsg = InfoMessage.getInstance();
         tvUser =getView().findViewById(R.id.tvUsername);
-        ivSettings = getView().findViewById(R.id.imageViewSettings);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);
-        ivSaved = getView().findViewById(R.id.imageViewSavedProfile);
-        ivSearch = getView().findViewById(R.id.imageViewSearchProfile);
         rcListings= getView().findViewById(R.id.RecyclerListingsProfile);
+        addcar = getView().findViewById(R.id.btnAddProfile);
+        userlistings = getView().findViewById(R.id.linearLayoutuserlinstings);
+        saved = getView().findViewById(R.id.linearLayoutSavedCars);
+        search = getView().findViewById(R.id.linearLayoutsearch);
+        settings = getView().findViewById(R.id.linearLayoutsettings);
+        logout = getView().findViewById(R.id.linearLayoutlogout);
 
 
         lst=new ArrayList<CarID>();
@@ -147,14 +159,14 @@ public class ProfileFragment extends Fragment {
         SettingFrame();
 
 
-        ivSettings.setOnClickListener(new View.OnClickListener() {
+        settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GoToSettings();
             }
         });
 
-        ivSearch.setOnClickListener(new View.OnClickListener() {
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setNavigationBarSearch();
@@ -162,7 +174,22 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        ivSaved.setOnClickListener(new View.OnClickListener() {
+        addcar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarAddCar();
+                GoToAddCar();
+            }
+        });
+
+        userlistings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToUserListings();
+            }
+        });
+
+        saved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setNavigationBarSaved();
@@ -177,6 +204,61 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        // Custom Logout Dialog!
+        Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog_logout);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialog.setCancelable(false);
+
+        Button btnLogout = dialog.findViewById(R.id.btnConfirmLogout);
+        Button btnCancel = dialog.findViewById(R.id.btnCancelLogout);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fbs.getAuth().signOut();
+                fbs.setMarketList(null);
+                GoToLogIn();
+                setNavigationBarGone();
+                dialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
+
+    }
+
+    private void GoToLogIn() {
+
+        FragmentManager ftm = getActivity().getSupportFragmentManager();
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void setNavigationBarGone() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+    }
+
+    private void GoToUserListings() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
+        ft.commit();
     }
 
     private void GoToViewPhoto() {
@@ -222,6 +304,17 @@ public class ProfileFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SearchFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarAddCar() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.addcar);
+    }
+
+    private void GoToAddCar(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
         ft.commit();
     }
 

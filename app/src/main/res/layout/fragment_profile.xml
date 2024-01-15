@@ -9,44 +9,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintProfile"
         android:layout_width="match_parent"
-        android:layout_height="285dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tvUsername"
-            android:layout_width="351dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="30dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="26sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhoto" />
 
-        <TextView
-            android:id="@+id/tvProfileIntro"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="31dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:text="This is Your Profile Page, Here You Can Manage Your Profile info and Car Listings"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
-
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewProfilePhoto"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="138dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="138dp"
@@ -57,35 +42,266 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-        <ImageView
-            android:id="@+id/imageViewSettings"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/settings"
+
+        <Button
+            android:id="@+id/btnAddProfile"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="Post New Listing"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUsername"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-        <ImageView
-            android:id="@+id/imageViewSearchProfile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/baseline_search_24"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewSettings"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:id="@+id/linearLayoutuserlinstings"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddProfile">
 
-        <ImageView
-            android:id="@+id/imageViewSavedProfile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/baseline_bookmark_24"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewSearchProfile"
-            app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivuserlist"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_notes_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/Userlistings"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Your Car Listings"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutuserlinstings"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSavedCars"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivusersaved"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_bookmark_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/Usersaved"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Saved Cars"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSavedCars"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutsearch"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view1">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivusersearch"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_search_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/Usersearch"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Car Search"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutsearch"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutsettings"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivusersettings"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/settings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/Usersettings"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Settings"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutsettings"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutlogout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivuserlogout"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_logout_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/Userlogout"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Logout"
+                android:textColor="@color/RedLogout"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

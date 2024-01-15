@@ -146,6 +146,7 @@ public class AddPhotosFragment extends Fragment {
                 progressDialog.setMessage("Adding Your Car Listing to the CarSLN MarketPlace, Please Wait");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.setIcon(R.drawable.slnround);
+                progressDialog.setCancelable(false);
                 progressDialog.show();
 
                 fbs.getStore().collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

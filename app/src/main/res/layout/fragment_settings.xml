@@ -28,8 +28,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewProfilePhotoSettings"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="138dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="138dp"
@@ -40,56 +40,114 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-        <EditText
-            android:id="@+id/etChangePhone"
-            android:layout_width="275dp"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewchanegPhone"
+            android:layout_width="272dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="5dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:hint="Enter New Phone Number"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toStartOf="@+id/btnChangePhone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etChangeUsername" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCHANGEUSERNAME" >
+
+        <EditText
+            android:id="@+id/etChangePhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="New Phone Number"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btnChangePhone"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Blue700"
             android:text="Save"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            app:layout_constraintStart_toEndOf="@+id/etChangePhone"
-            app:layout_constraintTop_toBottomOf="@+id/etChangeUsername" />
+            app:layout_constraintStart_toEndOf="@+id/cardViewchanegPhone"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCHANGEUSERNAME"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-        <EditText
-            android:id="@+id/etChangeUsername"
-            android:layout_width="275dp"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCHANGEUSERNAME"
+            android:layout_width="272dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="5dp"
-            android:backgroundTint="@color/Broncos_Navy"
-            android:ems="10"
-            android:hint="Enter New Username"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toStartOf="@+id/btnChangeUsername"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto" />
+            app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto">
+
+            <EditText
+                android:id="@+id/etChangeUsername"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="New Username"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btnChangeLocation"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="Save"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardViewlocationsettings"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewchanegPhone"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewlocationsettings"
+            android:layout_width="272dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnChangeLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewchanegPhone">
+
+            <Spinner
+                android:id="@+id/SpinnerLocationAreaSettings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
 
 
         <Button
@@ -97,15 +155,15 @@
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Blue700"
             android:text="Save"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            app:layout_constraintStart_toEndOf="@+id/etChangeUsername"
-            app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto" />
+            app:layout_constraintStart_toEndOf="@+id/cardViewCHANGEUSERNAME"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
         <Button
             android:id="@+id/btnChangePhoto"
@@ -139,7 +197,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhotoSettings" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
             android:layout_width="280dp"
             android:layout_height="60dp"
@@ -147,9 +205,11 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/white"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/RedLogout"
             android:text="Logout"
             app:shapeAppearance="@style/RoundShape.App.50percent"
-            android:textColor="@color/black"
+            android:textColor="@color/RedLogout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
