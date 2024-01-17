@@ -20,10 +20,23 @@ public class FireBaseServices {
 
     //--------------------------------------
     private CarID selectedCar;
+    private ArrayList<CarID> SearchList;
     private ArrayList<CarID> CarList;
     private ArrayList<CarID> MarketList;
 
     //--------------------------------------
+    private String From;
+
+    //--------------------------------------
+
+
+    public String getFrom() {
+        return From;
+    }
+
+    public void setFrom(String from) {
+        From = from;
+    }
 
     public ArrayList<CarID> getMarketList() {
         return MarketList;
@@ -47,6 +60,14 @@ public class FireBaseServices {
 
     public void setCarList(ArrayList<CarID> carList) {
         CarList = carList;
+    }
+
+    public ArrayList<CarID> getSearchList() {
+        return SearchList;
+    }
+
+    public void setSearchList(ArrayList<CarID> searchList) {
+        SearchList = searchList;
     }
 
     public UserProfile getUser() {

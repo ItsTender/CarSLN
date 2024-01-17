@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -11,15 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
+
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 
@@ -32,7 +37,7 @@ public class CarSearchListFragment extends Fragment {
 
     FireBaseServices fbs;
     CardView GoSearch;
-    ArrayList<CarID> search;
+    ArrayList<CarID> search, filteredsearch, market;
     RecyclerView rc;
     CarsAdapter Adapter;
     ImageButton btnSearch;
@@ -106,21 +111,130 @@ public class CarSearchListFragment extends Fragment {
         Filter =getView().findViewById(R.id.SpinnerFiltering);
 
 
+        search = new ArrayList<CarID>();
+
+
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
         else Saved = new ArrayList<String>();
 
 
-        String [] FilterList = {"By Manufacturer", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
+        String [] FilterList = {"Sort Search By","By Manufacturer", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
         ArrayAdapter<String> FilterAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, FilterList);
         FilterAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         Filter.setAdapter(FilterAdapter);
 
 
-        search = fbs.getCarList();
+        if(fbs.getMarketList() != null) {
+            if (fbs.getCarList() == null) {
+                search = fbs.getMarketList();
+                fbs.setCarList(search);
+                fbs.setSearchList(search);
+            }
+            else search = fbs.getSearchList();
+        } else search = new ArrayList<CarID>();
         SettingFrame();
 
+
         String str = String.valueOf(search.size());
-        tvResults.setText(str + " Results");
+
+        if(search.size()==1) tvResults.setText(str + " Result");
+        else tvResults.setText(str + " Results");
+
+
+        Filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String item = adapterView.getSelectedItem().toString();
+
+                if(item.equals("By Manufacturer")){
+
+                    search = fbs.getCarList();
+                    fbs.setSearchList(search);
+                    SettingFrame();
+
+                }
+                if(item.equals("Price - Ascending")){
+
+                    market = DupArray(search);
+                    filteredsearch = new ArrayList<CarID>();
+
+                    int rep;
+                    CarID car;
+
+                    while(!market.isEmpty()){
+                        car = null;
+                        for(rep=0 ; rep< market.size() ; rep++){
+                            if(car==null) car = market.get(rep);
+                            else if(car.getPrice()>market.get(rep).getPrice()) car = market.get(rep);
+                        }
+
+                        filteredsearch.add(car);
+                        market.remove(car);
+                    }
+
+                    search = filteredsearch;
+                    fbs.setSearchList(filteredsearch);
+                    SettingFrame();
+
+                }
+                if(item.equals("Price - Descending")){
+
+                    market = DupArray(search);
+                    filteredsearch = new ArrayList<CarID>();
+
+                    int rep;
+                    CarID car;
+
+                    while(!market.isEmpty()){
+                        car = null;
+                        for(rep=0 ; rep< market.size() ; rep++){
+                            if(car==null) car = market.get(rep);
+                            else if(car.getPrice()<market.get(rep).getPrice()) car = market.get(rep);
+                        }
+
+                        filteredsearch.add(car);
+                        market.remove(car);
+                    }
+
+                    search = filteredsearch;
+                    fbs.setSearchList(filteredsearch);
+                    SettingFrame();
+
+                }
+                if(item.equals("Kilometre - Ascending")){
+
+                    market = DupArray(search);
+                    filteredsearch = new ArrayList<CarID>();
+
+                    int rep;
+                    CarID car;
+
+                    while(!market.isEmpty()){
+                        car = null;
+                        for(rep=0 ; rep< market.size() ; rep++){
+                            if(car==null) car = market.get(rep);
+                            else if(car.getKilometre()>market.get(rep).getKilometre()) car = market.get(rep);
+                        }
+
+                        filteredsearch.add(car);
+                        market.remove(car);
+                    }
+
+                    search = filteredsearch;
+                    fbs.setSearchList(filteredsearch);
+                    SettingFrame();
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // Does Nothing!!!
+            }
+        });
+
 
         tvSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +255,17 @@ public class CarSearchListFragment extends Fragment {
             }
         });
 
+    }
+
+    private ArrayList<CarID> DupArray(ArrayList<CarID> marketList) {
+
+        ArrayList<CarID> market = new ArrayList<CarID>();
+
+        for(int i=0 ; i< marketList.size() ; i++){
+            market.add(marketList.get(i));
+        }
+
+        return market;
     }
 
     private void SettingFrame() {

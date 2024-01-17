@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.SellerPageFragment">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".fragments.SellerPageFragment"
+    app:cardCornerRadius="16dp"
+    android:backgroundTint="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintSeller"
         android:layout_width="match_parent"
-        android:layout_height="380dp">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/SellerGoBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/arrow_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        <ImageView
+            android:id="@+id/imageViewDialogClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/tvSellerUser"
@@ -42,11 +43,11 @@
 
         <TextView
             android:id="@+id/tvselleremail"
-            android:layout_width="380dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:textColor="@color/black"
@@ -59,9 +60,7 @@
             android:id="@+id/imageViewSellerPage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="138dp"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="138dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,70 +68,61 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-        <Button
-            android:id="@+id/btnCallSeller"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Call"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvselleremail"
-            app:shapeAppearance="@style/RoundShape.App.50percent"/>
-
-        <Button
-            android:id="@+id/btnWhatsapp"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Whatsapp"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnSMSContact"
-            app:layout_constraintStart_toEndOf="@+id/btnCallSeller"
-            app:layout_constraintTop_toBottomOf="@+id/tvselleremail"
-            app:shapeAppearance="@style/RoundShape.App.50percent"/>
-
-        <Button
-            android:id="@+id/btnSMSContact"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="SMS"
-            android:textColor="@color/white"
-            android:textSize="15sp"
+            android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnWhatsapp"
-            app:layout_constraintTop_toBottomOf="@+id/tvselleremail"
-            app:shapeAppearance="@style/RoundShape.App.50percent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvselleremail">
+
+            <Button
+                android:id="@+id/btnCallSeller"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/Light_Steel_Blue"
+                android:text="Call"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvselleremail"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+            <Button
+                android:id="@+id/btnWhatsapp"
+                android:layout_width="135dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/WhatsappGreen"
+                android:text="Whatsapp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnSMSContact"
+                app:layout_constraintStart_toEndOf="@+id/btnCallSeller"
+                app:layout_constraintTop_toBottomOf="@+id/tvselleremail"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+            <Button
+                android:id="@+id/btnSMSContact"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/Light_Steel_Blue"
+                android:text="SMS"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnWhatsapp"
+                app:layout_constraintTop_toBottomOf="@+id/tvselleremail"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_below="@id/ConstraintSeller">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecyclerSellerCars"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="6dp" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

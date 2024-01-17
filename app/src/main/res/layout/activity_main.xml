@@ -9,7 +9,7 @@
         android:id="@+id/FrameLayoutMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavigationView">
+        android:layout_above="@id/bottomNavigationView">
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,11 +18,11 @@
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/menu_nav"
-        app:itemRippleColor="@color/Light_Grey"
-        app:backgroundTint="@color/white"
-        app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
-        app:itemActiveIndicatorStyle="@color/Broncos_Navy"
+        app:itemIconTint="@color/black"
+        android:background="@color/white"
+        app:itemRippleColor="@color/Shadow"
+        app:itemActiveIndicatorStyle="@style/Base.Theme.Carsln"
         />
 
 </RelativeLayout>

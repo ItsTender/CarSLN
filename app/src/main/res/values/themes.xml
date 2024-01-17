@@ -5,6 +5,10 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <item name="android:colorPrimary"> @color/Blue700 </item>
+        <item name="colorOnPrimaryFixedVariant"> @color/BlueGreen </item>
+        <item name="colorSecondary"> @color/black </item>
+        <item name="colorOnPrimary"> @color/Blue700 </item>
+
 
     </style>
 

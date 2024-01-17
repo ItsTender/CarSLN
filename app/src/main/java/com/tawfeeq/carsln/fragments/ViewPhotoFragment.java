@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -22,8 +23,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 
@@ -36,9 +39,7 @@ import java.util.UUID;
  */
 public class ViewPhotoFragment extends Fragment {
 
-    boolean sell_lend;
-    String Email,Man, Mod, Photo,Transmission,Engine,ID,Color,Location,NextTest,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes;
-    Integer Price,Power,Year,Users,Kilometre;
+    String Email;
     FireBaseServices fbs;
     String username, pfp, From;
     TextView tvUsername;
@@ -117,16 +118,65 @@ public class ViewPhotoFragment extends Fragment {
 
             ChangePFP.setVisibility(View.VISIBLE);
 
+
+            // Custom Bottom Dialog FOr Profile Photo Options!
+            BottomSheetDialog sheetDialog = new BottomSheetDialog(getActivity());
+            sheetDialog.setContentView(R.layout.bottom_profile_dialog);
+            sheetDialog.setCancelable(true);
+
+            CardView changepfp = sheetDialog.findViewById(R.id.cardViewChangePFP);
+            CardView resetpfp = sheetDialog.findViewById(R.id.cardViewResetPFP);
+
+            changepfp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sheetDialog.dismiss();
+                    ImageChooser();
+                }
+            });
+
+            resetpfp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    String photo = "";
+
+                    ivUser.setImageResource(R.drawable.slnpfp);
+
+                    String str = fbs.getAuth().getCurrentUser().getEmail();
+                    int n = str.indexOf("@");
+                    String user = str.substring(0,n);
+
+                    if (fbs.getUser() != null) {
+                        fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+
+                                Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
+                                fbs.getUser().setUserPhoto(photo);
+                                Picasso.get().load(R.drawable.slnpfp).into(ivUser);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
+                    sheetDialog.dismiss();
+                }
+            });
+
             ChangePFP.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ImageChooser();
+                    sheetDialog.show();
                 }
             });
 
 
         } else ChangePFP.setVisibility(View.INVISIBLE);
-
 
 
         tvUsername.setText(username);

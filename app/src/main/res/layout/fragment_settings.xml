@@ -41,6 +41,21 @@
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
+        <TextView
+            android:id="@+id/tvtxtPFPSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Edit Profile Picture"
+            android:textColor="@color/Blue700"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhotoSettings" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewchanegPhone"
             android:layout_width="272dp"
@@ -95,7 +110,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toStartOf="@+id/btnChangeUsername"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto">
+            app:layout_constraintTop_toBottomOf="@+id/tvtxtPFPSettings">
 
             <EditText
                 android:id="@+id/etChangeUsername"
@@ -162,54 +177,22 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardViewCHANGEUSERNAME"
-            app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto"
+            app:layout_constraintTop_toBottomOf="@+id/tvtxtPFPSettings"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
-
-        <Button
-            android:id="@+id/btnChangePhoto"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Change Profile Photo"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnResetPhoto"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhotoSettings" />
-
-        <Button
-            android:id="@+id/btnResetPhoto"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Remove Profile Photo"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            app:layout_constraintEnd_toStartOf="@+id/btnChangePhoto"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhotoSettings" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
-            android:layout_width="280dp"
+            android:layout_width="180dp"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/white"
-            app:strokeWidth="1dp"
-            app:strokeColor="@color/RedLogout"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/Broncos_Navy"
             android:text="Logout"
             app:shapeAppearance="@style/RoundShape.App.50percent"
-            android:textColor="@color/RedLogout"
+            android:textColor="@color/Broncos_Navy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

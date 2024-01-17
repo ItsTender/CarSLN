@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
 
     FireBaseServices fbs;
     InfoMessage infomsg;
-    TextView tvUser;
+    TextView tvUser, tvEmail;
     ImageView ivPFP;
     String pfp;
     RecyclerView rcListings;
@@ -108,6 +108,7 @@ public class ProfileFragment extends Fragment {
         fbs= FireBaseServices.getInstance();
         infomsg = InfoMessage.getInstance();
         tvUser =getView().findViewById(R.id.tvUsername);
+        tvEmail = getView().findViewById(R.id.textViewEmail);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);
         rcListings= getView().findViewById(R.id.RecyclerListingsProfile);
         addcar = getView().findViewById(R.id.btnAddProfile);
@@ -134,6 +135,7 @@ public class ProfileFragment extends Fragment {
         if(fbs.getUser()!=null) {
 
             tvUser.setText(fbs.getUser().getUsername());
+            tvEmail.setText(fbs.getAuth().getCurrentUser().getEmail());
 
             pfp = fbs.getUser().getUserPhoto();
             if (pfp == null || pfp.isEmpty()) {
@@ -185,7 +187,9 @@ public class ProfileFragment extends Fragment {
         userlistings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setNavigationBarGone();
                 GoToUserListings();
+                fbs.setFrom("UserListings");
             }
         });
 
@@ -219,8 +223,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 fbs.getAuth().signOut();
                 fbs.setMarketList(null);
-                GoToLogIn();
                 setNavigationBarGone();
+                GoToLogIn();
                 dialog.dismiss();
             }
         });

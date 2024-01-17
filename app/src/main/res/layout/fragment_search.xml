@@ -36,10 +36,10 @@
             android:id="@+id/imageViewSearchClose"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/baseline_close_24"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/arrow_logo"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="313dp"
             android:fontFamily="sans-serif"
             android:text="Car Model"
@@ -132,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="105dp"
             android:fontFamily="sans-serif"
             android:text="Price Range"
@@ -148,7 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif"
             android:text="+200,000"
@@ -184,7 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="88dp"
             android:fontFamily="sans-serif"
             android:text="Kilometre Range"
@@ -200,7 +200,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="87dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif"
             android:text="+200,000"
@@ -238,7 +238,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="125dp"
             android:fontFamily="sans-serif"
             android:text="Year Range"
@@ -254,7 +254,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="124dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif"
             android:text="2024"
@@ -290,7 +290,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="313dp"
             android:fontFamily="sans-serif"
             android:text="Offer Type"
@@ -314,12 +314,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewoffertype">
 
-        <Spinner
-            android:id="@+id/Spinnersellingtype"
-            android:layout_width="380dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/black"
-            android:outlineAmbientShadowColor="@color/black" />
+            <Spinner
+                android:id="@+id/Spinnersellingtype"
+                android:layout_width="380dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/black"
+                android:outlineAmbientShadowColor="@color/black" />
 
         </androidx.cardview.widget.CardView>
 
@@ -328,7 +328,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="260dp"
             android:fontFamily="sans-serif"
             android:text="Location By Area"

@@ -72,7 +72,7 @@
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="20dp"
-                android:backgroundTint="@color/RedLogout"
+                android:backgroundTint="@color/Blue700"
                 android:text="Logout"
                 android:textColor="@color/white"
                 app:shapeAppearance="@style/RoundShape.App.50percent" />

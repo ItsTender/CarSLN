@@ -127,7 +127,7 @@ public class SearchFragment extends Fragment {
         SellLend.setAdapter(SellLendAdapter);
 
 
-        String [] Location = {"Any Location Area","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String [] Location = {"Any Location District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
         ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
         LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerArea.setAdapter(LocationAdapter);
@@ -553,21 +553,12 @@ public class SearchFragment extends Fragment {
             }
         });
 
-
-
-        if(fbs.getCarList() != null) {
-
-            ivClose.setVisibility(View.VISIBLE);
-            ivClose.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        ivClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                     GoToFragmentSearchCar();
                 }
-            });
-        }
-        else {
-            ivClose.setVisibility(View.INVISIBLE);
-        }
+        });
 
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -575,7 +566,6 @@ public class SearchFragment extends Fragment {
                 GoToFragmentSearchCar();
             }
         });
-
 
         btnSearch.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -639,7 +629,7 @@ public class SearchFragment extends Fragment {
                             if(type.equals("Purchase a Car")) selllend[0] = true;
                             if(type.equals("Rent a Car")) selllend[0] = false;
 
-                            if(area.equals("Any Location Area")) location[0] = car.getLocation();
+                            if(area.equals("Any Location District")) location[0] = car.getLocation();
                             else location[0] = area;
 
 
@@ -665,6 +655,8 @@ public class SearchFragment extends Fragment {
                         }
 
                         fbs.setCarList(search);
+                        fbs.setSearchList(search);
+
                         GoToFragmentSearchCar();
                         progressDialog.dismiss();
                     }

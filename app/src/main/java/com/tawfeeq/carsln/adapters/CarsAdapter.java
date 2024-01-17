@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
@@ -138,8 +139,14 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 }
 
                 if(fbs.getUser()!=null) {
-                    if (isFound[0]) Saved.remove(cars.get(position).getId());
-                    if (!isFound[0]) Saved.add(cars.get(position).getId());
+                    if (isFound[0]) {
+                        Saved.remove(cars.get(position).getId());
+                        holder.ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                    }
+                    if (!isFound[0]) {
+                        Saved.add(cars.get(position).getId());
+                        holder.ivSaved.setImageResource(R.drawable.bookmark_filled);
+                    }
                     fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
@@ -160,7 +167,6 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                         }
                     });
                 }
-
             }
         });
 

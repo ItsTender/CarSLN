@@ -1,13 +1,22 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +35,9 @@ import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.UserProfile;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -42,6 +54,8 @@ public class DetailedFragment extends Fragment {
     boolean isFound;
     String pfp;
     CarID currentCar;
+    UserProfile usr;
+    private static final int PERMISSION_SEND_SMS = 1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,6 +110,8 @@ public class DetailedFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        getNavigationBar().setVisibility(View.GONE);
+
         fbs = FireBaseServices.getInstance();
         ivCar=getView().findViewById(R.id.DetailedCar);
         tvMan=getView().findViewById(R.id.DetailedMan);
@@ -117,10 +133,13 @@ public class DetailedFragment extends Fragment {
         ivDelete =getView().findViewById(R.id.DetailedDeleteListing);
 
         currentCar = fbs.getSelectedCar();
+        usr = new UserProfile();
 
         String str = fbs.getSelectedCar().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
+
+        final String[] sellerinfo = new String[3];
 
         // Get User Profile Photo.....
 
@@ -163,18 +182,26 @@ public class DetailedFragment extends Fragment {
                             fbs.setMarketList(Market);
 
                             if (bnv.getSelectedItemId() == R.id.market) {
+                                bnv.setVisibility(View.VISIBLE);
                                 GoToFragmentCars(); // Maybe One of the Many Show All Options.
                             }
                             else if (bnv.getSelectedItemId() == R.id.searchcar){
+                                bnv.setVisibility(View.VISIBLE);
                                 GoToFragmentSearch();
                             }
                             else if (bnv.getSelectedItemId() == R.id.savedcars) {
+                                bnv.setVisibility(View.VISIBLE);
                                 GoToFragmentSaved();
                             }
                             else if (bnv.getSelectedItemId() == R.id.profile){
-                                GoToProfile(); // Profile/ User Listings.
+                                if(!fbs.getFrom().equals("UserListings")) {
+                                    bnv.setVisibility(View.VISIBLE);
+                                    GoToProfile();
+                                }// Maybe One of the Many Show All Options.
+                                else {
+                                    GoToUserListings();
+                                }
                             }
-
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -209,6 +236,12 @@ public class DetailedFragment extends Fragment {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
 
+                    usr = documentSnapshot.toObject(UserProfile.class);
+
+                    sellerinfo[0] = documentSnapshot.getString("username");
+                    sellerinfo[1] = documentSnapshot.getString("userPhoto");
+                    sellerinfo[2] = documentSnapshot.getString("phone");
+
                     tvSeller.setText(documentSnapshot.getString("username"));
 
                     pfp = documentSnapshot.getString("userPhoto");
@@ -237,7 +270,6 @@ public class DetailedFragment extends Fragment {
                 public void onClick(View view) {
                     BottomNavigationView bnv = getNavigationBar();
 
-                    bnv.setVisibility(View.GONE);
 
                     Fragment gtn = new DetailedPhotosFragment();
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -255,16 +287,87 @@ public class DetailedFragment extends Fragment {
                 BottomNavigationView bnv = getNavigationBar();
 
                 if (bnv.getSelectedItemId() == R.id.market) {
+                    getNavigationBar().setVisibility(View.VISIBLE);
                     GoToFragmentCars();// Maybe One of the Many Show All Options.
                 }
                 else if (bnv.getSelectedItemId() == R.id.searchcar){
+                    getNavigationBar().setVisibility(View.VISIBLE);
                     GoToFragmentSearch();
                 }
                 else if (bnv.getSelectedItemId() == R.id.savedcars) {
+                    getNavigationBar().setVisibility(View.VISIBLE);
                     GoToFragmentSaved();
                 }
                 else if (bnv.getSelectedItemId() == R.id.profile){
-                    GoToProfile();// Maybe One of the Many Show All Options.
+                    if(!fbs.getFrom().equals("UserListings")){
+                        getNavigationBar().setVisibility(View.VISIBLE);
+                        GoToProfile();
+                    }// Maybe One of the Many Show All Options.
+                    else {
+                        GoToUserListings();
+                    }
+                }
+            }
+        });
+
+
+        usr.setPhone(sellerinfo[2]);
+        // Custom Seller Page Dialog!
+        Dialog dialogSeller = new Dialog(getActivity());
+        dialogSeller.setContentView(R.layout.seller_page);
+        dialogSeller.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogSeller.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogSeller.setCancelable(true);
+
+        TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
+        CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
+        CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
+        CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
+        ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
+
+        mail.setText(str);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialogSeller.dismiss();
+            }
+        });
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // only fills in the Phone number in the Phone App....
+                if(usr!=null) {
+
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + usr.getPhone()));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        btnSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Sends a full on Message to the seller in the SMS App....
+                if(usr!=null) PermissionSendSMS();
+            }
+        });
+
+        btnWhatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(usr!=null) {
+
+                    String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
+                    String phoneNumber = usr.getPhone();
+                    String message = "Hello, I Saw Your " + CarName + " Listed for Sale On CarSLN and I'm Interested in it";
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
+                    startActivity(intent);
                 }
             }
         });
@@ -276,17 +379,14 @@ public class DetailedFragment extends Fragment {
                 String str = fbs.getAuth().getCurrentUser().getEmail();
 
                 if(str.equals(currentCar.getEmail())){
-                    // Always will be like that!
+
+                    getNavigationBar().setVisibility(View.VISIBLE);
                     GoToProfile();
                     setNavigationBarProfile();
                 }
                 else {
 
-                    Fragment gtn = new SellerPageFragment();
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.replace(R.id.FrameLayoutMain, gtn);
-                    ft.commit();
+                    dialogSeller.show();
                 }
             }
         });
@@ -299,16 +399,13 @@ public class DetailedFragment extends Fragment {
 
                 if(str.equals(currentCar.getEmail())){
 
+                    getNavigationBar().setVisibility(View.VISIBLE);
                     GoToProfile();
                     setNavigationBarProfile();
                 }
                 else {
 
-                    Fragment gtn = new SellerPageFragment();
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.replace(R.id.FrameLayoutMain, gtn);
-                    ft.commit();
+                    dialogSeller.show();
                 }
             }
         });
@@ -338,8 +435,14 @@ public class DetailedFragment extends Fragment {
             public void onClick(View view) {
 
                 if(fbs.getUser()!=null) {
-                    if (isFound) Saved.remove(currentCar.getId());
-                    if (!isFound) Saved.add(currentCar.getId());
+                    if (isFound) {
+                        Saved.remove(currentCar.getId());
+                        ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                    }
+                    if (!isFound) {
+                        Saved.add(currentCar.getId());
+                        ivSaved.setImageResource(R.drawable.bookmark_filled);
+                    }
 
                     fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -447,6 +550,14 @@ public class DetailedFragment extends Fragment {
         ft.commit();
     }
 
+    private void GoToUserListings() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
     private void setNavigationBarProfile() {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.profile);
     }
@@ -455,6 +566,39 @@ public class DetailedFragment extends Fragment {
         return ((MainActivity) getActivity()).getBottomNavigationView();
     }
 
+    private void PermissionSendSMS() {
+        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.SEND_SMS}, PERMISSION_SEND_SMS);
+        } else {
+            SendSMS();
+        }
+    }
 
+    private void SendSMS() {
+
+        String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
+        String phoneNumber = usr.getPhone();
+        String message = "Hello, I Saw Your " + CarName +" Listed for Sale On CarSLN and I'm Interested in it";
+
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+            Toast.makeText(getActivity(), "Successfully Sent a Message to The Seller, Check The SMS App", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "Failed to Send SMS to The Seller", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            SendSMS();
+        } else {
+            Toast.makeText(requireContext(), "Permission Denied, Cannot Send SMS", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }

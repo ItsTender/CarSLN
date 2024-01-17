@@ -145,8 +145,6 @@ public class DetailedPhotosFragment extends Fragment {
 
                 Fragment gtn= new DetailedFragment();
 
-                BottomNavigationView bnv = getNavigationBar();
-                bnv.setVisibility(View.VISIBLE);
 
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

@@ -22,5 +22,18 @@
 
     </style>
 
+    // Try other Methods......
+    <style name="BottomNavigation">
+        <item name="android:background">@color/white</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="itemTextAppearanceInactive">@color/black</item>
+        <item name="itemTextAppearanceActive">@color/Blue700</item>
+        <item name="itemRippleColor">@color/Light_Grey</item>
+        <item name="itemIconTint">@color/black</item>
+        <item name="itemTextColor">@color/black</item>
+        <item name="enforceTextAppearance">true</item>
+        <item name="enforceMaterialTheme">true</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
 
 </resources>

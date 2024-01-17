@@ -101,8 +101,6 @@ public class AllCarsFragment extends Fragment {
         Market = new ArrayList<CarID>();
 
 
-
-
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
         else Saved = new ArrayList<String>();
 

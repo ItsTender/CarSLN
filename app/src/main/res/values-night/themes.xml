@@ -3,7 +3,12 @@
     <style name="Base.Theme.Carsln" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
         <item name="android:colorPrimary"> @color/Blue700 </item>
+        <item name="colorOnPrimaryFixedVariant"> @color/BlueGreen </item>
+        <item name="colorSecondary"> @color/black </item>
+        <item name="colorOnPrimary"> @color/Blue700 </item>
+
 
     </style>
 

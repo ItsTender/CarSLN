@@ -3,6 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="Blue700"> #03bafc </color>
+    <color name="NeonBlue"> #1F51FF </color>
+    <color name="BlueGreen"> #088F8F </color>
     <color name="Shinygrey"> #696969 </color>
     <color name="yellowgrey"> #e5f4e3 </color>
     <color name="Light_Steel_Blue"> #B0C4DE </color>
@@ -11,4 +13,5 @@
     <color name="Light_Grey"> #BEBEBE </color>
     <color name="Shadow"> #CDCDCD </color>
     <color name="RedLogout"> #D00000 </color>
+    <color name="WhatsappGreen"> #25D366 </color>
 </resources>

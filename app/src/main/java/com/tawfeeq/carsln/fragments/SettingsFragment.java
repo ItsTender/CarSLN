@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,11 +23,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
@@ -47,7 +50,8 @@ public class SettingsFragment extends Fragment {
     Utils utils;
     FireBaseServices fbs;
     EditText etChangeUsername, etChangePhone;
-    Button logout, Changepfp, Resetpfp, btnChangePhone, btnChangeUsername, btnChangeLocation;
+    TextView tvPFP;
+    Button logout, btnChangePhone, btnChangeUsername, btnChangeLocation;
     ImageView ivUser;
     String pfp;
     Spinner SpinnerLocation;
@@ -106,13 +110,12 @@ public class SettingsFragment extends Fragment {
         utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
         logout= getView().findViewById(R.id.btnLogout);
+        tvPFP = getView().findViewById(R.id.tvtxtPFPSettings);
         btnChangePhone = getView().findViewById(R.id.btnChangePhone);
         btnChangeUsername = getView().findViewById(R.id.btnChangeUsername);
         btnChangeLocation = getView().findViewById(R.id.btnChangeLocation);
         etChangePhone = getView().findViewById(R.id.etChangePhone);
         etChangeUsername =getView().findViewById(R.id.etChangeUsername);
-        Changepfp = getView().findViewById(R.id.btnChangePhoto);
-        Resetpfp = getView().findViewById(R.id.btnResetPhoto);
         ivUser = getView().findViewById(R.id.imageViewProfilePhotoSettings);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSettings);
 
@@ -207,11 +210,14 @@ public class SettingsFragment extends Fragment {
 
         // Set New Profile Photo.....
 
-        ivUser.setOnClickListener(new View.OnClickListener() {
+
+        ivUser.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View view) {
 
                 if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) GoToViewPhoto();
+
+                return true;
             }
         });
 
@@ -248,58 +254,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        Changepfp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {ImageChooser();}
-        });
-
-        Resetpfp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Hold the Button to Confirm Resetting Your Profile Photo", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        Resetpfp.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-
-                ProgressDialog progressDialog = new ProgressDialog(getActivity());
-                progressDialog.setTitle("Uploading...");
-                progressDialog.setMessage("Resetting Your Profile Picture, Please Wait");
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                progressDialog.setIcon(R.drawable.slnround);
-                progressDialog.show();
-
-                String photo = "";
-                Picasso.get().load(R.drawable.slnpfp).into(ivUser);
-
-                if (fbs.getUser() != null) {
-                    fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-
-                            Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
-                            fbs.getUser().setUserPhoto(photo);
-                            Picasso.get().load(R.drawable.slnpfp).into(ivUser);
-                            progressDialog.dismiss();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
-                        }
-                    });
-                }
-
-                return true;
-            }
-        });
-
-
-
-        // Set New Profile Photo Ends
 
 
         btnChangeUsername.setOnClickListener(new View.OnClickListener() {
@@ -368,6 +322,65 @@ public class SettingsFragment extends Fragment {
         });
 
 
+        // Custom Bottom Dialog FOr Profile Photo Options!
+        BottomSheetDialog sheetDialog = new BottomSheetDialog(getActivity());
+        sheetDialog.setContentView(R.layout.bottom_profile_dialog);
+        sheetDialog.setCancelable(true);
+
+        CardView changepfp = sheetDialog.findViewById(R.id.cardViewChangePFP);
+        CardView resetpfp = sheetDialog.findViewById(R.id.cardViewResetPFP);
+
+        changepfp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheetDialog.dismiss();
+                ImageChooser();
+            }
+        });
+
+        resetpfp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String photo = "";
+                ivUser.setImageResource(R.drawable.slnpfp);
+
+                if (fbs.getUser() != null) {
+                    fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
+                            fbs.getUser().setUserPhoto(photo);
+                            Picasso.get().load(R.drawable.slnpfp).into(ivUser);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+
+                sheetDialog.dismiss();
+            }
+        });
+
+        ivUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheetDialog.show();
+            }
+        });
+
+        tvPFP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheetDialog.show();
+            }
+        });
+
+
         // Custom Logout Dialog!
         Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_logout);
@@ -383,8 +396,8 @@ public class SettingsFragment extends Fragment {
             public void onClick(View view) {
                 fbs.getAuth().signOut();
                 fbs.setMarketList(null);
-                GoToLogIn();
                 setNavigationBarGone();
+                GoToLogIn();
                 dialog.dismiss();
             }
         });

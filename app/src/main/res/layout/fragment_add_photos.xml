@@ -109,7 +109,7 @@
             android:layout_height="65dp"
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/Blue700"
-            android:text="Add Car"
+            android:text="Post Listing"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

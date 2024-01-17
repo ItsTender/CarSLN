@@ -115,10 +115,7 @@ public class SellerPageFragment extends Fragment {
         btnCall = getView().findViewById(R.id.btnCallSeller);
         btnSMS = getView().findViewById(R.id.btnSMSContact);
         btnWhatsapp =getView().findViewById(R.id.btnWhatsapp);
-        rc = getView().findViewById(R.id.RecyclerSellerCars);
         ivSeller = getView().findViewById(R.id.imageViewSellerPage);
-        Back = getView().findViewById(R.id.SellerGoBack);
-
 
         SellerCars =new ArrayList<CarID>();
 
@@ -159,13 +156,6 @@ public class SellerPageFragment extends Fragment {
         });
 
         // Get Profile Ends
-
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GoToDetailedCar();
-            }
-        });
 
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override

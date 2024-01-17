@@ -146,7 +146,7 @@ public class AddCarFragment extends Fragment {
         SpinnerColor.setAdapter(ColorAdapter);
 
 
-        String [] Location = {"Select Location Area","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
+        String [] Location = {"Select Location District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
         ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
         LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         SpinnerLocation.setAdapter(LocationAdapter);
@@ -599,7 +599,7 @@ public class AddCarFragment extends Fragment {
                 String testyear = SpinnerTestYear.getSelectedItem().toString();
                 String testmonth = SpinnerTestMonth.getSelectedItem().toString();
 
-                if(SellLend.equals("Car Offer Type")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location Area")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
+                if(SellLend.equals("Car Offer Type")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location District")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }

@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
@@ -92,6 +93,7 @@ public class UserListingsFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         rcListings= getView().findViewById(R.id.RecyclerListings);
+        Back = getView().findViewById(R.id.UserListingsGoBack);
 
 
         lst=new ArrayList<CarID>();
@@ -112,7 +114,19 @@ public class UserListingsFragment extends Fragment {
         }
         SettingFrame();
 
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarVisible();
+                GoToProfile();
+                fbs.setFrom("");
+            }
+        });
 
+    }
+
+    private void setNavigationBarVisible() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
     }
 
     private void GoToProfile() {

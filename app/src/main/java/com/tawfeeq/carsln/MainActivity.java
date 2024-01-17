@@ -71,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         GoToFragmentCars();
                     }
                     else if (item.getItemId() == R.id.searchcar){
-                        if(fbs.getCarList()!=null) GoToFragmentCarSearchList();
-                        else GoToFragmentSearch();
+                        GoToFragmentCarSearchList();
                     }
                     else if (item.getItemId() == R.id.addcar) {
                         GoToFragmentAdd();
@@ -119,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setIcon(R.drawable.slnround);
         progressDialog.setCancelable(false);
         progressDialog.show();
+
+        fbs.setCarList(null);
+        fbs.setSearchList(null);
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
