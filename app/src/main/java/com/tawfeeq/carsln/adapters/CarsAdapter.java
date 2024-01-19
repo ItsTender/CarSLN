@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -206,13 +207,15 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             txtYear.setText(year);
             txtKilo.setText(car.getKilometre() + " km");
 
+
+
             if(car.getSellLend()==true){
 
-            txtPrice.setText(car.getPrice()+"₪");
+                txtPrice.setText(car.getPrice()+"₪");
             }
             else if(car.getSellLend()==false){
 
-                txtPrice.setText(car.getPrice()+ "₪" +" Monthly");
+                txtPrice.setText(car.getPrice() + "₪" +" Monthly");
             }
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())
@@ -222,6 +225,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             else {
                 Glide.with(context).load(car.getPhoto()).into(ivCar);
             }
+
 
 
             if(Saved.contains(car.getId())) {

@@ -1,6 +1,9 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -607,13 +610,14 @@ public class SearchFragment extends Fragment {
                 String type = SellLend.getSelectedItem().toString();
                 Boolean[] selllend = new Boolean[1];
 
-                ProgressDialog progressDialog= new ProgressDialog(getActivity());
-                progressDialog.setTitle("Searching...");
-                progressDialog.setMessage("Completing Search in the CarSLN MarketPlace, Please Wait");
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                progressDialog.setIcon(R.drawable.slnround);
-                progressDialog.setCancelable(false);
-                progressDialog.show();
+
+                Dialog loading = new Dialog(getActivity());
+                loading.setContentView(R.layout.loading_dialog);
+                loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                loading.setCancelable(false);
+                loading.show();
+
 
                 fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -657,14 +661,16 @@ public class SearchFragment extends Fragment {
                         fbs.setCarList(search);
                         fbs.setSearchList(search);
 
+                        // Goes to the CarSearchList Fragment as Jude wants!!!!
                         GoToFragmentSearchCar();
-                        progressDialog.dismiss();
+
+                        loading.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
+                        loading.dismiss();
                     }
                 });
             }

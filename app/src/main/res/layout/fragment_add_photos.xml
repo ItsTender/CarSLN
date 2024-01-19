@@ -10,113 +10,201 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <TextView
-            android:id="@+id/textViewAddphotos"
+            android:id="@+id/textViewmaincar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
             android:fontFamily="sans-serif"
-            android:text="Add Photos to Your Listing"
+            android:text="Main Car Image"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivFirstCarPhoto"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="105dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginEnd="106dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/photo_iv"
+            app:layout_constraintBottom_toTopOf="@+id/textViewmaincararrow"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAddphotos"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewmaincararrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif"
+            android:text="↓"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/cardView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/cardView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivFirstCarPhoto"
+                android:layout_width="180dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/insert_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        </androidx.cardview.widget.CardView>
 
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivSecondCarPhoto"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/photo_iv"
-            app:layout_constraintEnd_toStartOf="@+id/ivThirdCarPhoto"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardView4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivFirstCarPhoto"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivSecondCarPhoto"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/insert_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.8percent"
+                tools:layout_editor_absoluteY="286dp" />
+
+        </androidx.cardview.widget.CardView>
 
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivThirdCarPhoto"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/photo_iv"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="70dp"
+            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivSecondCarPhoto"
-            app:layout_constraintTop_toBottomOf="@+id/ivFirstCarPhoto"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
+            app:layout_constraintStart_toEndOf="@+id/cardView3"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivThirdCarPhoto"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/insert_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.8percent"
+                tools:layout_editor_absoluteY="286dp" />
+
+        </androidx.cardview.widget.CardView>
 
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivFourthCarPhoto"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/photo_iv"
-            app:layout_constraintEnd_toStartOf="@+id/ivFifthCarPhoto"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView5"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardView6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivSecondCarPhoto"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivFifthCarPhoto"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/photo_iv"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivFourthCarPhoto"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/insert_image"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView6"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="70dp"
+            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivSecondCarPhoto"
-            app:layout_constraintTop_toBottomOf="@+id/ivThirdCarPhoto"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
+            app:layout_constraintStart_toEndOf="@+id/cardView5"
+            app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivFifthCarPhoto"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/insert_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.8percent"
+                tools:layout_editor_absoluteY="416dp" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btnAddCarListing"
             android:layout_width="320dp"
             android:layout_height="65dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="88dp"
             android:backgroundTint="@color/Blue700"
             android:text="Post Listing"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivFourthCarPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/cardView5"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ConstraintListings"
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/white"
+        android:layout_height="50dp">
+
+
+        <TextView
+            android:id="@+id/textViewAddphotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="Add Images to Your Listing"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

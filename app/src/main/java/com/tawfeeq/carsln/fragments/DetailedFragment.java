@@ -26,6 +26,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ActionTypes;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.interfaces.ItemClickListener;
+import com.denzcoskun.imageslider.interfaces.TouchListener;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,11 +56,12 @@ public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
     TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor, tvNotes;
-    ImageView ivCar, ivSeller, ivSaved, ivBack, ivDelete;
+    ImageView  ivSeller, ivSaved, ivBack, ivDelete;
     boolean isFound;
     String pfp;
     CarID currentCar;
     UserProfile usr;
+    ImageSlider imageSlider;
     private static final int PERMISSION_SEND_SMS = 1;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -113,7 +120,7 @@ public class DetailedFragment extends Fragment {
         getNavigationBar().setVisibility(View.GONE);
 
         fbs = FireBaseServices.getInstance();
-        ivCar=getView().findViewById(R.id.DetailedCar);
+        imageSlider = getView().findViewById(R.id.image_slider);
         tvMan=getView().findViewById(R.id.DetailedMan);
         tvPrice =getView().findViewById(R.id.DetailedPrice);
         tvPower =getView().findViewById(R.id.DetailedHP);
@@ -264,21 +271,6 @@ public class DetailedFragment extends Fragment {
         // Get Profile Photo Ends
 
 
-        if(!currentCar.getPhoto().equals("")) {
-            ivCar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    BottomNavigationView bnv = getNavigationBar();
-
-
-                    Fragment gtn = new DetailedPhotosFragment();
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.replace(R.id.FrameLayoutMain, gtn);
-                    ft.commit();
-                }
-            });
-        }
 
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -371,6 +363,9 @@ public class DetailedFragment extends Fragment {
                 }
             }
         });
+
+
+
 
         tvSeller.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -500,16 +495,47 @@ public class DetailedFragment extends Fragment {
 
         tvNotes.setText(currentCar.getNotes());
 
-        if ( currentCar.getPhoto() == null || currentCar.getPhoto().isEmpty())
-        {
-            ivCar.setImageResource(R.drawable.photo_iv_null);
 
-        }
-        else {
-            Glide.with(getActivity()).load(currentCar.getPhoto()).into(ivCar);
+        int i;
+        ArrayList<SlideModel> imageList = new ArrayList<SlideModel>();
 
-        }
+        if ( currentCar.getPhoto() == null || currentCar.getPhoto().isEmpty()) imageList.add(new SlideModel(R.drawable.photo_iv_null,  ScaleTypes.CENTER_CROP));
+        else imageList.add(new SlideModel(currentCar.getPhoto(),  ScaleTypes.CENTER_CROP));
 
+        if ( currentCar.getSecondphoto() == null || currentCar.getSecondphoto().isEmpty()) i =2;
+        else imageList.add(new SlideModel(currentCar.getSecondphoto(),  ScaleTypes.CENTER_CROP));
+
+        if ( currentCar.getThirdPhoto() == null || currentCar.getThirdPhoto().isEmpty()) i=3;
+        else imageList.add(new SlideModel(currentCar.getThirdPhoto(),  ScaleTypes.CENTER_CROP));
+
+        if ( currentCar.getFourthPhoto() == null || currentCar.getFourthPhoto().isEmpty()) i=4;
+        else imageList.add(new SlideModel(currentCar.getFourthPhoto(),  ScaleTypes.CENTER_CROP));
+
+        if ( currentCar.getFifthPhoto() == null || currentCar.getFifthPhoto().isEmpty()) i=5;
+        else imageList.add(new SlideModel(currentCar.getFifthPhoto(),  ScaleTypes.CENTER_CROP));
+
+        imageSlider.setImageList(imageList);
+
+        imageSlider.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemSelected(int i) {
+                if(currentCar.getSecondphoto() == null || currentCar.getSecondphoto().isEmpty() || currentCar.getSecondphoto().equals("")) i=88;
+                else GoToDetailedPhotos();
+            }
+
+            @Override
+            public void doubleClick(int i) {
+                // nothing....
+            }
+        });
+    }
+
+    private void GoToDetailedPhotos() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new DetailedPhotosFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 
     private void GoToFragmentCars() {

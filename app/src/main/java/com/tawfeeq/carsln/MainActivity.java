@@ -5,11 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -111,13 +118,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setSavedGoToMarket() {
 
-        ProgressDialog progressDialog= new ProgressDialog(MainActivity.this);
-        progressDialog.setTitle("Loading...");
-        progressDialog.setMessage("Loading CarSLN");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setIcon(R.drawable.slnround);
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        Dialog loading = new Dialog(MainActivity.this);
+        loading.setContentView(R.layout.loading_dialog);
+        loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        loading.setCancelable(false);
+        loading.show();
 
         fbs.setCarList(null);
         fbs.setSearchList(null);
@@ -129,8 +135,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                progressDialog.dismiss();
-
                 usr = documentSnapshot.toObject(UserProfile.class);
                 fbs.setUser(usr);
 
@@ -140,12 +144,12 @@ public class MainActivity extends AppCompatActivity {
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
 
+                loading.dismiss();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
-                progressDialog.dismiss();
 
                 Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
                 fbs.setUser(null);
@@ -154,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
                 ft.commit();
+
+                loading.dismiss();
 
             }
         });

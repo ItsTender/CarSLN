@@ -1,7 +1,10 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -40,7 +43,7 @@ import java.util.UUID;
 public class AddPhotosFragment extends Fragment {
 
     FireBaseServices fbs;
-    String Man, Mod,Transmission,Engine,Color,Location,NextTest,Notes;
+    String Man, Mod,Transmission,Engine,color,Location,NextTest,Notes;
     Integer Price,Power,Year,Users,Kilometre;
     Boolean selllend;
     Button AddCar, Reset;
@@ -107,7 +110,7 @@ public class AddPhotosFragment extends Fragment {
         Users =bundle.getInt("Users");
         Kilometre=bundle.getInt("Kilo");
         Transmission=bundle.getString("Transmission");
-        Color=bundle.getString("Color");
+        color=bundle.getString("Color");
         Location=bundle.getString("Area");
         NextTest=bundle.getString("Test");
         Notes=bundle.getString("Notes");
@@ -139,15 +142,14 @@ public class AddPhotosFragment extends Fragment {
                 if(FourthPhoto == null ) FourthPhoto ="";
                 if(FifthPhoto == null ) FifthPhoto ="";
 
-                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,Color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes);
+                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes);
 
-                ProgressDialog progressDialog= new ProgressDialog(getActivity());
-                progressDialog.setTitle("Posting...");
-                progressDialog.setMessage("Adding Your Car Listing to the CarSLN MarketPlace, Please Wait");
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                progressDialog.setIcon(R.drawable.slnround);
-                progressDialog.setCancelable(false);
-                progressDialog.show();
+                Dialog loading = new Dialog(getActivity());
+                loading.setContentView(R.layout.loading_dialog);
+                loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                loading.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                loading.setCancelable(false);
+                loading.show();
 
                 fbs.getStore().collection("MarketPlace").add(Add).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -156,13 +158,13 @@ public class AddPhotosFragment extends Fragment {
                         fbs.setMarketList(null);
                         setNavigationCarsMarket();
                         GoToFragmentCars();
-                        progressDialog.dismiss();
+                        loading.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getActivity(), "Couldn't Add Car to MarketPlace", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
+                        loading.dismiss();
                     }
                 });
 
@@ -272,12 +274,12 @@ public class AddPhotosFragment extends Fragment {
 
         if (selectedImageUri != null) {
 
-            ProgressDialog progressDialog= new ProgressDialog(getActivity());
-            progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIcon(R.drawable.slnround);
-            progressDialog.show();
+            Dialog loading = new Dialog(getActivity());
+            loading.setContentView(R.layout.loading_dialog);
+            loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            loading.setCancelable(false);
+            loading.show();
 
 
             String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
@@ -300,12 +302,12 @@ public class AddPhotosFragment extends Fragment {
                         }
                     });
 
-                    progressDialog.dismiss();
+                    loading.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
+                    loading.dismiss();
                     Toast.makeText(getActivity(), "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -319,12 +321,12 @@ public class AddPhotosFragment extends Fragment {
 
         if (selectedImageUri != null) {
 
-            ProgressDialog progressDialog= new ProgressDialog(getActivity());
-            progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIcon(R.drawable.slnround);
-            progressDialog.show();
+            Dialog loading = new Dialog(getActivity());
+            loading.setContentView(R.layout.loading_dialog);
+            loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            loading.setCancelable(false);
+            loading.show();
 
 
             String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
@@ -347,12 +349,12 @@ public class AddPhotosFragment extends Fragment {
                         }
                     });
 
-                    progressDialog.dismiss();
+                    loading.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
+                    loading.dismiss();
                     Toast.makeText(getActivity(), "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -366,12 +368,12 @@ public class AddPhotosFragment extends Fragment {
 
         if (selectedImageUri != null) {
 
-            ProgressDialog progressDialog= new ProgressDialog(getActivity());
-            progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIcon(R.drawable.slnround);
-            progressDialog.show();
+            Dialog loading = new Dialog(getActivity());
+            loading.setContentView(R.layout.loading_dialog);
+            loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            loading.setCancelable(false);
+            loading.show();
 
 
             String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
@@ -394,12 +396,12 @@ public class AddPhotosFragment extends Fragment {
                         }
                     });
 
-                    progressDialog.dismiss();
+                    loading.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
+                    loading.dismiss();
                     Toast.makeText(getActivity(), "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -413,12 +415,12 @@ public class AddPhotosFragment extends Fragment {
 
         if (selectedImageUri != null) {
 
-            ProgressDialog progressDialog= new ProgressDialog(getActivity());
-            progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIcon(R.drawable.slnround);
-            progressDialog.show();
+            Dialog loading = new Dialog(getActivity());
+            loading.setContentView(R.layout.loading_dialog);
+            loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            loading.setCancelable(false);
+            loading.show();
 
 
             String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
@@ -441,12 +443,12 @@ public class AddPhotosFragment extends Fragment {
                         }
                     });
 
-                    progressDialog.dismiss();
+                    loading.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
+                    loading.dismiss();
                     Toast.makeText(getActivity(), "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -460,12 +462,12 @@ public class AddPhotosFragment extends Fragment {
 
         if (selectedImageUri != null) {
 
-            ProgressDialog progressDialog= new ProgressDialog(getActivity());
-            progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading Your Image. Please Wait");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIcon(R.drawable.slnround);
-            progressDialog.show();
+            Dialog loading = new Dialog(getActivity());
+            loading.setContentView(R.layout.loading_dialog);
+            loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            loading.setCancelable(false);
+            loading.show();
 
 
             String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
@@ -488,12 +490,12 @@ public class AddPhotosFragment extends Fragment {
                         }
                     });
 
-                    progressDialog.dismiss();
+                    loading.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
+                    loading.dismiss();
                     Toast.makeText(getActivity(), "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });

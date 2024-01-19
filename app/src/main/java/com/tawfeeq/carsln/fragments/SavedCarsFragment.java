@@ -38,8 +38,6 @@ import java.util.ArrayList;
 public class SavedCarsFragment extends Fragment {
     RecyclerView rcListings;
     FireBaseServices fbs;
-    String pfp;
-    ImageView ivPFP, ivSearch;
     ArrayList<CarID> lst;
     CarsAdapter Adapter;
     UserProfile usr;
@@ -99,38 +97,10 @@ public class SavedCarsFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         rcListings= getView().findViewById(R.id.RecyclerSavedCars);
-        ivPFP = getView().findViewById(R.id.imageViewProfilePhotoSaved);
-        ivSearch = getView().findViewById(R.id.imageViewSearchSaved);
 
 
         lst=new ArrayList<CarID>();
 
-
-        if(fbs.getUser()!=null) {
-
-            pfp = fbs.getUser().getUserPhoto();
-            if (pfp == null || pfp.isEmpty()) {
-                ivPFP.setImageResource(R.drawable.slnpfp);
-            } else {
-                Glide.with(getActivity()).load(pfp).into(ivPFP);
-            }
-        }
-
-        ivPFP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setNavigationBarProfile();
-                GoToProfile();
-            }
-        });
-
-        ivSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setNavigationBarSearch();
-                GoToSearch();
-            }
-        });
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");

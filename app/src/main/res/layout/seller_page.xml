@@ -52,11 +52,11 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/phonecall" />
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginStart="18dp"
+                app:srcCompat="@drawable/baseline_phone_24" />
 
 
             <TextView
@@ -125,11 +125,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/sms" />
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                app:srcCompat="@drawable/baseline_message_24" />
 
             <TextView
                 android:id="@+id/tvtxtsms"

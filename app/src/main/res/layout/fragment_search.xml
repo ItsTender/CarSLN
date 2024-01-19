@@ -17,49 +17,11 @@
 
 
         <TextView
-            android:id="@+id/textViewsearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="117dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="117dp"
-            android:fontFamily="sans-serif"
-            android:text="Seach For a Car"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageViewSearchClose"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/arrow_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="380dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewsearch"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
-
-
-        <TextView
             android:id="@+id/textViewchooseman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="254dp"
             android:fontFamily="sans-serif"
             android:text="Car Manufacturer"
@@ -67,9 +29,8 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewmanSearch"
@@ -82,12 +43,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewchooseman">
 
-        <Spinner
-            android:id="@+id/SpinnerManufacturerSearch"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <Spinner
+                android:id="@+id/SpinnerManufacturerSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.cardview.widget.CardView>
 
@@ -291,14 +252,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="313dp"
+            android:layout_marginEnd="310dp"
             android:fontFamily="sans-serif"
             android:text="Offer Type"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rngYears" />
 
@@ -365,11 +325,11 @@
     </ScrollView>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white">
+        android:layout_height="70dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_alignParentBottom="true">
 
 
         <Button
@@ -377,6 +337,7 @@
             android:layout_width="380dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/Blue700"
+            android:layout_gravity="center"
             android:contentDescription="@string/Search"
             android:text="Show Results"
             android:textColor="@color/white"
@@ -387,7 +348,39 @@
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        app:cardBackgroundColor="@color/white">
+
+
+        <TextView
+            android:id="@+id/textViewsearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="Seach For a Car"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/imageViewSearchClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/arrow_logo" />
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

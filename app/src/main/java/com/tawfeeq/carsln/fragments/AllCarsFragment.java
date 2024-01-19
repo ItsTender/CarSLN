@@ -128,15 +128,6 @@ public class AllCarsFragment extends Fragment {
         // checking accessibility to FireStore Info
 
         if(fbs.getMarketList()==null) {
-
-            ProgressDialog progressDialog= new ProgressDialog(getActivity());
-            progressDialog.setTitle("Loading...");
-            progressDialog.setMessage("Loading CarSLN MarketPlace");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIcon(R.drawable.slnround);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-
             fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -148,10 +139,9 @@ public class AllCarsFragment extends Fragment {
                         Market.add(car);
 
                     }
+
                     fbs.setMarketList(Market);
                     SettingFrame();
-
-                    progressDialog.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -159,7 +149,6 @@ public class AllCarsFragment extends Fragment {
                     Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
                     fbs.setMarketList(new ArrayList<CarID>());
 
-                    progressDialog.dismiss();
                 }
             });
         } else {

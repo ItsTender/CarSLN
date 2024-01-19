@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -109,7 +111,7 @@ public class SettingsFragment extends Fragment {
 
         utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
-        logout= getView().findViewById(R.id.btnLogout);
+        logout= getView().findViewById(R.id.btnLogout); logout.setVisibility(View.INVISIBLE);
         tvPFP = getView().findViewById(R.id.tvtxtPFPSettings);
         btnChangePhone = getView().findViewById(R.id.btnChangePhone);
         btnChangeUsername = getView().findViewById(R.id.btnChangeUsername);
@@ -472,12 +474,12 @@ public class SettingsFragment extends Fragment {
     public void uploadImageandSave(Context context, Uri selectedImageUri) {
         if (selectedImageUri != null) {
 
-            ProgressDialog progressDialog= new ProgressDialog(context);
-            progressDialog.setTitle("Uploading...");
-            progressDialog.setMessage("Uploading New Profile Picture Image, Please Wait");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIcon(R.drawable.slnround);
-            progressDialog.show();
+            Dialog loading = new Dialog(getActivity());
+            loading.setContentView(R.layout.loading_dialog);
+            loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            loading.setCancelable(false);
+            loading.show();
 
 
             String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
@@ -501,12 +503,12 @@ public class SettingsFragment extends Fragment {
                         }
                     });
 
-                    progressDialog.dismiss();
+                    loading.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
+                    loading.dismiss();
                     Toast.makeText(context, "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });

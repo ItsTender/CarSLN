@@ -19,7 +19,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/CarRes"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="160dp"
             android:layout_margin="0px"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -43,7 +43,7 @@
                 android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="5dp"
                 android:text="Man"
                 android:textColor="@color/black"
                 android:textSize="19sp"

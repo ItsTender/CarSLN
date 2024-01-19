@@ -91,10 +91,6 @@ public class CarSearchListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_car_search_list, container, false);
 
-
-
-
-
         return view;
     }
 
@@ -118,7 +114,7 @@ public class CarSearchListFragment extends Fragment {
         else Saved = new ArrayList<String>();
 
 
-        String [] FilterList = {"Sort Search By","By Manufacturer", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
+        String [] FilterList = {"Sort Search By","Name - Alphabetical", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
         ArrayAdapter<String> FilterAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, FilterList);
         FilterAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
         Filter.setAdapter(FilterAdapter);
@@ -147,7 +143,7 @@ public class CarSearchListFragment extends Fragment {
 
                 String item = adapterView.getSelectedItem().toString();
 
-                if(item.equals("By Manufacturer")){
+                if(item.equals("Name - Alphabetical")){
 
                     search = fbs.getCarList();
                     fbs.setSearchList(search);

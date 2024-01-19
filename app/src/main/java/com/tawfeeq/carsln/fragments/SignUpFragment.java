@@ -1,5 +1,8 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -128,6 +131,15 @@ public class SignUpFragment extends Fragment {
                     return;
                 }
 
+
+                Dialog loading = new Dialog(getActivity());
+                loading.setContentView(R.layout.loading_dialog);
+                loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                loading.setCancelable(false);
+                loading.show();
+
+
                 if(pass.equals(confirm) && fbs.getAuth().getCurrentUser()==null) {
                     fbs.getAuth().createUserWithEmailAndPassword(username, pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
@@ -144,6 +156,8 @@ public class SignUpFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), "Password Credentials Do Not Match", Toast.LENGTH_SHORT).show();
                 }
+
+                loading.dismiss();
             }
         });
     }
