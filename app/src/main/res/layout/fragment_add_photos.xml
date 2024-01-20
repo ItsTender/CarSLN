@@ -171,7 +171,7 @@
             android:layout_width="320dp"
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="88dp"
+            android:layout_marginBottom="60dp"
             android:backgroundTint="@color/Blue700"
             android:text="Post Listing"
             android:textColor="@color/white"

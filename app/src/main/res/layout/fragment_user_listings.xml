@@ -11,7 +11,7 @@
         android:id="@+id/ConstraintListings"
         android:layout_width="match_parent"
         app:cardBackgroundColor="@color/white"
-        android:layout_height="50dp">
+        android:layout_height="60dp">
 
         <TextView
             android:id="@+id/textViewUserListings"
@@ -27,8 +27,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/UserListingsGoBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:adjustViewBounds="true"

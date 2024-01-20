@@ -124,37 +124,41 @@ public class AllCarsFragment extends Fragment {
             }
         });
 
+        if(isConnected()) {
+            if (fbs.getMarketList() == null) {
+                fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
 
-        // checking accessibility to FireStore Info
+                            CarID car = dataSnapshot.toObject(CarID.class);
+                            car.setCarPhoto(dataSnapshot.getString("photo"));
+                            car.setId(dataSnapshot.getId());
+                            Market.add(car);
 
-        if(fbs.getMarketList()==null) {
-            fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+                        }
 
-                        CarID car = dataSnapshot.toObject(CarID.class);
-                        car.setCarPhoto(dataSnapshot.getString("photo"));
-                        car.setId(dataSnapshot.getId());
-                        Market.add(car);
+                        fbs.setMarketList(Market);
+                        SettingFrame();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                        fbs.setMarketList(new ArrayList<CarID>());
 
                     }
+                });
+            } else {
+                Market = fbs.getMarketList();
+                SettingFrame();
+            }
+        } else fbs.setMarketList(new ArrayList<CarID>());
+    }
 
-                    fbs.setMarketList(Market);
-                    SettingFrame();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
-                    fbs.setMarketList(new ArrayList<CarID>());
 
-                }
-            });
-        } else {
-            Market = fbs.getMarketList();
-            SettingFrame();
-        }
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     private void SettingFrame() {

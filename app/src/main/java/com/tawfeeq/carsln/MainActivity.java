@@ -7,9 +7,12 @@ import androidx.fragment.app.FragmentTransaction;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -128,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         fbs.setCarList(null);
         fbs.setSearchList(null);
 
+
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
@@ -164,6 +168,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public boolean isNetworkAvailable(){
+
+        try {
+
+            ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = null;
+            if(manager!=null){
+
+                networkInfo = manager.getActiveNetworkInfo();
+
+            }
+            return networkInfo != null && networkInfo.isConnected();
+
+        }catch (NullPointerException e){
+            return false;
+        }
     }
 
 

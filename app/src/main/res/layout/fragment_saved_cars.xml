@@ -10,7 +10,7 @@
         android:id="@+id/ConstraintSaved"
         android:layout_width="match_parent"
         app:cardBackgroundColor="@color/white"
-        android:layout_height="50dp">
+        android:layout_height="60dp">
 
         <TextView
             android:id="@+id/textViewSaved"
