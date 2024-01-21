@@ -127,6 +127,13 @@ public class AllCarsFragment extends Fragment {
         else Saved = new ArrayList<String>();
 
 
+        if (fbs.getCarList() == null) {
+            ArrayList<CarID> search = fbs.getMarketList();
+            fbs.setCarList(search);
+            fbs.setSearchList(search);
+        }
+
+
         if(fbs.getUser()!=null) {
 
             pfp = fbs.getUser().getUserPhoto();

@@ -185,16 +185,9 @@ public class DetailedFragment extends Fragment {
                             BottomNavigationView bnv = getNavigationBar();
 
 
-                            int i;
-                            ArrayList<CarID> Market = fbs.getMarketList();
-                            ArrayList<CarID> CarList = fbs.getCarList();
-                            ArrayList<CarID> SearchList = fbs.getSearchList();
-                            if(Market.contains(currentCar)) Market.remove(currentCar);
-                            else i =1;
-                            if(CarList.contains(currentCar)) CarList.remove(currentCar);
-                            else i = 5;
-                            if(SearchList.contains(currentCar)) SearchList.remove(currentCar);
-                            else i = 10;
+                            if(fbs.getMarketList()!=null) if((fbs.getMarketList()).contains(currentCar)) (fbs.getMarketList()).remove(currentCar);
+                            if(fbs.getCarList()!=null) if((fbs.getCarList()).contains(currentCar)) (fbs.getCarList()).remove(currentCar);
+                            if(fbs.getSearchList()!=null) if((fbs.getSearchList()).contains(currentCar)) (fbs.getSearchList()).remove(currentCar);
 
 
                             if (bnv.getSelectedItemId() == R.id.market) {

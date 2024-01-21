@@ -182,13 +182,13 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="14dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="8dp"
+            android:layout_marginEnd="15dp"
             app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DetailedLocationArea">
