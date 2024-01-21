@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="16dp"
     android:backgroundTint="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,8 +18,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
             android:src="@drawable/baseline_close_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvselleremail"
@@ -28,13 +27,14 @@
 
         <TextView
             android:id="@+id/tvselleremail"
-            android:layout_width="288dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="42dp"
             android:fontFamily="sans-serif"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +43,7 @@
             android:id="@+id/cardViewCall"
             android:layout_width="380dp"
             android:layout_height="60dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +54,8 @@
                 android:id="@+id/imageView3"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginTop="13dp"
                 android:layout_marginStart="18dp"
+                android:layout_marginTop="13dp"
                 app:srcCompat="@drawable/baseline_phone_24" />
 
 
@@ -80,7 +80,7 @@
             android:id="@+id/cardViewWhatsapp"
             android:layout_width="380dp"
             android:layout_height="60dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="40dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,8 +114,8 @@
             android:id="@+id/cardViewSMS"
             android:layout_width="380dp"
             android:layout_height="60dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -127,8 +127,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
                 app:srcCompat="@drawable/baseline_message_24" />
 
             <TextView

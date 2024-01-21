@@ -8,15 +8,15 @@
     android:background="@drawable/sln_log">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SLNLogo"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="100dp"
             android:layout_marginEnd="131dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -43,14 +43,16 @@
 
         <TextView
             android:id="@+id/textView100"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="35dp"
             android:fontFamily="sans-serif"
             android:text="Please Enter Your Email Adress, We Will Send You an email to Reset Your Password"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewforgot" />
 
@@ -99,29 +101,58 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="66dp"
-            android:layout_marginEnd="163dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Remember Your Password?"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnResetPass" />
+
+
+        <View
+            android:id="@+id/viewforgot"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="60dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginForgot"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        <TextView
+            android:id="@+id/tvsignupforgot"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Don't Have an Account? Create One!"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewforgot" />
 
         <Button
             android:id="@+id/tvSignUpForgot"
             android:layout_width="280dp"
             android:layout_height="60dp"
-            android:layout_marginStart="65dp"
-            android:layout_marginEnd="66dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="65dp"
+            android:layout_marginBottom="51dp"
             android:backgroundTint="@color/white"
             android:text="Create New Account"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvsignupforgot"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 

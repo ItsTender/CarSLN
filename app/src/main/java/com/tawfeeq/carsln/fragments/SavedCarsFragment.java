@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,7 @@ public class SavedCarsFragment extends Fragment {
     UserProfile usr;
     ArrayList<String> Saved;
     ArrayList<CarID> Market;
+    SwipeRefreshLayout refreshSaved;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -97,6 +99,7 @@ public class SavedCarsFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         rcListings= getView().findViewById(R.id.RecyclerSavedCars);
+        refreshSaved = getView().findViewById(R.id.RefreshSaved);
 
 
         lst=new ArrayList<CarID>();
@@ -106,25 +109,91 @@ public class SavedCarsFragment extends Fragment {
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
+
+        refreshSaved.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                if (isConnected()) {
+
+                    Market = new ArrayList<CarID>();
+                    fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+
+                                CarID car = dataSnapshot.toObject(CarID.class);
+                                car.setCarPhoto(dataSnapshot.getString("photo"));
+                                car.setId(dataSnapshot.getId());
+                                Market.add(car);
+
+                            }
+
+                            fbs.setMarketList(Market);
+
+
+                            if(fbs.getUser()!=null) {
+
+                                Saved = fbs.getUser().getSavedCars();
+                                lst = new ArrayList<CarID>();
+                                int i, j;
+                                String ID;
+
+                                for(i=Saved.size()-1 ; i>=0 ; i--){
+                                    ID = Saved.get(i);
+                                    for(j=0 ; j<Market.size() ; j++){
+
+                                        CarID car = Market.get(j);
+                                        if(ID.equals(car.getId())) {
+                                            lst.add(car);
+                                        }
+                                    }
+                                }
+
+                                SettingFrame();
+                            }
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    refreshSaved.setRefreshing(false);
+
+                } else {
+                    lst = new ArrayList<CarID>();
+                    SettingFrame();
+                    refreshSaved.setRefreshing(false);
+                }
+            }
+        });
+
+
         if(fbs.getUser()!=null) {
 
             Saved = fbs.getUser().getSavedCars();
 
             if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
             else Market = new ArrayList<CarID>();
-            int i;
+            int i, j;
+            String ID;
 
-            if(Saved!=null) {
 
-                for (i = 0; i < Market.size(); i++) {
-                    CarID car = Market.get(i);
-                    String id = Market.get(i).getId();
-                    if (Saved.contains(id)) lst.add(car);
+            for(i=Saved.size()-1 ; i>=0 ; i--){
+                ID = Saved.get(i);
+                for(j=0 ; j<Market.size() ; j++){
+
+                    CarID car = Market.get(j);
+                    if(ID.equals(car.getId())) {
+                        lst.add(car);
+                    }
                 }
-
             }
-            SettingFrame();
 
+            SettingFrame();
         }
     }
 
@@ -133,7 +202,10 @@ public class SavedCarsFragment extends Fragment {
         rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcListings.setAdapter(Adapter);
+    }
 
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     private void GoToProfile() {

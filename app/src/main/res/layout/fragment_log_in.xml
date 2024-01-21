@@ -9,14 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SLNLogo"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="100dp"
             android:layout_marginEnd="131dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -42,14 +42,16 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="35dp"
             android:fontFamily="sans-serif"
             android:text="Please Enter Your Credentials to Continue"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewforgot" />
 
@@ -106,19 +108,19 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-        android:id="@+id/btnLogIn"
-        android:layout_width="280dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="66dp"
+            android:id="@+id/btnLogIn"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="66dp"
             android:backgroundTint="@color/Blue700"
-            android:textColor="@color/white"
             android:text="LOGIN"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewsignpass" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsignpass"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
         <TextView
@@ -126,29 +128,57 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="66dp"
-            android:layout_marginEnd="192dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Forgot Your Password?"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLogIn" />
+
+
+        <View
+            android:id="@+id/viewlogin"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="60dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvForgot"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        <TextView
+            android:id="@+id/tvsignuplogin"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Don't Have an Account? Create One!"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewlogin" />
 
         <Button
             android:id="@+id/tvSignUp"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_marginStart="65dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="66dp"
-            android:layout_marginBottom="30dp"
             android:backgroundTint="@color/white"
             android:text="Create New Account"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvsignuplogin"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 

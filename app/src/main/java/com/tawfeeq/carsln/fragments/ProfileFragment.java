@@ -45,7 +45,6 @@ public class ProfileFragment extends Fragment {
     TextView tvUser, tvEmail;
     ImageView ivPFP;
     String pfp;
-    RecyclerView rcListings;
     ArrayList<CarID> lst;
     CarsAdapter Adapter;
     ArrayList<String> Saved;
@@ -110,7 +109,6 @@ public class ProfileFragment extends Fragment {
         tvUser =getView().findViewById(R.id.tvUsername);
         tvEmail = getView().findViewById(R.id.textViewEmail);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);
-        rcListings= getView().findViewById(R.id.RecyclerListingsProfile);
         addcar = getView().findViewById(R.id.btnAddProfile);
         userlistings = getView().findViewById(R.id.linearLayoutuserlinstings);
         saved = getView().findViewById(R.id.linearLayoutSavedCars);
@@ -148,19 +146,6 @@ public class ProfileFragment extends Fragment {
         // Get Profile Photo Ends
 
 
-        if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
-        else Market = new ArrayList<CarID>();
-        int i;
-
-        if(Market!=null) {
-            for (i = 0; i < Market.size(); i++) {
-                CarID car = Market.get(i);
-                if (car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) lst.add(car);
-            }
-        }
-        SettingFrame();
-
-
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,9 +172,10 @@ public class ProfileFragment extends Fragment {
         userlistings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setNavigationBarGone();
-                GoToUserListings();
+
                 fbs.setFrom("UserListings");
+                GoToUserListings();
+                setNavigationBarGone();
             }
         });
 
@@ -223,8 +209,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 fbs.getAuth().signOut();
                 fbs.setMarketList(null);
-                setNavigationBarGone();
                 GoToLogIn();
+                setNavigationBarGone();
                 dialog.dismiss();
             }
         });
@@ -290,14 +276,6 @@ public class ProfileFragment extends Fragment {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SettingsFragment());
         ft.commit();
-    }
-
-    private void SettingFrame() {
-
-        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), lst, Saved);
-        rcListings.setAdapter(Adapter);
-
     }
 
     private void setNavigationBarSearch() {

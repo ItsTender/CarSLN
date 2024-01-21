@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class UserListingsFragment extends Fragment {
     CarsAdapter Adapter;
     ArrayList<String> Saved;
     ImageView Back;
+    SwipeRefreshLayout refreshUserListings;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -93,6 +95,7 @@ public class UserListingsFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         rcListings= getView().findViewById(R.id.RecyclerListings);
+        refreshUserListings = getView().findViewById(R.id.RefreshUserListings);
         Back = getView().findViewById(R.id.UserListingsGoBack);
 
 
@@ -104,8 +107,60 @@ public class UserListingsFragment extends Fragment {
 
         if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
         else Market = new ArrayList<CarID>();
-        int i;
 
+
+
+        refreshUserListings.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                if (isConnected()) {
+
+                    Market = new ArrayList<CarID>();
+                    fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+
+                                CarID car = dataSnapshot.toObject(CarID.class);
+                                car.setCarPhoto(dataSnapshot.getString("photo"));
+                                car.setId(dataSnapshot.getId());
+                                Market.add(car);
+
+                            }
+
+                            fbs.setMarketList(Market);
+
+
+                            lst = new ArrayList<CarID>();
+                            int i;
+                            for (i = 0; i < Market.size(); i++) {
+                                CarID car = Market.get(i);
+                                if (car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) lst.add(car);
+                            }
+
+                            SettingFrame();
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    refreshUserListings.setRefreshing(false);
+
+                } else {
+                    lst = new ArrayList<CarID>();
+                    SettingFrame();
+                    refreshUserListings.setRefreshing(false);
+                }
+            }
+        });
+
+
+        int i;
         if(Market!=null) {
             for (i = 0; i < Market.size(); i++) {
                 CarID car = Market.get(i);
@@ -117,8 +172,8 @@ public class UserListingsFragment extends Fragment {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setNavigationBarVisible();
                 GoToProfile();
+                setNavigationBarVisible();
                 fbs.setFrom("");
             }
         });
@@ -127,6 +182,10 @@ public class UserListingsFragment extends Fragment {
 
     private void setNavigationBarVisible() {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     private void GoToProfile() {

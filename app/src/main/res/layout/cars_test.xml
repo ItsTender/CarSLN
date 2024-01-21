@@ -19,7 +19,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/CarRes"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="150dp"
             android:layout_margin="0px"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.UserListingsFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ForYouListFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ConstraintListings"
@@ -14,19 +13,19 @@
         android:layout_height="60dp">
 
         <TextView
-            android:id="@+id/textViewUserListings"
+            android:id="@+id/textViewForYou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:layout_gravity="center"
             android:fontFamily="sans-serif"
-            android:text="Your Car Listings"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/UserListingsGoBack"
+            android:id="@+id/ForYouGoBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
@@ -40,11 +39,11 @@
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>>
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/RefreshUserListings"
+        android:id="@+id/RefreshForYou"
         android:layout_below="@+id/ConstraintListings"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -55,13 +54,12 @@
             android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/RecyclerListings"
+                android:id="@+id/RecyclerForYou"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
         </LinearLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
 </RelativeLayout>

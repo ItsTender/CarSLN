@@ -318,18 +318,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_below="@+id/ConstraintProfile">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecyclerListingsProfile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-
 </RelativeLayout>

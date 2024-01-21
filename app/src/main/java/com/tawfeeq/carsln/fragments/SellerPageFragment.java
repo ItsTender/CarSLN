@@ -55,7 +55,6 @@ public class SellerPageFragment extends Fragment {
     String pfp;
     UserProfile usr;
     CarID currentCar;
-    private static final int PERMISSION_SEND_SMS = 1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -139,13 +138,13 @@ public class SellerPageFragment extends Fragment {
                 tvEmail.setText(str);
 
                 pfp = usr.getUserPhoto();
-                    if (pfp == null || pfp.isEmpty())
-                    {
-                        ivSeller.setImageResource(R.drawable.slnpfp);
-                    }
-                    else {
-                        Glide.with(getActivity()).load(pfp).into(ivSeller);
-                    }
+                if (pfp == null || pfp.isEmpty())
+                {
+                    ivSeller.setImageResource(R.drawable.slnpfp);
+                }
+                else {
+                    Glide.with(getActivity()).load(pfp).into(ivSeller);
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -157,43 +156,6 @@ public class SellerPageFragment extends Fragment {
 
         // Get Profile Ends
 
-        btnCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // only fills in the Phone number in the Phone App....
-                if(usr!=null) {
-
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + usr.getPhone()));
-                    startActivity(intent);
-                }
-            }
-        });
-
-        btnSMS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Sends a full on Message to the seller in the SMS App....
-                if(usr!=null) PermissionSendSMS();
-            }
-        });
-
-        btnWhatsapp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(usr!=null) {
-
-                    String phoneNumber = usr.getPhone();
-                    String message = "Hello, I Saw Your " + CarName + " Listed for Sale On CarSLN and I'm Interested in it";
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
-                    startActivity(intent);
-                }
-            }
-        });
-
 
         ivSeller.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,29 +163,6 @@ public class SellerPageFragment extends Fragment {
                 if(!usr.getUserPhoto().equals("")) GoToViewPhoto();
             }
         });
-
-
-        fbs.getStore().collection("MarketPlace").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
-
-                    CarID car = dataSnapshot.toObject(CarID.class);
-                    car.setCarPhoto(dataSnapshot.getString("photo"));
-                    car.setId(dataSnapshot.getId());
-
-                    if(car.getEmail().equals(currentCar.getEmail())) SellerCars.add(car);
-
-                }
-                SettingFrame();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "Couldn't Retrieve Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
     }
 
@@ -235,13 +174,6 @@ public class SellerPageFragment extends Fragment {
         ft.commit();
     }
 
-    private void SettingFrame() {
-
-        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), new ArrayList<CarID>(), new ArrayList<String>());
-        rc.setAdapter(Adapter);
-
-    }
 
     private void GoToViewPhoto() {
 
@@ -258,58 +190,6 @@ public class SellerPageFragment extends Fragment {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.replace(R.id.FrameLayoutMain, gtn);
         ft.commit();
-    }
-
-
-//    private boolean IsWhatsappInstalled(){
-//
-//        boolean isInstalled;
-//
-//        try{
-//
-//            getActivity().getPackageManager().getPackageInfo("com.whatsapp", 0);
-//            isInstalled = true;
-//
-//        }catch (PackageManager.NameNotFoundException e){
-//
-//            isInstalled = false;
-//        }
-//        return isInstalled;
-//    }
-
-
-    private void PermissionSendSMS() {
-        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.SEND_SMS}, PERMISSION_SEND_SMS);
-        } else {
-            SendSMS();
-        }
-    }
-
-    private void SendSMS() {
-
-        String phoneNumber = usr.getPhone();
-        String message = "Hello, I Saw Your " + CarName +" Listed for Sale On CarSLN and I'm Interested in it";
-
-        try {
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
-            Toast.makeText(getActivity(), "Successfully Sent a Message to The Seller, Check The SMS App", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(getActivity(), "Failed to Send SMS to The Seller", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            SendSMS();
-        } else {
-            Toast.makeText(requireContext(), "Permission Denied, Cannot Send SMS", Toast.LENGTH_SHORT).show();
-        }
     }
 
 }

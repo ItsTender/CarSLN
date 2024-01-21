@@ -34,6 +34,7 @@ import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.LastSearch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,25 +125,31 @@ public class SearchFragment extends Fragment {
         else Saved = new ArrayList<String>();
 
 
-        String [] HowSellLend = {"Any Offer Type", "Purchase a Car" , "Rent a Car"};
-        ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
-        SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SellLend.setAdapter(SellLendAdapter);
+        if(SellLend.getSelectedItem() == null) {
+            String[] HowSellLend = {"Any Offer Type", "Purchase a Car", "Rent a Car"};
+            ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
+            SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SellLend.setAdapter(SellLendAdapter);
+        }
 
 
-        String [] Location = {"Any Location District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
-        LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerArea.setAdapter(LocationAdapter);
+        if(SpinnerArea.getSelectedItem() == null) {
+            String[] Location = {"Any Location District", "Golan", "Galil", "Haifa", "Central", "Tel Aviv", "Jerusalem", "Be'er Sheva", "Central Southern", "Eilat"};
+            ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
+            LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerArea.setAdapter(LocationAdapter);
+        }
 
 
-        String [] ManList = {"All Car Manufacturers","Audi","Abarth", "Alfa Romeo", "Aston Martin","BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
-                "Dacia","Dodge","Fiat", "Ford", "Ferrari", "Genesis", "GMC", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus",
-                "Maserati", "Mazda", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
-        //45 Manufacturers!!
-        ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ManList);
-        ManAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerMan.setAdapter(ManAdapter);
+        if(SpinnerMan.getSelectedItem() == null) {
+            String[] ManList = {"All Car Manufacturers", "Audi", "Abarth", "Alfa Romeo", "Aston Martin", "BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
+                    "Dacia", "Dodge", "Fiat", "Ford", "Ferrari", "Genesis", "GMC", "Honda", "Hyundai", "Infiniti", "Isuzu", "Jeep", "Jaguar", "Kia", "Lamborghini", "Land Rover", "Lexus",
+                    "Maserati", "Mazda", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki", "Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
+            //45 Manufacturers!!
+            ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ManList);
+            ManAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerMan.setAdapter(ManAdapter);
+        }
 
 
         // Here is the Whole list of Models For Each Car Manufacturer (45 lists and the No Manufacturer List)
@@ -559,8 +566,8 @@ public class SearchFragment extends Fragment {
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    GoToFragmentSearchCar();
-                }
+                GoToFragmentSearchCar();
+            }
         });
 
         ivClose.setOnClickListener(new View.OnClickListener() {
@@ -611,6 +618,12 @@ public class SearchFragment extends Fragment {
                 Boolean[] selllend = new Boolean[1];
 
 
+                // Saving the Last Search the User did
+                LastSearch lastSearch = new LastSearch(Man,Mod,yearFrom,yearTo[0],type,PriceFrom,PriceTo[0],area,kiloFrom,kiloTo[0]);
+                fbs.setLastSearch(lastSearch);
+                fbs.setLastFilter("null");
+
+
                 Dialog loading = new Dialog(getActivity());
                 loading.setContentView(R.layout.loading_dialog);
                 loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -619,63 +632,73 @@ public class SearchFragment extends Fragment {
                 loading.show();
 
 
-                fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if(isConnected()) {
+                    fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                        for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+                            for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
 
-                            CarID car = dataSnapshot.toObject(CarID.class);
-                            car.setCarPhoto(dataSnapshot.getString("photo"));
-                            car.setId(dataSnapshot.getId());
+                                CarID car = dataSnapshot.toObject(CarID.class);
+                                car.setCarPhoto(dataSnapshot.getString("photo"));
+                                car.setId(dataSnapshot.getId());
 
-                            if(type.equals("Any Offer Type")) selllend[0] = car.getSellLend();
-                            if(type.equals("Purchase a Car")) selllend[0] = true;
-                            if(type.equals("Rent a Car")) selllend[0] = false;
+                                if (type.equals("Any Offer Type")) selllend[0] = car.getSellLend();
+                                if (type.equals("Purchase a Car")) selllend[0] = true;
+                                if (type.equals("Rent a Car")) selllend[0] = false;
 
-                            if(area.equals("Any Location District")) location[0] = car.getLocation();
-                            else location[0] = area;
+                                if (area.equals("Any Location District"))
+                                    location[0] = car.getLocation();
+                                else location[0] = area;
 
 
-                            if (Man.equals("All Car Manufacturers") && Mod.equals("All Car Models")) { // All Car Manufacturers and Models!
+                                if (Man.equals("All Car Manufacturers") && Mod.equals("All Car Models")) { // All Car Manufacturers and Models!
 
-                                if (car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0] && car.getLocation().equals(location[0]))
-                                    search.add(car);
-
-                            } else {
-                                if (!Man.equals("All Car Manufacturers") && Mod.equals("All Models")) { // All Models of The Selected Manufacturer!
-
-                                    if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0] && car.getLocation().equals(location[0]))
+                                    if (car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend() == selllend[0] && car.getLocation().equals(location[0]))
                                         search.add(car);
 
-                                }  else { // Specific Car Manufacturer and Model!
+                                } else {
+                                    if (!Man.equals("All Car Manufacturers") && Mod.equals("All Models")) { // All Models of The Selected Manufacturer!
 
-                                        if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend()==selllend[0] && car.getLocation().equals(location[0]))
+                                        if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend() == selllend[0] && car.getLocation().equals(location[0]))
                                             search.add(car);
 
+                                    } else { // Specific Car Manufacturer and Model!
+
+                                        if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend() == selllend[0] && car.getLocation().equals(location[0]))
+                                            search.add(car);
+
+                                    }
                                 }
+
                             }
 
+                            fbs.setCarList(search);
+                            fbs.setSearchList(search);
+
+                            // Goes to the CarSearchList Fragment as Jude wants!!!!
+                            GoToFragmentSearchCar();
+
+                            loading.dismiss();
                         }
-
-                        fbs.setCarList(search);
-                        fbs.setSearchList(search);
-
-                        // Goes to the CarSearchList Fragment as Jude wants!!!!
-                        GoToFragmentSearchCar();
-
-                        loading.dismiss();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-                        loading.dismiss();
-                    }
-                });
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                            loading.dismiss();
+                        }
+                    });
+                }else {
+                    GoToFragmentSearchCar();
+                    loading.dismiss();
+                }
             }
         });
 
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     private void GoToCarsMarket() {
@@ -694,13 +717,6 @@ public class SearchFragment extends Fragment {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
         ft.commit();
-    }
-
-    private void SettingFrame() {
-
-        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), search, Saved);
-        rc.setAdapter(Adapter);
     }
 
 }

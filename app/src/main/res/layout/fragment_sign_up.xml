@@ -9,14 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
         <TextView
             android:id="@+id/textViewsignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="80dp"
             android:fontFamily="sans-serif"
             android:text="Create Account"
             android:textColor="@color/black"
@@ -27,14 +27,16 @@
 
         <TextView
             android:id="@+id/textView101"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="35dp"
             android:fontFamily="sans-serif"
             android:text="Signup to CarSLN and Revolutionize the Way You Buy, Sell, Lend or Rent Your Dream Car!"
             android:textColor="@color/black"
             android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewsignup" />
 
@@ -50,17 +52,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView101">
 
-        <EditText
-            android:id="@+id/etUsernameSignup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Username"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            <EditText
+                android:id="@+id/etUsernameSignup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Username"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
 
         </androidx.cardview.widget.CardView>
 
@@ -76,17 +78,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewusernamesignup">
 
-        <EditText
-            android:id="@+id/etEmailSignup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Email adress"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            <EditText
+                android:id="@+id/etEmailSignup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Email adress"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
 
         </androidx.cardview.widget.CardView>
 
@@ -102,17 +104,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewemailsignup">
 
-        <EditText
-            android:id="@+id/etPasswordSignup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="New Password"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            <EditText
+                android:id="@+id/etPasswordSignup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="New Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
 
         </androidx.cardview.widget.CardView>
 
@@ -128,17 +130,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewpasssignup">
 
-        <EditText
-            android:id="@+id/etPasswordSignupConfirm"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            <EditText
+                android:id="@+id/etPasswordSignupConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
 
         </androidx.cardview.widget.CardView>
 
@@ -154,17 +156,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewpassconfirmsignup">
 
-        <EditText
-            android:id="@+id/etPhoneSignup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Phone Number"
-            android:inputType="phone" />
+            <EditText
+                android:id="@+id/etPhoneSignup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
 
         </androidx.cardview.widget.CardView>
 
@@ -208,16 +210,13 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="66dp"
-            android:layout_marginEnd="183dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Already Got an Account?"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

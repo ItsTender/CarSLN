@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         bnv= findViewById(R.id.bottomNavigationView);
         fbs = FireBaseServices.getInstance();
 
+        fbs.setFrom("");
 
         if(fbs.getAuth().getCurrentUser()!=null) {
 
@@ -72,30 +73,32 @@ public class MainActivity extends AppCompatActivity {
             bnv.setVisibility(View.GONE);
             GoToLogin();
         }
-            bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-                @SuppressLint("NonConstantResourceId")
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                    if (item.getItemId() == R.id.market) {
-                        GoToFragmentCars();
-                    }
-                    else if (item.getItemId() == R.id.searchcar){
-                        GoToFragmentCarSearchList();
-                    }
-                    else if (item.getItemId() == R.id.addcar) {
-                        GoToFragmentAdd();
-                    }
-                    else if (item.getItemId() == R.id.savedcars) {
-                        GoToFragmentSaved();
-                    }
-                    else if (item.getItemId() == R.id.profile){
-                        GoToFragmentProfile();
-                    }
+        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                    return true;
+                if (item.getItemId() == R.id.market) {
+                    GoToFragmentCars();
                 }
-            });
+                else if (item.getItemId() == R.id.searchcar){
+                    GoToFragmentCarSearchList();
+                }
+                else if (item.getItemId() == R.id.addcar) {
+                    GoToFragmentAdd();
+                    bnv.setVisibility(View.GONE);
+                }
+                else if (item.getItemId() == R.id.savedcars) {
+                    GoToFragmentSaved();
+                }
+                else if (item.getItemId() == R.id.profile){
+                    GoToFragmentProfile();
+                }
+
+                return true;
+            }
+        });
     }
 
     public void setCarsMarket() {
@@ -128,8 +131,11 @@ public class MainActivity extends AppCompatActivity {
         loading.setCancelable(false);
         loading.show();
 
+
         fbs.setCarList(null);
         fbs.setSearchList(null);
+        fbs.setLastSearch(null);
+        fbs.setLastFilter("null");
 
 
         String str = fbs.getAuth().getCurrentUser().getEmail();

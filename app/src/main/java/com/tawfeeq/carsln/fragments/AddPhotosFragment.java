@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -47,7 +48,7 @@ public class AddPhotosFragment extends Fragment {
     Integer Price,Power,Year,Users,Kilometre;
     Boolean selllend;
     Button AddCar, Reset;
-    ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto, ivFourthPhoto, ivFifthPhoto;
+    ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto, ivFourthPhoto, ivFifthPhoto, Close;
     String FirstPhoto, SecondPhoto, ThirdPhoto, FourthPhoto, FifthPhoto;
     ArrayList<CarID> Market;
 
@@ -124,6 +125,7 @@ public class AddPhotosFragment extends Fragment {
         super.onStart();
 
         fbs= FireBaseServices.getInstance();
+        Close = getView().findViewById(R.id.imageViewAddPhotosClose);
         ivFirstPhoto = getView().findViewById(R.id.ivFirstCarPhoto);
         ivSecondPhoto = getView().findViewById(R.id.ivSecondCarPhoto);
         ivThirdPhoto =getView().findViewById(R.id.ivThirdCarPhoto);
@@ -156,6 +158,7 @@ public class AddPhotosFragment extends Fragment {
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getActivity(), "Car Added to MarketPlace", Toast.LENGTH_SHORT).show();
                         fbs.setMarketList(null);
+                        setNavigationBarVisible();
                         setNavigationCarsMarket();
                         GoToFragmentCars();
                         loading.dismiss();
@@ -168,6 +171,13 @@ public class AddPhotosFragment extends Fragment {
                     }
                 });
 
+            }
+        });
+
+        Close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToAddCar();
             }
         });
 
@@ -252,10 +262,15 @@ public class AddPhotosFragment extends Fragment {
         }
     }
 
+    private void setNavigationBarVisible(){
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
     public void GoToAddCar(){
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 

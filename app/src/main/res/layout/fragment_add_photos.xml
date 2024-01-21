@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="140dp"
             android:fontFamily="sans-serif"
             android:text="Main Car Image"
             android:textColor="@color/black"
@@ -23,7 +24,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textViewmaincararrow"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewmaincararrow"
@@ -171,11 +173,9 @@
             android:layout_width="320dp"
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="60dp"
             android:backgroundTint="@color/Blue700"
             android:text="Post Listing"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView5"
@@ -189,7 +189,7 @@
         android:id="@+id/ConstraintListings"
         android:layout_width="match_parent"
         app:cardBackgroundColor="@color/white"
-        android:layout_height="50dp">
+        android:layout_height="60dp">
 
 
         <TextView
@@ -203,6 +203,14 @@
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageViewAddPhotosClose"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/arrow_logo" />
 
 
     </androidx.cardview.widget.CardView>

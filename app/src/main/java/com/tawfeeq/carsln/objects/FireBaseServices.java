@@ -26,9 +26,27 @@ public class FireBaseServices {
 
     //--------------------------------------
     private String From;
+    private String LastFilter;
+    private LastSearch lastSearch;
 
     //--------------------------------------
 
+
+    public String getLastFilter() {
+        return LastFilter;
+    }
+
+    public void setLastFilter(String lastFilter) {
+        LastFilter = lastFilter;
+    }
+
+    public LastSearch getLastSearch() {
+        return lastSearch;
+    }
+
+    public void setLastSearch(LastSearch lastSearch) {
+        this.lastSearch = lastSearch;
+    }
 
     public String getFrom() {
         return From;

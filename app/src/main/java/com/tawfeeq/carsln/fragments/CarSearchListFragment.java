@@ -1,13 +1,18 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +22,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.LastSearch;
 
 import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,6 +56,7 @@ public class CarSearchListFragment extends Fragment {
     TextView tvSearch, tvResults;
     ArrayList<String> Saved;
     Spinner Filter;
+    SwipeRefreshLayout refreshSearch;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,6 +114,7 @@ public class CarSearchListFragment extends Fragment {
         fbs = FireBaseServices.getInstance();
         GoSearch = getView().findViewById(R.id.cardViewsearch);
         rc = getView().findViewById(R.id.RecyclerSearch);
+        refreshSearch = getView().findViewById(R.id.RefreshSearch);
         btnSearch = getView().findViewById(R.id.btngoSearch);
         tvSearch = getView().findViewById(R.id.textViewsearchcustom);
         tvResults = getView().findViewById(R.id.textViewcountresults);
@@ -114,10 +128,330 @@ public class CarSearchListFragment extends Fragment {
         else Saved = new ArrayList<String>();
 
 
-        String [] FilterList = {"Sort Search By","Name - Alphabetical", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
-        ArrayAdapter<String> FilterAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, FilterList);
-        FilterAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        Filter.setAdapter(FilterAdapter);
+        if(Filter.getSelectedItem() == null) {
+            String[] FilterList = {"Sort Search By", "Name - Alphabetical", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
+            ArrayAdapter<String> FilterAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, FilterList);
+            FilterAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            Filter.setAdapter(FilterAdapter);
+        }
+
+
+
+        refreshSearch.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                LastSearch lastSearch = fbs.getLastSearch();
+
+                if(lastSearch != null) {
+
+                    search = new ArrayList<CarID>();
+
+                    String Man = lastSearch.getManufacturer();
+
+                    String Mod = lastSearch.getModel();
+
+                    String area = lastSearch.getLocation();
+                    String[] location = new String[1];
+
+                    Float PriceFrom = lastSearch.getPriceFrom();
+                    Float[] PriceTo = new Float[1];
+                    PriceTo[0] = lastSearch.getPriceTo();
+                    if (PriceTo[0] == 200000) PriceTo[0] = Float.MAX_VALUE;
+
+                    Float kiloFrom = lastSearch.getKiloFrom();
+                    Float[] kiloTo = new Float[1];
+                    kiloTo[0] = lastSearch.getKiloTo();
+                    if (kiloTo[0] == 200000) kiloTo[0] = Float.MAX_VALUE;
+
+                    Float yearFrom = lastSearch.getYearFrom();
+                    Float[] yearTo = new Float[1];
+                    yearTo[0] = lastSearch.getYearTo();
+
+                    String type = lastSearch.getOffer();
+                    Boolean[] selllend = new Boolean[1];
+
+
+                    if (isConnected()) { // the User is Connected to the Internet and a Last Was Was Done Since the App was Opened!
+                        fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                                for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+
+                                    CarID car = dataSnapshot.toObject(CarID.class);
+                                    car.setCarPhoto(dataSnapshot.getString("photo"));
+                                    car.setId(dataSnapshot.getId());
+
+                                    if (type.equals("Any Offer Type"))
+                                        selllend[0] = car.getSellLend();
+                                    if (type.equals("Purchase a Car")) selllend[0] = true;
+                                    if (type.equals("Rent a Car")) selllend[0] = false;
+
+                                    if (area.equals("Any Location District"))
+                                        location[0] = car.getLocation();
+                                    else location[0] = area;
+
+
+                                    if (Man.equals("All Car Manufacturers") && Mod.equals("All Car Models")) { // All Car Manufacturers and Models!
+
+                                        if (car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend() == selllend[0] && car.getLocation().equals(location[0]))
+                                            search.add(car);
+
+                                    } else {
+                                        if (!Man.equals("All Car Manufacturers") && Mod.equals("All Models")) { // All Models of The Selected Manufacturer!
+
+                                            if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend() == selllend[0] && car.getLocation().equals(location[0]))
+                                                search.add(car);
+
+                                        } else { // Specific Car Manufacturer and Model!
+
+                                            if (car.getManufacturer().toLowerCase().contains(Man.toLowerCase()) && car.getModel().toLowerCase().contains(Mod.toLowerCase()) && car.getPrice() >= PriceFrom && car.getPrice() <= PriceTo[0] & car.getKilometre() >= kiloFrom && car.getKilometre() <= kiloTo[0] & car.getYear() >= yearFrom && car.getYear() <= yearTo[0] & car.getSellLend() == selllend[0] && car.getLocation().equals(location[0]))
+                                                search.add(car);
+
+                                        }
+                                    }
+
+                                }
+
+                                fbs.setCarList(search);
+                                fbs.setSearchList(search);
+
+
+                                String str = String.valueOf(search.size());
+                                if(search.size()==1) tvResults.setText(str + " Result");
+                                else tvResults.setText(str + " Results");
+
+
+                                String item = fbs.getLastFilter();
+
+                                if(item.equals("null") || item.equals("Name - Alphabetical") || item.equals("Sort Search By")){
+
+                                    search = fbs.getCarList();
+                                    fbs.setSearchList(search);
+                                    SettingFrame();
+
+                                }
+                                if(item.equals("Price - Ascending")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getPrice()>market.get(rep).getPrice()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+                                    SettingFrame();
+
+                                }
+                                if(item.equals("Price - Descending")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getPrice()<market.get(rep).getPrice()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+                                    SettingFrame();
+
+                                }
+                                if(item.equals("Kilometre - Ascending")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getKilometre()>market.get(rep).getKilometre()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+                                    SettingFrame();
+
+                                }
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        refreshSearch.setRefreshing(false);
+
+                    }
+                    else { // The User Has no Internet Connection!
+                        search = new ArrayList<CarID>();
+                        SettingFrame();
+                        refreshSearch.setRefreshing(false);
+                    }
+
+                }
+                else { // Search Was Never Used Since the App Was Opened!
+
+                    if(isConnected()) {
+                        search = new ArrayList<CarID>();
+                        fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+
+                                    CarID car = dataSnapshot.toObject(CarID.class);
+                                    car.setCarPhoto(dataSnapshot.getString("photo"));
+                                    car.setId(dataSnapshot.getId());
+                                    search.add(car);
+
+                                }
+
+                                fbs.setCarList(search);
+                                fbs.setSearchList(search);
+
+
+                                String str = String.valueOf(search.size());
+                                if(search.size()==1) tvResults.setText(str + " Result");
+                                else tvResults.setText(str + " Results");
+
+
+                                String item = fbs.getLastFilter();
+
+                                if(item.equals("null") || item.equals("Name - Alphabetical") || item.equals("Sort Search By")){
+
+                                    search = fbs.getCarList();
+                                    fbs.setSearchList(search);
+
+                                    SettingFrame();
+                                }
+                                if(item.equals("Price - Ascending")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getPrice()>market.get(rep).getPrice()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+
+                                    SettingFrame();
+
+                                }
+                                if(item.equals("Price - Descending")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getPrice()<market.get(rep).getPrice()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+
+                                    SettingFrame();
+
+                                }
+                                if(item.equals("Kilometre - Ascending")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getKilometre()>market.get(rep).getKilometre()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+
+                                    SettingFrame();
+
+                                }
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        refreshSearch.setRefreshing(false);
+
+                    }else {// The User Has no Internet Connection!
+                        search = new ArrayList<CarID>();
+                        SettingFrame();
+                        refreshSearch.setRefreshing(false);
+                    }
+                }
+            }
+        });
+
 
 
         if(fbs.getMarketList() != null) {
@@ -147,6 +481,7 @@ public class CarSearchListFragment extends Fragment {
 
                     search = fbs.getCarList();
                     fbs.setSearchList(search);
+                    fbs.setLastFilter("Name - Alphabetical");
                     SettingFrame();
 
                 }
@@ -171,6 +506,7 @@ public class CarSearchListFragment extends Fragment {
 
                     search = filteredsearch;
                     fbs.setSearchList(filteredsearch);
+                    fbs.setLastFilter("Price - Ascending");
                     SettingFrame();
 
                 }
@@ -195,6 +531,7 @@ public class CarSearchListFragment extends Fragment {
 
                     search = filteredsearch;
                     fbs.setSearchList(filteredsearch);
+                    fbs.setLastFilter("Price - Descending");
                     SettingFrame();
 
                 }
@@ -219,6 +556,7 @@ public class CarSearchListFragment extends Fragment {
 
                     search = filteredsearch;
                     fbs.setSearchList(filteredsearch);
+                    fbs.setLastFilter("Kilometre - Ascending");
                     SettingFrame();
 
                 }
@@ -251,6 +589,10 @@ public class CarSearchListFragment extends Fragment {
             }
         });
 
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     private ArrayList<CarID> DupArray(ArrayList<CarID> marketList) {

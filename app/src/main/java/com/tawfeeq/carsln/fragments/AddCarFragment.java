@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
@@ -38,7 +40,7 @@ public class AddCarFragment extends Fragment {
     EditText Price,BHP,Users,Kilometre,Engine,etNotes;
     Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear;
     Button Add,Return;
-    ImageView IV;
+    ImageView IV, Close;
     String photo;
 
     //ProgressDialog pd = new ProgressDialog(getActivity());
@@ -96,6 +98,7 @@ public class AddCarFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         utils=Utils.getInstance();
+        Close = getView().findViewById(R.id.imageViewAddCarClose);
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
         etNotes = getView().findViewById(R.id.etMultiLineNotes);
@@ -114,57 +117,73 @@ public class AddCarFragment extends Fragment {
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationArea);
 
 
-        String [] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT","iManual"};
-        ArrayAdapter<String> GearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, GearList);
-        GearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerGear.setAdapter(GearAdapter);
+        if(SpinnerGear.getSelectedItem()==null) {
+            String[] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT", "iManual"};
+            ArrayAdapter<String> GearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, GearList);
+            GearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerGear.setAdapter(GearAdapter);
+        }
 
 
-        String [] Years = { "Model Year","2024","2023","2022","2021",
-                "2020","2019","2018","2017","2016","2015","2014","2013","2012","2011",
-                "2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991", "1990", "1989", "1988"};
-        ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Years);
-        YearsAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerYear.setAdapter(YearsAdapter);
+        if(SpinnerYear.getSelectedItem()==null) {
+            String[] Years = {"Model Year", "2024", "2023", "2022", "2021",
+                    "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011",
+                    "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988"};
+            ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Years);
+            YearsAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerYear.setAdapter(YearsAdapter);
+        }
 
 
-        String [] TestYear = { "Test Year Until","2024","2025","2026","2027","2028"};
-        ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestYear);
-        TestYearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerTestYear.setAdapter(TestYearAdapter);
+        if(SpinnerTestYear.getSelectedItem()==null) {
+            String[] TestYear = {"Test Year Until", "2024", "2025", "2026", "2027", "2028"};
+            ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestYear);
+            TestYearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerTestYear.setAdapter(TestYearAdapter);
+        }
 
 
-        String [] TestMonth = { "Test Month Until","1","2","3","4","5","6","7","8","9","10","11","12"};
-        ArrayAdapter<String> TestMonthAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestMonth);
-        TestMonthAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerTestMonth.setAdapter(TestMonthAdapter);
+        if(SpinnerTestMonth.getSelectedItem()==null) {
+            String[] TestMonth = {"Test Month Until", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+            ArrayAdapter<String> TestMonthAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestMonth);
+            TestMonthAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerTestMonth.setAdapter(TestMonthAdapter);
+        }
 
 
-        String [] CarColor = { "Select Car Color","White", "Black", "Dark Grey","Grey","Light Grey","Silver","Dark Red","Red","Light Red","Dark Green","Green", "Metallic Green","Light Green","Dark Blue","Blue","Vibrant Blue","Light Blue","Orange","Yellow", "Bright Yellow","Brown","Purple"};
-        ArrayAdapter<String> ColorAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, CarColor);
-        ColorAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerColor.setAdapter(ColorAdapter);
+        if(SpinnerColor.getSelectedItem()==null) {
+            String[] CarColor = {"Select Car Color", "White", "Black", "Dark Grey", "Grey", "Light Grey", "Silver", "Dark Red", "Red", "Light Red", "Dark Green", "Green", "Metallic Green", "Light Green", "Dark Blue", "Blue", "Vibrant Blue", "Light Blue", "Orange", "Yellow", "Bright Yellow", "Brown", "Purple"};
+            ArrayAdapter<String> ColorAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, CarColor);
+            ColorAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerColor.setAdapter(ColorAdapter);
+        }
 
 
-        String [] Location = {"Select Location District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
-        LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerLocation.setAdapter(LocationAdapter);
+        if(SpinnerLocation.getSelectedItem()==null) {
+            String[] Location = {"Select Location District", "Golan", "Galil", "Haifa", "Central", "Tel Aviv", "Jerusalem", "Be'er Sheva", "Central Southern", "Eilat"};
+            ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
+            LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerLocation.setAdapter(LocationAdapter);
+        }
 
 
-        String [] HowSellLend = {"Car Offer Type", "Sell the Car" , "Lend the Car" };
-        ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
-        SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerSellLend.setAdapter(SellLendAdapter);
+        if(SpinnerSellLend.getSelectedItem()==null) {
+            String[] HowSellLend = {"Car Offer Type", "Sell the Car", "Lend the Car"};
+            ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
+            SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerSellLend.setAdapter(SellLendAdapter);
+        }
 
 
-        String [] ManList = {"Choose Car Manufacturer","Audi","Abarth", "Alfa Romeo", "Aston Martin","BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
-                "Dacia","Dodge","Fiat", "Ford", "Ferrari", "Genesis", "GMC", "Honda", "Hyundai","Infiniti","Isuzu","Jeep", "Jaguar", "Kia", "Lamborghini","Land Rover", "Lexus",
-                "Maserati", "Mazda", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki","Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
-        //45 Manufacturers!!
-        ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ManList);
-        ManAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerMan.setAdapter(ManAdapter);
+        if(SpinnerMan.getSelectedItem()==null) {
+            String[] ManList = {"Choose Car Manufacturer", "Audi", "Abarth", "Alfa Romeo", "Aston Martin", "BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
+                    "Dacia", "Dodge", "Fiat", "Ford", "Ferrari", "Genesis", "GMC", "Honda", "Hyundai", "Infiniti", "Isuzu", "Jeep", "Jaguar", "Kia", "Lamborghini", "Land Rover", "Lexus",
+                    "Maserati", "Mazda", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki", "Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
+            //45 Manufacturers!!
+            ArrayAdapter<String> ManAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ManList);
+            ManAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerMan.setAdapter(ManAdapter);
+        }
 
 
         // Here is the Whole list of Models For Each Car Manufacturer (45 lists and the No Manufacturer List)
@@ -579,9 +598,51 @@ public class AddCarFragment extends Fragment {
         });
 
 
+        Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.post_alert);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialog.setCancelable(false);
+
+        Button btnClose = dialog.findViewById(R.id.btnConfirmClose);
+        Button btnCancel = dialog.findViewById(R.id.btnCancelClose);
+
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToFragmentCars();
+                setNavigationBarCarsMarket();
+                setNavigationBarVisible();
+                dialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        Close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
+
+
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // checks the User's Internet Connection
+                if(!isConnected()) {
+                    Toast.makeText(getActivity(), "Network Not Available, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Check Info (....)
                 String Man= SpinnerMan.getSelectedItem().toString();
                 String Mod= SpinnerMod.getSelectedItem().toString();
@@ -649,6 +710,25 @@ public class AddCarFragment extends Fragment {
 
             }
         });
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
+    }
+
+    public void GoToFragmentCars(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarVisible(){
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private void setNavigationBarCarsMarket() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 
     public void ImageChooser() {
