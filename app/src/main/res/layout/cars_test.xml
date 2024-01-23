@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="16dp"
+    android:layout_margin="12dp"
     android:background="@color/white">
 
 
@@ -105,9 +105,9 @@
                 android:id="@+id/ivSavedCarAdapter"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="12dp"
-                android:layout_marginBottom="29dp"
+                android:layout_marginBottom="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

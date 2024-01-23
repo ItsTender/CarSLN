@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.adapters.SearchCarsAdapter;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
@@ -51,7 +52,7 @@ public class CarSearchListFragment extends Fragment {
     CardView GoSearch;
     ArrayList<CarID> search, filteredsearch, market;
     RecyclerView rc;
-    CarsAdapter Adapter;
+    SearchCarsAdapter Adapter;
     ImageButton btnSearch;
     TextView tvSearch, tvResults;
     ArrayList<String> Saved;
@@ -129,7 +130,7 @@ public class CarSearchListFragment extends Fragment {
 
 
         if(Filter.getSelectedItem() == null) {
-            String[] FilterList = {"Sort Search By", "Name - Alphabetical", "Price - Ascending", "Price - Descending", "Kilometre - Ascending"};
+            String[] FilterList = {"Sort Search By", "Name - Alphabetical", "Price - Ascending", "Price - Descending", "Kilometre - Ascending", "Year - Newest to Oldest"};
             ArrayAdapter<String> FilterAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, FilterList);
             FilterAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             Filter.setAdapter(FilterAdapter);
@@ -304,6 +305,31 @@ public class CarSearchListFragment extends Fragment {
                                     SettingFrame();
 
                                 }
+                                if(item.equals("Year - Newest to Oldest")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getYear()<market.get(rep).getYear()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+
+                                    SettingFrame();
+
+                                }
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -432,6 +458,31 @@ public class CarSearchListFragment extends Fragment {
                                     SettingFrame();
 
                                 }
+                                if(item.equals("Year - Newest to Oldest")){
+
+                                    market = DupArray(search);
+                                    filteredsearch = new ArrayList<CarID>();
+
+                                    int rep;
+                                    CarID car;
+
+                                    while(!market.isEmpty()){
+                                        car = null;
+                                        for(rep=0 ; rep< market.size() ; rep++){
+                                            if(car==null) car = market.get(rep);
+                                            else if(car.getYear()<market.get(rep).getYear()) car = market.get(rep);
+                                        }
+
+                                        filteredsearch.add(car);
+                                        market.remove(car);
+                                    }
+
+                                    search = filteredsearch;
+                                    fbs.setSearchList(filteredsearch);
+
+                                    SettingFrame();
+
+                                }
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -487,6 +538,7 @@ public class CarSearchListFragment extends Fragment {
                 }
                 if(item.equals("Price - Ascending")){
 
+                    search = fbs.getCarList();
                     market = DupArray(search);
                     filteredsearch = new ArrayList<CarID>();
 
@@ -512,6 +564,7 @@ public class CarSearchListFragment extends Fragment {
                 }
                 if(item.equals("Price - Descending")){
 
+                    search = fbs.getCarList();
                     market = DupArray(search);
                     filteredsearch = new ArrayList<CarID>();
 
@@ -537,6 +590,7 @@ public class CarSearchListFragment extends Fragment {
                 }
                 if(item.equals("Kilometre - Ascending")){
 
+                    search = fbs.getCarList();
                     market = DupArray(search);
                     filteredsearch = new ArrayList<CarID>();
 
@@ -557,6 +611,32 @@ public class CarSearchListFragment extends Fragment {
                     search = filteredsearch;
                     fbs.setSearchList(filteredsearch);
                     fbs.setLastFilter("Kilometre - Ascending");
+                    SettingFrame();
+
+                }
+                if(item.equals("Year - Newest to Oldest")){
+
+                    search = fbs.getCarList();
+                    market = DupArray(search);
+                    filteredsearch = new ArrayList<CarID>();
+
+                    int rep;
+                    CarID car;
+
+                    while(!market.isEmpty()){
+                        car = null;
+                        for(rep=0 ; rep< market.size() ; rep++){
+                            if(car==null) car = market.get(rep);
+                            else if(car.getYear()<market.get(rep).getYear()) car = market.get(rep);
+                        }
+
+                        filteredsearch.add(car);
+                        market.remove(car);
+                    }
+
+                    search = filteredsearch;
+                    fbs.setSearchList(filteredsearch);
+                    fbs.setLastFilter("Year - Newest to Oldest");
                     SettingFrame();
 
                 }
@@ -609,7 +689,7 @@ public class CarSearchListFragment extends Fragment {
     private void SettingFrame() {
 
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter = new CarsAdapter(getActivity(), search, Saved);
+        Adapter = new SearchCarsAdapter(getActivity(), search, Saved);
         rc.setAdapter(Adapter);
     }
 

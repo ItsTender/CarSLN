@@ -611,7 +611,6 @@ public class AddCarFragment extends Fragment {
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoToFragmentCars();
                 setNavigationBarCarsMarket();
                 setNavigationBarVisible();
                 dialog.dismiss();

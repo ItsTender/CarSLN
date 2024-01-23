@@ -139,9 +139,9 @@ public class LogInFragment extends Fragment {
                             if (task.isSuccessful()) {
                                 // To DO
                                 Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
+                                setNewSavedandGoToMaketPlace();
                                 setNavigationBarVisible();
                                 setNavigationBarCarsMarket();
-                                setNewSavedandGoToMaketPlace();
                             } else {
                                 // To DO
                                 Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();

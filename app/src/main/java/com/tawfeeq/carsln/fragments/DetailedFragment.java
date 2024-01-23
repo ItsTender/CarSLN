@@ -185,15 +185,17 @@ public class DetailedFragment extends Fragment {
                             BottomNavigationView bnv = getNavigationBar();
 
 
-                            if(fbs.getMarketList()!=null) if((fbs.getMarketList()).contains(currentCar)) (fbs.getMarketList()).remove(currentCar);
-                            if(fbs.getCarList()!=null) if((fbs.getCarList()).contains(currentCar)) (fbs.getCarList()).remove(currentCar);
-                            if(fbs.getSearchList()!=null) if((fbs.getSearchList()).contains(currentCar)) (fbs.getSearchList()).remove(currentCar);
+                            if(fbs.getMarketList()!=null || !fbs.getMarketList().isEmpty()) if((fbs.getMarketList()).contains(currentCar)) (fbs.getMarketList()).remove(currentCar);
+                            if(fbs.getCarList()!=null || !fbs.getCarList().isEmpty()) if((fbs.getCarList()).contains(currentCar)) (fbs.getCarList()).remove(currentCar);
+                            if(fbs.getSearchList()!=null || !fbs.getSearchList().isEmpty()) if((fbs.getSearchList()).contains(currentCar)) (fbs.getSearchList()).remove(currentCar);
 
 
                             if (bnv.getSelectedItemId() == R.id.market) {
-                                bnv.setVisibility(View.VISIBLE);
                                 if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
-                                else GoToFragmentCars();
+                                else {
+                                    bnv.setVisibility(View.VISIBLE);
+                                    GoToFragmentCars();
+                                }
                             }
                             else if (bnv.getSelectedItemId() == R.id.searchcar){
                                 bnv.setVisibility(View.VISIBLE);
@@ -282,9 +284,11 @@ public class DetailedFragment extends Fragment {
                 BottomNavigationView bnv = getNavigationBar();
 
                 if (bnv.getSelectedItemId() == R.id.market) {
-                    getNavigationBar().setVisibility(View.VISIBLE);
                     if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
-                    else GoToFragmentCars();
+                    else {
+                        getNavigationBar().setVisibility(View.VISIBLE);
+                        GoToFragmentCars();
+                    }
                 }
                 else if (bnv.getSelectedItemId() == R.id.searchcar){
                     getNavigationBar().setVisibility(View.VISIBLE);

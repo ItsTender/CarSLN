@@ -112,6 +112,7 @@ public class DetailedPhotosFragment extends Fragment {
             ivSecond.setVisibility(View.VISIBLE);
             ivSecond.setMaxHeight(0);
         } else {
+            //Glide.with(getActivity()).load(SecondPhoto).into(ivSecond);
             Picasso.get().load(SecondPhoto).into(ivSecond);
         }
 
@@ -120,6 +121,7 @@ public class DetailedPhotosFragment extends Fragment {
             ivThird.setVisibility(View.INVISIBLE);
             ivThird.setMaxHeight(0);
         } else {
+            //Glide.with(getActivity()).load(ThirdPhoto).into(ivThird);
             Picasso.get().load(ThirdPhoto).into(ivThird);
         }
 
@@ -128,6 +130,7 @@ public class DetailedPhotosFragment extends Fragment {
             ivFourth.setVisibility(View.INVISIBLE);
             ivFourth.setMaxHeight(0);
         } else {
+            //Glide.with(getActivity()).load(FourthPhoto).into(ivFourth);
             Picasso.get().load(FourthPhoto).into(ivFourth);
         }
 
@@ -136,6 +139,7 @@ public class DetailedPhotosFragment extends Fragment {
             ivFifth.setVisibility(View.INVISIBLE);
             ivFifth.setMaxHeight(0);
         } else {
+            //Glide.with(getActivity()).load(FifthPhoto).into(ivFifth);
             Picasso.get().load(FifthPhoto).into(ivFifth);
         }
 
@@ -144,7 +148,6 @@ public class DetailedPhotosFragment extends Fragment {
             public void onClick(View view) {
 
                 Fragment gtn= new DetailedFragment();
-
 
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

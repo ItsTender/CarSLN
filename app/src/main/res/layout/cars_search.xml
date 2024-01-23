@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="12dp"
+    android:layout_margin="8dp"
     android:background="@color/white">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:background="@color/white">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/CarRes"
-            android:layout_width="250dp"
-            android:layout_height="160dp"
-            android:layout_margin="0px"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="25px"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            app:shapeAppearance="@style/RoundShape.App.15percent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,57 +32,63 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="5px"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
 
 
             <TextView
                 android:id="@+id/tvtxtCarName"
                 android:layout_width="310dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:text="Man"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvtxtPrice" />
 
+
             <TextView
                 android:id="@+id/tvtxtYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="8dp"
                 android:text="Year"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvtxtCarName" />
+
+            <TextView
+                android:id="@+id/tvtxtKilometre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Kilometre"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvtxtHP" />
 
             <TextView
                 android:id="@+id/tvtxtHP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="8dp"
                 android:text="Horse Power"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/tvtxtYear"
-                app:layout_constraintTop_toBottomOf="@+id/tvtxtCarName" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvtxtYear" />
 
             <TextView
                 android:id="@+id/tvtxtPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:text="Price₪"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -93,8 +100,8 @@
                 android:id="@+id/ivSavedCarAdapter"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="3dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

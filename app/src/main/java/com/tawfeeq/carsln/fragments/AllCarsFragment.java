@@ -155,7 +155,6 @@ public class AllCarsFragment extends Fragment {
         ivPFP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoToProfile();
                 setNavigationBarProfile();
             }
         });

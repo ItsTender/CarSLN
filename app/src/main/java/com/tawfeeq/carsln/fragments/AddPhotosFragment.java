@@ -160,7 +160,6 @@ public class AddPhotosFragment extends Fragment {
                         fbs.setMarketList(null);
                         setNavigationBarVisible();
                         setNavigationCarsMarket();
-                        GoToFragmentCars();
                         loading.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {

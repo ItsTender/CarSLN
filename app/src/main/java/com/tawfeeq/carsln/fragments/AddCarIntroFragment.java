@@ -72,6 +72,9 @@ public class AddCarIntroFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        // Concept Page...............!!!!
+
+
         btnAddCar = getView().findViewById(R.id.btnAddCar);
 
         btnAddCar.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +86,6 @@ public class AddCarIntroFragment extends Fragment {
                 ft.commit();
             }
         });
-
 
     }
 
