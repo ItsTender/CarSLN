@@ -18,8 +18,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/CarRes"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
             android:layout_margin="25px"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -55,7 +55,7 @@
                 android:id="@+id/tvtxtYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:text="Year"
                 android:textColor="@color/black"
                 android:textSize="15sp"
@@ -66,29 +66,29 @@
                 android:id="@+id/tvtxtKilometre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:text="Kilometre"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvtxtHP" />
-
-            <TextView
-                android:id="@+id/tvtxtHP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Horse Power"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvtxtYear" />
 
             <TextView
+                android:id="@+id/tvtxtHP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Horse Power"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvtxtKilometre" />
+
+            <TextView
                 android:id="@+id/tvtxtPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:text="Price₪"
                 android:textColor="@color/black"
                 android:textSize="20sp"

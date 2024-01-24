@@ -169,7 +169,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Show More"
                     android:textColor="@color/Blue700"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayoutNearYou"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -213,7 +213,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Show More"
                     android:textColor="@color/Blue700"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayoutNew"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -257,7 +257,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Show More"
                     android:textColor="@color/Blue700"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayoutUsedCars"
                     app:layout_constraintEnd_toEndOf="parent" />
 

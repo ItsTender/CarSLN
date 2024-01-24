@@ -32,7 +32,9 @@ import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
+import com.yalantis.ucrop.UCrop;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -229,36 +231,66 @@ public class AddPhotosFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data != null) {
-            Uri selectedImageUri = data.getData();
+        if (requestCode == UCrop.REQUEST_CROP) {
+            Uri resultUri = null;
 
-            if(FirstPhoto == null){
+            if(data!=null) resultUri = UCrop.getOutput(data);
 
-                ivFirstPhoto.setImageURI(selectedImageUri);
-                UploadFirstPhoto(selectedImageUri);
+            if(resultUri!=null) {
 
-            }else if (SecondPhoto == null){
+                if(FirstPhoto == null){
 
-                ivSecondPhoto.setImageURI(selectedImageUri);
-                UploadSecondPhoto(selectedImageUri);
+                    ivFirstPhoto.setImageURI(resultUri);
+                    UploadFirstPhoto(resultUri);
 
-            }else if(ThirdPhoto == null){
+                }else if (SecondPhoto == null){
 
-                ivThirdPhoto.setImageURI(selectedImageUri);
-                UploadThirdPhoto(selectedImageUri);
+                    ivSecondPhoto.setImageURI(resultUri);
+                    UploadSecondPhoto(resultUri);
 
-            }else if(FourthPhoto == null){
+                }else if(ThirdPhoto == null){
 
-                ivFourthPhoto.setImageURI(selectedImageUri);
-                UploadFourthPhoto(selectedImageUri);
+                    ivThirdPhoto.setImageURI(resultUri);
+                    UploadThirdPhoto(resultUri);
 
-            }else if(FifthPhoto == null){
+                }else if(FourthPhoto == null){
 
-                ivFifthPhoto.setImageURI(selectedImageUri);
-                UploadFifthPhoto(selectedImageUri);
+                    ivFourthPhoto.setImageURI(resultUri);
+                    UploadFourthPhoto(resultUri);
+
+                }else if(FifthPhoto == null){
+
+                    ivFifthPhoto.setImageURI(resultUri);
+                    UploadFifthPhoto(resultUri);
+
+                }
 
             }
+
+        } else if(resultCode == UCrop.RESULT_ERROR) {
+            // Close the UCrop.
         }
+        if (requestCode == 123 && resultCode == getActivity().RESULT_OK) {
+
+            Uri selectedImageUri = data.getData();
+            startCropActivity(selectedImageUri);
+
+        }
+
+    }
+
+    private void startCropActivity(Uri sourceUri) {
+
+        Uri destinationUri = Uri.fromFile(new File(getActivity().getCacheDir(), UUID.randomUUID().toString()));
+
+        UCrop.Options options = new UCrop.Options();
+
+        UCrop uCrop = UCrop.of(sourceUri, destinationUri)
+                .withAspectRatio(4,3)
+                .withMaxResultSize(2000, 2000);
+        uCrop.withOptions(options);
+        uCrop.start(getContext(), this, UCrop.REQUEST_CROP);
+
     }
 
     private void setNavigationBarVisible(){

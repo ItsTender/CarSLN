@@ -58,7 +58,7 @@
         <Button
             android:id="@+id/btnAddProfile"
             android:layout_width="200dp"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/Blue700"
             android:text="Post New Listing"

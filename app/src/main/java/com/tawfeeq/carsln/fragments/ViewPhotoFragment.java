@@ -32,7 +32,9 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
+import com.yalantis.ucrop.UCrop;
 
+import java.io.File;
 import java.util.UUID;
 
 /**
@@ -157,7 +159,10 @@ public class ViewPhotoFragment extends Fragment {
 
                                 Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
                                 fbs.getUser().setUserPhoto(photo);
-                                Picasso.get().load(R.drawable.slnpfp).into(ivUser);
+
+                                if(From.equals("Profile")) GoToProfile();
+                                else if(From.equals("Settings")) GoToSettings();
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -239,11 +244,40 @@ public class ViewPhotoFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data != null) {
+        if (requestCode == UCrop.REQUEST_CROP) {
+            Uri resultUri = null;
+
+            if(data!=null) resultUri = UCrop.getOutput(data);
+
+            if(resultUri!=null) {
+                ivUser.setImageURI(resultUri);
+                uploadImageandSave(getActivity(), resultUri);
+            }
+
+        } else if(resultCode == UCrop.RESULT_ERROR) {
+            // Close the UCrop.
+        }
+        if (requestCode == 123 && resultCode == getActivity().RESULT_OK) {
 
             Uri selectedImageUri = data.getData();
-            uploadImageandSave(getActivity(), selectedImageUri);
+            startCropActivity(selectedImageUri);
+
         }
+
+    }
+
+    private void startCropActivity(Uri sourceUri) {
+
+        Uri destinationUri = Uri.fromFile(new File(getActivity().getCacheDir(), UUID.randomUUID().toString()));
+
+        UCrop.Options options = new UCrop.Options();
+
+        UCrop uCrop = UCrop.of(sourceUri, destinationUri)
+                .withAspectRatio(1,1)
+                .withMaxResultSize(2000, 2000);
+        uCrop.withOptions(options);
+        uCrop.start(getContext(), this, UCrop.REQUEST_CROP);
+
     }
 
     public void uploadImageandSave(Context context, Uri selectedImageUri) {
