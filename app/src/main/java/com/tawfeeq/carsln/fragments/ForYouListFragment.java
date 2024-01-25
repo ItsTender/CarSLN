@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
@@ -120,7 +121,7 @@ public class ForYouListFragment extends Fragment {
                 if (isConnected()) {
 
                     Market = new ArrayList<CarID>();
-                    fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                             for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {

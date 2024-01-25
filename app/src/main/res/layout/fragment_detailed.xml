@@ -46,7 +46,7 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/trash_logo"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivSavedCar"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
@@ -84,14 +84,17 @@
         </LinearLayout>
 
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivSavedCar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_slider" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/DetailedMan"
@@ -127,22 +130,22 @@
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="sans-serif"
             android:text="Location"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageView
             android:id="@+id/imageView40"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="22dp"
             android:src="@drawable/pinpoint_removebg_preview"
             app:layout_constraintStart_toEndOf="@+id/DetailedLocationArea"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedMan" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -191,7 +194,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedLocationArea">
+            app:layout_constraintTop_toBottomOf="@+id/DetailedMan">
 
             <ImageView
                 android:id="@+id/imageView41"
@@ -261,13 +264,13 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="sans-serif"
             android:text="Notes"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView40" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"

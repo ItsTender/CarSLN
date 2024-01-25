@@ -219,7 +219,10 @@ public class SettingsFragment extends Fragment {
             @Override
             public boolean onLongClick(View view) {
 
-                if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) GoToViewPhoto();
+                if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) {
+                    setNavigationBarGone();
+                    GoToViewPhoto();
+                }
 
                 return true;
             }

@@ -33,6 +33,7 @@ import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.yalantis.ucrop.UCrop;
+import com.yalantis.ucrop.model.AspectRatio;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -283,10 +284,16 @@ public class AddPhotosFragment extends Fragment {
 
         Uri destinationUri = Uri.fromFile(new File(getActivity().getCacheDir(), UUID.randomUUID().toString()));
 
+        // Multiple Aspect Ratios for each Selected Pictures!! (Fixed the Photos Flipping)....
         UCrop.Options options = new UCrop.Options();
+        AspectRatio defaultaspectRatio = new AspectRatio("4/3",4,3);
+        AspectRatio secondaryaspectRation = new AspectRatio("16/9",16,9);
+        AspectRatio fifthaspectRation = new AspectRatio("3/4", 3, 4);
+        AspectRatio thirdaspectRation = new AspectRatio("3/2", 3, 2);
+        AspectRatio FourthaspectRation = new AspectRatio("1/1", 1, 1);
+        options.setAspectRatioOptions(0, defaultaspectRatio, thirdaspectRation, fifthaspectRation, secondaryaspectRation, FourthaspectRation);
 
         UCrop uCrop = UCrop.of(sourceUri, destinationUri)
-                .withAspectRatio(4,3)
                 .withMaxResultSize(2000, 2000);
         uCrop.withOptions(options);
         uCrop.start(getContext(), this, UCrop.REQUEST_CROP);

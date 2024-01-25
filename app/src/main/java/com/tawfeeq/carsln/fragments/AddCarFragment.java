@@ -245,7 +245,7 @@ public class AddCarFragment extends Fragment {
 
         String [] ModelIsuzu = { "D-Max 2x4", "D-Max 4x4", "Sumo"};
 
-        String [] ModelJeep = { "Gladiator", "Wagoneer", "Grand Wagoneer", "Cherokee", "Grand Cherokee", "Grand Cherokee", "Commander", "Compass", "Renegade", "Wrangler", "Wrangler Rubicon"};
+        String [] ModelJeep = { "Gladiator", "Wagoneer", "Grand Wagoneer", "Cherokee", "Grand Cherokee", "Commander", "Compass", "Renegade", "Wrangler", "Wrangler Rubicon"};
 
         String [] ModelJaguar = { "E-Pace", "F-Pace", "F-Type", "I-Pace", "S-Pace", "X-Pace", "XE", "XF", "XJ", "XJ6", "XJ8", "XJR", "XK", "XKR"};
 

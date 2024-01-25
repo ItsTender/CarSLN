@@ -4,6 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ImageView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class Cars {
 
     private boolean SellLend; // if the User wants to Sell the Car the Var will be 'TRUE' else if the User only wants to Lend his Car the Var will be 'FALSE'
@@ -26,6 +33,7 @@ public class Cars {
     private String FourthPhoto;
     private String FifthPhoto;
     private String Notes;
+    private Timestamp timestamp;
 
     public Cars() {
     }
@@ -51,12 +59,19 @@ public class Cars {
         FourthPhoto = fourthPhoto;
         FifthPhoto = fifthPhoto;
         Notes = notes;
+        timestamp = new Timestamp(System.currentTimeMillis());
     }
 
     // protected Cars(Parcel in) {}
-
    // @Override public void writeToParcel(Parcel dest, int flags) {}
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public String getFourthPhoto() {
         return FourthPhoto;

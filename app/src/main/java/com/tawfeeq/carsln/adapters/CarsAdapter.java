@@ -142,21 +142,21 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 if(fbs.getUser()!=null) {
                     if (isFound[0]) {
                         Saved.remove(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                        holder.ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
                     }
                     if (!isFound[0]) {
                         Saved.add(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.bookmark_filled);
+                        holder.ivSaved.setImageResource(R.drawable.saved_logo);
                     }
                     fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             if (isFound[0]) {
-                                holder.ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                                holder.ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound[0] = false;
                             } else {
-                                holder.ivSaved.setImageResource(R.drawable.bookmark_filled);
+                                holder.ivSaved.setImageResource(R.drawable.saved_logo);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound[0] = true;
                             }
@@ -229,10 +229,10 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
 
             if(Saved.contains(car.getId())) {
-                ivSaved.setImageResource(R.drawable.bookmark_filled);
+                ivSaved.setImageResource(R.drawable.saved_logo);
             }
             else{
-                ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
             }
 
         }

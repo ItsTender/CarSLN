@@ -190,7 +190,10 @@ public class ProfileFragment extends Fragment {
         ivPFP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) GoToViewPhoto();
+                if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) {
+                    setNavigationBarGone();
+                    GoToViewPhoto();
+                }
             }
         });
 

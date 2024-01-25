@@ -436,11 +436,11 @@ public class DetailedFragment extends Fragment {
         else Saved = new ArrayList<String>();
 
         if(Saved.contains(currentCar.getId())) {
-            ivSaved.setImageResource(R.drawable.bookmark_filled);
+            ivSaved.setImageResource(R.drawable.saved_logo);
             isFound = true;
         }
         else{
-            ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+            ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
             isFound = false;
         }
 
@@ -451,22 +451,22 @@ public class DetailedFragment extends Fragment {
                 if(fbs.getUser()!=null) {
                     if (isFound) {
                         Saved.remove(currentCar.getId());
-                        ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                        ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
                     }
                     if (!isFound) {
                         Saved.add(currentCar.getId());
-                        ivSaved.setImageResource(R.drawable.bookmark_filled);
+                        ivSaved.setImageResource(R.drawable.saved_logo);
                     }
 
                     fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             if (isFound) {
-                                ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                                ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound = false;
                             } else {
-                                ivSaved.setImageResource(R.drawable.bookmark_filled);
+                                ivSaved.setImageResource(R.drawable.saved_logo);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound = true;
                             }

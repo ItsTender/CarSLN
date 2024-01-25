@@ -30,6 +30,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 import com.yalantis.ucrop.UCrop;
@@ -199,12 +200,22 @@ public class ViewPhotoFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(From.equals("Profile")) GoToProfile();
-                else if(From.equals("Settings")) GoToSettings();
+                if(From.equals("Profile")) {
+                    GoToProfile();
+                    setNavVisible();
+                }
+                else if(From.equals("Settings")) {
+                    GoToSettings();
+                    setNavVisible();
+                }
                 else if(From.equals("Seller")) GoToSellerPage();
             }
         });
 
+    }
+
+    private void setNavVisible() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
     }
 
     private void GoToSellerPage() {

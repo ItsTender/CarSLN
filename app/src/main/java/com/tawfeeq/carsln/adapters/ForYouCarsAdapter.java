@@ -137,21 +137,21 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
                 if(fbs.getUser()!=null) {
                     if (isFound[0]) {
                         Saved.remove(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                        holder.ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
                     }
                     if (!isFound[0]) {
                         Saved.add(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.bookmark_filled);
+                        holder.ivSaved.setImageResource(R.drawable.saved_logo);
                     }
                     fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             if (isFound[0]) {
-                                holder.ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                                holder.ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound[0] = false;
                             } else {
-                                holder.ivSaved.setImageResource(R.drawable.bookmark_filled);
+                                holder.ivSaved.setImageResource(R.drawable.saved_logo);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound[0] = true;
                             }
@@ -176,16 +176,17 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
 
     class ForYouCarsHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtCar,txtHP,txtYear,txtPrice;
+        private TextView txtCar,txtKilo,txtYear,txtPrice,txtOwners;
         private ImageView ivCar;// shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
         private ImageView ivSaved;
         public ForYouCarsHolder(@NonNull View itemView) {
             super(itemView);
 
             txtCar= itemView.findViewById(R.id.tvtxtCarName);
-            txtHP= itemView.findViewById(R.id.tvtxtHP);
+            txtKilo = itemView.findViewById(R.id.tvtxtKilo);
             txtYear= itemView.findViewById(R.id.tvtxtYear);
             txtPrice= itemView.findViewById(R.id.tvtxtPrice);
+            txtOwners = itemView.findViewById(R.id.tvtxtOwners);
             ivCar= itemView.findViewById(R.id.CarRes);
             ivSaved = itemView.findViewById(R.id.ivSavedCarAdapter);
 
@@ -194,9 +195,16 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
         void SetDetails (CarID car){
 
             txtCar.setText(car.getManufacturer() + " " + car.getModel());
-            txtHP.setText(car.getBHP() + " horse power");
+            txtKilo.setText(car.getKilometre() + " km");
             String year = String.valueOf(car.getYear());
             txtYear.setText(year);
+
+            if(car.getUsers()==1){
+                String Owners= String.valueOf(car.getUsers()); txtOwners.setText(Owners + " Owner");
+            }
+            else {
+                String Owners= String.valueOf(car.getUsers()); txtOwners.setText(Owners + " Owners");
+            }
 
 
             if(car.getSellLend()==true){
@@ -218,10 +226,10 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
 
 
             if(Saved.contains(car.getId())) {
-                ivSaved.setImageResource(R.drawable.bookmark_filled);
+                ivSaved.setImageResource(R.drawable.saved_logo);
             }
             else{
-                ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
             }
 
         }

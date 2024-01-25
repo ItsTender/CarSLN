@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.adapters.SearchCarsAdapter;
@@ -130,7 +131,7 @@ public class CarSearchListFragment extends Fragment {
 
 
         if(Filter.getSelectedItem() == null) {
-            String[] FilterList = {"Sort Search By", "Name - Alphabetical", "Price - Ascending", "Price - Descending", "Kilometre - Ascending", "Year - Newest to Oldest"};
+            String[] FilterList = {"Sort Search By", "Date Created", "Price - Ascending", "Price - Descending", "Kilometre - Ascending", "Year - Newest to Oldest"};
             ArrayAdapter<String> FilterAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, FilterList);
             FilterAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             Filter.setAdapter(FilterAdapter);
@@ -174,7 +175,7 @@ public class CarSearchListFragment extends Fragment {
 
 
                     if (isConnected()) { // the User is Connected to the Internet and a Last Was Was Done Since the App was Opened!
-                        fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
@@ -226,7 +227,7 @@ public class CarSearchListFragment extends Fragment {
 
                                 String item = fbs.getLastFilter();
 
-                                if(item.equals("null") || item.equals("Name - Alphabetical") || item.equals("Sort Search By")){
+                                if(item.equals("null") || item.equals("Date Created") || item.equals("Sort Search By")){
 
                                     search = fbs.getCarList();
                                     fbs.setSearchList(search);
@@ -353,7 +354,7 @@ public class CarSearchListFragment extends Fragment {
 
                     if(isConnected()) {
                         search = new ArrayList<CarID>();
-                        fbs.getStore().collection("MarketPlace").orderBy("manufacturer").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                 for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
@@ -376,7 +377,7 @@ public class CarSearchListFragment extends Fragment {
 
                                 String item = fbs.getLastFilter();
 
-                                if(item.equals("null") || item.equals("Name - Alphabetical") || item.equals("Sort Search By")){
+                                if(item.equals("null") || item.equals("Date Created") || item.equals("Sort Search By")){
 
                                     search = fbs.getCarList();
                                     fbs.setSearchList(search);
@@ -528,7 +529,7 @@ public class CarSearchListFragment extends Fragment {
 
                 String item = adapterView.getSelectedItem().toString();
 
-                if(item.equals("Name - Alphabetical")){
+                if(item.equals("Date Created")){
 
                     search = fbs.getCarList();
                     fbs.setSearchList(search);
