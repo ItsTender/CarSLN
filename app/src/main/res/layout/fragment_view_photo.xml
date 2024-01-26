@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ViewPhotoFragment"
-    android:background="@color/white">
+    android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,20 +15,20 @@
         <LinearLayout
             android:id="@+id/viewphotolinear"
             android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ViewPhotoGoBack"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="16dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/arrow_logo"
+                android:src="@drawable/baseline_arrow_back_24"
                 app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
@@ -37,10 +37,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:fontFamily="sans-serif"
                 android:text="Username"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/ViewPhotoGoBack"
@@ -52,24 +52,25 @@
             android:id="@+id/ViewPhotoChangePFP"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/baseline_create_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.imageview.ShapeableImageView
+
+        <com.ortiz.touchview.TouchImageView
             android:id="@+id/ivViewProfilePhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/slnpfp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewphotolinear"
-            app:layout_constraintVertical_bias="0.439" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

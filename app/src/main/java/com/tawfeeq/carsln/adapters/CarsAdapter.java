@@ -142,21 +142,21 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
                 if(fbs.getUser()!=null) {
                     if (isFound[0]) {
                         Saved.remove(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
+                        holder.ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
                     }
                     if (!isFound[0]) {
                         Saved.add(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.saved_logo);
+                        holder.ivSaved.setImageResource(R.drawable.cars_saved_filled);
                     }
                     fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             if (isFound[0]) {
-                                holder.ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
+                                holder.ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound[0] = false;
                             } else {
-                                holder.ivSaved.setImageResource(R.drawable.saved_logo);
+                                holder.ivSaved.setImageResource(R.drawable.cars_saved_filled);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound[0] = true;
                             }
@@ -229,10 +229,10 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
 
             if(Saved.contains(car.getId())) {
-                ivSaved.setImageResource(R.drawable.saved_logo);
+                ivSaved.setImageResource(R.drawable.cars_saved_filled);
             }
             else{
-                ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
+                ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
             }
 
         }

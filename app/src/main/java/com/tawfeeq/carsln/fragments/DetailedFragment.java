@@ -185,11 +185,6 @@ public class DetailedFragment extends Fragment {
                             BottomNavigationView bnv = getNavigationBar();
 
 
-                            if(fbs.getMarketList()!=null || !fbs.getMarketList().isEmpty()) if((fbs.getMarketList()).contains(currentCar)) (fbs.getMarketList()).remove(currentCar);
-                            if(fbs.getCarList()!=null || !fbs.getCarList().isEmpty()) if((fbs.getCarList()).contains(currentCar)) (fbs.getCarList()).remove(currentCar);
-                            if(fbs.getSearchList()!=null || !fbs.getSearchList().isEmpty()) if((fbs.getSearchList()).contains(currentCar)) (fbs.getSearchList()).remove(currentCar);
-
-
                             if (bnv.getSelectedItemId() == R.id.market) {
                                 if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
                                 else {
@@ -440,7 +435,7 @@ public class DetailedFragment extends Fragment {
             isFound = true;
         }
         else{
-            ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
+            ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
             isFound = false;
         }
 
@@ -451,7 +446,7 @@ public class DetailedFragment extends Fragment {
                 if(fbs.getUser()!=null) {
                     if (isFound) {
                         Saved.remove(currentCar.getId());
-                        ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
+                        ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
                     }
                     if (!isFound) {
                         Saved.add(currentCar.getId());
@@ -462,7 +457,7 @@ public class DetailedFragment extends Fragment {
                         @Override
                         public void onSuccess(Void unused) {
                             if (isFound) {
-                                ivSaved.setImageResource(R.drawable.saved_unfilled_logo);
+                                ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
                                 fbs.getUser().setSavedCars(Saved);
                                 isFound = false;
                             } else {

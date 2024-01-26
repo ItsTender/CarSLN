@@ -26,6 +26,7 @@ public class FireBaseServices {
 
     //--------------------------------------
     private String From;
+    private String currentFragment; // Checking the Last Fragment the User was in, for Back Pressed in the MainActivity!!
     private String LastFilter;
     private LastSearch lastSearch;
 

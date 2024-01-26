@@ -40,7 +40,6 @@ import com.tawfeeq.carsln.objects.UserProfile;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private BottomNavigationView bnv;
     private FireBaseServices fbs;
     private UserProfile usr;
@@ -181,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean isNetworkAvailable(){
 
         try {
-
             ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = null;
             if(manager!=null){

@@ -289,9 +289,8 @@ public class AddPhotosFragment extends Fragment {
         AspectRatio defaultaspectRatio = new AspectRatio("4/3",4,3);
         AspectRatio secondaryaspectRation = new AspectRatio("16/9",16,9);
         AspectRatio fifthaspectRation = new AspectRatio("3/4", 3, 4);
-        AspectRatio thirdaspectRation = new AspectRatio("3/2", 3, 2);
         AspectRatio FourthaspectRation = new AspectRatio("1/1", 1, 1);
-        options.setAspectRatioOptions(0, defaultaspectRatio, thirdaspectRation, fifthaspectRation, secondaryaspectRation, FourthaspectRation);
+        options.setAspectRatioOptions(0, defaultaspectRatio, fifthaspectRation, secondaryaspectRation, FourthaspectRation);
 
         UCrop uCrop = UCrop.of(sourceUri, destinationUri)
                 .withMaxResultSize(2000, 2000);

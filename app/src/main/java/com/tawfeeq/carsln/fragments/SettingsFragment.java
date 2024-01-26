@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -334,8 +335,8 @@ public class SettingsFragment extends Fragment {
         sheetDialog.setContentView(R.layout.bottom_profile_dialog);
         sheetDialog.setCancelable(true);
 
-        CardView changepfp = sheetDialog.findViewById(R.id.cardViewChangePFP);
-        CardView resetpfp = sheetDialog.findViewById(R.id.cardViewResetPFP);
+        LinearLayout changepfp = sheetDialog.findViewById(R.id.linearLayoutChange);
+        LinearLayout resetpfp = sheetDialog.findViewById(R.id.linearLayoutReset);
 
         changepfp.setOnClickListener(new View.OnClickListener() {
             @Override

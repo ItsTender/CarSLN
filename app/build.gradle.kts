@@ -50,5 +50,6 @@ dependencies {
     implementation ("com.airbnb.android:lottie:5.2.0")
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation ("com.github.yalantis:ucrop:2.2.8-native")
+    implementation ("com.github.MikeOrtiz:TouchImageView:1.4.1")
 
 }

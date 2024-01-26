@@ -116,8 +116,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivSavedCarAdapter"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:adjustViewBounds="true"
