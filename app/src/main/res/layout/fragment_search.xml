@@ -348,10 +348,10 @@
             android:id="@+id/textViewsearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:layout_gravity="center"
+            android:layout_marginTop="0dp"
             android:fontFamily="sans-serif"
-            android:text="Seach For a Car"
+            android:text="Car Search"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />

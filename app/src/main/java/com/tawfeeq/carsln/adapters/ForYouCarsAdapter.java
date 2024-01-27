@@ -23,7 +23,11 @@ import com.tawfeeq.carsln.fragments.DetailedFragment;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.ForYouCarsHolder> {
 
@@ -194,10 +198,17 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
 
         void SetDetails (CarID car){
 
+            DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+            DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+            symbols.setGroupingSeparator(',');
+            formatter.setDecimalFormatSymbols(symbols);
+
+
             txtCar.setText(car.getManufacturer() + " " + car.getModel());
-            txtKilo.setText(car.getKilometre() + " km");
+            txtKilo.setText(formatter.format(car.getKilometre()) + " km");
             String year = String.valueOf(car.getYear());
             txtYear.setText(year);
+
 
             if(car.getUsers()==1){
                 String Owners= String.valueOf(car.getUsers()); txtOwners.setText(Owners + " Owner");
@@ -209,11 +220,11 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
 
             if(car.getSellLend()==true){
 
-                txtPrice.setText(car.getPrice()+"₪");
+                txtPrice.setText(formatter.format(car.getPrice()) + "₪");
             }
             else if(car.getSellLend()==false){
 
-                txtPrice.setText(car.getPrice() + "₪" +" Monthly");
+                txtPrice.setText(formatter.format(car.getPrice()) + "₪" + " Monthly");
             }
 
             if (car.getPhoto() == null || car.getPhoto().isEmpty())

@@ -46,7 +46,11 @@ import com.tawfeeq.carsln.objects.UserProfile;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -201,13 +205,8 @@ public class DetailedFragment extends Fragment {
                                 GoToFragmentSaved();
                             }
                             else if (bnv.getSelectedItemId() == R.id.profile){
-                                if(!fbs.getFrom().equals("UserListings")) {
-                                    bnv.setVisibility(View.VISIBLE);
-                                    GoToProfile();
-                                }
-                                else {
-                                    GoToUserListings();
-                                }
+                                getNavigationBar().setVisibility(View.VISIBLE);
+                                GoToUserListings();
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -294,13 +293,8 @@ public class DetailedFragment extends Fragment {
                     GoToFragmentSaved();
                 }
                 else if (bnv.getSelectedItemId() == R.id.profile){
-                    if(!fbs.getFrom().equals("UserListings")){
-                        getNavigationBar().setVisibility(View.VISIBLE);
-                        GoToProfile();
-                    }
-                    else {
-                        GoToUserListings();
-                    }
+                    getNavigationBar().setVisibility(View.VISIBLE);
+                    GoToUserListings();
                 }
             }
         });
@@ -479,20 +473,24 @@ public class DetailedFragment extends Fragment {
 
         // Functions Ends......
 
+        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+        DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+        symbols.setGroupingSeparator(',');
+        formatter.setDecimalFormatSymbols(symbols);
+
 
         tvMan.setText(currentCar.getManufacturer() + " " + currentCar.getModel());
 
-        String prc= String.valueOf(currentCar.getPrice());
         if(currentCar.getSellLend()) {
-            tvPrice.setText(prc + "₪");
+            tvPrice.setText(formatter.format(currentCar.getPrice()) + "₪");
         }
         else{
-            tvPrice.setText(prc + "₪" + " Monthly");
+            tvPrice.setText(formatter.format(currentCar.getPrice()) + "₪" + " Monthly");
         }
 
-        String power=String.valueOf(currentCar.getBHP()); tvPower.setText(power);
+        tvPower.setText(formatter.format(currentCar.getBHP()));
+        tvKilometre.setText(formatter.format(currentCar.getKilometre()) + " km");
         String year=String.valueOf(currentCar.getYear()); tvYear.setText(year);
-        String Kilo =String.valueOf(currentCar.getKilometre()); tvKilometre.setText(Kilo+" km");
         tvTransmission.setText(currentCar.getTransmission());
         tvLocation.setText(currentCar.getLocation());
         tvTest.setText(currentCar.getNextTest());

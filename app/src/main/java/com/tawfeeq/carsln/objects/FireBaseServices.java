@@ -1,6 +1,7 @@
 package com.tawfeeq.carsln.objects;
 
 import android.net.Uri;
+import android.os.Parcelable;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,7 +32,46 @@ public class FireBaseServices {
     private LastSearch lastSearch;
 
     //--------------------------------------
+    // To Save the Scrolling Position for Each Recycler!!
+    private Parcelable rcForYou;
+    private Parcelable rcSearch;
+    private Parcelable rcSaved;
+    private Parcelable rcListings;
 
+    //--------------------------------------
+
+
+    public Parcelable getRcListings() {
+        return rcListings;
+    }
+
+    public void setRcListings(Parcelable rcListings) {
+        this.rcListings = rcListings;
+    }
+
+    public Parcelable getRcSaved() {
+        return rcSaved;
+    }
+
+    public void setRcSaved(Parcelable rcSaved) {
+        this.rcSaved = rcSaved;
+    }
+
+    public Parcelable getRcSearch() {
+        return rcSearch;
+    }
+
+    public void setRcSearch(Parcelable rcSearch) {
+        this.rcSearch = rcSearch;
+    }
+
+    public Parcelable getRcForYou() {
+        return rcForYou;
+    }
+
+    public void setRcForYou(Parcelable rcForYou) {
+        this.rcForYou = rcForYou;
+    }
 
     public String getLastFilter() {
         return LastFilter;

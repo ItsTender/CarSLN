@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,6 +109,12 @@ public class CarSearchListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_car_search_list, container, false);
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        fbs.setRcSearch(rc.getLayoutManager().onSaveInstanceState());
     }
 
     @Override
@@ -514,7 +522,7 @@ public class CarSearchListFragment extends Fragment {
             }
             else search = fbs.getSearchList();
         } else search = new ArrayList<CarID>();
-        SettingFrame();
+        SettingFrameOnPause();
 
 
         String str = String.valueOf(search.size());
@@ -666,6 +674,7 @@ public class CarSearchListFragment extends Fragment {
         GoSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println(rc.getScrollState());
                 GoBackSearch();
             }
         });
@@ -689,9 +698,23 @@ public class CarSearchListFragment extends Fragment {
 
     private void SettingFrame() {
 
+        fbs.setRcSearch(null);
+
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new SearchCarsAdapter(getActivity(), search, Saved);
         rc.setAdapter(Adapter);
+
+    }
+
+    private void SettingFrameOnPause() {
+
+        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new SearchCarsAdapter(getActivity(), search, Saved);
+        rc.setAdapter(Adapter);
+
+        if(fbs.getRcSearch()!=null){
+            rc.getLayoutManager().onRestoreInstanceState(fbs.getRcSearch());
+        }
     }
 
     private void GoBackSearch(){

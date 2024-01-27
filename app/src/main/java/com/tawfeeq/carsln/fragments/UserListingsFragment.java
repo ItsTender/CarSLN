@@ -21,6 +21,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.adapters.SearchCarsAdapter;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
@@ -88,6 +89,12 @@ public class UserListingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user_listings, container, false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        fbs.setRcListings(rcListings.getLayoutManager().onSaveInstanceState());
     }
 
     @Override
@@ -168,13 +175,12 @@ public class UserListingsFragment extends Fragment {
                 if (car.getEmail().equals(fbs.getAuth().getCurrentUser().getEmail())) lst.add(car);
             }
         }
-        SettingFrame();
+        SettingFrameOnPause();
 
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GoToProfile();
-                setNavigationBarVisible();
                 fbs.setFrom("");
             }
         });
@@ -198,9 +204,23 @@ public class UserListingsFragment extends Fragment {
 
     private void SettingFrame() {
 
+        fbs.setRcListings(null);
+
         rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcListings.setAdapter(Adapter);
 
     }
+
+    private void SettingFrameOnPause() {
+
+        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new CarsAdapter(getActivity(), lst, Saved);
+        rcListings.setAdapter(Adapter);
+
+        if(fbs.getRcListings()!=null){
+            rcListings.getLayoutManager().onRestoreInstanceState(fbs.getRcListings());
+        }
+    }
+
 }

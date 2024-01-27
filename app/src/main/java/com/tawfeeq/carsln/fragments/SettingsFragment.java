@@ -54,9 +54,9 @@ public class SettingsFragment extends Fragment {
 
     Utils utils;
     FireBaseServices fbs;
-    EditText etChangeUsername, etChangePhone;
+    EditText etChangeUsername, etChangePhone, etChangePass;
     TextView tvPFP;
-    Button logout, btnChangePhone, btnChangeUsername, btnChangeLocation;
+    Button logout, btnChangePhone, btnChangeUsername, btnChangeLocation, btnChangePass;
     ImageView ivUser;
     String pfp;
     Spinner SpinnerLocation;
@@ -118,9 +118,11 @@ public class SettingsFragment extends Fragment {
         tvPFP = getView().findViewById(R.id.tvtxtPFPSettings);
         btnChangePhone = getView().findViewById(R.id.btnChangePhone);
         btnChangeUsername = getView().findViewById(R.id.btnChangeUsername);
+        btnChangePass = getView().findViewById(R.id.btnChangePassword);
         btnChangeLocation = getView().findViewById(R.id.btnChangeLocation);
         etChangePhone = getView().findViewById(R.id.etChangePhone);
         etChangeUsername =getView().findViewById(R.id.etChangeUsername);
+        etChangePass = getView().findViewById(R.id.etChangePassword);
         ivUser = getView().findViewById(R.id.imageViewProfilePhotoSettings);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSettings);
 
@@ -297,6 +299,32 @@ public class SettingsFragment extends Fragment {
         });
 
 
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newpass = etChangePass.getText().toString();
+                if(newpass.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Password Field is Missing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(fbs.getUser()!=null) {
+
+                    fbs.getAuth().getCurrentUser().updatePassword(newpass).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(getActivity(), "Account Password Updated", Toast.LENGTH_LONG).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Password, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        });
+
+
         btnChangePhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -424,7 +452,7 @@ public class SettingsFragment extends Fragment {
                 dialog.show();
             }
         });
-        
+
     }
 
     private void GoToLogIn() {

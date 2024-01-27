@@ -24,7 +24,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
+import com.tawfeeq.carsln.adapters.ForYouCarsAdapter;
+import com.tawfeeq.carsln.adapters.SearchCarsAdapter;
 import com.tawfeeq.carsln.objects.CarID;
+import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 
 import java.util.ArrayList;
@@ -91,6 +94,14 @@ public class ForYouListFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_for_you_list, container, false);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(fbs.getFrom()!="") fbs.setRcForYou(rcForYou.getLayoutManager().onSaveInstanceState());
+        else fbs.setRcForYou(null);
+    }
+
 
     @Override
     public void onStart() {
@@ -217,7 +228,7 @@ public class ForYouListFragment extends Fragment {
                     }
                 }
 
-                SettingFrame();
+                SettingFrameOnPause();
                 // Ends.......................
 
             } else if (fbs.getFrom().equals("New")) {
@@ -233,7 +244,7 @@ public class ForYouListFragment extends Fragment {
                     }
                 }
 
-                SettingFrame();
+                SettingFrameOnPause();
                 // Ends.......................
 
             } else if (fbs.getFrom().equals("Used")) {
@@ -249,7 +260,7 @@ public class ForYouListFragment extends Fragment {
                     }
                 }
 
-                SettingFrame();
+                SettingFrameOnPause();
                 // Ends.......................
 
             }
@@ -286,9 +297,22 @@ public class ForYouListFragment extends Fragment {
 
     private void SettingFrame() {
 
+        fbs.setRcForYou(null);
+
         rcForYou.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcForYou.setAdapter(Adapter);
 
+    }
+
+    private void SettingFrameOnPause() {
+
+        rcForYou.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter = new CarsAdapter(getActivity(), lst, Saved);
+        rcForYou.setAdapter(Adapter);
+
+        if(fbs.getRcForYou()!=null){
+            rcForYou.getLayoutManager().onRestoreInstanceState(fbs.getRcForYou());
+        }
     }
 }

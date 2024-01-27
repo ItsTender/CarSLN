@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
         fbs = FireBaseServices.getInstance();
 
         fbs.setFrom("");
+        fbs.setRcSearch(null);
+        fbs.setRcSaved(null);
+        fbs.setRcForYou(null);
+        fbs.setRcListings(null);
 
         if(fbs.getAuth().getCurrentUser()!=null) {
 

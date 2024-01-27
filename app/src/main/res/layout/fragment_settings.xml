@@ -13,10 +13,10 @@
 
         <TextView
             android:id="@+id/textViewSettings"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
             android:text="Settings"
             android:textColor="@color/black"
@@ -45,7 +45,7 @@
             android:id="@+id/tvtxtPFPSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Edit Profile Picture"
@@ -58,11 +58,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewchanegPhone"
-            android:layout_width="250dp"
+            android:layout_width="272dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="16dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toStartOf="@+id/btnChangePhone"
@@ -83,29 +83,28 @@
 
         </androidx.cardview.widget.CardView>
 
+
         <Button
             android:id="@+id/btnChangePhone"
             android:layout_width="80dp"
             android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Blue700"
             android:text="Save"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardViewchanegPhone"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewCHANGEUSERNAME"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangePassword"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewCHANGEUSERNAME"
-            android:layout_width="250dp"
+            android:layout_width="272dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toStartOf="@+id/btnChangeUsername"
@@ -131,25 +130,24 @@
             android:id="@+id/btnChangeLocation"
             android:layout_width="80dp"
             android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Blue700"
             android:text="Save"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardViewlocationsettings"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewchanegPhone"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangePhone"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewlocationsettings"
-            android:layout_width="250dp"
+            android:layout_width="272dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toStartOf="@+id/btnChangeLocation"
@@ -166,11 +164,50 @@
 
 
         <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/Blue700"
+            android:text="Save"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardViewchangepass"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangeUsername"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewchangepass"
+            android:layout_width="272dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnChangePassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCHANGEUSERNAME">
+
+            <EditText
+                android:id="@+id/etChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="New Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
             android:id="@+id/btnChangeUsername"
             android:layout_width="80dp"
             android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/Blue700"
             android:text="Save"

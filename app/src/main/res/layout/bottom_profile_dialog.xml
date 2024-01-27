@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/material_dynamic_neutral_variant80"
     app:cardPreventCornerOverlap="true"
+    android:hapticFeedbackEnabled="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,9 +16,9 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="100dp"
+            android:layout_width="88dp"
             android:layout_height="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:background="@color/Light_Grey"
             app:circularflow_radiusInDP="100"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +31,8 @@
             android:id="@+id/tvtxtpfp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Profile Picture Options"
@@ -63,7 +64,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                app:cardBackgroundColor="@color/white"
+                android:backgroundTint="@color/white"
+                android:hapticFeedbackEnabled="true"
+                android:outlineAmbientShadowColor="@color/Blue700"
+                android:outlineSpotShadowColor="@color/Blue700"
                 app:cardCornerRadius="100dp"
                 tools:layout_editor_absoluteX="76dp"
                 tools:layout_editor_absoluteY="81dp">
@@ -123,7 +127,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                app:cardBackgroundColor="@color/white"
+                android:backgroundTint="@color/white"
+                android:hapticFeedbackEnabled="true"
+                android:outlineAmbientShadowColor="@color/Blue700"
+                android:outlineSpotShadowColor="@color/Blue700"
                 app:cardCornerRadius="100dp"
                 tools:layout_editor_absoluteX="76dp"
                 tools:layout_editor_absoluteY="81dp">
