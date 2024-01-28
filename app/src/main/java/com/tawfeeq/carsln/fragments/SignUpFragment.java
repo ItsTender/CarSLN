@@ -199,9 +199,10 @@ public class SignUpFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getActivity(), "Welcome To CarSLN", Toast.LENGTH_LONG).show();
+                    fbs.setUser(null);
                     setNewSavedandGoToMaketPlace();
-                    setNavigationBarVisible();
                     setNavigationBarCarsMarket();
+                    setNavigationBarVisible();
                 } else {
                     Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
                 }

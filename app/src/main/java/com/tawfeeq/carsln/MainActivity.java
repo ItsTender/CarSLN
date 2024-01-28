@@ -56,10 +56,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // To Hide The Top Bar For The App's Name.
-        getSupportActionBar().hide();
-
         // To Make the App not Flip.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -76,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(fbs.getAuth().getCurrentUser()!=null) {
 
-            bnv.setVisibility(View.VISIBLE);
             bnv.setSelectedItemId(R.id.market);
+            bnv.setVisibility(View.VISIBLE);
             setSavedGoToMarket();
         }
         else {
@@ -136,56 +132,66 @@ public class MainActivity extends AppCompatActivity {
 
     public void setSavedGoToMarket() {
 
-        Dialog loading = new Dialog(MainActivity.this);
-        loading.setContentView(R.layout.loading_dialog);
-        loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        loading.setCancelable(false);
-        loading.show();
+        if(fbs.getUser() == null) {
+
+            Dialog loading = new Dialog(MainActivity.this);
+            loading.setContentView(R.layout.loading_dialog);
+            loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            loading.setCancelable(false);
+            loading.show();
 
 
-        fbs.setCarList(null);
-        fbs.setSearchList(null);
-        fbs.setLastSearch(null);
-        fbs.setLastFilter("null");
+            fbs.setCarList(null);
+            fbs.setSearchList(null);
+            fbs.setLastSearch(null);
+            fbs.setLastFilter("null");
 
 
-        String str = fbs.getAuth().getCurrentUser().getEmail();
-        int n = str.indexOf("@");
-        String user = str.substring(0,n);
-        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
+            String str = fbs.getAuth().getCurrentUser().getEmail();
+            int n = str.indexOf("@");
+            String user = str.substring(0, n);
+            fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                usr = documentSnapshot.toObject(UserProfile.class);
-                fbs.setUser(usr);
+                    usr = documentSnapshot.toObject(UserProfile.class);
+                    fbs.setUser(usr);
 
-                bnv.setSelectedItemId(R.id.market);
-                FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.commit();
+                    bnv.setSelectedItemId(R.id.market);
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.commit();
 
-                loading.dismiss();
+                    loading.dismiss();
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
 
-                Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-                fbs.setUser(null);
+                    Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                    fbs.setUser(null);
 
-                FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
-                ft.commit();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                    ft.commit();
 
-                loading.dismiss();
+                    loading.dismiss();
 
-            }
-        });
+                }
+            });
+        }else {
 
+            bnv.setSelectedItemId(R.id.market);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+            ft.commit();
+
+        }
     }
 
 
@@ -274,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
 
             }else if(fragment.equals("Forgot") || fragment.equals("Signup")){
 
-                GoToLogin();
+                GoToFragmentLogin();
 
             }else if(fragment.equals("Search")){
 
@@ -389,6 +395,13 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new LogInFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void GoToFragmentLogin(){
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
         ft.commit();
     }
 

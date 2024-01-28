@@ -5,8 +5,9 @@ First and Foremost, CarSLN is an Android App Written in Java and is Currently be
 Noteable CarSLN Features:
 
 - Extensive Car Attributes and Photos for All Car Listings
-- Multiple Ways Of Contacting Car Sellers
+- Animated Splash Screen and Loading Screens
 - Custom Car Search and SearchList with Sorting
+- Multiple Ways Of Contacting Car Sellers (Call, Message, Whatsapp)
 - Car Bookmarking for Cars that interest you or Cars that you might Need Later On
 - User Oriented Home Screen that Will Help you Navigate Through the App and Potentially Find Your Desired Car
 - Fully Fledged Car Adding Page with Lists of all Available  Car Manufacturers and Car Models
