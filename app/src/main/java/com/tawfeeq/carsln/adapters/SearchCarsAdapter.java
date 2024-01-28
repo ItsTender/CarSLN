@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.fragments.DetailedFragment;
 import com.tawfeeq.carsln.objects.CarID;

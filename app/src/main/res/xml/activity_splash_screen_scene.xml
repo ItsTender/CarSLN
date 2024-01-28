@@ -36,8 +36,8 @@
         <Constraint
             android:id="@+id/black_SLN"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -49,8 +49,8 @@
             android:id="@+id/black_SLN"
             android:scaleX="0"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -58,8 +58,8 @@
         <Constraint
             android:id="@+id/white_SLN"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -69,8 +69,8 @@
             android:id="@+id/white_SLN"
             android:scaleX="1"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,17 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:id="@+id/SLNtext"
-            android:layout_marginBottom="60dp" />
+            android:layout_marginBottom="60dp"
+            motion:layout_constraintTop_toBottomOf="@+id/black_SLN"
+            android:layout_marginTop="50dp" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/ByAutherText"
+            android:layout_marginBottom="50dp" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -152,5 +162,13 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:id="@+id/SLNtext"
             android:layout_marginBottom="60dp" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/ByAutherText"
+            android:layout_marginBottom="50dp" />
     </ConstraintSet>
 </MotionScene>

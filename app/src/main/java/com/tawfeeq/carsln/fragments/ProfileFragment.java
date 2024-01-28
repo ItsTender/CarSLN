@@ -3,12 +3,9 @@ package com.tawfeeq.carsln.fragments;
 import android.app.Dialog;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +14,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
-import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.InfoMessage;
 

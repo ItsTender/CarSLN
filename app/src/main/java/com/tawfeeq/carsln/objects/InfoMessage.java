@@ -5,10 +5,9 @@ import android.content.DialogInterface;
 import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.fragments.LogInFragment;
 

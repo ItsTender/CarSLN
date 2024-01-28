@@ -12,24 +12,19 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.tawfeeq.carsln.MainActivity;
-import com.tawfeeq.carsln.adapters.SearchCarsAdapter;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.UserProfile;
-
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 
@@ -96,8 +91,8 @@ public class SavedCarsFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onPause() {
+        super.onPause();
         fbs.setRcSaved(rcListings.getLayoutManager().onSaveInstanceState());
     }
 

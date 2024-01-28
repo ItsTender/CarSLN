@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     app:layoutDescription="@xml/activity_splash_screen_scene"
-    tools:context=".SplashScreenActivity">
+    tools:context=".activities.SplashScreenActivity">
 
 
     <ImageView
@@ -46,7 +46,7 @@
 
 
     <TextView
-        android:id="@+id/SLNtext"
+        android:id="@+id/ByAutherText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="By Tawfeeq Shahoud"

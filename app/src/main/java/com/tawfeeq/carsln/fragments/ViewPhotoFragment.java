@@ -1,7 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -30,8 +28,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
-import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 import com.yalantis.ucrop.UCrop;

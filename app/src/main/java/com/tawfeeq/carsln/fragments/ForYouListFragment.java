@@ -21,13 +21,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.adapters.CarsAdapter;
-import com.tawfeeq.carsln.adapters.ForYouCarsAdapter;
-import com.tawfeeq.carsln.adapters.SearchCarsAdapter;
 import com.tawfeeq.carsln.objects.CarID;
-import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 
 import java.util.ArrayList;
@@ -96,12 +93,11 @@ public class ForYouListFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onPause() {
+        super.onPause();
         if(fbs.getFrom()!="") fbs.setRcForYou(rcForYou.getLayoutManager().onSaveInstanceState());
         else fbs.setRcForYou(null);
     }
-
 
     @Override
     public void onStart() {
@@ -164,6 +160,8 @@ public class ForYouListFragment extends Fragment {
                                 }
                                 // Ends.......................
 
+                                SettingFrame();
+
                             } else if (fbs.getFrom().equals("New")) {
 
                                 // New Cars Car List
@@ -177,6 +175,8 @@ public class ForYouListFragment extends Fragment {
                                     }
                                 }
                                 // Ends.......................
+
+                                SettingFrame();
 
                             } else if (fbs.getFrom().equals("Used")) {
 

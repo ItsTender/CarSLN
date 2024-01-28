@@ -1,4 +1,4 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -14,12 +13,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -28,8 +24,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.fragments.AddCarFragment;
-import com.tawfeeq.carsln.fragments.AddCarIntroFragment;
 import com.tawfeeq.carsln.fragments.AllCarsFragment;
 import com.tawfeeq.carsln.fragments.CarSearchListFragment;
 import com.tawfeeq.carsln.fragments.DetailedFragment;
@@ -43,8 +39,6 @@ import com.tawfeeq.carsln.fragments.UserListingsFragment;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.objects.UserProfile;
 
-import java.util.Stack;
-
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bnv;
@@ -55,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // To Hide the Top Action Bar.
+        getSupportActionBar().hide();
 
         // To Make the App not Flip.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

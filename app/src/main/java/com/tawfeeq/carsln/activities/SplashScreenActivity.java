@@ -1,8 +1,7 @@
-package com.tawfeeq.carsln;
+package com.tawfeeq.carsln.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -13,7 +12,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.tawfeeq.carsln.fragments.AllCarsFragment;
+import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.objects.UserProfile;
 
@@ -26,8 +25,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        // To Hide the Top Action Bar.
+        getSupportActionBar().hide();
+
         // To Make the App not Flip.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         fbs = FireBaseServices.getInstance();
 

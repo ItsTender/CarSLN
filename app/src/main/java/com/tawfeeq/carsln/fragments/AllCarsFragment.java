@@ -1,9 +1,5 @@
 package com.tawfeeq.carsln.fragments;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,9 +25,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tawfeeq.carsln.adapters.ForYouCarsAdapter;
 import com.tawfeeq.carsln.objects.CarID;
-import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
-import com.tawfeeq.carsln.MainActivity;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
 
 import java.util.ArrayList;
