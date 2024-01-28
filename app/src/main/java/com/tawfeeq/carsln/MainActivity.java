@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,12 +32,18 @@ import com.tawfeeq.carsln.fragments.AddCarFragment;
 import com.tawfeeq.carsln.fragments.AddCarIntroFragment;
 import com.tawfeeq.carsln.fragments.AllCarsFragment;
 import com.tawfeeq.carsln.fragments.CarSearchListFragment;
+import com.tawfeeq.carsln.fragments.DetailedFragment;
+import com.tawfeeq.carsln.fragments.ForYouListFragment;
 import com.tawfeeq.carsln.fragments.LogInFragment;
 import com.tawfeeq.carsln.fragments.ProfileFragment;
 import com.tawfeeq.carsln.fragments.SavedCarsFragment;
 import com.tawfeeq.carsln.fragments.SearchFragment;
+import com.tawfeeq.carsln.fragments.SettingsFragment;
+import com.tawfeeq.carsln.fragments.UserListingsFragment;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.objects.UserProfile;
+
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         fbs.setRcSaved(null);
         fbs.setRcForYou(null);
         fbs.setRcListings(null);
+        fbs.setCurrentFragment("");
 
         if(fbs.getAuth().getCurrentUser()!=null) {
 
@@ -199,6 +207,113 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+
+        String fragment = fbs.getCurrentFragment();
+        if(!fragment.equals("")){
+
+            if(fragment.equals("AllCars") || fragment.equals("Login")){
+
+                super.onBackPressed();
+
+            }else if(fragment.equals("AddCar") || fragment.equals("AddPhotos")){
+
+                Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.post_alert);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                dialog.setCancelable(false);
+                dialog.show();
+
+                Button btnClose = dialog.findViewById(R.id.btnConfirmClose);
+                Button btnCancel = dialog.findViewById(R.id.btnCancelClose);
+
+                btnClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        bnv.setSelectedItemId(R.id.market); // Simple, Might turn this into a Stack.....
+                        bnv.setVisibility(View.VISIBLE);
+                        dialog.dismiss();
+                    }
+                });
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+            }else if(fragment.equals("Detailed")) {
+
+                if (bnv.getSelectedItemId() == R.id.market) {
+                    if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
+                    else {
+                        GoToFragmentCars();
+                        bnv.setVisibility(View.VISIBLE);
+                    }
+                }
+                else if (bnv.getSelectedItemId() == R.id.searchcar){
+                    GoToFragmentCarSearchList();
+                    bnv.setVisibility(View.VISIBLE);
+                }
+                else if (bnv.getSelectedItemId() == R.id.savedcars) {
+                    GoToFragmentSaved();
+                    bnv.setVisibility(View.VISIBLE);
+                }
+                else if (bnv.getSelectedItemId() == R.id.profile){
+                    GoToUserListings();
+                    bnv.setVisibility(View.VISIBLE);
+                }
+
+
+            }else if(fragment.equals("DetailedPhotos")){
+
+                GoToDetailed();
+
+            }else if(fragment.equals("Forgot") || fragment.equals("Signup")){
+
+                GoToLogin();
+
+            }else if(fragment.equals("Search")){
+
+                GoToFragmentCarSearchList(); // Simple, Might turn this into a Stack.....
+
+            }
+            else if(fragment.equals("Settings") || fragment.equals("UserListings")){
+
+                GoToFragmentProfile();
+                fbs.setFrom("");
+
+            }else if(fragment.equals("ViewPhoto")){
+
+                if(fbs.getFrom().equals("Profile")) {
+                    bnv.setSelectedItemId(R.id.profile);
+                    bnv.setVisibility(View.VISIBLE);
+                }
+                else if(fbs.getFrom().equals("Settings")) {
+                    GoToSettings();
+                    bnv.setVisibility(View.VISIBLE);
+                }
+                fbs.setFrom("");
+
+            }else if(fragment.equals("ForYou")){
+
+                bnv.setSelectedItemId(R.id.market);
+                bnv.setVisibility(View.VISIBLE);
+                fbs.setFrom("");
+
+            }else {
+
+                bnv.setSelectedItemId(R.id.market); // Simple, Might turn this into a Stack.....
+
+            }
+
+        }
+
+    }
+
     private void GoToFragmentCars() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
@@ -238,6 +353,34 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
+    }
+
+    private void GoToSettings() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SettingsFragment());
+        ft.commit();
+    }
+
+    private void GoToDetailed() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new DetailedFragment());
+        ft.commit();
+    }
+
+    private void GoToForYouList(){
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ForYouListFragment());
+        ft.commit();
+    }
+
+    private void GoToUserListings() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
         ft.commit();
     }
 

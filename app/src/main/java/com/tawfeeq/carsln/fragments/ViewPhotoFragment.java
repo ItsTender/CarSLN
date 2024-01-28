@@ -104,7 +104,6 @@ public class ViewPhotoFragment extends Fragment {
         Email = bundle.getString("Email");
         username = bundle.getString("Username");
         pfp = bundle.getString("PFP");
-        From = bundle.getString("From");
 
 
         return view;
@@ -119,6 +118,10 @@ public class ViewPhotoFragment extends Fragment {
         ivUser = getView().findViewById(R.id.ivViewProfilePhoto);
         Back = getView().findViewById(R.id.ViewPhotoGoBack);
         ChangePFP = getView().findViewById(R.id.ViewPhotoChangePFP);
+        From = fbs.getFrom();
+
+
+        if(!fbs.getCurrentFragment().equals("ViewPhoto")) fbs.setCurrentFragment("ViewPhoto");
 
 
         if(Email.equals(fbs.getAuth().getCurrentUser().getEmail())){
@@ -218,6 +221,8 @@ public class ViewPhotoFragment extends Fragment {
                     setNavVisible();
                 }
                 else if(From.equals("Seller")) GoToSellerPage();
+
+                fbs.setFrom("");
             }
         });
 

@@ -127,6 +127,9 @@ public class SettingsFragment extends Fragment {
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSettings);
 
 
+        if(!fbs.getCurrentFragment().equals("Settings")) fbs.setCurrentFragment("Settings");
+
+
         String [] Location = {"Select Your District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
         String[] Golan = {"Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
         String[] Galil = {"Galil","Golan","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
@@ -478,7 +481,7 @@ public class SettingsFragment extends Fragment {
             bundle.putString("Email", fbs.getAuth().getCurrentUser().getEmail());
             bundle.putString("Username", fbs.getUser().getUsername());
             bundle.putString("PFP", fbs.getUser().getUserPhoto());
-            bundle.putString("From", "Settings");
+            fbs.setFrom("Settings");
 
             gtn.setArguments(bundle);
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();

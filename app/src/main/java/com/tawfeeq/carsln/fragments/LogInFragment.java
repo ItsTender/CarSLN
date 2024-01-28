@@ -98,6 +98,8 @@ public class LogInFragment extends Fragment {
         tvForgot =getView().findViewById(R.id.tvForgot);
 
 
+        if(!fbs.getCurrentFragment().equals("Login")) fbs.setCurrentFragment("Login");
+
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override

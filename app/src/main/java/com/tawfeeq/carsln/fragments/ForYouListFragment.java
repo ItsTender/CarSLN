@@ -114,6 +114,9 @@ public class ForYouListFragment extends Fragment {
         refreshForYou = getView().findViewById(R.id.RefreshForYou);
 
 
+        if(!fbs.getCurrentFragment().equals("ForYou")) fbs.setCurrentFragment("ForYou");
+
+
         lst=new ArrayList<CarID>();
 
 

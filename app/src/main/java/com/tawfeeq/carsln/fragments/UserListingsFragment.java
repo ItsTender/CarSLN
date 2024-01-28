@@ -107,6 +107,9 @@ public class UserListingsFragment extends Fragment {
         Back = getView().findViewById(R.id.UserListingsGoBack);
 
 
+        if(!fbs.getCurrentFragment().equals("UserListings")) fbs.setCurrentFragment("UserListings");
+
+
         lst=new ArrayList<CarID>();
 
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();

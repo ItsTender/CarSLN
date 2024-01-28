@@ -131,6 +131,9 @@ public class CarSearchListFragment extends Fragment {
         Filter =getView().findViewById(R.id.SpinnerFiltering);
 
 
+        if(!fbs.getCurrentFragment().equals("CarSearchList")) fbs.setCurrentFragment("CarSearchList");
+
+
         search = new ArrayList<CarID>();
 
 

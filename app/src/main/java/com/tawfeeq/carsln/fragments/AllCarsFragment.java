@@ -118,6 +118,10 @@ public class AllCarsFragment extends Fragment {
         tvShowNew = getView().findViewById(R.id.textViewMoreNewCars);
         tvShowUsed =getView().findViewById(R.id.textViewMoreUsedCars);
 
+
+        if(!fbs.getCurrentFragment().equals("AllCars")) fbs.setCurrentFragment("AllCars");
+
+
         Market = new ArrayList<CarID>();
 
 

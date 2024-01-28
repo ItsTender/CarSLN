@@ -143,6 +143,10 @@ public class DetailedFragment extends Fragment {
         ivBack =getView().findViewById(R.id.DetailedGoBack); // Goes Back To Where ever the User Was.
         ivDelete =getView().findViewById(R.id.DetailedDeleteListing);
 
+
+        if(!fbs.getCurrentFragment().equals("Detailed")) fbs.setCurrentFragment("Detailed");
+
+
         currentCar = fbs.getSelectedCar();
         usr = new UserProfile();
 
@@ -562,6 +566,7 @@ public class DetailedFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ForYouListFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 

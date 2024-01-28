@@ -117,6 +117,9 @@ public class AddCarFragment extends Fragment {
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationArea);
 
 
+        if(!fbs.getCurrentFragment().equals("AddCar")) fbs.setCurrentFragment("AddCar");
+
+
         if(SpinnerGear.getSelectedItem()==null) {
             String[] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT", "iManual"};
             ArrayAdapter<String> GearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, GearList);

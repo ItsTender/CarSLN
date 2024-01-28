@@ -137,6 +137,9 @@ public class AddPhotosFragment extends Fragment {
         AddCar = getView().findViewById(R.id.btnAddCarListing);
 
 
+        if(!fbs.getCurrentFragment().equals("AddPhotos")) fbs.setCurrentFragment("AddPhotos");
+
+
         AddCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

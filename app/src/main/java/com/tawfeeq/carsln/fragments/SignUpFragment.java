@@ -104,6 +104,9 @@ public class SignUpFragment extends Fragment {
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSignup);
 
 
+        if(!fbs.getCurrentFragment().equals("Signup")) fbs.setCurrentFragment("Signup");
+
+
         String [] Location = {"Select Your District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
         ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
         LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);

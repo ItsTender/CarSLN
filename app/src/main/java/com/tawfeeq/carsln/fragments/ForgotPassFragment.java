@@ -91,6 +91,9 @@ public class ForgotPassFragment extends Fragment {
         btnSignup =getView().findViewById(R.id.tvSignUpForgot);
 
 
+        if(!fbs.getCurrentFragment().equals("Forgot")) fbs.setCurrentFragment("Forgot");
+
+
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

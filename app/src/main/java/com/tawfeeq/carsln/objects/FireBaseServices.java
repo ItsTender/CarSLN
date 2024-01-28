@@ -41,6 +41,14 @@ public class FireBaseServices {
     //--------------------------------------
 
 
+    public String getCurrentFragment() {
+        return currentFragment;
+    }
+
+    public void setCurrentFragment(String currentFragment) {
+        this.currentFragment = currentFragment;
+    }
+
     public Parcelable getRcListings() {
         return rcListings;
     }

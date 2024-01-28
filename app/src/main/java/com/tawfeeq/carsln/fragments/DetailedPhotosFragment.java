@@ -91,6 +91,10 @@ public class DetailedPhotosFragment extends Fragment {
         Back =getView().findViewById(R.id.DetailedPhotosGoBack);
 
 
+        if(!fbs.getCurrentFragment().equals("DetailedPhotos")) fbs.setCurrentFragment("DetailedPhotos");
+
+
+
         currentCar = fbs.getSelectedCar();
 
 

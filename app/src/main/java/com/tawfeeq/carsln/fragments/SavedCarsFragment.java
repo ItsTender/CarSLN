@@ -110,6 +110,9 @@ public class SavedCarsFragment extends Fragment {
         refreshSaved = getView().findViewById(R.id.RefreshSaved);
 
 
+        if(!fbs.getCurrentFragment().equals("Saved")) fbs.setCurrentFragment("Saved");
+
+
         lst=new ArrayList<CarID>();
 
 

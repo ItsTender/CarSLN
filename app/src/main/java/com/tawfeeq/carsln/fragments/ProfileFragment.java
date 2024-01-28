@@ -117,6 +117,9 @@ public class ProfileFragment extends Fragment {
         logout = getView().findViewById(R.id.linearLayoutlogout);
 
 
+        if(!fbs.getCurrentFragment().equals("Profile")) fbs.setCurrentFragment("Profile");
+
+
         lst=new ArrayList<CarID>();
 
 
@@ -263,7 +266,7 @@ public class ProfileFragment extends Fragment {
             bundle.putString("Email", fbs.getAuth().getCurrentUser().getEmail());
             bundle.putString("Username", fbs.getUser().getUsername());
             bundle.putString("PFP", fbs.getUser().getUserPhoto());
-            bundle.putString("From", "Profile");
+            fbs.setFrom("Profile");
 
             gtn.setArguments(bundle);
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();

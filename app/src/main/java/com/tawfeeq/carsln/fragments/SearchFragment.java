@@ -122,6 +122,9 @@ public class SearchFragment extends Fragment {
         SpinnerArea = getView().findViewById(R.id.SpinnerAreaSearch);
 
 
+        if(!fbs.getCurrentFragment().equals("Search")) fbs.setCurrentFragment("Search");
+
+
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
         else Saved = new ArrayList<String>();
 
