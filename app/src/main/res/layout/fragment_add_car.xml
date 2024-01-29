@@ -25,6 +25,8 @@
                 android:layout_marginEnd="2dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/cardViewowners"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewyear">
@@ -54,6 +56,8 @@
                 android:layout_marginEnd="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardViewbhp"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewgear">
@@ -81,6 +85,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewselllend">
@@ -107,6 +113,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewbhp">
@@ -133,6 +141,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewengine">
@@ -160,6 +170,8 @@
                 android:layout_marginEnd="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardViewyear"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
@@ -182,6 +194,8 @@
                 android:layout_marginEnd="2dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/cardViewgear"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
@@ -203,6 +217,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewtestmonth">
@@ -223,6 +239,8 @@
                 android:layout_marginTop="90dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -243,6 +261,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewman">
@@ -263,6 +283,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewkm">
@@ -283,6 +305,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewcolor">
@@ -305,6 +329,8 @@
                 android:layout_marginEnd="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardViewtestmonth"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewlocation">
@@ -327,6 +353,8 @@
                 android:layout_marginEnd="2dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/cardViewtestyear"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewlocation">
@@ -347,6 +375,8 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewprice">

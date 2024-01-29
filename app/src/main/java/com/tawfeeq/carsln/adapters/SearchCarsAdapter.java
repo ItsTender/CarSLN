@@ -186,7 +186,7 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
 
     class SearchCarsHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtCar,txtHP,txtYear,txtKilo,txtPrice;
+        private TextView txtCar,txtHP,txtYear,txtKilo,txtPrice,txtOwners;
         private ImageView ivCar;// shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
         private ImageView ivSaved;
         public SearchCarsHolder(@NonNull View itemView) {
@@ -194,6 +194,7 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
 
             txtCar= itemView.findViewById(R.id.tvtxtCarName);
             txtHP= itemView.findViewById(R.id.tvtxtHP);
+            txtOwners = itemView.findViewById(R.id.tvtxtOwners);
             txtYear= itemView.findViewById(R.id.tvtxtYear);
             txtKilo = itemView.findViewById(R.id.tvtxtKilometre);
             txtPrice= itemView.findViewById(R.id.tvtxtPrice);
@@ -217,6 +218,13 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
             txtKilo.setText(formatter.format(car.getKilometre()) + " km");
 
 
+            if(car.getUsers()==1){
+                String Owners= String.valueOf(car.getUsers()); txtOwners.setText(Owners + " Owner");
+            }
+            else {
+                String Owners= String.valueOf(car.getUsers()); txtOwners.setText(Owners + " Owners");
+            }
+
             if(car.getSellLend()==true){
 
                 txtPrice.setText(formatter.format(car.getPrice()) + "₪");
@@ -233,7 +241,6 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
             else {
                 Glide.with(context).load(car.getPhoto()).into(ivCar);
             }
-
 
 
             if(Saved.contains(car.getId())) {

@@ -152,7 +152,6 @@ public class DetailedPhotosFragment extends Fragment {
             public void onClick(View view) {
 
                 Fragment gtn= new DetailedFragment();
-
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.replace(R.id.FrameLayoutMain, gtn);
@@ -161,9 +160,87 @@ public class DetailedPhotosFragment extends Fragment {
             }
         });
 
+        ivFirst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment gtn = new MoreDetailedPhotoFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("ImageNum", 1);
+                gtn.setArguments(bundle);
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+            }
+        });
+
+        ivSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment gtn = new MoreDetailedPhotoFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("ImageNum", 2);
+                gtn.setArguments(bundle);
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+            }
+        });
+
+        ivThird.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment gtn = new MoreDetailedPhotoFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("ImageNum", 3);
+                gtn.setArguments(bundle);
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+            }
+        });
+
+        ivFourth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment gtn = new MoreDetailedPhotoFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("ImageNum", 4);
+                gtn.setArguments(bundle);
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+            }
+        });
+
+        ivFifth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment gtn = new MoreDetailedPhotoFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("ImageNum", 5);
+                gtn.setArguments(bundle);
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.replace(R.id.FrameLayoutMain, gtn);
+                ft.commit();
+            }
+        });
+
     }
 
     private BottomNavigationView getNavigationBar(){
         return ((MainActivity) getActivity()).getBottomNavigationView();
+    }
+
+    private void GoToMoreDetailedPhoto() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new MoreDetailedPhotoFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 }

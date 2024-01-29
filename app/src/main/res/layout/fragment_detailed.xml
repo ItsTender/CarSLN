@@ -160,66 +160,109 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DetailedMan">
 
-            <ImageView
-                android:id="@+id/imageView41"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/baseline_calendar_today_24" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-            <TextView
-                android:id="@+id/DetailedYear"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="Year"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                <LinearLayout
+                    android:id="@+id/linearLayout8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/linearLayout6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView42"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="113dp"
-                android:layout_marginTop="13dp"
-                android:src="@drawable/handowners" />
 
-            <TextView
-                android:id="@+id/DetailedUsers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="140dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="sans-serif"
-                android:text="Owners"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                    <ImageView
+                        android:id="@+id/imageView41"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_calendar_today_24" />
 
-            <ImageView
-                android:id="@+id/imageView43"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="238dp"
-                android:layout_marginTop="7dp"
-                android:src="@drawable/kilometrevector" />
+                    <TextView
+                        android:id="@+id/DetailedYear"
+                        android:layout_width="44dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:text="Year"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/DetailedKilometre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="273dp"
-                android:layout_marginEnd="13dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="sans-serif"
-                android:text="kilometre"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                </LinearLayout>
 
+
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/linearLayout7"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.52">
+
+                    <ImageView
+                        android:id="@+id/imageView42"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/handowners" />
+
+                    <TextView
+                        android:id="@+id/DetailedUsers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Owners"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout6"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView43"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/kilometrevector"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/DetailedKilometre"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/DetailedKilometre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:fontFamily="sans-serif"
+                        android:text="kilometre"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 

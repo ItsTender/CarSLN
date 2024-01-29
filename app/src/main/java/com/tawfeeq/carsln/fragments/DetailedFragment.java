@@ -523,7 +523,11 @@ public class DetailedFragment extends Fragment {
         imageSlider.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemSelected(int i) {
-                if(currentCar.getSecondphoto() == null || currentCar.getSecondphoto().isEmpty() || currentCar.getSecondphoto().equals("")) i=88;
+                if(currentCar.getSecondphoto() == null || currentCar.getSecondphoto().isEmpty() || currentCar.getSecondphoto().equals("")){
+
+                    if(currentCar.getPhoto() == null || currentCar.getPhoto().isEmpty() || currentCar.getPhoto().equals("")) i =1;
+                    else GoToMoreDetailedPhoto();
+                }
                 else GoToDetailedPhotos();
             }
 
@@ -593,6 +597,18 @@ public class DetailedFragment extends Fragment {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void GoToMoreDetailedPhoto(){
+
+        Fragment gtn = new MoreDetailedPhotoFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("ImageNum", 1);
+        gtn.setArguments(bundle);
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.replace(R.id.FrameLayoutMain, gtn);
         ft.commit();
     }
 

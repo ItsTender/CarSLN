@@ -29,6 +29,7 @@ import com.tawfeeq.carsln.fragments.AddCarFragment;
 import com.tawfeeq.carsln.fragments.AllCarsFragment;
 import com.tawfeeq.carsln.fragments.CarSearchListFragment;
 import com.tawfeeq.carsln.fragments.DetailedFragment;
+import com.tawfeeq.carsln.fragments.DetailedPhotosFragment;
 import com.tawfeeq.carsln.fragments.ForYouListFragment;
 import com.tawfeeq.carsln.fragments.LogInFragment;
 import com.tawfeeq.carsln.fragments.ProfileFragment;
@@ -36,6 +37,7 @@ import com.tawfeeq.carsln.fragments.SavedCarsFragment;
 import com.tawfeeq.carsln.fragments.SearchFragment;
 import com.tawfeeq.carsln.fragments.SettingsFragment;
 import com.tawfeeq.carsln.fragments.UserListingsFragment;
+import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.objects.UserProfile;
 
@@ -307,6 +309,12 @@ public class MainActivity extends AppCompatActivity {
                 bnv.setVisibility(View.VISIBLE);
                 fbs.setFrom("");
 
+            }else if(fragment.equals("MoreDetailedPhoto")){
+
+                CarID currentCar = fbs.getSelectedCar();
+                if(currentCar.getSecondphoto() == null || currentCar.getSecondphoto().isEmpty() || currentCar.getSecondphoto().equals("")) GoToDetailed(); // Car Listing only has one Photo.
+                else GoToDetailedPhotos(); // Car Listing more than one Photo.
+
             }else {
 
                 bnv.setSelectedItemId(R.id.market); // Simple, Might turn this into a Stack.....
@@ -315,6 +323,14 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    private void GoToDetailedPhotos() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new DetailedPhotosFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 
     private void GoToFragmentCars() {
@@ -370,6 +386,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new DetailedFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
