@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/material_dynamic_neutral_variant80"
+    app:cardElevation="16dp"
+    android:outlineSpotShadowColor="@color/Blue700"
+    android:outlineAmbientShadowColor="@color/Blue700"
     app:cardPreventCornerOverlap="true"
     android:hapticFeedbackEnabled="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
