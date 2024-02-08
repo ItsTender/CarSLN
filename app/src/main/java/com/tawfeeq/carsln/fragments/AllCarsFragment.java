@@ -188,7 +188,7 @@ public class AllCarsFragment extends Fragment {
                             if (Market != null && fbs.getUser() != null) {
                                 for (i = 0; i < Market.size(); i++) {
                                     CarID car = Market.get(i);
-                                    if (car.getLocation().equals(fbs.getUser().getLocation()))
+                                    if (lstNear.size()<10 && car.getLocation().equals(fbs.getUser().getLocation()))
                                         lstNear.add(car);
                                 }
                             }
@@ -203,7 +203,7 @@ public class AllCarsFragment extends Fragment {
                             if (Market != null && fbs.getUser() != null) {
                                 for (j = 0; j < Market.size(); j++) {
                                     CarID car = Market.get(j);
-                                    if (car.getUsers() < 2 && car.getYear() > 2019) lstNew.add(car);
+                                    if (lstNew.size()<10 && car.getUsers() < 2 && car.getYear() > 2019) lstNew.add(car);
                                 }
                             }
 
@@ -217,7 +217,7 @@ public class AllCarsFragment extends Fragment {
                             if (Market != null && fbs.getUser() != null) {
                                 for (k = 0; k < Market.size(); k++) {
                                     CarID car = Market.get(k);
-                                    if (car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
+                                    if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
                                         lstUsed.add(car);
                                 }
                             }
@@ -274,7 +274,7 @@ public class AllCarsFragment extends Fragment {
                         if(Market!=null && fbs.getUser()!=null) {
                             for (i = 0; i < Market.size(); i++) {
                                 CarID car = Market.get(i);
-                                if (car.getLocation().equals(fbs.getUser().getLocation())) lstNear.add(car);
+                                if (lstNear.size()<10 && car.getLocation().equals(fbs.getUser().getLocation())) lstNear.add(car);
                             }
                         }
 
@@ -288,7 +288,7 @@ public class AllCarsFragment extends Fragment {
                         if(Market!=null && fbs.getUser()!=null) {
                             for (j = 0; j < Market.size(); j++) {
                                 CarID car = Market.get(j);
-                                if (car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
+                                if (lstNew.size()<10 && car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
                             }
                         }
 
@@ -302,7 +302,7 @@ public class AllCarsFragment extends Fragment {
                         if(Market!=null && fbs.getUser()!=null) {
                             for (k = 0; k < Market.size(); k++) {
                                 CarID car = Market.get(k);
-                                if (car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
+                                if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
                                     lstUsed.add(car);
                             }
                         }
@@ -329,7 +329,7 @@ public class AllCarsFragment extends Fragment {
                 if(Market!=null && fbs.getUser()!=null) {
                     for (i = 0; i < Market.size(); i++) {
                         CarID car = Market.get(i);
-                        if (car.getLocation().equals(fbs.getUser().getLocation())) lstNear.add(car);
+                        if (lstNear.size()<10 && car.getLocation().equals(fbs.getUser().getLocation())) lstNear.add(car);
                     }
                 }
 
@@ -343,7 +343,7 @@ public class AllCarsFragment extends Fragment {
                 if(Market!=null && fbs.getUser()!=null) {
                     for (j = 0; j < Market.size(); j++) {
                         CarID car = Market.get(j);
-                        if (car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
+                        if (lstNew.size()<10 && car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
                     }
                 }
 
@@ -357,7 +357,7 @@ public class AllCarsFragment extends Fragment {
                 if(Market!=null && fbs.getUser()!=null) {
                     for (k = 0; k < Market.size(); k++) {
                         CarID car = Market.get(k);
-                        if (car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
+                        if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
                             lstUsed.add(car);
                     }
                 }

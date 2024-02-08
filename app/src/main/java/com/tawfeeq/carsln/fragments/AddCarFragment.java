@@ -116,6 +116,9 @@ public class AddCarFragment extends Fragment {
         SpinnerColor = getView().findViewById(R.id.SpinnerCarColor);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationArea);
 
+        // Navigation Bar Not Visible While Posting a Listing........
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+
 
         if(!fbs.getCurrentFragment().equals("AddCar")) fbs.setCurrentFragment("AddCar");
 

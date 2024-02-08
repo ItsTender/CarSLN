@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         bnv= findViewById(R.id.bottomNavigationView);
         fbs = FireBaseServices.getInstance();
 
+
         fbs.setFrom("");
         fbs.setRcSearch(null);
         fbs.setRcSaved(null);
@@ -94,13 +95,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (item.getItemId() == R.id.addcar) {
                     GoToFragmentAdd();
-                    bnv.setVisibility(View.GONE);
                 }
                 else if (item.getItemId() == R.id.savedcars) {
                     GoToFragmentSaved();
                 }
                 else if (item.getItemId() == R.id.profile){
-                    GoToFragmentProfile();
+                    if(fbs.getFrom().equals("UserListings")) GoToUserListings();
+                    else GoToFragmentProfile();
                 }
 
                 return true;
@@ -284,6 +285,7 @@ public class MainActivity extends AppCompatActivity {
             }else if(fragment.equals("Search")){
 
                 GoToFragmentCarSearchList(); // Simple, Might turn this into a Stack.....
+                bnv.setVisibility(View.VISIBLE);
 
             }
             else if(fragment.equals("Settings") || fragment.equals("UserListings")){

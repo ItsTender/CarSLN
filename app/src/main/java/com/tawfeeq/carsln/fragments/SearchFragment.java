@@ -118,6 +118,9 @@ public class SearchFragment extends Fragment {
         SpinnerMod = getView().findViewById(R.id.SpinnerModelSearch);
         SpinnerArea = getView().findViewById(R.id.SpinnerAreaSearch);
 
+        // Navigation Bar Not Visible While Searching........
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+
 
         if(!fbs.getCurrentFragment().equals("Search")) fbs.setCurrentFragment("Search");
 
@@ -568,13 +571,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 GoToFragmentSearchCar();
-            }
-        });
-
-        ivClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GoToFragmentSearchCar();
+                setNavigationBarVisible();
             }
         });
 
@@ -679,6 +676,7 @@ public class SearchFragment extends Fragment {
 
                             // Goes to the CarSearchList Fragment as Jude wants!!!!
                             GoToFragmentSearchCar();
+                            setNavigationBarVisible();
 
                             loading.dismiss();
                         }
@@ -709,8 +707,8 @@ public class SearchFragment extends Fragment {
         ft.commit();
     }
 
-    private void setNavigationBarCarsMarket() {
-        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
+    private void setNavigationBarVisible() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
     }
 
     public void GoToFragmentSearchCar(){
