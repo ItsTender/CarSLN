@@ -165,7 +165,7 @@ public class DetailedFragment extends Fragment {
             dialog.setContentView(R.layout.dialog_delete_listing);
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
-            dialog.setCancelable(false);
+            dialog.setCancelable(true);
 
             Button btnDelete = dialog.findViewById(R.id.btnConfirmDelete);
             Button btnCancel = dialog.findViewById(R.id.btnCancelDelete);

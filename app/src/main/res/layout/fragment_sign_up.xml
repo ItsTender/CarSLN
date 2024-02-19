@@ -48,6 +48,7 @@
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView101">
@@ -74,6 +75,7 @@
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewusernamesignup">
@@ -100,6 +102,7 @@
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewemailsignup">
@@ -126,6 +129,7 @@
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewpasssignup">
@@ -152,6 +156,7 @@
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewpassconfirmsignup">
@@ -178,6 +183,7 @@
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewphonesignup">
@@ -199,6 +205,7 @@
             android:backgroundTint="@color/Blue700"
             android:text="SIGNUP"
             android:textColor="@color/white"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
@@ -213,6 +220,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Already Got an Account?"
+            android:hapticFeedbackEnabled="true"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"

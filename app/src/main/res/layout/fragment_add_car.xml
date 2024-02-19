@@ -27,6 +27,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewyear">
@@ -58,6 +59,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewgear">
@@ -87,6 +89,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewselllend">
@@ -115,6 +118,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewbhp">
@@ -143,6 +147,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewengine">
@@ -172,6 +177,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
@@ -196,6 +202,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
@@ -218,6 +225,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewtestmonth">
@@ -240,6 +248,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -262,6 +271,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewman">
@@ -284,6 +294,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewkm">
@@ -306,6 +317,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewcolor">
@@ -330,6 +342,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewlocation">
@@ -354,6 +367,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewlocation">
@@ -376,6 +390,7 @@
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewprice">
@@ -387,7 +402,7 @@
                     android:backgroundTint="@color/white"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="Notes (Up To 200 Characters)"
+                    android:hint="Notes (Up To 300 Characters)"
                     android:inputType="textMultiLine"
                     android:minHeight="48dp"
                     android:textColor="@color/black"
@@ -404,6 +419,7 @@
                 android:backgroundTint="@color/Blue700"
                 android:text="Next Step"
                 android:textColor="@color/white"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -444,6 +460,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
+            android:hapticFeedbackEnabled="true"
             android:src="@drawable/arrow_logo" />
 
 

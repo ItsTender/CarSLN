@@ -46,6 +46,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/arrow_logo"
+                    android:hapticFeedbackEnabled="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearance="@style/RoundShape.App.50percent" />

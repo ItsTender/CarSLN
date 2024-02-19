@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="16dp"
-    android:outlineSpotShadowColor="@color/Blue700"
-    android:outlineAmbientShadowColor="@color/Blue700"
-    app:cardPreventCornerOverlap="true"
     android:hapticFeedbackEnabled="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:outlineAmbientShadowColor="@color/Blue700"
+    android:outlineSpotShadowColor="@color/Blue700"
+    app:cardElevation="16dp"
+    app:cardPreventCornerOverlap="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="88dp"
+            android:layout_width="70dp"
             android:layout_height="5dp"
             android:layout_marginTop="10dp"
             android:background="@color/Light_Grey"
@@ -53,6 +53,7 @@
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="16dp"
             android:orientation="vertical"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayoutReset"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,6 +117,7 @@
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="16dp"
             android:orientation="vertical"
+            android:hapticFeedbackEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayoutChange"

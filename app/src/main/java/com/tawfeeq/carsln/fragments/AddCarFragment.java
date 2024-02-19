@@ -20,11 +20,20 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.logging.type.HttpRequest;
 import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.Utils;
+
+import org.json.JSONObject;
+
+import java.net.URI;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -310,7 +319,8 @@ public class AddCarFragment extends Fragment {
                 "V60", "V70", "XC40", "XC60", "XC70", "XC90", "245", "264", "340", "345"};
 
 
-        // Ends ........
+        // Ends .......
+
 
         SpinnerMan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -608,7 +618,7 @@ public class AddCarFragment extends Fragment {
         dialog.setContentView(R.layout.post_alert);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
 
         Button btnClose = dialog.findViewById(R.id.btnConfirmClose);
         Button btnCancel = dialog.findViewById(R.id.btnCancelClose);
@@ -669,8 +679,8 @@ public class AddCarFragment extends Fragment {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(notes.length()>200){
-                    Toast.makeText(getActivity(), "Notes Field Characters are over 200", Toast.LENGTH_SHORT).show();
+                if(notes.length()>300){
+                    Toast.makeText(getActivity(), "Notes Field Characters are over 300", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

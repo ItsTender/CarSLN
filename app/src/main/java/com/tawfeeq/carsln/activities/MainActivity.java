@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
         fbs = FireBaseServices.getInstance();
 
 
+        fbs.setCarList(null);
+        fbs.setSearchList(null);
+        fbs.setLastSearch(null);
+        fbs.setLastFilter("null");
+
         fbs.setFrom("");
         fbs.setRcSearch(null);
         fbs.setRcSaved(null);
@@ -140,12 +145,6 @@ public class MainActivity extends AppCompatActivity {
             loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             loading.setCancelable(false);
             loading.show();
-
-
-            fbs.setCarList(null);
-            fbs.setSearchList(null);
-            fbs.setLastSearch(null);
-            fbs.setLastFilter("null");
 
 
             String str = fbs.getAuth().getCurrentUser().getEmail();
@@ -229,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.post_alert);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
-                dialog.setCancelable(false);
+                dialog.setCancelable(true);
                 dialog.show();
 
                 Button btnClose = dialog.findViewById(R.id.btnConfirmClose);

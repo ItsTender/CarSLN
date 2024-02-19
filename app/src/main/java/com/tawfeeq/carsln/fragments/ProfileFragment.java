@@ -196,7 +196,7 @@ public class ProfileFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_logout);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
 
         Button btnLogout = dialog.findViewById(R.id.btnConfirmLogout);
         Button btnCancel = dialog.findViewById(R.id.btnCancelLogout);

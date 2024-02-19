@@ -39,6 +39,7 @@
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewchooseman">
@@ -76,6 +77,7 @@
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewchoosemod">
@@ -258,6 +260,7 @@
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewoffertype">
@@ -295,6 +298,7 @@
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewAreaSearch">
@@ -329,6 +333,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:contentDescription="@string/Search"
+            android:hapticFeedbackEnabled="true"
             android:text="Show Results"
             android:textColor="@color/white"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
@@ -358,6 +363,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
+            android:hapticFeedbackEnabled="true"
             android:src="@drawable/arrow_logo" />
 
 

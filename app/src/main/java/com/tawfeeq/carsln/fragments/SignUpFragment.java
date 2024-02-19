@@ -149,8 +149,7 @@ public class SignUpFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                                CreateUserProfile(username.toLowerCase(), Name ,phone, location);
-                                LogIn(username, pass);
+                                CreateUserProfile(username.toLowerCase(), pass, Name ,phone, location);
                             } else {
                                 Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
                             }
@@ -165,9 +164,9 @@ public class SignUpFragment extends Fragment {
         });
     }
 
-    private void CreateUserProfile(String name, String username ,String phone, String location) {
+    private void CreateUserProfile(String email, String pass, String username ,String phone, String location) {
 
-        String str = name;
+        String str = email;
         int n = str.indexOf("@");
         String user = str.substring(0,n);
 
@@ -176,11 +175,12 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onSuccess(Void unused) {
                 // creates a User with an Empty Profile Photo / Custom Username / Phone Number .......
+                LogIn(email,pass);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                // Something Goes Wrong
+                Toast.makeText(getActivity(), "Failed To Create User Profile", Toast.LENGTH_SHORT).show();
             }
         });
     }

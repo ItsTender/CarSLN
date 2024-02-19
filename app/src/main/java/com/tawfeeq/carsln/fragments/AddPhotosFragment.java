@@ -47,6 +47,7 @@ public class AddPhotosFragment extends Fragment {
     FireBaseServices fbs;
     String Man, Mod,Transmission,Engine,color,Location,NextTest,Notes;
     Integer Price,Power,Year,Users,Kilometre;
+    int PressedPhoto;
     Boolean selllend;
     Button AddCar, Reset;
     ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto, ivFourthPhoto, ivFifthPhoto, Close;
@@ -187,6 +188,7 @@ public class AddPhotosFragment extends Fragment {
         ivFirstPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PressedPhoto = 1;
                 ImageChooser();
             }
         });
@@ -194,28 +196,44 @@ public class AddPhotosFragment extends Fragment {
         ivSecondPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(FirstPhoto == null)) ImageChooser();
+                if(!(FirstPhoto == null)) {
+
+                    PressedPhoto = 2;
+                    ImageChooser();
+                }
             }
         });
 
         ivThirdPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(SecondPhoto == null)) ImageChooser();
+                if(!(SecondPhoto == null)) {
+
+                    PressedPhoto = 3;
+                    ImageChooser();
+                }
             }
         });
 
         ivFourthPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(ThirdPhoto == null)) ImageChooser();
+                if(!(ThirdPhoto == null)) {
+
+                    PressedPhoto = 4;
+                    ImageChooser();
+                }
             }
         });
 
         ivFifthPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(FourthPhoto == null)) ImageChooser();
+                if(!(FourthPhoto == null)) {
+
+                    PressedPhoto = 5;
+                    ImageChooser();
+                }
             }
         });
 
@@ -240,27 +258,27 @@ public class AddPhotosFragment extends Fragment {
 
             if(resultUri!=null) {
 
-                if(FirstPhoto == null){
+                if(FirstPhoto == null || PressedPhoto==1){
 
                     ivFirstPhoto.setImageURI(resultUri);
                     UploadFirstPhoto(resultUri);
 
-                }else if (SecondPhoto == null){
+                }else if (SecondPhoto == null || PressedPhoto==2){
 
                     ivSecondPhoto.setImageURI(resultUri);
                     UploadSecondPhoto(resultUri);
 
-                }else if(ThirdPhoto == null){
+                }else if(ThirdPhoto == null || PressedPhoto==3){
 
                     ivThirdPhoto.setImageURI(resultUri);
                     UploadThirdPhoto(resultUri);
 
-                }else if(FourthPhoto == null){
+                }else if(FourthPhoto == null || PressedPhoto==4){
 
                     ivFourthPhoto.setImageURI(resultUri);
                     UploadFourthPhoto(resultUri);
 
-                }else if(FifthPhoto == null){
+                }else if(FifthPhoto == null || PressedPhoto==5){
 
                     ivFifthPhoto.setImageURI(resultUri);
                     UploadFifthPhoto(resultUri);

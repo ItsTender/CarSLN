@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:outlineSpotShadowColor="@color/black"
     android:outlineAmbientShadowColor="@color/black"
+    android:hapticFeedbackEnabled="true"
     android:layout_margin="12dp"
     android:background="@color/white">
 

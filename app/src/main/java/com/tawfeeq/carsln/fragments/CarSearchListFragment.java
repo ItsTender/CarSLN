@@ -378,7 +378,7 @@ public class CarSearchListFragment extends Fragment {
 
                                 String item = fbs.getLastFilter();
 
-                                if(item.equals("null") || item.equals("Date Created") || item.equals("Sort Search By")){
+                                if(item.equals("null") || item.equals("Date Created")){
 
                                     search = fbs.getCarList();
                                     fbs.setSearchList(search);
@@ -534,7 +534,7 @@ public class CarSearchListFragment extends Fragment {
 
                     search = fbs.getCarList();
                     fbs.setSearchList(search);
-                    fbs.setLastFilter("Name - Alphabetical");
+                    fbs.setLastFilter("Date Created");
                     SettingFrame();
 
                 }
