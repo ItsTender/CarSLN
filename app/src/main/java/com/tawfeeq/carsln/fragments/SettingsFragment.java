@@ -111,7 +111,7 @@ public class SettingsFragment extends Fragment {
 
         utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
-        logout= getView().findViewById(R.id.btnLogout); logout.setVisibility(View.INVISIBLE);
+        logout= getView().findViewById(R.id.btnLogout);
         tvPFP = getView().findViewById(R.id.tvtxtPFPSettings);
         btnChangePhone = getView().findViewById(R.id.btnChangePhone);
         btnChangeUsername = getView().findViewById(R.id.btnChangeUsername);
@@ -423,7 +423,7 @@ public class SettingsFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_logout);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
 
         Button btnLogout = dialog.findViewById(R.id.btnConfirmLogout);
         Button btnCancel = dialog.findViewById(R.id.btnCancelLogout);
@@ -433,8 +433,8 @@ public class SettingsFragment extends Fragment {
             public void onClick(View view) {
                 fbs.getAuth().signOut();
                 fbs.setMarketList(null);
-                setNavigationBarGone();
                 GoToLogIn();
+                setNavigationBarGone();
                 dialog.dismiss();
             }
         });

@@ -337,7 +337,7 @@ public class CarSearchListFragment extends Fragment {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -345,8 +345,6 @@ public class CarSearchListFragment extends Fragment {
 
                     }
                     else { // The User Has no Internet Connection!
-                        search = new ArrayList<CarID>();
-                        SettingFrame();
                         refreshSearch.setRefreshing(false);
                     }
 
@@ -497,8 +495,6 @@ public class CarSearchListFragment extends Fragment {
                         refreshSearch.setRefreshing(false);
 
                     }else {// The User Has no Internet Connection!
-                        search = new ArrayList<CarID>();
-                        SettingFrame();
                         refreshSearch.setRefreshing(false);
                     }
                 }
@@ -667,7 +663,6 @@ public class CarSearchListFragment extends Fragment {
         GoSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(rc.getScrollState());
                 GoBackSearch();
             }
         });
@@ -714,6 +709,7 @@ public class CarSearchListFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SearchFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
 

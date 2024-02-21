@@ -15,15 +15,15 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:layout_alignParentBottom="true"
-        app:itemIconSize="27dp"
+        app:itemIconSize="28dp"
         app:menu="@menu/menu_nav"
-        app:itemTextColor="@color/black"
-        app:itemIconTint="@color/black"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
         android:background="@color/white"
         app:itemRippleColor="@color/Shadow"
-        app:itemActiveIndicatorStyle="@style/Theme.Carsln"
         />
 
 </RelativeLayout>

@@ -163,8 +163,8 @@ public class AddPhotosFragment extends Fragment {
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getActivity(), "Car Added to MarketPlace", Toast.LENGTH_SHORT).show();
                         fbs.setMarketList(null);
-                        setNavigationBarVisible();
                         setNavigationCarsMarket();
+                        setNavigationBarVisible();
                         loading.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -326,7 +326,7 @@ public class AddPhotosFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         ft.commit();
     }
 

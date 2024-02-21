@@ -229,20 +229,20 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
-            android:layout_width="180dp"
+            android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:backgroundTint="@color/white"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/Broncos_Navy"
             android:text="Logout"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            android:textColor="@color/Broncos_Navy"
+            android:textColor="@color/Blue700"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
+            app:strokeColor="@color/white"
+            app:strokeWidth="1dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

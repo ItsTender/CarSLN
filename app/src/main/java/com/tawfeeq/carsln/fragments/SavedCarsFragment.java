@@ -170,8 +170,6 @@ public class SavedCarsFragment extends Fragment {
                     refreshSaved.setRefreshing(false);
 
                 } else {
-                    lst = new ArrayList<CarID>();
-                    SettingFrame();
                     refreshSaved.setRefreshing(false);
                 }
             }

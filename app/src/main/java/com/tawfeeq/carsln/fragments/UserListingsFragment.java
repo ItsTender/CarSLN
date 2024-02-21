@@ -162,8 +162,6 @@ public class UserListingsFragment extends Fragment {
                     refreshUserListings.setRefreshing(false);
 
                 } else {
-                    lst = new ArrayList<CarID>();
-                    SettingFrame();
                     refreshUserListings.setRefreshing(false);
                 }
             }
@@ -201,6 +199,7 @@ public class UserListingsFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         ft.commit();
     }
 

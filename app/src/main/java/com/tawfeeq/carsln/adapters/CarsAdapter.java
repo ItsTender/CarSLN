@@ -2,6 +2,8 @@ package com.tawfeeq.carsln.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +48,24 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
     public void setOnItemClickListener(CarsAdapter.OnItemClickListener Listener) {
         this.CarsListener = Listener;
     }
+
+    public boolean isConnected(){
+
+        try {
+            ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = null;
+            if(manager!=null){
+
+                networkInfo = manager.getActiveNetworkInfo();
+
+            }
+            return networkInfo != null && networkInfo.isConnected();
+
+        }catch (NullPointerException e){
+            return false;
+        }
+    }
+
     public CarsAdapter(Context context, ArrayList<CarID> cars, ArrayList<String> Saved) {
         this.context = context;
         this.cars = cars;
@@ -56,7 +76,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             public void onItemClick(int position) {
 
                 fbs = FireBaseServices.getInstance();
-                if(cars.get(position)!=null) {
+                if(isConnected() && cars.get(position)!=null) {
                     Fragment gtn = new DetailedFragment();
                     //Bundle bundle = new Bundle();
 
@@ -88,7 +108,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
                     //gtn.setArguments(bundle);
                     FragmentTransaction ft = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                     ft.replace(R.id.FrameLayoutMain, gtn);
                     ft.commit();
                 }
@@ -124,49 +144,51 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             @Override
             public void onClick(View view) {
 
-                fbs= FireBaseServices.getInstance();
+                fbs = FireBaseServices.getInstance();
 
                 String str1 = fbs.getAuth().getCurrentUser().getEmail();
                 int n1 = str1.indexOf("@");
-                String user1 = str1.substring(0,n1);
+                String user1 = str1.substring(0, n1);
 
                 final Boolean[] isFound = new Boolean[1];
 
-                if(Saved.contains(cars.get(position).getId())) {
-                    isFound[0] = true;
-                }
-                else{
-                    isFound[0] = false;
-                }
+                if (isConnected() && cars.get(position) != null) {
 
-                if(fbs.getUser()!=null) {
-                    if (isFound[0]) {
-                        Saved.remove(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
+                    if (Saved.contains(cars.get(position).getId())) {
+                        isFound[0] = true;
+                    } else {
+                        isFound[0] = false;
                     }
-                    if (!isFound[0]) {
-                        Saved.add(cars.get(position).getId());
-                        holder.ivSaved.setImageResource(R.drawable.cars_saved_filled);
-                    }
-                    fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            if (isFound[0]) {
-                                holder.ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
-                                fbs.getUser().setSavedCars(Saved);
-                                isFound[0] = false;
-                            } else {
-                                holder.ivSaved.setImageResource(R.drawable.cars_saved_filled);
-                                fbs.getUser().setSavedCars(Saved);
-                                isFound[0] = true;
+
+                    if (fbs.getUser() != null) {
+                        if (isFound[0]) {
+                            Saved.remove(cars.get(position).getId());
+                            holder.ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
+                        }
+                        if (!isFound[0]) {
+                            Saved.add(cars.get(position).getId());
+                            holder.ivSaved.setImageResource(R.drawable.cars_saved_filled);
+                        }
+                        fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                if (isFound[0]) {
+                                    holder.ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
+                                    fbs.getUser().setSavedCars(Saved);
+                                    isFound[0] = false;
+                                } else {
+                                    holder.ivSaved.setImageResource(R.drawable.cars_saved_filled);
+                                    fbs.getUser().setSavedCars(Saved);
+                                    isFound[0] = true;
+                                }
                             }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, "Couldn't Add/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context, "Couldn't Save/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
                 }
             }
         });

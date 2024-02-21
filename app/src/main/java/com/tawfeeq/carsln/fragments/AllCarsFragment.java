@@ -236,21 +236,11 @@ public class AllCarsFragment extends Fragment {
                     refreshMain.setRefreshing(false);
 
                 }else {
-                    lstNear = new ArrayList<CarID>();
-                    lstNew = new ArrayList<CarID>();
-                    lstUsed = new ArrayList<CarID>();
-                    SettingFrameNearYou();
-                    SettingFrameNewCars();
-                    SettingFrameUsedCars();
                     refreshMain.setRefreshing(false);
                 }
             }
         });
 
-
-
-
-        if(isConnected()) {
 
             if (fbs.getMarketList() == null) {
                 fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -320,6 +310,7 @@ public class AllCarsFragment extends Fragment {
                     }
                 });
             } else {
+
                 Market = fbs.getMarketList();
 
 
@@ -366,11 +357,6 @@ public class AllCarsFragment extends Fragment {
                 // Ends.......................
 
             }
-        } else {
-            fbs.setMarketList(new ArrayList<CarID>());
-            fbs.setCarList(new ArrayList<CarID>());
-            fbs.setSearchList(new ArrayList<CarID>());
-        }
 
 
         tvShowNear.setOnClickListener(new View.OnClickListener() {
@@ -409,6 +395,7 @@ public class AllCarsFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SearchFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
 

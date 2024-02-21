@@ -683,12 +683,16 @@ public class SearchFragment extends Fragment {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Couldn't Complete Search, Please Try Again Later", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     });
                 }else {
+
+                    Toast.makeText(getActivity(), "Network Not Available, Please Try Again Later", Toast.LENGTH_SHORT).show();
+
                     GoToFragmentSearchCar();
+                    setNavigationBarVisible();
                     loading.dismiss();
                 }
             }
@@ -715,6 +719,7 @@ public class SearchFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         ft.commit();
     }
 

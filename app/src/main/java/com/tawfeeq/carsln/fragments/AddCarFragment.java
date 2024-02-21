@@ -627,7 +627,14 @@ public class AddCarFragment extends Fragment {
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 setNavigationBarCarsMarket();
+
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
+
                 setNavigationBarVisible();
                 dialog.dismiss();
             }
@@ -720,6 +727,7 @@ public class AddCarFragment extends Fragment {
 
                 gtn.setArguments(bundle);
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.replace(R.id.FrameLayoutMain, gtn);
                 ft.commit();
 

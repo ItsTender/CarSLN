@@ -105,8 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     GoToFragmentSaved();
                 }
                 else if (item.getItemId() == R.id.profile){
-                    if(fbs.getFrom().equals("UserListings")) GoToUserListings();
-                    else GoToFragmentProfile();
+                    GoToFragmentProfile();
                 }
 
                 return true;
@@ -220,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(fragment.equals("AllCars") || fragment.equals("Login")){
 
-                super.onBackPressed();
+                // Keep App Open!!!!!!!!!!
 
             }else if(fragment.equals("AddCar") || fragment.equals("AddPhotos")){
 
@@ -238,6 +237,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         bnv.setSelectedItemId(R.id.market); // Simple, Might turn this into a Stack.....
+                        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                        ft.commit();
+
                         bnv.setVisibility(View.VISIBLE);
                         dialog.dismiss();
                     }
@@ -255,20 +259,36 @@ public class MainActivity extends AppCompatActivity {
                 if (bnv.getSelectedItemId() == R.id.market) {
                     if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
                     else {
-                        GoToFragmentCars();
+
+                        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                        ft.commit();
                         bnv.setVisibility(View.VISIBLE);
                     }
                 }
                 else if (bnv.getSelectedItemId() == R.id.searchcar){
-                    GoToFragmentCarSearchList();
+
+                    FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
                     bnv.setVisibility(View.VISIBLE);
                 }
                 else if (bnv.getSelectedItemId() == R.id.savedcars) {
-                    GoToFragmentSaved();
+
+                    FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new SavedCarsFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
                     bnv.setVisibility(View.VISIBLE);
                 }
                 else if (bnv.getSelectedItemId() == R.id.profile){
-                    GoToUserListings();
+
+                    FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
                     bnv.setVisibility(View.VISIBLE);
                 }
 
@@ -283,13 +303,21 @@ public class MainActivity extends AppCompatActivity {
 
             }else if(fragment.equals("Search")){
 
-                GoToFragmentCarSearchList(); // Simple, Might turn this into a Stack.....
+                FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
+                // Simple, Might turn this into a Stack.....
                 bnv.setVisibility(View.VISIBLE);
 
             }
             else if(fragment.equals("Settings") || fragment.equals("UserListings")){
 
-                GoToFragmentProfile();
+                FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
+
                 fbs.setFrom("");
 
             }else if(fragment.equals("ViewPhoto")){
@@ -359,6 +387,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AddCarFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
 
@@ -395,6 +424,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ForYouListFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         ft.commit();
     }
 

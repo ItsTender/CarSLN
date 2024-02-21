@@ -14,6 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Car.sln"
+rootProject.name = "CarSLN"
 include(":app")
  

@@ -207,8 +207,6 @@ public class ForYouListFragment extends Fragment {
                     refreshForYou.setRefreshing(false);
 
                 } else {
-                    lst = new ArrayList<CarID>();
-                    SettingFrame();
                     refreshForYou.setRefreshing(false);
                 }
             }
