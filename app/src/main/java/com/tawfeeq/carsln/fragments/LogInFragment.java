@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class LogInFragment extends Fragment {
     FireBaseServices fbs;
     Button btnLog, btnSignup;
     EditText etEmail, etPassword;
+    ImageView Back;
     TextView tvForgot;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -96,10 +98,12 @@ public class LogInFragment extends Fragment {
         etPassword =getView().findViewById(R.id.etPasswordSignIn);
         btnSignup =getView().findViewById(R.id.tvSignUp);
         tvForgot =getView().findViewById(R.id.tvForgot);
+        Back = getView().findViewById(R.id.LoginGoBack);
 
 
         if(!fbs.getCurrentFragment().equals("Login")) fbs.setCurrentFragment("Login");
 
+        setNavigationBarGone();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +116,15 @@ public class LogInFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GoToForgotPass();
+            }
+        });
+
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarCarsMarket();
+                GoToNoUserHome();
+                setNavigationBarVisible();
             }
         });
 
@@ -174,6 +187,14 @@ public class LogInFragment extends Fragment {
         ft.commit();
     }
 
+    private void GoToNoUserHome() {
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+        ft.commit();
+    }
+
     private void GoToForgotPass() {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ForgotPassFragment());
@@ -182,6 +203,10 @@ public class LogInFragment extends Fragment {
 
     private void setNavigationBarVisible() {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private void setNavigationBarGone() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
     }
 
     private void setNavigationBarCarsMarket() {

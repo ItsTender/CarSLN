@@ -17,14 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_alignParentBottom="true"
-        app:itemIconSize="28dp"
+        app:itemIconSize="29dp"
         app:menu="@menu/menu_nav"
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
         android:background="@color/white"
-        app:itemRippleColor="@color/Shadow"
-        />
+        app:itemRippleColor="@color/Shadow"/>
 
 </RelativeLayout>
 

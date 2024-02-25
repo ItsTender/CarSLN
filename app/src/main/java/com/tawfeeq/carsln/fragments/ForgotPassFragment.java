@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 
@@ -29,7 +31,7 @@ public class ForgotPassFragment extends Fragment {
     FireBaseServices fbs;
     Button btnReset, btnSignup;
     TextView tvLog;
-
+    ImageView Back;
     EditText etEmail;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -89,6 +91,7 @@ public class ForgotPassFragment extends Fragment {
         tvLog=getView().findViewById(R.id.tvLoginForgot);
         etEmail=getView().findViewById(R.id.etEmailForgotPass);
         btnSignup =getView().findViewById(R.id.tvSignUpForgot);
+        Back = getView().findViewById(R.id.ForgotPassGoBack);
 
 
         if(!fbs.getCurrentFragment().equals("Forgot")) fbs.setCurrentFragment("Forgot");
@@ -98,6 +101,13 @@ public class ForgotPassFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 GoToSignup();
+            }
+        });
+
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToLoginFragment();
             }
         });
 
@@ -152,6 +162,26 @@ public class ForgotPassFragment extends Fragment {
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SignUpFragment());
         ft.commit();
+    }
+
+    private void GoToNoUserHome() {
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+        ft.commit();
+    }
+
+    private void setNavigationBarVisible() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private void setNavigationBarGone() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+    }
+
+    private void setNavigationBarCarsMarket() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 
 }

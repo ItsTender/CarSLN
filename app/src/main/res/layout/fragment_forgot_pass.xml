@@ -8,9 +8,10 @@
     android:background="@drawable/sln_log">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SLNLogo"
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
             android:text="Reset Password"
             android:textColor="@color/black"
@@ -61,9 +62,9 @@
             android:layout_width="272dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            android:hapticFeedbackEnabled="true"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
-            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView100">
@@ -90,73 +91,104 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="66dp"
             android:backgroundTint="@color/Blue700"
-            android:textColor="@color/white"
-            android:text="RESET"
             android:hapticFeedbackEnabled="true"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
+            android:text="RESET"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewresetpassmail" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewresetpassmail"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
         <TextView
             android:id="@+id/tvLoginForgot"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="66dp"
+            android:layout_marginEnd="163dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
+            android:hapticFeedbackEnabled="true"
             android:text="Remember Your Password?"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:hapticFeedbackEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnResetPass" />
 
 
-        <View
-            android:id="@+id/viewforgot"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="60dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLoginForgot"
-            app:shapeAppearance="@style/RoundShape.App.8percent" />
-
-        <TextView
-            android:id="@+id/tvsignupforgot"
+        <LinearLayout
+            android:id="@+id/linearOR"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginStart="66dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="Don't Have an Account? Create One!"
-            android:textColor="@color/black"
-            android:textSize="15sp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewforgot" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginForgot">
+
+            <View
+                android:id="@+id/viewforgotcont"
+                android:layout_width="120dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvForgot"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+            <TextView
+                android:id="@+id/tvsignuplogin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="OR"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/viewforgot"
+                app:layout_constraintStart_toEndOf="@+id/viewforgotcont"
+                app:layout_constraintTop_toBottomOf="@+id/tvForgot" />
+
+
+            <View
+                android:id="@+id/viewforgot"
+                android:layout_width="120dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvForgot"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/tvSignUpForgot"
             android:layout_width="280dp"
             android:layout_height="60dp"
-            android:layout_marginStart="66dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="65dp"
-            android:layout_marginBottom="51dp"
+            android:layout_marginBottom="81dp"
             android:backgroundTint="@color/white"
+            android:hapticFeedbackEnabled="true"
             android:text="Create New Account"
             android:textColor="@color/black"
-            android:hapticFeedbackEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvsignupforgot"
+            app:layout_constraintTop_toBottomOf="@+id/linearOR"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ForgotPassGoBack"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            android:adjustViewBounds="true"
+            android:hapticFeedbackEnabled="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/arrow_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 

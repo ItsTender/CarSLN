@@ -205,9 +205,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 fbs.getAuth().signOut();
-                fbs.setMarketList(null);
-                GoToLogIn();
-                setNavigationBarGone();
+                GoToNoUserHome();
+                setNavigationBarMarket();
                 dialog.dismiss();
             }
         });
@@ -228,13 +227,16 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void GoToLogIn() {
+    private void GoToNoUserHome() {
 
-        FragmentManager ftm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
+    }
+
+    private void setNavigationBarMarket() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 
     private void setNavigationBarGone() {

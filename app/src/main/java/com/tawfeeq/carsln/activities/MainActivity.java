@@ -32,6 +32,9 @@ import com.tawfeeq.carsln.fragments.DetailedFragment;
 import com.tawfeeq.carsln.fragments.DetailedPhotosFragment;
 import com.tawfeeq.carsln.fragments.ForYouListFragment;
 import com.tawfeeq.carsln.fragments.LogInFragment;
+import com.tawfeeq.carsln.fragments.NoUserHomeFragment;
+import com.tawfeeq.carsln.fragments.NoUserProfileFragment;
+import com.tawfeeq.carsln.fragments.NoUserSavedFragment;
 import com.tawfeeq.carsln.fragments.ProfileFragment;
 import com.tawfeeq.carsln.fragments.SavedCarsFragment;
 import com.tawfeeq.carsln.fragments.SearchFragment;
@@ -83,8 +86,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
 
-            bnv.setVisibility(View.GONE);
-            GoToLogin();
+            bnv.setSelectedItemId(R.id.market);
+            bnv.setVisibility(View.VISIBLE);
+            setNoAccount();
         }
 
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -93,19 +97,23 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 if (item.getItemId() == R.id.market) {
-                    GoToFragmentCars();
+                    if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentCars();
+                    else GoToNoUserHomePage();
                 }
                 else if (item.getItemId() == R.id.searchcar){
                     GoToFragmentCarSearchList();
                 }
                 else if (item.getItemId() == R.id.addcar) {
-                    GoToFragmentAdd();
+                    if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentAdd();
+                    else GoToLogin();
                 }
                 else if (item.getItemId() == R.id.savedcars) {
-                    GoToFragmentSaved();
+                    if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentSaved();
+                    else GoToNoUserSaved();
                 }
                 else if (item.getItemId() == R.id.profile){
-                    GoToFragmentProfile();
+                    if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentProfile();
+                    else GoToNoUserProfile();
                 }
 
                 return true;
@@ -113,25 +121,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setCarsMarket() {
-        String str = fbs.getAuth().getCurrentUser().getEmail();
-        int n = str.indexOf("@");
-        String user = str.substring(0,n);
-        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
+    public void setNoAccount() {
 
-                usr = documentSnapshot.toObject(UserProfile.class);
-                fbs.setUser(usr);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-                fbs.setUser(null);
-            }
-        });
     }
 
     public void setSavedGoToMarket() {
@@ -181,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+
         }else {
 
             bnv.setSelectedItemId(R.id.market);
@@ -217,11 +214,17 @@ public class MainActivity extends AppCompatActivity {
         String fragment = fbs.getCurrentFragment();
         if(!fragment.equals("")){
 
-            if(fragment.equals("AllCars") || fragment.equals("Login")){
+            if(fragment.equals("AllCars") || fragment.equals("NoUserHome")){
 
                 // Keep App Open!!!!!!!!!!
 
-            }else if(fragment.equals("AddCar") || fragment.equals("AddPhotos")){
+            } else if(fragment.equals("Login")){
+
+                GoToNoUserHomePage();
+                bnv.setSelectedItemId(R.id.market);
+                bnv.setVisibility(View.VISIBLE);
+
+            } else if(fragment.equals("AddCar") || fragment.equals("AddPhotos")){
 
                 Dialog dialog = new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.post_alert);
@@ -257,14 +260,33 @@ public class MainActivity extends AppCompatActivity {
             }else if(fragment.equals("Detailed")) {
 
                 if (bnv.getSelectedItemId() == R.id.market) {
-                    if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
-                    else {
+                    if(fbs.getAuth().getCurrentUser()!=null) {
 
-                        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
-                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-                        ft.commit();
-                        bnv.setVisibility(View.VISIBLE);
+                        if (fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used"))
+                            GoToForYouList();
+                        else {
+
+                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                            ft.commit();
+                            bnv.setVisibility(View.VISIBLE);
+                        }
+
+                    } else {
+
+                        if (fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used"))
+                            GoToForYouList();
+                        else {
+
+                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                            ft.commit();
+                            bnv.setVisibility(View.VISIBLE);
+
+                        }
+
                     }
                 }
                 else if (bnv.getSelectedItemId() == R.id.searchcar){
@@ -369,6 +391,13 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
+    private void GoToNoUserHomePage() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+        ft.commit();
+    }
+
     private void GoToFragmentSearch() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
@@ -398,10 +427,24 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
+    private void GoToNoUserSaved() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserSavedFragment());
+        ft.commit();
+    }
+
     private void GoToFragmentProfile() {
 
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+        ft.commit();
+    }
+
+    private void GoToNoUserProfile() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserProfileFragment());
         ft.commit();
     }
 

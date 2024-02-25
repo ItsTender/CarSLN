@@ -130,7 +130,7 @@ public class SignUpFragment extends Fragment {
                 String phone = etPhone.getText().toString();
                 String location = SpinnerLocation.getSelectedItem().toString();
                 if (username.trim().isEmpty() || Name.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()||phone.trim().isEmpty()||location.equals("Select Your District")) {
-                    Toast.makeText(getActivity(), "Some Field Are Missing", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

@@ -146,118 +146,117 @@ public class DetailedFragment extends Fragment {
 
         // Get User Profile Photo.....
 
-        if(fbs.getUser()!=null && str.equals(fbs.getAuth().getCurrentUser().getEmail())){
+        if(fbs.getAuth().getCurrentUser()!=null) {
+            if (fbs.getUser() != null && str.equals(fbs.getAuth().getCurrentUser().getEmail())) {
 
-            tvSeller.setText(fbs.getUser().getUsername());
+                tvSeller.setText(fbs.getUser().getUsername());
 
-            pfp = fbs.getUser().getUserPhoto();
-            if (pfp == null || pfp.isEmpty()) {
-                ivSeller.setImageResource(R.drawable.slnpfp);
-            } else {
-                Glide.with(getActivity()).load(pfp).into(ivSeller);
-            }
+                pfp = fbs.getUser().getUserPhoto();
+                if (pfp == null || pfp.isEmpty()) {
+                    ivSeller.setImageResource(R.drawable.slnpfp);
+                } else {
+                    Glide.with(getActivity()).load(pfp).into(ivSeller);
+                }
 
-            ivDelete.setVisibility(View.VISIBLE);
-
-
-            // Custom Delete Dialog!
-            Dialog dialog = new Dialog(getActivity());
-            dialog.setContentView(R.layout.dialog_delete_listing);
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
-            dialog.setCancelable(true);
-
-            Button btnDelete = dialog.findViewById(R.id.btnConfirmDelete);
-            Button btnCancel = dialog.findViewById(R.id.btnCancelDelete);
-
-            btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    fbs.getStore().collection("MarketPlace").document(currentCar.getId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getActivity(), "Successfully Deleted Your Car Listing", Toast.LENGTH_SHORT).show();
-                            BottomNavigationView bnv = getNavigationBar();
+                ivDelete.setVisibility(View.VISIBLE);
 
 
-                            if (bnv.getSelectedItemId() == R.id.market) {
-                                if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
-                                else {
+                // Custom Delete Dialog!
+                Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog_delete_listing);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                dialog.setCancelable(true);
+
+                Button btnDelete = dialog.findViewById(R.id.btnConfirmDelete);
+                Button btnCancel = dialog.findViewById(R.id.btnCancelDelete);
+
+                btnDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        fbs.getStore().collection("MarketPlace").document(currentCar.getId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(getActivity(), "Successfully Deleted Your Car Listing", Toast.LENGTH_SHORT).show();
+                                BottomNavigationView bnv = getNavigationBar();
+
+
+                                if (bnv.getSelectedItemId() == R.id.market) {
+                                    if (fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used"))
+                                        GoToForYouList();
+                                    else {
+                                        bnv.setVisibility(View.VISIBLE);
+                                        GoToFragmentCars();
+                                    }
+                                } else if (bnv.getSelectedItemId() == R.id.searchcar) {
                                     bnv.setVisibility(View.VISIBLE);
-                                    GoToFragmentCars();
+                                    GoToFragmentSearch();
+                                } else if (bnv.getSelectedItemId() == R.id.savedcars) {
+                                    bnv.setVisibility(View.VISIBLE);
+                                    GoToFragmentSaved();
+                                } else if (bnv.getSelectedItemId() == R.id.profile) {
+                                    getNavigationBar().setVisibility(View.VISIBLE);
+                                    GoToUserListings();
                                 }
                             }
-                            else if (bnv.getSelectedItemId() == R.id.searchcar){
-                                bnv.setVisibility(View.VISIBLE);
-                                GoToFragmentSearch();
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Couldn't Deleted Your Car Listing, Try Again Later", Toast.LENGTH_SHORT).show();
                             }
-                            else if (bnv.getSelectedItemId() == R.id.savedcars) {
-                                bnv.setVisibility(View.VISIBLE);
-                                GoToFragmentSaved();
-                            }
-                            else if (bnv.getSelectedItemId() == R.id.profile){
-                                getNavigationBar().setVisibility(View.VISIBLE);
-                                GoToUserListings();
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "Couldn't Deleted Your Car Listing, Try Again Later", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                        });
 
-                    dialog.dismiss();
-                }
-            });
-
-            btnCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dialog.dismiss();
-                }
-            });
-
-            ivDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dialog.show();
-                }
-            });
-
-        }
-        else {
-
-            ivDelete.setVisibility(View.INVISIBLE);
-            fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                    usr = documentSnapshot.toObject(UserProfile.class);
-
-                    sellerinfo[0] = documentSnapshot.getString("username");
-                    sellerinfo[1] = documentSnapshot.getString("userPhoto");
-                    sellerinfo[2] = documentSnapshot.getString("phone");
-
-                    tvSeller.setText(documentSnapshot.getString("username"));
-
-                    pfp = documentSnapshot.getString("userPhoto");
-
-                    if (pfp == null || pfp.isEmpty()) {
-                        ivSeller.setImageResource(R.drawable.slnpfp);
-                    } else {
-                        Glide.with(getActivity()).load(pfp).into(ivSeller);
+                        dialog.dismiss();
                     }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
-                    ivSeller.setImageResource(R.drawable.slnpfp);
-                }
-            });
-        }
+                });
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                ivDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.show();
+                    }
+                });
+
+            }
+        } else {
+
+                ivDelete.setVisibility(View.INVISIBLE);
+                fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                        usr = documentSnapshot.toObject(UserProfile.class);
+
+                        sellerinfo[0] = documentSnapshot.getString("username");
+                        sellerinfo[1] = documentSnapshot.getString("userPhoto");
+                        sellerinfo[2] = documentSnapshot.getString("phone");
+
+                        tvSeller.setText(documentSnapshot.getString("username"));
+
+                        pfp = documentSnapshot.getString("userPhoto");
+
+                        if (pfp == null || pfp.isEmpty()) {
+                            ivSeller.setImageResource(R.drawable.slnpfp);
+                        } else {
+                            Glide.with(getActivity()).load(pfp).into(ivSeller);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
+                        ivSeller.setImageResource(R.drawable.slnpfp);
+                    }
+                });
+            }
 
         // Get Profile Photo Ends
 
@@ -270,10 +269,24 @@ public class DetailedFragment extends Fragment {
                 BottomNavigationView bnv = getNavigationBar();
 
                 if (bnv.getSelectedItemId() == R.id.market) {
-                    if(fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used")) GoToForYouList();
-                    else {
-                        getNavigationBar().setVisibility(View.VISIBLE);
-                        GoToFragmentCars();
+                    if(fbs.getAuth().getCurrentUser()!=null) {
+
+                        if (fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used"))
+                            GoToForYouList();
+                        else {
+                            getNavigationBar().setVisibility(View.VISIBLE);
+                            GoToFragmentCars();
+                        }
+
+                    } else {
+
+                        if (fbs.getFrom().equals("Near") || fbs.getFrom().equals("New") || fbs.getFrom().equals("Used"))
+                            GoToForYouList();
+                        else {
+                            getNavigationBar().setVisibility(View.VISIBLE);
+                            GoToNoUserHome();
+                        }
+
                     }
                 }
                 else if (bnv.getSelectedItemId() == R.id.searchcar){
@@ -366,18 +379,18 @@ public class DetailedFragment extends Fragment {
 
 
 
-
         tvSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String str = fbs.getAuth().getCurrentUser().getEmail();
+                if(fbs.getAuth().getCurrentUser()!=null) {
+                    String str = fbs.getAuth().getCurrentUser().getEmail();
+                    if (str.equals(currentCar.getEmail())) {
 
-                if(str.equals(currentCar.getEmail())){
-
-                    getNavigationBar().setVisibility(View.VISIBLE);
-                    GoToProfile();
-                    setNavigationBarProfile();
+                        getNavigationBar().setVisibility(View.VISIBLE);
+                        GoToProfile();
+                        setNavigationBarProfile();
+                    }
                 }
                 else {
 
@@ -390,13 +403,14 @@ public class DetailedFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String str = fbs.getAuth().getCurrentUser().getEmail();
+                if(fbs.getAuth().getCurrentUser()!=null) {
+                    String str = fbs.getAuth().getCurrentUser().getEmail();
+                    if (str.equals(currentCar.getEmail())) {
 
-                if(str.equals(currentCar.getEmail())){
-
-                    getNavigationBar().setVisibility(View.VISIBLE);
-                    GoToProfile();
-                    setNavigationBarProfile();
+                        getNavigationBar().setVisibility(View.VISIBLE);
+                        GoToProfile();
+                        setNavigationBarProfile();
+                    }
                 }
                 else {
 
@@ -408,59 +422,62 @@ public class DetailedFragment extends Fragment {
 
         // Bind the Saved Icon *and* Save/Remove the Car
 
-        String str1 = fbs.getAuth().getCurrentUser().getEmail();
-        int n1 = str1.indexOf("@");
-        String user1 = str1.substring(0,n1);
-        ArrayList<String> Saved;
+        if(fbs.getAuth().getCurrentUser()!=null) {
 
-        if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
-        else Saved = new ArrayList<String>();
+            String str1 = fbs.getAuth().getCurrentUser().getEmail();
+            int n1 = str1.indexOf("@");
+            String user1 = str1.substring(0, n1);
+            ArrayList<String> Saved;
 
-        if(Saved.contains(currentCar.getId())) {
-            ivSaved.setImageResource(R.drawable.saved_logo);
-            isFound = true;
-        }
-        else{
-            ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
-            isFound = false;
-        }
+            if (fbs.getUser() != null) Saved = fbs.getUser().getSavedCars();
+            else Saved = new ArrayList<String>();
 
-        ivSaved.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(fbs.getUser()!=null) {
-                    if (isFound) {
-                        Saved.remove(currentCar.getId());
-                        ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
-                    }
-                    if (!isFound) {
-                        Saved.add(currentCar.getId());
-                        ivSaved.setImageResource(R.drawable.saved_logo);
-                    }
-
-                    fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            if (isFound) {
-                                ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
-                                fbs.getUser().setSavedCars(Saved);
-                                isFound = false;
-                            } else {
-                                ivSaved.setImageResource(R.drawable.saved_logo);
-                                fbs.getUser().setSavedCars(Saved);
-                                isFound = true;
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "Couldn't Add/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
+            if (Saved.contains(currentCar.getId())) {
+                ivSaved.setImageResource(R.drawable.saved_logo);
+                isFound = true;
+            } else {
+                ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
+                isFound = false;
             }
-        });
+
+            ivSaved.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (fbs.getUser() != null) {
+                        if (isFound) {
+                            Saved.remove(currentCar.getId());
+                            ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
+                        }
+                        if (!isFound) {
+                            Saved.add(currentCar.getId());
+                            ivSaved.setImageResource(R.drawable.saved_logo);
+                        }
+
+                        fbs.getStore().collection("Users").document(user1).update("savedCars", Saved).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                if (isFound) {
+                                    ivSaved.setImageResource(R.drawable.saved_logo_unfilled);
+                                    fbs.getUser().setSavedCars(Saved);
+                                    isFound = false;
+                                } else {
+                                    ivSaved.setImageResource(R.drawable.saved_logo);
+                                    fbs.getUser().setSavedCars(Saved);
+                                    isFound = true;
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Couldn't Add/Remove The Car, Try Again Later", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }
+            });
+
+        } else ivSaved.setVisibility(View.INVISIBLE);
 
 
         // Functions Ends......
@@ -550,6 +567,14 @@ public class DetailedFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        ft.commit();
+    }
+
+    private void GoToNoUserHome() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         ft.commit();
     }

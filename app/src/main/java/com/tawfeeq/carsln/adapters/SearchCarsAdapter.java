@@ -138,8 +138,6 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
             }
         });
 
-        // holder.setIsRecyclable(false);
-
         holder.ivSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -265,15 +263,22 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
             }
 
 
-            if(Saved.contains(car.getId())) {
-                ivSaved.setImageResource(R.drawable.bookmark_filled);
-            }
-            else{
-                ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+            fbs = FireBaseServices.getInstance();
+
+            if(fbs.getAuth().getCurrentUser()==null){
+
+                ivSaved.setVisibility(View.INVISIBLE);
+
+            } else {
+
+                if (Saved.contains(car.getId())) {
+                    ivSaved.setImageResource(R.drawable.bookmark_filled);
+                } else {
+                    ivSaved.setImageResource(R.drawable.bookmark_unfilled);
+                }
+
             }
 
         }
-
     }
-
 }

@@ -23,32 +23,30 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.adapters.ForYouCarsAdapter;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
-import com.tawfeeq.carsln.activities.MainActivity;
-import com.tawfeeq.carsln.R;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AllCarsFragment#newInstance} factory method to
+ * Use the {@link NoUserHomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AllCarsFragment extends Fragment {
+public class NoUserHomeFragment extends Fragment {
 
     ImageView ivPFP;
-    RecyclerView rcNear, rcNew, rcUsed;
-    private ForYouCarsAdapter adapterNear, adapterNew, adapterUsed;
+    RecyclerView rcNew, rcUsed;
+    private ForYouCarsAdapter adapterNew, adapterUsed;
     private FireBaseServices fbs;
-    private ArrayList<CarID> Market, lstNear, lstNew, lstUsed;
+    private ArrayList<CarID> Market, lstNew, lstUsed;
     ArrayList<String> Saved;
-    String pfp;
-    TextView tvUsername, tvShowNear, tvShowNew, tvShowUsed;
+    TextView tvShowNew, tvShowUsed;
     CardView mainSearch;
     SwipeRefreshLayout refreshMain;
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,7 +57,7 @@ public class AllCarsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AllCarsFragment() {
+    public NoUserHomeFragment() {
         // Required empty public constructor
     }
 
@@ -69,11 +67,11 @@ public class AllCarsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AllCarsFragment.
+     * @return A new instance of fragment NoUserHomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AllCarsFragment newInstance(String param1, String param2) {
-        AllCarsFragment fragment = new AllCarsFragment();
+    public static NoUserHomeFragment newInstance(String param1, String param2) {
+        NoUserHomeFragment fragment = new NoUserHomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -94,7 +92,7 @@ public class AllCarsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_cars, container, false);
+        return inflater.inflate(R.layout.fragment_no_user_home, container, false);
     }
 
     @Override
@@ -102,46 +100,26 @@ public class AllCarsFragment extends Fragment {
         super.onStart();
 
         fbs = FireBaseServices.getInstance();
-        ivPFP = getView().findViewById(R.id.imageViewProfilePhotoAllCars);
-        tvUsername = getView().findViewById(R.id.tvUsernameMain);
-        rcNear =getView().findViewById(R.id.RecyclerCarsNearYou);
+        ivPFP = getView().findViewById(R.id.ivNoAccountHomepfp);
         rcNew = getView().findViewById(R.id.RecyclerNewCars);
         rcUsed = getView().findViewById(R.id.RecyclerUsedCars);
-        mainSearch =getView().findViewById(R.id.cardViewsearchMain);
-        refreshMain = getView().findViewById(R.id.RefreshMain);
-        tvShowNear = getView().findViewById(R.id.textViewMoreCarsNearYou);
+        mainSearch =getView().findViewById(R.id.cardViewsearchNoAccountHome);
+        refreshMain = getView().findViewById(R.id.RefreshNoAccountHome);
         tvShowNew = getView().findViewById(R.id.textViewMoreNewCars);
         tvShowUsed =getView().findViewById(R.id.textViewMoreUsedCars);
 
 
-        if(!fbs.getCurrentFragment().equals("AllCars")) fbs.setCurrentFragment("AllCars");
+        if(!fbs.getCurrentFragment().equals("NoUserHome")) fbs.setCurrentFragment("NoUserHome");
 
 
         Market = new ArrayList<CarID>();
-
-
-        if(fbs.getUser()!=null) {
-            Saved = fbs.getUser().getSavedCars();
-            tvUsername.setText(fbs.getUser().getUsername());
-        }
-        else Saved = new ArrayList<String>();
+        Saved = new ArrayList<String>();
 
 
         if (fbs.getCarList() == null) {
             ArrayList<CarID> search = fbs.getMarketList();
             fbs.setCarList(search);
             fbs.setSearchList(search);
-        }
-
-
-        if(fbs.getUser()!=null) {
-
-            pfp = fbs.getUser().getUserPhoto();
-            if (pfp == null || pfp.isEmpty()) {
-                ivPFP.setImageResource(R.drawable.slnpfp);
-            } else {
-                Glide.with(getActivity()).load(pfp).into(ivPFP);
-            }
         }
 
         mainSearch.setOnClickListener(new View.OnClickListener() {
@@ -182,25 +160,10 @@ public class AllCarsFragment extends Fragment {
                             fbs.setMarketList(Market);
 
 
-                            // Cars Near You Car List
-                            lstNear = new ArrayList<CarID>();
-                            int i;
-                            if (Market != null && fbs.getUser() != null) {
-                                for (i = 0; i < Market.size(); i++) {
-                                    CarID car = Market.get(i);
-                                    if (lstNear.size()<10 && car.getLocation().equals(fbs.getUser().getLocation()))
-                                        lstNear.add(car);
-                                }
-                            }
-
-                            SettingFrameNearYou();
-                            // Ends.......................
-
-
                             // New Cars Car List
                             lstNew = new ArrayList<CarID>();
                             int j;
-                            if (Market != null && fbs.getUser() != null) {
+                            if (Market != null) {
                                 for (j = 0; j < Market.size(); j++) {
                                     CarID car = Market.get(j);
                                     if (lstNew.size()<10 && car.getUsers() < 2 && car.getYear() > 2019) lstNew.add(car);
@@ -214,7 +177,7 @@ public class AllCarsFragment extends Fragment {
                             // Used Cars Car List
                             lstUsed = new ArrayList<CarID>();
                             int k;
-                            if (Market != null && fbs.getUser() != null) {
+                            if (Market != null) {
                                 for (k = 0; k < Market.size(); k++) {
                                     CarID car = Market.get(k);
                                     if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
@@ -242,132 +205,93 @@ public class AllCarsFragment extends Fragment {
         });
 
 
-            if (fbs.getMarketList() == null) {
-                fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
+        if (fbs.getMarketList() == null) {
+            fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
 
-                            CarID car = dataSnapshot.toObject(CarID.class);
-                            car.setCarPhoto(dataSnapshot.getString("photo"));
-                            car.setId(dataSnapshot.getId());
-                            Market.add(car);
-
-                        }
-
-                        fbs.setMarketList(Market);
-
-
-                        // Cars Near You Car List
-                        lstNear = new ArrayList<CarID>();
-                        int i;
-                        if(Market!=null && fbs.getUser()!=null) {
-                            for (i = 0; i < Market.size(); i++) {
-                                CarID car = Market.get(i);
-                                if (lstNear.size()<10 && car.getLocation().equals(fbs.getUser().getLocation())) lstNear.add(car);
-                            }
-                        }
-
-                        SettingFrameNearYou();
-                        // Ends.......................
-
-
-                        // New Cars Car List
-                        lstNew = new ArrayList<CarID>();
-                        int j;
-                        if(Market!=null && fbs.getUser()!=null) {
-                            for (j = 0; j < Market.size(); j++) {
-                                CarID car = Market.get(j);
-                                if (lstNew.size()<10 && car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
-                            }
-                        }
-
-                        SettingFrameNewCars();
-                        // Ends.......................
-
-
-                        // Used Cars Car List
-                        lstUsed = new ArrayList<CarID>();
-                        int k;
-                        if(Market!=null && fbs.getUser()!=null) {
-                            for (k = 0; k < Market.size(); k++) {
-                                CarID car = Market.get(k);
-                                if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
-                                    lstUsed.add(car);
-                            }
-                        }
-
-                        SettingFrameUsedCars();
-                        // Ends.......................
+                        CarID car = dataSnapshot.toObject(CarID.class);
+                        car.setCarPhoto(dataSnapshot.getString("photo"));
+                        car.setId(dataSnapshot.getId());
+                        Market.add(car);
 
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
-                        fbs.setMarketList(new ArrayList<CarID>());
 
+                    fbs.setMarketList(Market);
+
+
+                    // New Cars Car List
+                    lstNew = new ArrayList<CarID>();
+                    int j;
+                    if(Market!=null) {
+                        for (j = 0; j < Market.size(); j++) {
+                            CarID car = Market.get(j);
+                            if (lstNew.size()<10 && car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
+                        }
                     }
-                });
-            } else {
 
-                Market = fbs.getMarketList();
+                    SettingFrameNewCars();
+                    // Ends.......................
 
 
-                // Cars Near You Car List
-                lstNear = new ArrayList<CarID>();
-                int i;
-                if(Market!=null && fbs.getUser()!=null) {
-                    for (i = 0; i < Market.size(); i++) {
-                        CarID car = Market.get(i);
-                        if (lstNear.size()<10 && car.getLocation().equals(fbs.getUser().getLocation())) lstNear.add(car);
+                    // Used Cars Car List
+                    lstUsed = new ArrayList<CarID>();
+                    int k;
+                    if(Market!=null) {
+                        for (k = 0; k < Market.size(); k++) {
+                            CarID car = Market.get(k);
+                            if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
+                                lstUsed.add(car);
+                        }
                     }
+
+                    SettingFrameUsedCars();
+                    // Ends.......................
+
                 }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "Couldn't Retrieve MarketPlace Info, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                    fbs.setMarketList(new ArrayList<CarID>());
 
-                SettingFrameNearYou();
-                // Ends.......................
-
-
-                // New Cars Car List
-                lstNew = new ArrayList<CarID>();
-                int j;
-                if(Market!=null && fbs.getUser()!=null) {
-                    for (j = 0; j < Market.size(); j++) {
-                        CarID car = Market.get(j);
-                        if (lstNew.size()<10 && car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
-                    }
                 }
+            });
+        } else {
 
-                SettingFrameNewCars();
-                // Ends.......................
+            Market = fbs.getMarketList();
 
 
-                // Used Cars Car List
-                lstUsed = new ArrayList<CarID>();
-                int k;
-                if(Market!=null && fbs.getUser()!=null) {
-                    for (k = 0; k < Market.size(); k++) {
-                        CarID car = Market.get(k);
-                        if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
-                            lstUsed.add(car);
-                    }
+            // New Cars Car List
+            lstNew = new ArrayList<CarID>();
+            int j;
+            if(Market!=null) {
+                for (j = 0; j < Market.size(); j++) {
+                    CarID car = Market.get(j);
+                    if (lstNew.size()<10 && car.getUsers()<2 && car.getYear()>2019) lstNew.add(car);
                 }
-
-                SettingFrameUsedCars();
-                // Ends.......................
-
             }
 
+            SettingFrameNewCars();
+            // Ends.......................
 
-        tvShowNear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                fbs.setFrom("Near");
-                GoToForYouList();
-                setNavigationBarGone();
+            // Used Cars Car List
+            lstUsed = new ArrayList<CarID>();
+            int k;
+            if(Market!=null) {
+                for (k = 0; k < Market.size(); k++) {
+                    CarID car = Market.get(k);
+                    if (lstUsed.size()<10 && car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
+                        lstUsed.add(car);
+                }
             }
-        });
+
+            SettingFrameUsedCars();
+            // Ends.......................
+
+        }
 
         tvShowNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -403,21 +327,10 @@ public class AllCarsFragment extends Fragment {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.searchcar);
     }
 
-
     private boolean isConnected(){
         return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
-    private void SettingFrameNearYou() {
-
-        // Horizontal RecyclerView for (Cars Near You, New Cars, Used Cars).
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        rcNear.setLayoutManager(linearLayoutManager);
-        rcNear.setHasFixedSize(true);
-        adapterNear = new ForYouCarsAdapter(getActivity(), lstNear, Saved);
-        rcNear.setAdapter(adapterNear);
-    }
 
     private void SettingFrameNewCars() {
 
@@ -462,7 +375,4 @@ public class AllCarsFragment extends Fragment {
     private void setNavigationBarGone() {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
     }
-
 }
-
-

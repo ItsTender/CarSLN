@@ -114,11 +114,9 @@ public class ForYouListFragment extends Fragment {
 
 
         lst=new ArrayList<CarID>();
-
+        Saved = new ArrayList<String>();
 
         if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
-        else Saved = new ArrayList<String>();
-
 
         if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
         else Market = new ArrayList<CarID>();
@@ -167,7 +165,7 @@ public class ForYouListFragment extends Fragment {
                                 // New Cars Car List
                                 lst = new ArrayList<CarID>();
                                 int j;
-                                if (Market != null && fbs.getUser() != null) {
+                                if (Market != null) {
                                     for (j = 0; j < Market.size(); j++) {
                                         CarID car = Market.get(j);
                                         if (car.getUsers() < 2 && car.getYear() > 2019)
@@ -183,7 +181,7 @@ public class ForYouListFragment extends Fragment {
                                 // Used Cars Car List
                                 lst = new ArrayList<CarID>();
                                 int k;
-                                if (Market != null && fbs.getUser() != null) {
+                                if (Market != null) {
                                     for (k = 0; k < Market.size(); k++) {
                                         CarID car = Market.get(k);
                                         if (car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
@@ -238,7 +236,7 @@ public class ForYouListFragment extends Fragment {
                 // New Cars Car List
                 lst = new ArrayList<CarID>();
                 int j;
-                if (Market != null && fbs.getUser() != null) {
+                if (Market != null) {
                     for (j = 0; j < Market.size(); j++) {
                         CarID car = Market.get(j);
                         if (car.getUsers() < 2 && car.getYear() > 2019) lst.add(car);
@@ -254,7 +252,7 @@ public class ForYouListFragment extends Fragment {
                 // Used Cars Car List
                 lst = new ArrayList<CarID>();
                 int k;
-                if (Market != null && fbs.getUser() != null) {
+                if (Market != null) {
                     for (k = 0; k < Market.size(); k++) {
                         CarID car = Market.get(k);
                         if (car.getUsers() >= 1 && car.getYear() < 2020 && car.getYear() > 2008 && car.getPrice() < 100000)
@@ -273,9 +271,19 @@ public class ForYouListFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                GoToCarsMain();
-                setNavigationBarVisible();
-                fbs.setFrom("");
+                if(fbs.getAuth().getCurrentUser()!=null) {
+
+                    GoToCarsMain();
+                    setNavigationBarVisible();
+                    fbs.setFrom("");
+
+                } else {
+
+                    GoToNoUserHome();
+                    setNavigationBarVisible();
+                    fbs.setFrom("");
+
+                }
 
             }
         });
@@ -294,6 +302,13 @@ public class ForYouListFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+        ft.commit();
+    }
+
+    private void GoToNoUserHome() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
         ft.commit();
     }
 

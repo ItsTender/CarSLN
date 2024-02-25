@@ -258,14 +258,22 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
             }
 
 
-            if(Saved.contains(car.getId())) {
-                ivSaved.setImageResource(R.drawable.cars_saved_filled);
-            }
-            else{
-                ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
+            fbs = FireBaseServices.getInstance();
+
+            if(fbs.getAuth().getCurrentUser()==null){
+
+                ivSaved.setVisibility(View.INVISIBLE);
+
+            } else {
+
+                if (Saved.contains(car.getId())) {
+                    ivSaved.setImageResource(R.drawable.cars_saved_filled);
+                } else {
+                    ivSaved.setImageResource(R.drawable.cars_saved_unfilled);
+                }
+
             }
 
         }
-
     }
 }
