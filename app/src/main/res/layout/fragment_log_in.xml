@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LogInFragment"
-    android:background="@drawable/sln_log">
+    android:background="@drawable/sln_log"
+    tools:context=".fragments.LogInFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true">
 
 
@@ -18,6 +18,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="130dp"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="131dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="sans-serif"
             android:text="Login to Your Account"
             android:textColor="@color/black"
@@ -193,13 +194,10 @@
             android:id="@+id/tvSignUp"
             android:layout_width="280dp"
             android:layout_height="60dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="30dp"
             android:backgroundTint="@color/white"
             android:hapticFeedbackEnabled="true"
             android:text="Create New Account"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearOR"
@@ -207,14 +205,15 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/LoginGoBack"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="12dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
             android:adjustViewBounds="true"
             android:hapticFeedbackEnabled="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/arrow_logo"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 

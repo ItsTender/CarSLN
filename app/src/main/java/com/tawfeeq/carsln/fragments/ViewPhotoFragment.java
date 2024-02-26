@@ -43,10 +43,9 @@ import java.util.UUID;
  */
 public class ViewPhotoFragment extends Fragment {
 
-    String Email;
     FireBaseServices fbs;
-    String username, pfp, From;
-    TextView tvUsername;
+    String From;
+    TextView tvUsername, Alert;
     ImageView ivUser, Back, ChangePFP;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -95,14 +94,6 @@ public class ViewPhotoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_view_photo, container, false);
 
-        Bundle bundle =this.getArguments();
-
-
-        Email = bundle.getString("Email");
-        username = bundle.getString("Username");
-        pfp = bundle.getString("PFP");
-
-
         return view;
     }
 
@@ -112,6 +103,7 @@ public class ViewPhotoFragment extends Fragment {
 
         fbs = FireBaseServices.getInstance();
         tvUsername = getView().findViewById(R.id.tvUsernameViewPhoto);
+        Alert = getView().findViewById(R.id.tvViewPhoto);
         ivUser = getView().findViewById(R.id.ivViewProfilePhoto);
         Back = getView().findViewById(R.id.ViewPhotoGoBack);
         ChangePFP = getView().findViewById(R.id.ViewPhotoChangePFP);
@@ -121,88 +113,91 @@ public class ViewPhotoFragment extends Fragment {
         if(!fbs.getCurrentFragment().equals("ViewPhoto")) fbs.setCurrentFragment("ViewPhoto");
 
 
-        if(Email.equals(fbs.getAuth().getCurrentUser().getEmail())){
-
-            ChangePFP.setVisibility(View.VISIBLE);
+        ChangePFP.setVisibility(View.VISIBLE);
 
 
-            // Custom Bottom Dialog FOr Profile Photo Options!
-            BottomSheetDialog sheetDialog = new BottomSheetDialog(getActivity());
-            sheetDialog.setContentView(R.layout.bottom_profile_dialog);
-            sheetDialog.setCancelable(true);
+        // Custom Bottom Dialog FOr Profile Photo Options!
+        BottomSheetDialog sheetDialog = new BottomSheetDialog(getActivity());
+        sheetDialog.setContentView(R.layout.bottom_profile_dialog);
+        sheetDialog.setCancelable(true);
 
-            LinearLayout changepfp = sheetDialog.findViewById(R.id.linearLayoutChange);
-            LinearLayout resetpfp = sheetDialog.findViewById(R.id.linearLayoutReset);
+        LinearLayout changepfp = sheetDialog.findViewById(R.id.linearLayoutChange);
+        LinearLayout resetpfp = sheetDialog.findViewById(R.id.linearLayoutReset);
 
-            changepfp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    sheetDialog.dismiss();
-                    ImageChooser();
-                }
-            });
+        changepfp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheetDialog.dismiss();
+                ImageChooser();
+            }
+        });
 
-            resetpfp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        resetpfp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                    String photo = "";
+                String photo = "";
 
-                    ivUser.setImageResource(R.drawable.slnpfp);
+                String str = fbs.getAuth().getCurrentUser().getEmail();
+                int n = str.indexOf("@");
+                String user = str.substring(0,n);
 
-                    String str = fbs.getAuth().getCurrentUser().getEmail();
-                    int n = str.indexOf("@");
-                    String user = str.substring(0,n);
+                if (fbs.getUser() != null) {
+                    fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
 
-                    if (fbs.getUser() != null) {
-                        fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
+                            Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
+                            fbs.getUser().setUserPhoto(photo);
 
-                                Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
-                                fbs.getUser().setUserPhoto(photo);
+                            if(From.equals("Profile")) {
 
-                                if(From.equals("Profile")) {
-
-                                    GoToProfile();
-                                    setNavVisible();
-                                }
-                                else if(From.equals("Settings")) {
-
-                                    GoToSettings();
-                                    setNavVisible();
-                                }
-
+                                GoToProfile();
+                                setNavVisible();
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
+                            else if(From.equals("Settings")) {
+
+                                GoToSettings();
+                                setNavVisible();
                             }
-                        });
-                    }
 
-                    sheetDialog.dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
-            });
 
-            ChangePFP.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                sheetDialog.dismiss();
+            }
+        });
+
+        ChangePFP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                     sheetDialog.show();
                 }
-            });
+        });
 
 
-        } else ChangePFP.setVisibility(View.INVISIBLE);
 
+        if(fbs.getUser()!=null) {
 
-        tvUsername.setText(username);
+            String username = fbs.getUser().getUsername();
+            String pfp = fbs.getUser().getUserPhoto();
 
-        if (pfp == null || pfp.isEmpty()) {
-            ivUser.setImageResource(R.drawable.slnpfp);
-        } else {
-            Glide.with(getActivity()).load(pfp).into(ivUser);
+            tvUsername.setText(username);
+
+            if (pfp == null || pfp.isEmpty()) {
+                Alert.setVisibility(View.VISIBLE);
+            }
+            else {
+                Alert.setVisibility(View.INVISIBLE);
+                Glide.with(getActivity()).load(pfp).into(ivUser);
+            }
+
         }
 
         Back.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +212,6 @@ public class ViewPhotoFragment extends Fragment {
                     GoToSettings();
                     setNavVisible();
                 }
-                else if(From.equals("Seller")) GoToSellerPage();
 
                 fbs.setFrom("");
             }

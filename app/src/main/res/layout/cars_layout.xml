@@ -30,7 +30,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/CarRes"
-                android:layout_width="220dp"
+                android:layout_width="230dp"
                 android:layout_height="160dp"
                 android:layout_margin="0px"
                 android:adjustViewBounds="true"

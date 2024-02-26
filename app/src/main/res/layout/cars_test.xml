@@ -8,10 +8,7 @@
     android:outlineAmbientShadowColor="@color/black"
     android:hapticFeedbackEnabled="true"
     app:cardCornerRadius="8dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginTop="12dp"
-    android:layout_marginBottom="12dp"
+    android:layout_margin="18dp"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +46,6 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
-
                 <TextView
                     android:id="@+id/tvtxtCarName"
                     android:layout_width="wrap_content"
@@ -64,19 +60,32 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvtxtPrice" />
 
                 <TextView
+                    android:id="@+id/tvtxtHP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Horse Power"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvtxtCarName" />
+
+                <TextView
                     android:id="@+id/tvtxtYear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Year"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvtxtCarName" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvtxtHP" />
 
 
                 <TextView
@@ -84,33 +93,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Owners"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/tvtxtYear"
-                    app:layout_constraintTop_toBottomOf="@+id/tvtxtCarName" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvtxtHP" />
 
                 <TextView
                     android:id="@+id/tvtxtKilometre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Kilometre"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/tvtxtOwners"
-                    app:layout_constraintTop_toBottomOf="@+id/tvtxtCarName" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvtxtHP" />
 
                 <TextView
                     android:id="@+id/tvtxtPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:text="Price₪"
                     android:textColor="@color/black"
                     android:textSize="24sp"

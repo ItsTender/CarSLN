@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 
 /**
@@ -83,6 +84,7 @@ public class NoUserSavedFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
                 GoToLogin();
             }
         });

@@ -686,6 +686,22 @@ public class AddCarFragment extends Fragment {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(HP.length()>4){
+                    Toast.makeText(getActivity(), "Horse Power Field is too Much", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(User.length()>3){
+                    Toast.makeText(getActivity(), "Owners Field is too Much", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(engine.length()>40){
+                    Toast.makeText(getActivity(), "Engine Field Characters have Surpassed their limit", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(Kilo.length()>7){
+                    Toast.makeText(getActivity(), "Kilometre Field is too Much", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(notes.length()>300){
                     Toast.makeText(getActivity(), "Notes Field Characters are over 300", Toast.LENGTH_SHORT).show();
                     return;

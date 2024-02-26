@@ -105,7 +105,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (item.getItemId() == R.id.addcar) {
                     if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentAdd();
-                    else GoToLogin();
+                    else {
+                        bnv.setVisibility(View.GONE);
+                        GoToLogin();
+                    }
                 }
                 else if (item.getItemId() == R.id.savedcars) {
                     if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentSaved();
@@ -221,8 +224,8 @@ public class MainActivity extends AppCompatActivity {
             } else if(fragment.equals("Login")){
 
                 GoToNoUserHomePage();
-                bnv.setSelectedItemId(R.id.market);
                 bnv.setVisibility(View.VISIBLE);
+                bnv.setSelectedItemId(R.id.market);
 
             } else if(fragment.equals("AddCar") || fragment.equals("AddPhotos")){
 

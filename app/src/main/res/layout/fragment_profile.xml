@@ -72,17 +72,34 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewEmail"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Profile Options"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddProfile"
+            tools:ignore="TextSizeCheck" />
+
         <LinearLayout
             android:id="@+id/linearLayoutuserlinstings"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginTop="50dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
             android:hapticFeedbackEnabled="true"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAddProfile">
+            app:layout_constraintTop_toBottomOf="@+id/profile">
 
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -103,12 +120,12 @@
                 android:id="@+id/Userlistings"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
                 android:text="Your Car Listings"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
 
@@ -157,11 +174,11 @@
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif"
                 android:text="Saved Cars"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -212,11 +229,11 @@
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif"
                 android:text="Car Search"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -267,14 +284,28 @@
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif"
                 android:text="Settings"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
+
+        <View
+            android:id="@+id/view21"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutsettings"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
 
         <View
             android:id="@+id/view3"
@@ -287,16 +318,128 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutsettings"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutcontactus"
             app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
+        <TextView
+            android:id="@+id/support"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Support"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view21"
+            tools:ignore="TextSizeCheck" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayouthelp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:hapticFeedbackEnabled="true"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/support">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivHelp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_help_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:fontFamily="sans-serif"
+                android:text="Help"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayouthelp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutcontactus"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:hapticFeedbackEnabled="true"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivContact"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_contact_support_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/contactus"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:fontFamily="sans-serif"
+                android:text="Contact Us"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayoutlogout"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal"
             android:hapticFeedbackEnabled="true"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -321,14 +464,86 @@
                 android:id="@+id/Userlogout"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
                 android:text="Logout"
                 android:textColor="@color/RedLogout"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
+
+
+        <View
+            android:id="@+id/view31"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutlogout"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        <TextView
+            android:id="@+id/tvSLN"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="CarSLN Dev Team"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view31" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/GithubLogo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/github"
+            app:layout_constraintEnd_toStartOf="@+id/TwitterLogo"
+            app:layout_constraintTop_toBottomOf="@+id/tvSLN"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/TwitterLogo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/twitter_x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSLN"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DiscordLogo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/discord"
+            app:layout_constraintStart_toEndOf="@+id/TwitterLogo"
+            app:layout_constraintTop_toBottomOf="@+id/tvSLN"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

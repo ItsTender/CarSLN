@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class SignUpFragment extends Fragment {
     Button btnSignUp;
     EditText etUsername, etEmail, etPassword, etConfirm, etPhone;
     TextView etLog;
+    ImageView Back, Close;
     Spinner SpinnerLocation;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -100,8 +102,9 @@ public class SignUpFragment extends Fragment {
         etConfirm = getView().findViewById(R.id.etPasswordSignupConfirm);
         etPhone = getView().findViewById(R.id.etPhoneSignup);
         btnSignUp = getView().findViewById(R.id.btnSignUp);
-        etLog = getView().findViewById(R.id.tvSignin);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSignup);
+        Back = getView().findViewById(R.id.SignUpGoBack);
+        Close = getView().findViewById(R.id.SignClose);
 
 
         if(!fbs.getCurrentFragment().equals("Signup")) fbs.setCurrentFragment("Signup");
@@ -113,12 +116,22 @@ public class SignUpFragment extends Fragment {
         SpinnerLocation.setAdapter(LocationAdapter);
 
 
-        etLog.setOnClickListener(new View.OnClickListener() {
+        Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoToLogIn();
+                GoToLoginFragment();
             }
         });
+
+        Close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarCarsMarket();
+                GoToNoUserHome();
+                setNavigationBarVisible();
+            }
+        });
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +146,18 @@ public class SignUpFragment extends Fragment {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                if (username.length()<3) {
+                    Toast.makeText(getActivity(), "The Username is too Short", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (username.length()>30) {
+                    Toast.makeText(getActivity(), "The Username is too Long", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (phone.length()!=7) {
+                    Toast.makeText(getActivity(), "a Valid Phone Number Must Contain 7 Digits", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Dialog loading = new Dialog(getActivity());
                 loading.setContentView(R.layout.loading_dialog);
@@ -211,15 +235,23 @@ public class SignUpFragment extends Fragment {
 
     }
 
-    private void GoToFragmentCars() {
-
-        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
-        ft.commit();
-    }
 
     private void setNavigationBarVisible() {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private void GoToLoginFragment() {
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.commit();
+    }
+
+    private void GoToNoUserHome() {
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+        ft.commit();
     }
 
     private void setNavigationBarCarsMarket() {

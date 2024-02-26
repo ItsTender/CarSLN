@@ -1,6 +1,8 @@
 package com.tawfeeq.carsln.fragments;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -39,10 +41,9 @@ public class ProfileFragment extends Fragment {
     ImageView ivPFP;
     String pfp;
     ArrayList<CarID> lst;
-    CarsAdapter Adapter;
     ArrayList<String> Saved;
-    ArrayList<CarID> Market;
     Button addcar;
+    ImageView twitter, github, discord;
     LinearLayout userlistings, saved, search, settings, logout;
 
 
@@ -108,6 +109,41 @@ public class ProfileFragment extends Fragment {
         search = getView().findViewById(R.id.linearLayoutsearch);
         settings = getView().findViewById(R.id.linearLayoutsettings);
         logout = getView().findViewById(R.id.linearLayoutlogout);
+
+
+        // Additional Links..............
+         twitter = getView().findViewById(R.id.TwitterLogo);
+         github = getView().findViewById(R.id.GithubLogo);
+         discord = getView().findViewById(R.id.DiscordLogo);
+
+         twitter.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 String website = "https://twitter.com/TenderOn240HZ";
+                 Uri uri = Uri.parse(website);
+                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
+             }
+         });
+
+         github.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 String website = "https://github.com/ItsTender";
+                 Uri uri = Uri.parse(website);
+                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
+             }
+         });
+
+        discord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String website = "https://discord.com/invite/G3Wsceyh";
+                Uri uri = Uri.parse(website);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
+        });
+
+        //Links End..................................................
 
 
         if(!fbs.getCurrentFragment().equals("Profile")) fbs.setCurrentFragment("Profile");
@@ -184,10 +220,10 @@ public class ProfileFragment extends Fragment {
         ivPFP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) {
-                    setNavigationBarGone();
-                    GoToViewPhoto();
-                }
+
+                setNavigationBarGone();
+                GoToViewPhoto();
+
             }
         });
 
@@ -205,8 +241,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 fbs.getAuth().signOut();
-                GoToNoUserHome();
-                setNavigationBarMarket();
+                GoToNoUserProfile();
                 dialog.dismiss();
             }
         });
@@ -227,10 +262,10 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void GoToNoUserHome() {
+    private void GoToNoUserProfile() {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+        ft.replace(R.id.FrameLayoutMain, new NoUserProfileFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
@@ -256,14 +291,9 @@ public class ProfileFragment extends Fragment {
         if(fbs.getUser()!=null) {
 
             Fragment gtn= new ViewPhotoFragment();
-            Bundle bundle = new Bundle();
 
-            bundle.putString("Email", fbs.getAuth().getCurrentUser().getEmail());
-            bundle.putString("Username", fbs.getUser().getUsername());
-            bundle.putString("PFP", fbs.getUser().getUserPhoto());
             fbs.setFrom("Profile");
 
-            gtn.setArguments(bundle);
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.replace(R.id.FrameLayoutMain, gtn);

@@ -31,7 +31,7 @@ public class ForgotPassFragment extends Fragment {
     FireBaseServices fbs;
     Button btnReset, btnSignup;
     TextView tvLog;
-    ImageView Back;
+    ImageView Back, Close;
     EditText etEmail;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -88,26 +88,36 @@ public class ForgotPassFragment extends Fragment {
 
         fbs=FireBaseServices.getInstance();
         btnReset =getView().findViewById(R.id.btnResetPass);
+        btnSignup = getView().findViewById(R.id.tvSignUp);
         tvLog=getView().findViewById(R.id.tvLoginForgot);
         etEmail=getView().findViewById(R.id.etEmailForgotPass);
-        btnSignup =getView().findViewById(R.id.tvSignUpForgot);
         Back = getView().findViewById(R.id.ForgotPassGoBack);
+        Close = getView().findViewById(R.id.ForgotPassClose);
 
 
         if(!fbs.getCurrentFragment().equals("Forgot")) fbs.setCurrentFragment("Forgot");
 
 
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GoToSignup();
-            }
-        });
-
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GoToLoginFragment();
+            }
+        });
+
+        Close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarCarsMarket();
+                GoToNoUserHome();
+                setNavigationBarVisible();
+            }
+        });
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToSignup();
             }
         });
 

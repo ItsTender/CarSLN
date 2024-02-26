@@ -222,10 +222,8 @@ public class SettingsFragment extends Fragment {
             @Override
             public boolean onLongClick(View view) {
 
-                if(fbs.getUser()!=null && !fbs.getUser().getUserPhoto().equals("")) {
-                    setNavigationBarGone();
-                    GoToViewPhoto();
-                }
+                setNavigationBarGone();
+                GoToViewPhoto();
 
                 return true;
             }
@@ -280,7 +278,14 @@ public class SettingsFragment extends Fragment {
                     if (newusername.equals(fbs.getUser().getUsername())) {
                         return;
                     }
-
+                    if (newusername.length()<3) {
+                        Toast.makeText(getActivity(), "The Username is too Short", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (newusername.length()>30) {
+                        Toast.makeText(getActivity(), "The Username is too Long", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     fbs.getStore().collection("Users").document(user).update("username", newusername).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
@@ -331,7 +336,11 @@ public class SettingsFragment extends Fragment {
 
                 String newphone = etChangePhone.getText().toString();
                 if(newphone.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Phone Number Field is Missing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(newphone.length()!=7) {
+                    Toast.makeText(getActivity(), "a Valid Phone Number Must Contain 7 Digits", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(fbs.getUser()!=null) {
@@ -379,7 +388,6 @@ public class SettingsFragment extends Fragment {
             public void onClick(View view) {
 
                 String photo = "";
-                ivUser.setImageResource(R.drawable.slnpfp);
 
                 if (fbs.getUser() != null) {
                     fbs.getStore().collection("Users").document(user).update("userPhoto", photo).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -432,8 +440,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 fbs.getAuth().signOut();
-                GoToNoUserHome();
-                setNavigationBarMarket();
+                GoToNoUserProfile();
                 dialog.dismiss();
             }
         });
@@ -454,10 +461,10 @@ public class SettingsFragment extends Fragment {
 
     }
 
-    private void GoToNoUserHome() {
+    private void GoToNoUserProfile() {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
+        ft.replace(R.id.FrameLayoutMain, new NoUserProfileFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
@@ -475,14 +482,9 @@ public class SettingsFragment extends Fragment {
         if(fbs.getUser()!=null) {
 
             Fragment gtn= new ViewPhotoFragment();
-            Bundle bundle = new Bundle();
 
-            bundle.putString("Email", fbs.getAuth().getCurrentUser().getEmail());
-            bundle.putString("Username", fbs.getUser().getUsername());
-            bundle.putString("PFP", fbs.getUser().getUserPhoto());
             fbs.setFrom("Settings");
 
-            gtn.setArguments(bundle);
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.replace(R.id.FrameLayoutMain, gtn);

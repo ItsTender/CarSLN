@@ -147,6 +147,7 @@ public class DetailedFragment extends Fragment {
         // Get User Profile Photo.....
 
         if(fbs.getAuth().getCurrentUser()!=null) {
+
             if (fbs.getUser() != null && str.equals(fbs.getAuth().getCurrentUser().getEmail())) {
 
                 tvSeller.setText(fbs.getUser().getUsername());
@@ -226,6 +227,38 @@ public class DetailedFragment extends Fragment {
                 });
 
             }
+            else {
+
+                ivDelete.setVisibility(View.INVISIBLE);
+                fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                        usr = documentSnapshot.toObject(UserProfile.class);
+
+                        sellerinfo[0] = documentSnapshot.getString("username");
+                        sellerinfo[1] = documentSnapshot.getString("userPhoto");
+                        sellerinfo[2] = documentSnapshot.getString("phone");
+
+                        tvSeller.setText(documentSnapshot.getString("username"));
+
+                        pfp = documentSnapshot.getString("userPhoto");
+
+                        if (pfp == null || pfp.isEmpty()) {
+                            ivSeller.setImageResource(R.drawable.slnpfp);
+                        } else {
+                            Glide.with(getActivity()).load(pfp).into(ivSeller);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
+                        ivSeller.setImageResource(R.drawable.slnpfp);
+                    }
+                });
+            }
+
         } else {
 
                 ivDelete.setVisibility(View.INVISIBLE);
@@ -259,7 +292,6 @@ public class DetailedFragment extends Fragment {
             }
 
         // Get Profile Photo Ends
-
 
 
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -384,6 +416,7 @@ public class DetailedFragment extends Fragment {
             public void onClick(View view) {
 
                 if(fbs.getAuth().getCurrentUser()!=null) {
+
                     String str = fbs.getAuth().getCurrentUser().getEmail();
                     if (str.equals(currentCar.getEmail())) {
 
@@ -391,11 +424,15 @@ public class DetailedFragment extends Fragment {
                         GoToProfile();
                         setNavigationBarProfile();
                     }
+                    else {
+                        dialogSeller.show();
+                    }
+
                 }
                 else {
-
                     dialogSeller.show();
                 }
+
             }
         });
 
@@ -404,6 +441,7 @@ public class DetailedFragment extends Fragment {
             public void onClick(View view) {
 
                 if(fbs.getAuth().getCurrentUser()!=null) {
+
                     String str = fbs.getAuth().getCurrentUser().getEmail();
                     if (str.equals(currentCar.getEmail())) {
 
@@ -411,11 +449,15 @@ public class DetailedFragment extends Fragment {
                         GoToProfile();
                         setNavigationBarProfile();
                     }
+                    else {
+                        dialogSeller.show();
+                    }
+
                 }
                 else {
-
                     dialogSeller.show();
                 }
+
             }
         });
 

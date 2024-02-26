@@ -103,7 +103,6 @@ public class LogInFragment extends Fragment {
 
         if(!fbs.getCurrentFragment().equals("Login")) fbs.setCurrentFragment("Login");
 
-        setNavigationBarGone();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
