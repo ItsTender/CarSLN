@@ -48,7 +48,7 @@
             android:id="@+id/linearLayoutSellerInfo"
             android:layout_width="220dp"
             android:layout_height="60dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -61,10 +61,10 @@
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:backgroundTint="@color/white"
+                android:hapticFeedbackEnabled="true"
                 android:text="Cancel"
                 android:textColor="@color/black"
                 app:shapeAppearance="@style/RoundShape.App.50percent"
-                android:hapticFeedbackEnabled="true"
                 app:strokeColor="@color/black"
                 app:strokeWidth="2dp" />
 
@@ -74,8 +74,8 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="20dp"
                 android:backgroundTint="@color/Blue700"
-                android:text="Logout"
                 android:hapticFeedbackEnabled="true"
+                android:text="Logout"
                 android:textColor="@color/white"
                 app:shapeAppearance="@style/RoundShape.App.50percent" />
 

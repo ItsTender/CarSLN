@@ -47,8 +47,8 @@
             android:layout_width="180dp"
             android:layout_height="120dp"
             android:layout_marginBottom="20dp"
-            app:cardCornerRadius="16dp"
             android:hapticFeedbackEnabled="true"
+            app:cardCornerRadius="16dp"
             app:layout_constraintBottom_toTopOf="@+id/cardView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -74,10 +74,10 @@
             android:layout_height="120dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="12dp"
-            app:cardCornerRadius="16dp"
+            android:layout_marginEnd="221dp"
             android:hapticFeedbackEnabled="true"
-            app:layout_constraintEnd_toStartOf="@+id/cardView4"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
@@ -99,13 +99,13 @@
             android:id="@+id/cardView4"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="221dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="70dp"
-            app:cardCornerRadius="16dp"
             android:hapticFeedbackEnabled="true"
+            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView3"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -128,10 +128,10 @@
             android:layout_height="120dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="12dp"
-            app:cardCornerRadius="16dp"
+            android:layout_marginEnd="221dp"
             android:hapticFeedbackEnabled="true"
-            app:layout_constraintEnd_toStartOf="@+id/cardView6"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
@@ -151,13 +151,13 @@
             android:id="@+id/cardView6"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="221dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="70dp"
-            app:cardCornerRadius="16dp"
             android:hapticFeedbackEnabled="true"
+            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -179,9 +179,9 @@
             android:layout_height="65dp"
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/Blue700"
+            android:hapticFeedbackEnabled="true"
             android:text="Post Listing"
             android:textColor="@color/white"
-            android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView5"

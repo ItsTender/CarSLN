@@ -154,12 +154,11 @@ public class LogInFragment extends Fragment {
                                 // To DO
                                 Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
                                 fbs.setUser(null);
-                                setNewSavedandGoToMaketPlace();
-                                setNavigationBarCarsMarket();
+                                setNewSavedandGoToProfile();
                                 setNavigationBarVisible();
                             } else {
                                 // To DO
-                                Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Login Failed", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -212,8 +211,8 @@ public class LogInFragment extends Fragment {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 
-    private void setNewSavedandGoToMaketPlace(){
-        ((MainActivity) getActivity()).setSavedGoToMarket();
+    private void setNewSavedandGoToProfile(){
+        ((MainActivity) getActivity()).setSavedProfileLogin();
     }
 
 }

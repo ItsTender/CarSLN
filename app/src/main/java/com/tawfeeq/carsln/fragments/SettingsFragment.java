@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.tawfeeq.carsln.objects.FireBaseServices;
@@ -51,12 +53,10 @@ public class SettingsFragment extends Fragment {
 
     Utils utils;
     FireBaseServices fbs;
-    EditText etChangeUsername, etChangePhone, etChangePass;
-    TextView tvPFP;
-    Button logout, btnChangePhone, btnChangeUsername, btnChangeLocation, btnChangePass;
+    RelativeLayout Username, Phone, Location, Password, Logout;
+    TextView tvPFP, tvUsername, tvPhone, tvLocation;
     ImageView ivUser;
     String pfp;
-    Spinner SpinnerLocation;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,37 +111,29 @@ public class SettingsFragment extends Fragment {
 
         utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
-        logout= getView().findViewById(R.id.btnLogout);
         tvPFP = getView().findViewById(R.id.tvtxtPFPSettings);
-        btnChangePhone = getView().findViewById(R.id.btnChangePhone);
-        btnChangeUsername = getView().findViewById(R.id.btnChangeUsername);
-        btnChangePass = getView().findViewById(R.id.btnChangePassword);
-        btnChangeLocation = getView().findViewById(R.id.btnChangeLocation);
-        etChangePhone = getView().findViewById(R.id.etChangePhone);
-        etChangeUsername =getView().findViewById(R.id.etChangeUsername);
-        etChangePass = getView().findViewById(R.id.etChangePassword);
+        tvUsername = getView().findViewById(R.id.tvCurrentUsername);
+        tvPhone = getView().findViewById(R.id.tvCurrentPhone);
+        tvLocation = getView().findViewById(R.id.tvCurrentLocation);
+        Username = getView().findViewById(R.id.Layoutusername);
+        Phone = getView().findViewById(R.id.LayoutPhone);
+        Location = getView().findViewById(R.id.LayoutLocation);
+        Password = getView().findViewById(R.id.LayoutPassword);
+        Logout = getView().findViewById(R.id.Layoutlogout);
+
+
         ivUser = getView().findViewById(R.id.imageViewProfilePhotoSettings);
-        SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSettings);
 
 
         if(!fbs.getCurrentFragment().equals("Settings")) fbs.setCurrentFragment("Settings");
 
 
-        String [] Location = {"Select Your District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        String[] Golan = {"Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        String[] Galil = {"Galil","Golan","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        String[] Haifa = {"Haifa","Golan","Galil","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        String[] Central = {"Central","Golan","Galil","Haifa","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        String[] TelAviv = {"Tel Aviv","Golan","Galil","Haifa","Central","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        String[] Jerusalem = {"Jerusalem","Golan","Galil","Haifa","Central","Tel Aviv","Be'er Sheva","Central Southern","Eilat"};
-        String[] Ber = {"Be'er Sheva","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Central Southern","Eilat"};
-        String[] south = {"Central Southern","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Eilat"};
-        String[] eilat = {"Eilat","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-
-
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
         String user = str.substring(0,n);
+
+
+        // Bind Current Account Info!!!!!!
 
         if(fbs.getUser()!=null) {
 
@@ -155,67 +147,13 @@ public class SettingsFragment extends Fragment {
                 Glide.with(getActivity()).load(pfp).into(ivUser);
             }
 
-            etChangeUsername.setText(fbs.getUser().getUsername());
-            etChangePhone.setText(fbs.getUser().getPhone());
+            tvUsername.setText(fbs.getUser().getUsername());
+            tvPhone.setText(fbs.getUser().getPhone());
+            tvLocation.setText(fbs.getUser().getLocation());
 
-            String area = fbs.getUser().getLocation();
-            if(area.equals("Golan")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Golan);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Galil")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Galil);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Haifa")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Haifa);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Central")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Central);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Tel Aviv")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TelAviv);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Jerusalem")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Jerusalem);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Be'er Sheva")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Ber);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Central Southern")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, south);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-            if(area.equals("Eilat")){
-                ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, eilat);
-                LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-                SpinnerLocation.setAdapter(LocationAdapter);
-            }
-
-        }else {
-
-            ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
-            LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-            SpinnerLocation.setAdapter(LocationAdapter);
         }
 
-        // Get Profile Photo Ends
-
-
-        // Set New Profile Photo.....
+        // Ends................................................
 
 
         ivUser.setOnLongClickListener(new View.OnLongClickListener() {
@@ -229,60 +167,46 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        btnChangeLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String location = SpinnerLocation.getSelectedItem().toString();
-
-                if(location.equals("")) {
-                    Toast.makeText(getActivity(), "Please Choose Your District", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(fbs.getUser()!=null) {
-
-                    if (location.equals(fbs.getUser().getLocation())) {
-                        return;
-                    }
-
-                    fbs.getStore().collection("Users").document(user).update("location", location).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-
-                            Toast.makeText(getActivity(), "Location District Updated", Toast.LENGTH_LONG).show();
-                            fbs.getUser().setLocation(location);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "Couldn't Update Your Location, Try Again Later", Toast.LENGTH_LONG).show();
-                        }
-
-                    });
-                }
-            }
-        });
 
 
 
-        btnChangeUsername.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
+        // Custom Change Username Dialog!
+        Dialog dialogUsername = new Dialog(getActivity());
+        dialogUsername.setContentView(R.layout.change_username_dialog);
+        dialogUsername.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogUsername.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogUsername.setCancelable(true);
+
+        Button ChangeUsername = dialogUsername.findViewById(R.id.btnChangeUsername);
+        EditText etUsername = dialogUsername.findViewById(R.id.etChangeUsername);
+        ImageView ivBack = dialogUsername.findViewById(R.id.UsernameGoBack);
+
+        ChangeUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String newusername = etChangeUsername.getText().toString();
-                if(newusername.trim().isEmpty()) {
+                String newusername = etUsername.getText().toString();
+
+                if (newusername.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Please Enter a Valid Username", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(fbs.getUser()!=null) {
+                if (fbs.getUser() != null) {
 
                     if (newusername.equals(fbs.getUser().getUsername())) {
                         return;
                     }
-                    if (newusername.length()<3) {
+                    if (newusername.length() < 3) {
                         Toast.makeText(getActivity(), "The Username is too Short", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (newusername.length()>30) {
+                    if (newusername.length() > 30) {
                         Toast.makeText(getActivity(), "The Username is too Long", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -292,55 +216,66 @@ public class SettingsFragment extends Fragment {
 
                             Toast.makeText(getActivity(), "Username Updated", Toast.LENGTH_LONG).show();
                             fbs.getUser().setUsername(newusername);
+                            tvUsername.setText(newusername);
+                            dialogUsername.dismiss();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getActivity(), "Couldn't Update Your Username, Try Again Later", Toast.LENGTH_LONG).show();
+                            dialogUsername.dismiss();
                         }
                     });
+
                 }
             }
         });
 
-
-        btnChangePass.setOnClickListener(new View.OnClickListener() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newpass = etChangePass.getText().toString();
-                if(newpass.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Password Field is Missing", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(fbs.getUser()!=null) {
+                dialogUsername.dismiss();
+            }
+        });
 
-                    fbs.getAuth().getCurrentUser().updatePassword(newpass).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getActivity(), "Account Password Updated", Toast.LENGTH_LONG).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "Couldn't Update Your Password, Try Again Later", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
+        Username.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogUsername.show();
             }
         });
 
 
-        btnChangePhone.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
+
+        // Custom Change Phone Dialog!
+        Dialog dialogPhone = new Dialog(getActivity());
+        dialogPhone.setContentView(R.layout.change_phone_dialog);
+        dialogPhone.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogPhone.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogPhone.setCancelable(true);
+
+        Button ChangePhone = dialogPhone.findViewById(R.id.btnChangePhone);
+        EditText etPhone = dialogPhone.findViewById(R.id.etChangePhone);
+        ImageView ivBackPhone = dialogPhone.findViewById(R.id.PhoneGoBack);
+
+        ChangePhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String newphone = etChangePhone.getText().toString();
+                String newphone = etPhone.getText().toString();
+
                 if(newphone.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Phone Number Field is Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(newphone.length()!=7) {
-                    Toast.makeText(getActivity(), "a Valid Phone Number Must Contain 7 Digits", Toast.LENGTH_SHORT).show();
+                if(newphone.length()!=10) {
+                    Toast.makeText(getActivity(), "a Valid Phone Number Must Contain 10 Digits", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(fbs.getUser()!=null) {
@@ -355,16 +290,192 @@ public class SettingsFragment extends Fragment {
 
                             Toast.makeText(getActivity(), "Phone Number Updated", Toast.LENGTH_LONG).show();
                             fbs.getUser().setPhone(newphone);
+                            tvPhone.setText(newphone);
+                            dialogPhone.dismiss();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getActivity(), "Couldn't Update Your Phone Number, Try Again Later", Toast.LENGTH_LONG).show();
+                            dialogPhone.dismiss();
                         }
                     });
+
                 }
             }
         });
+
+        ivBackPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogPhone.dismiss();
+            }
+        });
+
+        Phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogPhone.show();
+            }
+        });
+
+
+
+
+
+
+
+
+
+        // Custom Change Location Dialog!
+        Dialog dialogLocation = new Dialog(getActivity());
+        dialogLocation.setContentView(R.layout.change_location_dialog);
+        dialogLocation.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogLocation.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogLocation.setCancelable(true);
+
+        Button ChangeLocation = dialogLocation.findViewById(R.id.btnChangeLocation);
+        Spinner SpinnerLocation = dialogLocation.findViewById(R.id.SpinnerChangeLocation);
+        ImageView ivBackLocation = dialogLocation.findViewById(R.id.LocationGoBack);
+
+        if(SpinnerLocation.getSelectedItem()==null) {
+            String[] LocationList = {"New Location District", "Golan", "Galil", "Haifa", "Central", "Tel Aviv", "Jerusalem", "Be'er Sheva", "Central Southern", "Eilat"};
+            ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, LocationList);
+            LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerLocation.setAdapter(LocationAdapter);
+        }
+
+        ChangeLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String location = SpinnerLocation.getSelectedItem().toString();
+
+                if(location.equals("New Location District")) {
+                    Toast.makeText(getActivity(), "Please Choose a New Location District", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(fbs.getUser()!=null) {
+
+                    if (location.equals(fbs.getUser().getLocation())) {
+                        return;
+                    }
+
+                    fbs.getStore().collection("Users").document(user).update("location", location).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            Toast.makeText(getActivity(), "Location District Updated", Toast.LENGTH_LONG).show();
+                            fbs.getUser().setLocation(location);
+                            tvLocation.setText(location);
+                            dialogLocation.dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Location, Try Again Later", Toast.LENGTH_LONG).show();
+                            dialogLocation.dismiss();
+                        }
+
+                    });
+
+                }
+            }
+        });
+
+        ivBackLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogLocation.dismiss();
+            }
+        });
+
+        Location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogLocation.show();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+        // Custom Change Location Dialog!
+        Dialog dialogPass = new Dialog(getActivity());
+        dialogPass.setContentView(R.layout.change_password_dialog);
+        dialogPass.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogPass.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogPass.setCancelable(true);
+
+        Button ChangePass = dialogPass.findViewById(R.id.btnChangePass);
+        EditText etPass = dialogPass.findViewById(R.id.etChangePass);
+        EditText etConf = dialogPass.findViewById(R.id.etConfirmPass);
+        ImageView ivBackPass = dialogPass.findViewById(R.id.PasswordGoBack);
+
+        ChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String pass = etPass.getText().toString();
+                String confirm = etConf.getText().toString();
+
+                if (pass.trim().isEmpty() || confirm.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Password Fields Are Missing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!pass.equals(confirm)) {
+                    Toast.makeText(getActivity(), "Password Credentials Do Not Match", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(fbs.getUser()!=null) {
+
+                    fbs.getAuth().getCurrentUser().updatePassword(pass).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(getActivity(), "Password Updated", Toast.LENGTH_LONG).show();
+                            dialogPhone.dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "Couldn't Update Your Password, Try Again Later", Toast.LENGTH_LONG).show();
+                            dialogPass.dismiss();
+                        }
+                    });
+
+                }
+            }
+        });
+
+        ivBackPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogPass.dismiss();
+            }
+        });
+
+        Password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                etPass.setText("");
+                etConf.setText("");
+                dialogPass.show();
+            }
+        });
+
+
+
+
+
+
+
 
 
         // Custom Bottom Dialog FOr Profile Photo Options!
@@ -452,7 +563,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.show();

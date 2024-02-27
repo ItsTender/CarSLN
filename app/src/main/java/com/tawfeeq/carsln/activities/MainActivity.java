@@ -155,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
                     usr = documentSnapshot.toObject(UserProfile.class);
                     fbs.setUser(usr);
 
-                    bnv.setSelectedItemId(R.id.market);
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -183,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
 
         }else {
 
-            bnv.setSelectedItemId(R.id.market);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
@@ -192,6 +190,54 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void setSavedProfileLogin() {
+
+        Dialog loading = new Dialog(MainActivity.this);
+        loading.setContentView(R.layout.loading_dialog);
+        loading.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        loading.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        loading.setCancelable(false);
+        loading.show();
+
+
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String user = str.substring(0, n);
+        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                usr = documentSnapshot.toObject(UserProfile.class);
+                fbs.setUser(usr);
+
+                bnv.setSelectedItemId(R.id.profile);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.commit();
+
+                loading.dismiss();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Toast.makeText(MainActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                fbs.setUser(null);
+
+                bnv.setSelectedItemId(R.id.profile);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+                ft.commit();
+
+                loading.dismiss();
+
+            }
+        });
+
+    }
 
     public boolean isNetworkAvailable(){
 
@@ -211,6 +257,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
+    // Back Button........................................
     @Override
     public void onBackPressed() {
 
@@ -378,6 +430,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+
 
     private void GoToDetailedPhotos() {
 

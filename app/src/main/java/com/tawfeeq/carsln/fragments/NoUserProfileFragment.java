@@ -1,5 +1,7 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.activities.MainActivity;
@@ -23,6 +26,7 @@ public class NoUserProfileFragment extends Fragment {
 
     FireBaseServices fbs;
     Button btn;
+    ImageView twitter, github, discord;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,7 +82,44 @@ public class NoUserProfileFragment extends Fragment {
         fbs = FireBaseServices.getInstance();
         btn = getView().findViewById(R.id.btnConnectLogin);
 
+
         if(!fbs.getCurrentFragment().equals("NoUserProfile")) fbs.setCurrentFragment("NoUserProfile");
+
+
+        // Additional Links..............
+        twitter = getView().findViewById(R.id.TwitterLogo);
+        github = getView().findViewById(R.id.GithubLogo);
+        discord = getView().findViewById(R.id.DiscordLogo);
+
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String website = "https://twitter.com/TenderOn240HZ";
+                Uri uri = Uri.parse(website);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
+        });
+
+        github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String website = "https://github.com/ItsTender";
+                Uri uri = Uri.parse(website);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
+        });
+
+        discord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String website = "https://discord.com/invite/G3Wsceyh";
+                Uri uri = Uri.parse(website);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
+        });
+
+        //Links End..................................................
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -150,16 +150,7 @@ public class ViewPhotoFragment extends Fragment {
                             Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
                             fbs.getUser().setUserPhoto(photo);
 
-                            if(From.equals("Profile")) {
-
-                                GoToProfile();
-                                setNavVisible();
-                            }
-                            else if(From.equals("Settings")) {
-
-                                GoToSettings();
-                                setNavVisible();
-                            }
+                            Alert.setVisibility(View.VISIBLE);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -266,6 +257,7 @@ public class ViewPhotoFragment extends Fragment {
             if(data!=null) resultUri = UCrop.getOutput(data);
 
             if(resultUri!=null) {
+                Alert.setVisibility(View.INVISIBLE);
                 ivUser.setImageURI(resultUri);
                 uploadImageandSave(getActivity(), resultUri);
             }
@@ -319,7 +311,22 @@ public class ViewPhotoFragment extends Fragment {
                         public void onSuccess(Uri uri) {
                             fbs.setSelectedImageURL(uri);
                             if(fbs.getUser() != null) UpdatePFP();
-                            else Toast.makeText(context, "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_SHORT).show();
+                            else {
+
+                                if(fbs.getUser()!=null) {
+                                    String pfp = fbs.getUser().getUserPhoto();
+                                    if (pfp == null || pfp.isEmpty()) {
+                                        Alert.setVisibility(View.VISIBLE);
+                                    } else {
+                                        Alert.setVisibility(View.INVISIBLE);
+                                        Glide.with(getActivity()).load(pfp).into(ivUser);
+                                    }
+                                } else {
+                                    Alert.setVisibility(View.VISIBLE);
+                                }
+
+                                Toast.makeText(context, "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -334,6 +341,19 @@ public class ViewPhotoFragment extends Fragment {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     loading.dismiss();
+
+                    if(fbs.getUser()!=null) {
+                        String pfp = fbs.getUser().getUserPhoto();
+                        if (pfp == null || pfp.isEmpty()) {
+                            Alert.setVisibility(View.VISIBLE);
+                        } else {
+                            Alert.setVisibility(View.INVISIBLE);
+                            Glide.with(getActivity()).load(pfp).into(ivUser);
+                        }
+                    } else {
+                        Alert.setVisibility(View.VISIBLE);
+                    }
+
                     Toast.makeText(context, "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -372,6 +392,19 @@ public class ViewPhotoFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+
+                    if(fbs.getUser()!=null) {
+                        String pfp = fbs.getUser().getUserPhoto();
+                        if (pfp == null || pfp.isEmpty()) {
+                            Alert.setVisibility(View.VISIBLE);
+                        } else {
+                            Alert.setVisibility(View.INVISIBLE);
+                            Glide.with(getActivity()).load(pfp).into(ivUser);
+                        }
+                    } else {
+                        Alert.setVisibility(View.VISIBLE);
+                    }
+
                     Toast.makeText(getActivity(), "Couldn't Update Your Profile Photo, Try Again Later", Toast.LENGTH_LONG).show();
                 }
             });

@@ -16,48 +16,55 @@
         android:background="@color/white">
 
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="70dp"
-            android:layout_height="5dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/Light_Grey"
-            app:circularflow_radiusInDP="100"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardBackgroundColor="@color/white"
+            android:outlineSpotShadowColor="@color/Broncos_Navy"
+            android:outlineAmbientShadowColor="@color/Broncos_Navy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvtxtpfp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="Profile Picture Options"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif"
+                    android:text="Profile Picture Options"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <LinearLayout
             android:id="@+id/linearLayoutChange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="12dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
             android:hapticFeedbackEnabled="true"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayoutReset"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvtxtpfp">
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewChangePFP"
@@ -113,15 +120,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
             android:hapticFeedbackEnabled="true"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayoutChange"
-            app:layout_constraintTop_toBottomOf="@+id/tvtxtpfp">
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewResetPFP"

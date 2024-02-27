@@ -137,15 +137,11 @@ public class ForgotPassFragment extends Fragment {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-
                             Toast.makeText(getActivity(), "Password Reset Email has been Sent, Check Your Inbox", Toast.LENGTH_LONG).show();
-
                         }
                         else
                         {
-
                             Toast.makeText(getActivity(), "Sending Failed, Check the Email Address You Entered", Toast.LENGTH_LONG).show();
-
                         }
                     }
                 });

@@ -40,7 +40,7 @@ public class SignUpFragment extends Fragment {
     FireBaseServices fbs;
     Button btnSignUp;
     EditText etUsername, etEmail, etPassword, etConfirm, etPhone;
-    TextView etLog;
+    TextView tvLog;
     ImageView Back, Close;
     Spinner SpinnerLocation;
 
@@ -102,6 +102,7 @@ public class SignUpFragment extends Fragment {
         etConfirm = getView().findViewById(R.id.etPasswordSignupConfirm);
         etPhone = getView().findViewById(R.id.etPhoneSignup);
         btnSignUp = getView().findViewById(R.id.btnSignUp);
+        tvLog = getView().findViewById(R.id.tvLogin);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationAreaSignup);
         Back = getView().findViewById(R.id.SignUpGoBack);
         Close = getView().findViewById(R.id.SignClose);
@@ -109,11 +110,12 @@ public class SignUpFragment extends Fragment {
 
         if(!fbs.getCurrentFragment().equals("Signup")) fbs.setCurrentFragment("Signup");
 
-
-        String [] Location = {"Select Your District","Golan","Galil","Haifa","Central","Tel Aviv","Jerusalem","Be'er Sheva","Central Southern","Eilat"};
-        ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
-        LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        SpinnerLocation.setAdapter(LocationAdapter);
+        if(SpinnerLocation.getSelectedItem()==null) {
+            String[] Location = {"Select Your District", "Golan", "Galil", "Haifa", "Central", "Tel Aviv", "Jerusalem", "Be'er Sheva", "Central Southern", "Eilat"};
+            ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
+            LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerLocation.setAdapter(LocationAdapter);
+        }
 
 
         Back.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +134,12 @@ public class SignUpFragment extends Fragment {
             }
         });
 
+        tvLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToLoginFragment();
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,8 +162,8 @@ public class SignUpFragment extends Fragment {
                     Toast.makeText(getActivity(), "The Username is too Long", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (phone.length()!=7) {
-                    Toast.makeText(getActivity(), "a Valid Phone Number Must Contain 7 Digits", Toast.LENGTH_SHORT).show();
+                if (phone.length()!=10) {
+                    Toast.makeText(getActivity(), "a Valid Phone Number Must Contain 10 Digits", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -172,10 +180,10 @@ public class SignUpFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(getActivity(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Signup Successful", Toast.LENGTH_SHORT).show();
                                 CreateUserProfile(username.toLowerCase(), pass, Name ,phone, location);
                             } else {
-                                Toast.makeText(getActivity(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Signup Failed", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -209,12 +217,6 @@ public class SignUpFragment extends Fragment {
         });
     }
 
-    private void GoToLogIn() {
-
-        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
-        ft.commit();
-    }
 
     private void LogIn(String user, String password ) {
 
@@ -224,11 +226,10 @@ public class SignUpFragment extends Fragment {
                 if (task.isSuccessful()) {
                     Toast.makeText(getActivity(), "Welcome To CarSLN", Toast.LENGTH_LONG).show();
                     fbs.setUser(null);
-                    setNewSavedandGoToMaketPlace();
-                    setNavigationBarCarsMarket();
+                    setNewSavedandGoToProfile();
                     setNavigationBarVisible();
                 } else {
-                    Toast.makeText(getActivity(), "Log In Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Login Failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -258,8 +259,8 @@ public class SignUpFragment extends Fragment {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 
-    private void setNewSavedandGoToMaketPlace(){
-        ((MainActivity) getActivity()).setSavedGoToMarket();
+    private void setNewSavedandGoToProfile(){
+        ((MainActivity) getActivity()).setSavedProfileLogin();
     }
 
 }
