@@ -42,14 +42,14 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewProfilePhoto"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_marginStart="138dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="138dp"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
             android:hapticFeedbackEnabled="true"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -492,14 +492,14 @@
         <TextView
             android:id="@+id/tvSLN"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="28dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="CarSLN Dev Team"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -508,8 +508,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/GithubLogo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:adjustViewBounds="true"
@@ -521,10 +521,10 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/TwitterLogo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="30dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/twitter_x"
@@ -536,8 +536,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/DiscordLogo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:adjustViewBounds="true"

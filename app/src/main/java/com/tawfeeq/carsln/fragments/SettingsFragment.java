@@ -440,7 +440,7 @@ public class SettingsFragment extends Fragment {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getActivity(), "Password Updated", Toast.LENGTH_LONG).show();
-                            dialogPhone.dismiss();
+                            dialogPass.dismiss();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

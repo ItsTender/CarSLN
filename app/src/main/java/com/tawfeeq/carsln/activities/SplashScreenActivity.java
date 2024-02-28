@@ -34,11 +34,12 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         fbs = FireBaseServices.getInstance();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
 
-                if(fbs.getAuth().getCurrentUser()!=null) {
+        if(fbs.getAuth().getCurrentUser()!=null) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
                     fbs.setCarList(null);
                     fbs.setSearchList(null);
@@ -48,6 +49,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     String str = fbs.getAuth().getCurrentUser().getEmail();
                     int n = str.indexOf("@");
                     String user = str.substring(0, n);
+
                     fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -56,6 +58,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                             fbs.setUser(usr);
                             startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                             finish();
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -65,16 +68,26 @@ public class SplashScreenActivity extends AppCompatActivity {
                             fbs.setUser(null);
                             startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                             finish();
+
                         }
                     });
-                }else {
+
+                }
+            } ,750);
+
+        } else {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
                     startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                     finish();
-                }
 
-            }
-        } ,1600);
+                }
+            }, 1500);
+
+        }
 
     }
 }

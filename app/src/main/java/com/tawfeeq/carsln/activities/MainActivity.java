@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        bnv= findViewById(R.id.bottomNavigationView);
         fbs = FireBaseServices.getInstance();
+        bnv= findViewById(R.id.bottomNavigationView);
 
 
         fbs.setCarList(null);
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     public void setNoAccount() {
@@ -430,6 +431,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    // Ends................................................................
+
+
 
 
 

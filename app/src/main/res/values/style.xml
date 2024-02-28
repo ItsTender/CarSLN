@@ -26,6 +26,10 @@
 
     </style>
 
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/LighterShadow</item>
+    </style>
+
     // Try other Methods......
     <style name="BottomNavigation">
         <item name="android:background">@color/white</item>

@@ -12,6 +12,7 @@
     <color name="Bluegrey"> #BEBEBE </color>
     <color name="Light_Grey"> #BEBEBE </color>
     <color name="Shadow"> #CDCDCD </color>
+    <color name="LighterShadow"> #d3d3d3 </color>
     <color name="RedLogout"> #D00000 </color>
     <color name="WhatsappGreen"> #25D366 </color>
 </resources>
