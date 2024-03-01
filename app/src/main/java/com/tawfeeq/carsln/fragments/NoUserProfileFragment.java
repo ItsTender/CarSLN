@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.activities.MainActivity;
@@ -27,6 +28,7 @@ public class NoUserProfileFragment extends Fragment {
     FireBaseServices fbs;
     Button btn;
     ImageView twitter, github, discord;
+    LinearLayout ContactUs;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,6 +83,7 @@ public class NoUserProfileFragment extends Fragment {
 
         fbs = FireBaseServices.getInstance();
         btn = getView().findViewById(R.id.btnConnectLogin);
+        ContactUs = getView().findViewById(R.id.linearLayoutcontactus);
 
 
         if(!fbs.getCurrentFragment().equals("NoUserProfile")) fbs.setCurrentFragment("NoUserProfile");
@@ -129,6 +132,21 @@ public class NoUserProfileFragment extends Fragment {
             }
         });
 
+        ContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToContactUs();
+            }
+        });
+
+    }
+
+    private void GoToContactUs() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ContactUsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
     }
 
     private void GoToLogin() {
@@ -138,4 +156,5 @@ public class NoUserProfileFragment extends Fragment {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
+
 }

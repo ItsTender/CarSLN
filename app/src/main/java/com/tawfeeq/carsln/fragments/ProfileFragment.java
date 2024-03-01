@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment {
     ArrayList<String> Saved;
     Button addcar;
     ImageView twitter, github, discord;
-    LinearLayout userlistings, saved, search, settings, logout;
+    LinearLayout userlistings, saved, search, settings, logout, contactus;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -109,6 +109,7 @@ public class ProfileFragment extends Fragment {
         search = getView().findViewById(R.id.linearLayoutsearch);
         settings = getView().findViewById(R.id.linearLayoutsettings);
         logout = getView().findViewById(R.id.linearLayoutlogout);
+        contactus = getView().findViewById(R.id.linearLayoutcontactus);
 
 
         // Additional Links..............
@@ -260,6 +261,21 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        contactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToContactUs();
+            }
+        });
+
+    }
+
+    private void GoToContactUs() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ContactUsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
     }
 
     private void GoToNoUserProfile() {

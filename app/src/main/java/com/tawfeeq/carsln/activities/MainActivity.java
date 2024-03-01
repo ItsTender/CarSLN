@@ -251,10 +251,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
             return networkInfo != null && networkInfo.isConnected();
-
-        }catch (NullPointerException e){
+        }
+        catch (NullPointerException e){
             return false;
         }
+
     }
 
 
@@ -421,6 +422,24 @@ public class MainActivity extends AppCompatActivity {
                 CarID currentCar = fbs.getSelectedCar();
                 if(currentCar.getSecondphoto() == null || currentCar.getSecondphoto().isEmpty() || currentCar.getSecondphoto().equals("")) GoToDetailed(); // Car Listing only has one Photo.
                 else GoToDetailedPhotos(); // Car Listing more than one Photo.
+
+            }else if(fragment.equals("ContactUs")){
+
+                if(fbs.getAuth().getCurrentUser()!=null){
+
+                    FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
+
+                } else {
+
+                    FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new NoUserProfileFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
+
+                }
 
             }else {
 

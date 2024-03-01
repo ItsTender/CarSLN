@@ -24,32 +24,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/tvViewPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:fontFamily="sans-serif"
-            android:text="No Profile Photo"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintphotoInfo"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp">
 
         <LinearLayout
             android:id="@+id/viewphotolinear"
             android:layout_width="350dp"
             android:layout_height="30dp"
-            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -86,13 +74,23 @@
             android:id="@+id/ViewPhotoChangePFP"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="25dp"
             android:layout_marginEnd="16dp"
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/baseline_create_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvViewPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:layout_centerInParent="true"
+        android:text="No Profile Photo"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
 </RelativeLayout>

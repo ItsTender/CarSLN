@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             app:cardBackgroundColor="@color/white"
-            android:outlineSpotShadowColor="@color/Broncos_Navy"
-            android:outlineAmbientShadowColor="@color/Broncos_Navy"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -74,7 +74,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/Blue700"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/Blue700"
                 android:outlineSpotShadowColor="@color/Blue700"
@@ -92,6 +92,7 @@
                     android:layout_marginBottom="15dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
+                    app:tint="@color/white"
                     app:srcCompat="@drawable/baseline_insert_photo_24" />
 
             </androidx.cardview.widget.CardView>
@@ -138,7 +139,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/Blue700"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/Blue700"
                 android:outlineSpotShadowColor="@color/Blue700"
@@ -156,6 +157,7 @@
                     android:layout_marginBottom="15dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
+                    app:tint="@color/white"
                     app:srcCompat="@drawable/baseline_person_blue_24" />
 
             </androidx.cardview.widget.CardView>

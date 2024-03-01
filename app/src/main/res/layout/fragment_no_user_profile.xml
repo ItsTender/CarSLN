@@ -346,7 +346,7 @@
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="CarSLN Dev Team"
+            android:text="Follow Us On"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"

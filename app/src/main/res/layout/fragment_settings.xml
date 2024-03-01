@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="65dp"
             android:fontFamily="sans-serif-medium"
             android:text="Edit Account Information"
             android:textColor="@color/black"
