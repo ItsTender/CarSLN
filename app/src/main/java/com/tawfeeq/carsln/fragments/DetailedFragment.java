@@ -23,6 +23,11 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -48,8 +53,9 @@ import java.util.Locale;
 public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
-    TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvSeller, tvEngine, tvLocation, tvTest, tvColor, tvNotes;
-    ImageView  ivSeller, ivSaved, ivBack, ivDelete;
+    TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvEngine, tvLocation, tvTest, tvColor, tvNotes;
+    ImageView  ivSaved, ivBack, ivDelete;
+    Button btnSeller;
     boolean isFound;
     String pfp;
     CarID currentCar;
@@ -113,6 +119,7 @@ public class DetailedFragment extends Fragment {
 
         fbs = FireBaseServices.getInstance();
         imageSlider = getView().findViewById(R.id.image_slider);
+        btnSeller = getView().findViewById(R.id.btnShowSeller);
         tvMan=getView().findViewById(R.id.DetailedMan);
         tvPrice =getView().findViewById(R.id.DetailedPrice);
         tvPower =getView().findViewById(R.id.DetailedHP);
@@ -124,8 +131,6 @@ public class DetailedFragment extends Fragment {
         tvTest = getView().findViewById(R.id.DetailedTestUntil);
         tvColor = getView().findViewById(R.id.DetailedColor);
         tvNotes = getView().findViewById(R.id.DetailedNotes);
-        tvSeller = getView().findViewById(R.id.DetailedUserMail);
-        ivSeller = getView().findViewById(R.id.imageViewSeller);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
         ivSaved = getView().findViewById(R.id.ivSavedCar); //the Saved Icon......
         ivBack =getView().findViewById(R.id.DetailedGoBack); // Goes Back To Where ever the User Was.
@@ -150,15 +155,7 @@ public class DetailedFragment extends Fragment {
 
             if (fbs.getUser() != null && str.equals(fbs.getAuth().getCurrentUser().getEmail())) {
 
-                tvSeller.setText(fbs.getUser().getUsername());
-
-                pfp = fbs.getUser().getUserPhoto();
-                if (pfp == null || pfp.isEmpty()) {
-                    ivSeller.setImageResource(R.drawable.slnpfp);
-                } else {
-                    Glide.with(getActivity()).load(pfp).into(ivSeller);
-                }
-
+                // Show Delete Button.
                 ivDelete.setVisibility(View.VISIBLE);
 
 
@@ -212,6 +209,18 @@ public class DetailedFragment extends Fragment {
                     }
                 });
 
+
+                btnSeller.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        GoToProfile();
+                        setNavigationBarProfile();
+                        getNavigationBar().setVisibility(View.VISIBLE);
+
+                    }
+                });
+
                 btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -229,7 +238,9 @@ public class DetailedFragment extends Fragment {
             }
             else {
 
+                // Make Delete Button not shown........
                 ivDelete.setVisibility(View.INVISIBLE);
+
                 fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -240,58 +251,209 @@ public class DetailedFragment extends Fragment {
                         sellerinfo[1] = documentSnapshot.getString("userPhoto");
                         sellerinfo[2] = documentSnapshot.getString("phone");
 
-                        tvSeller.setText(documentSnapshot.getString("username"));
-
                         pfp = documentSnapshot.getString("userPhoto");
 
-                        if (pfp == null || pfp.isEmpty()) {
-                            ivSeller.setImageResource(R.drawable.slnpfp);
-                        } else {
-                            Glide.with(getActivity()).load(pfp).into(ivSeller);
-                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
-                        ivSeller.setImageResource(R.drawable.slnpfp);
                     }
                 });
+
+                usr.setPhone(sellerinfo[2]);
+                // Custom Seller Page Dialog!
+                BottomSheetDialog dialogSeller = new BottomSheetDialog(getActivity());
+                dialogSeller.setContentView(R.layout.seller_page);
+                dialogSeller.setCancelable(true);
+
+                TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
+                CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
+                CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
+                CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
+                ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
+
+                mail.setText(str);
+
+
+                btnSeller.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        dialogSeller.show();
+
+                    }
+                });
+
+                back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        dialogSeller.dismiss();
+                    }
+                });
+
+                btnCall.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        // only fills in the Phone number in the Phone App....
+                        if(usr!=null) {
+
+                            Intent intent = new Intent(Intent.ACTION_DIAL);
+                            intent.setData(Uri.parse("tel:" + usr.getPhone()));
+                            startActivity(intent);
+
+                        }
+                    }
+                });
+
+                btnSMS.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if(usr!=null) {
+
+                            String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
+                            String phoneNumber = usr.getPhone();
+                            String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri.parse("sms:" + phoneNumber));
+                            intent.putExtra("sms_body",message);
+                            startActivity(intent);
+
+                        }
+                    }
+                });
+
+                btnWhatsapp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if(usr!=null) {
+
+                            String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
+                            String phoneNumber = usr.getPhone();
+                            String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
+                            startActivity(intent);
+
+                        }
+                    }
+                });
+
             }
 
         } else {
 
-                ivDelete.setVisibility(View.INVISIBLE);
-                fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+            // Make Delete Button not shown........
+            ivDelete.setVisibility(View.INVISIBLE);
+            fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                        usr = documentSnapshot.toObject(UserProfile.class);
+                    usr = documentSnapshot.toObject(UserProfile.class);
 
-                        sellerinfo[0] = documentSnapshot.getString("username");
-                        sellerinfo[1] = documentSnapshot.getString("userPhoto");
-                        sellerinfo[2] = documentSnapshot.getString("phone");
+                    sellerinfo[0] = documentSnapshot.getString("username");
+                    sellerinfo[1] = documentSnapshot.getString("userPhoto");
+                    sellerinfo[2] = documentSnapshot.getString("phone");
 
-                        tvSeller.setText(documentSnapshot.getString("username"));
+                    pfp = documentSnapshot.getString("userPhoto");
 
-                        pfp = documentSnapshot.getString("userPhoto");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-                        if (pfp == null || pfp.isEmpty()) {
-                            ivSeller.setImageResource(R.drawable.slnpfp);
-                        } else {
-                            Glide.with(getActivity()).load(pfp).into(ivSeller);
-                        }
+            usr.setPhone(sellerinfo[2]);
+            // Custom Seller Page Dialog!
+            BottomSheetDialog dialogSeller = new BottomSheetDialog(getActivity());
+            dialogSeller.setContentView(R.layout.seller_page);
+            dialogSeller.setCancelable(true);
+
+            TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
+            CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
+            CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
+            CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
+            ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
+
+            mail.setText(str);
+
+
+            btnSeller.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    dialogSeller.show();
+
+                }
+            });
+
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    dialogSeller.dismiss();
+                }
+            });
+
+            btnCall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    // only fills in the Phone number in the Phone App....
+                    if(usr!=null) {
+
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + usr.getPhone()));
+                        startActivity(intent);
+
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
-                        ivSeller.setImageResource(R.drawable.slnpfp);
-                    }
-                });
-            }
+                }
+            });
 
-        // Get Profile Photo Ends
+            btnSMS.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if(usr!=null) {
+
+                        String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
+                        String phoneNumber = usr.getPhone();
+                        String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("sms:" + phoneNumber));
+                        intent.putExtra("sms_body",message);
+                        startActivity(intent);
+
+                    }
+                }
+            });
+
+            btnWhatsapp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if(usr!=null) {
+
+                        String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
+                        String phoneNumber = usr.getPhone();
+                        String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
+                        startActivity(intent);
+
+                    }
+                }
+            });
+
+        }
 
 
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -333,131 +495,6 @@ public class DetailedFragment extends Fragment {
                     getNavigationBar().setVisibility(View.VISIBLE);
                     GoToUserListings();
                 }
-            }
-        });
-
-
-        usr.setPhone(sellerinfo[2]);
-        // Custom Seller Page Dialog!
-        BottomSheetDialog dialogSeller = new BottomSheetDialog(getActivity());
-        dialogSeller.setContentView(R.layout.seller_page);
-        dialogSeller.setCancelable(true);
-
-        TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
-        CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
-        CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
-        CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
-        ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
-
-        mail.setText(str);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dialogSeller.dismiss();
-            }
-        });
-
-        btnCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // only fills in the Phone number in the Phone App....
-                if(usr!=null) {
-
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + usr.getPhone()));
-                    startActivity(intent);
-
-                }
-            }
-        });
-
-        btnSMS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(usr!=null) {
-
-                    String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
-                    String phoneNumber = usr.getPhone();
-                    String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("sms:" + phoneNumber));
-                    intent.putExtra("sms_body",message);
-                    startActivity(intent);
-
-                }
-            }
-        });
-
-        btnWhatsapp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(usr!=null) {
-
-                    String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
-                    String phoneNumber = usr.getPhone();
-                    String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
-                    startActivity(intent);
-
-                }
-            }
-        });
-
-
-
-        tvSeller.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(fbs.getAuth().getCurrentUser()!=null) {
-
-                    String str = fbs.getAuth().getCurrentUser().getEmail();
-                    if (str.equals(currentCar.getEmail())) {
-
-                        getNavigationBar().setVisibility(View.VISIBLE);
-                        GoToProfile();
-                        setNavigationBarProfile();
-                    }
-                    else {
-                        dialogSeller.show();
-                    }
-
-                }
-                else {
-                    dialogSeller.show();
-                }
-
-            }
-        });
-
-        ivSeller.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(fbs.getAuth().getCurrentUser()!=null) {
-
-                    String str = fbs.getAuth().getCurrentUser().getEmail();
-                    if (str.equals(currentCar.getEmail())) {
-
-                        getNavigationBar().setVisibility(View.VISIBLE);
-                        GoToProfile();
-                        setNavigationBarProfile();
-                    }
-                    else {
-                        dialogSeller.show();
-                    }
-
-                }
-                else {
-                    dialogSeller.show();
-                }
-
             }
         });
 
@@ -522,7 +559,19 @@ public class DetailedFragment extends Fragment {
         } else ivSaved.setVisibility(View.INVISIBLE);
 
 
-        // Functions Ends......
+        // Ends........................................
+
+
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+                AdView mAdView = getView().findViewById(R.id.adView);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mAdView.loadAd(adRequest);
+            }
+        });
+
 
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();

@@ -105,10 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (item.getItemId() == R.id.addcar) {
                     if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentAdd();
-                    else {
-                        bnv.setVisibility(View.GONE);
-                        GoToLogin();
-                    }
+                    else GoToLogin();
                 }
                 else if (item.getItemId() == R.id.savedcars) {
                     if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentSaved();
