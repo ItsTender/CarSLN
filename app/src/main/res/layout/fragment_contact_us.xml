@@ -10,33 +10,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ContactUsGoBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:adjustViewBounds="true"
-            android:hapticFeedbackEnabled="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/arrow_logo"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Constraintcontact"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewUserListings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif"
+                android:text="Contact Us"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ContactUsGoBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:hapticFeedbackEnabled="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
+        </androidx.cardview.widget.CardView>
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView79"
             android:layout_width="110dp"
             android:layout_height="100dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:outlineAmbientShadowColor="@color/Blue700"
             android:outlineSpotShadowColor="@color/Blue700"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/Constraintcontact">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="match_parent"

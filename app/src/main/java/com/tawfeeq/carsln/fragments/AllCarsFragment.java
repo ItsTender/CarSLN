@@ -175,6 +175,7 @@ public class AllCarsFragment extends Fragment {
                                 CarID car = dataSnapshot.toObject(CarID.class);
                                 car.setCarPhoto(dataSnapshot.getString("photo"));
                                 car.setId(dataSnapshot.getId());
+                                car.setTimestamp(dataSnapshot.getTimestamp("timestamp"));
                                 Market.add(car);
 
                             }
@@ -241,7 +242,6 @@ public class AllCarsFragment extends Fragment {
             }
         });
 
-
             if (fbs.getMarketList() == null) {
                 fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -251,6 +251,7 @@ public class AllCarsFragment extends Fragment {
                             CarID car = dataSnapshot.toObject(CarID.class);
                             car.setCarPhoto(dataSnapshot.getString("photo"));
                             car.setId(dataSnapshot.getId());
+                            car.setTimestamp(dataSnapshot.getTimestamp("timestamp"));
                             Market.add(car);
 
                         }
@@ -309,6 +310,7 @@ public class AllCarsFragment extends Fragment {
 
                     }
                 });
+
             } else {
 
                 Market = fbs.getMarketList();

@@ -54,7 +54,7 @@ public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
     TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvEngine, tvLocation, tvTest, tvColor, tvNotes;
-    ImageView  ivSaved, ivBack, ivDelete;
+    ImageView  ivSaved, ivBack, ivDelete, ivEdit;
     Button btnSeller;
     boolean isFound;
     String pfp;
@@ -132,9 +132,10 @@ public class DetailedFragment extends Fragment {
         tvColor = getView().findViewById(R.id.DetailedColor);
         tvNotes = getView().findViewById(R.id.DetailedNotes);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
-        ivSaved = getView().findViewById(R.id.ivSavedCar); //the Saved Icon......
-        ivBack =getView().findViewById(R.id.DetailedGoBack); // Goes Back To Where ever the User Was.
-        ivDelete =getView().findViewById(R.id.DetailedDeleteListing);
+        ivSaved = getView().findViewById(R.id.ivSavedCar); // the Saved Icon......
+        ivBack =getView().findViewById(R.id.DetailedGoBack); // Goes Back To Wherever the User Was.
+        ivDelete =getView().findViewById(R.id.DetailedDeleteListing); // Delete Listing if you Posted it......
+        ivEdit = getView().findViewById(R.id.DetailedEditListing); // Edit Listing Info if you Posted it......
 
 
         if(!fbs.getCurrentFragment().equals("Detailed")) fbs.setCurrentFragment("Detailed");
@@ -155,8 +156,9 @@ public class DetailedFragment extends Fragment {
 
             if (fbs.getUser() != null && str.equals(fbs.getAuth().getCurrentUser().getEmail())) {
 
-                // Show Delete Button.
+                // Show Control Buttons.
                 ivDelete.setVisibility(View.VISIBLE);
+                ivEdit.setVisibility(View.VISIBLE);
 
 
                 // Custom Delete Dialog!
@@ -235,11 +237,35 @@ public class DetailedFragment extends Fragment {
                     }
                 });
 
+                ivEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        GoToEditPostFragment();
+                    }
+                });
+
             }
             else {
 
-                // Make Delete Button not shown........
+                // Make Control Buttons not shown........
                 ivDelete.setVisibility(View.INVISIBLE);
+                ivEdit.setVisibility(View.INVISIBLE);
+
+
+                // Custom Seller Page Dialog!
+                BottomSheetDialog dialogSeller = new BottomSheetDialog(getActivity());
+                dialogSeller.setContentView(R.layout.seller_page);
+                dialogSeller.setCancelable(true);
+
+                TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
+                TextView username = dialogSeller.findViewById(R.id.tvSellerUsername);
+                ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
+                CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
+                CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
+                CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
+                ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
+
 
                 fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -247,11 +273,16 @@ public class DetailedFragment extends Fragment {
 
                         usr = documentSnapshot.toObject(UserProfile.class);
 
-                        sellerinfo[0] = documentSnapshot.getString("username");
-                        sellerinfo[1] = documentSnapshot.getString("userPhoto");
-                        sellerinfo[2] = documentSnapshot.getString("phone");
+                        mail.setText(str);
+                        username.setText(usr.getUsername());
 
                         pfp = documentSnapshot.getString("userPhoto");
+                        if (pfp == null || pfp.isEmpty())
+                        {
+                            iv.setImageResource(R.drawable.slnpfp);            }
+                        else {
+                            Glide.with(getActivity()).load(pfp).into(iv);
+                        }
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -260,20 +291,6 @@ public class DetailedFragment extends Fragment {
                         Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                usr.setPhone(sellerinfo[2]);
-                // Custom Seller Page Dialog!
-                BottomSheetDialog dialogSeller = new BottomSheetDialog(getActivity());
-                dialogSeller.setContentView(R.layout.seller_page);
-                dialogSeller.setCancelable(true);
-
-                TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
-                CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
-                CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
-                CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
-                ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
-
-                mail.setText(str);
 
 
                 btnSeller.setOnClickListener(new View.OnClickListener() {
@@ -348,19 +365,41 @@ public class DetailedFragment extends Fragment {
 
         } else {
 
-            // Make Delete Button not shown........
+            // Make Control Buttons not shown........
             ivDelete.setVisibility(View.INVISIBLE);
+            ivEdit.setVisibility(View.INVISIBLE);
+
+
+            // Custom Seller Page Dialog!
+            BottomSheetDialog dialogSeller = new BottomSheetDialog(getActivity());
+            dialogSeller.setContentView(R.layout.seller_page);
+            dialogSeller.setCancelable(true);
+
+            TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
+            TextView username = dialogSeller.findViewById(R.id.tvSellerUsername);
+            ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
+            CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
+            CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
+            CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
+            ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
+
+
             fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
 
                     usr = documentSnapshot.toObject(UserProfile.class);
 
-                    sellerinfo[0] = documentSnapshot.getString("username");
-                    sellerinfo[1] = documentSnapshot.getString("userPhoto");
-                    sellerinfo[2] = documentSnapshot.getString("phone");
+                    mail.setText(str);
+                    username.setText(usr.getUsername());
 
                     pfp = documentSnapshot.getString("userPhoto");
+                    if (pfp == null || pfp.isEmpty())
+                    {
+                        iv.setImageResource(R.drawable.slnpfp);            }
+                    else {
+                        Glide.with(getActivity()).load(pfp).into(iv);
+                    }
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -369,20 +408,6 @@ public class DetailedFragment extends Fragment {
                     Toast.makeText(getActivity(), "Couldn't Retrieve User Profile Info", Toast.LENGTH_SHORT).show();
                 }
             });
-
-            usr.setPhone(sellerinfo[2]);
-            // Custom Seller Page Dialog!
-            BottomSheetDialog dialogSeller = new BottomSheetDialog(getActivity());
-            dialogSeller.setContentView(R.layout.seller_page);
-            dialogSeller.setCancelable(true);
-
-            TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
-            CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
-            CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
-            CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
-            ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
-
-            mail.setText(str);
 
 
             btnSeller.setOnClickListener(new View.OnClickListener() {
@@ -650,6 +675,14 @@ public class DetailedFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new DetailedPhotosFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void GoToEditPostFragment() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new EditPostFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }

@@ -640,6 +640,8 @@ public class SearchFragment extends Fragment {
                                 CarID car = dataSnapshot.toObject(CarID.class);
                                 car.setCarPhoto(dataSnapshot.getString("photo"));
                                 car.setId(dataSnapshot.getId());
+                                car.setTimestamp(dataSnapshot.getTimestamp("timestamp"));
+
 
                                 if (type.equals("Any Offer Type")) selllend[0] = car.getSellLend();
                                 if (type.equals("Purchase a Car")) selllend[0] = true;

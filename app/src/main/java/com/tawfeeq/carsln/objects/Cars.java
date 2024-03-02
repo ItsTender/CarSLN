@@ -5,11 +5,11 @@ import android.os.Parcelable;
 import android.widget.ImageView;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 public class Cars {
 
@@ -33,7 +33,8 @@ public class Cars {
     private String FourthPhoto;
     private String FifthPhoto;
     private String Notes;
-    private Timestamp timestamp;
+    private com.google.firebase.Timestamp timestamp;
+
 
     public Cars() {
     }
@@ -59,11 +60,13 @@ public class Cars {
         FourthPhoto = fourthPhoto;
         FifthPhoto = fifthPhoto;
         Notes = notes;
-        timestamp = new Timestamp(System.currentTimeMillis());
+        timestamp = new com.google.firebase.Timestamp(com.google.firebase.Timestamp.now().toDate());
     }
 
     // protected Cars(Parcel in) {}
+
    // @Override public void writeToParcel(Parcel dest, int flags) {}
+
 
     public Timestamp getTimestamp() {
         return timestamp;

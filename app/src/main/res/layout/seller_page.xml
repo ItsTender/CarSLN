@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="16dp"
-    android:outlineSpotShadowColor="@color/Blue700"
-    android:outlineAmbientShadowColor="@color/Blue700"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="@color/white">
 
@@ -15,47 +13,72 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <TextView
+            android:id="@+id/tvSellerUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSellerPage" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewSellerPage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
 
         <ImageView
             android:id="@+id/imageViewDialogClose"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginStart="365dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/baseline_close_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/tvselleremail"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="88dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="sans-serif"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@+id/tvSellerUsername" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewCall"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="35dp"
-            app:cardElevation="2dp"
-            android:outlineSpotShadowColor="@color/black"
-            android:outlineAmbientShadowColor="@color/black"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
             android:hapticFeedbackEnabled="true"
+            android:outlineAmbientShadowColor="@color/Blue700"
+            android:outlineSpotShadowColor="@color/Blue700"
+            app:cardBackgroundColor="@color/Blue700"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvselleremail">
@@ -66,8 +89,8 @@
                 android:layout_height="36dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="13dp"
-                app:tint="@color/Blue700"
-                app:srcCompat="@drawable/baseline_phone_24" />
+                app:srcCompat="@drawable/baseline_phone_24"
+                app:tint="@color/white" />
 
 
             <TextView
@@ -79,7 +102,7 @@
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="Call Seller"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -89,25 +112,29 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewWhatsapp"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:hapticFeedbackEnabled="true"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="2dp"
-            android:hapticFeedbackEnabled="true"
-            android:outlineSpotShadowColor="@color/black"
-            android:outlineAmbientShadowColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewCall">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="5dp"
-                app:srcCompat="@drawable/whatsapp" />
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/whatsapp"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
 
             <TextView
                 android:id="@+id/tvtxtwhatsapp"
@@ -118,7 +145,7 @@
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="Whatsapp"
-                android:textColor="@color/black"
+                android:textColor="@color/WhatsappGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -127,27 +154,30 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewSMS"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"
-            app:cardBackgroundColor="@color/white"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="25dp"
+            android:hapticFeedbackEnabled="true"
+            android:outlineAmbientShadowColor="@color/Blue700"
+            android:outlineSpotShadowColor="@color/Blue700"
+            app:cardBackgroundColor="@color/Blue700"
             app:cardCornerRadius="8dp"
             app:cardElevation="2dp"
-            android:hapticFeedbackEnabled="true"
-            android:outlineSpotShadowColor="@color/black"
-            android:outlineAmbientShadowColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewWhatsapp">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
+                app:tint="@color/white"
                 app:srcCompat="@drawable/baseline_message_24" />
 
             <TextView
@@ -159,7 +189,7 @@
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="Message Seller"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

@@ -369,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-            }else if(fragment.equals("DetailedPhotos")){
+            }else if(fragment.equals("DetailedPhotos") || fragment.equals("EditPost")){
 
                 GoToDetailed();
 

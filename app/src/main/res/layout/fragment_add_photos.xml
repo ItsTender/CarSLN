@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="120dp"
             android:fontFamily="sans-serif"
             android:text="Main Car Image"
             android:textColor="@color/black"
@@ -44,10 +44,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
-            android:layout_width="180dp"
-            android:layout_height="120dp"
+            android:layout_width="220dp"
+            android:layout_height="150dp"
             android:layout_marginBottom="20dp"
             android:hapticFeedbackEnabled="true"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
             app:layout_constraintBottom_toTopOf="@+id/cardView3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,10 +56,9 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivFirstCarPhoto"
-                android:layout_width="180dp"
-                android:layout_height="120dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
                 android:src="@drawable/insert_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,11 +70,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView3"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="120dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="221dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="211dp"
             android:hapticFeedbackEnabled="true"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,8 +83,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivSecondCarPhoto"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/insert_image"
@@ -97,11 +97,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="120dp"
-            android:layout_marginStart="221dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="70dp"
+            android:layout_marginStart="211dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
             android:hapticFeedbackEnabled="true"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,8 +110,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivThirdCarPhoto"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/insert_image"
@@ -124,11 +124,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView5"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="120dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="221dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="211dp"
             android:hapticFeedbackEnabled="true"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,8 +137,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivFourthCarPhoto"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/insert_image"
@@ -149,11 +149,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView6"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="120dp"
-            android:layout_marginStart="221dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="70dp"
+            android:layout_marginStart="211dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
             android:hapticFeedbackEnabled="true"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,8 +162,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivFifthCarPhoto"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/insert_image"

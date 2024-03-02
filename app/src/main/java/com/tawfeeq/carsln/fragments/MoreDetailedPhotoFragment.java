@@ -99,7 +99,7 @@ public class MoreDetailedPhotoFragment extends Fragment {
 
             Photo = currentCar.getPhoto();
             if (Photo == null || Photo.isEmpty()) {
-                ivPhoto.setImageResource(R.drawable.photo_iv);
+                ivPhoto.setImageResource(R.drawable.photo_iv_null);
             } else {
                 Glide.with(getActivity()).load(Photo).into(ivPhoto);
             }
@@ -108,7 +108,7 @@ public class MoreDetailedPhotoFragment extends Fragment {
 
             Photo = currentCar.getSecondphoto();
             if (Photo == null || Photo.isEmpty()) {
-                ivPhoto.setImageResource(R.drawable.photo_iv);
+                ivPhoto.setImageResource(R.drawable.photo_iv_null);
             } else {
                 Glide.with(getActivity()).load(Photo).into(ivPhoto);
             }
@@ -117,7 +117,7 @@ public class MoreDetailedPhotoFragment extends Fragment {
 
             Photo = currentCar.getThirdPhoto();
             if (Photo == null || Photo.isEmpty()) {
-                ivPhoto.setImageResource(R.drawable.photo_iv);
+                ivPhoto.setImageResource(R.drawable.photo_iv_null);
             } else {
                 Glide.with(getActivity()).load(Photo).into(ivPhoto);
             }
@@ -126,7 +126,7 @@ public class MoreDetailedPhotoFragment extends Fragment {
 
             Photo = currentCar.getFourthPhoto();
             if (Photo == null || Photo.isEmpty()) {
-                ivPhoto.setImageResource(R.drawable.photo_iv);
+                ivPhoto.setImageResource(R.drawable.photo_iv_null);
             } else {
                 Glide.with(getActivity()).load(Photo).into(ivPhoto);
             }
@@ -135,7 +135,7 @@ public class MoreDetailedPhotoFragment extends Fragment {
 
             Photo = currentCar.getFifthPhoto();
             if (Photo == null || Photo.isEmpty()) {
-                ivPhoto.setImageResource(R.drawable.photo_iv);
+                ivPhoto.setImageResource(R.drawable.photo_iv_null);
             } else {
                 Glide.with(getActivity()).load(Photo).into(ivPhoto);
             }

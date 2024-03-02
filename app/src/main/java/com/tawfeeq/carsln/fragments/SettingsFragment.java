@@ -187,6 +187,8 @@ public class SettingsFragment extends Fragment {
         EditText etUsername = dialogUsername.findViewById(R.id.etChangeUsername);
         ImageView ivBack = dialogUsername.findViewById(R.id.UsernameGoBack);
 
+        if(fbs.getUser()!=null) etUsername.setText(fbs.getUser().getUsername());
+
         ChangeUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -263,6 +265,8 @@ public class SettingsFragment extends Fragment {
         Button ChangePhone = dialogPhone.findViewById(R.id.btnChangePhone);
         EditText etPhone = dialogPhone.findViewById(R.id.etChangePhone);
         ImageView ivBackPhone = dialogPhone.findViewById(R.id.PhoneGoBack);
+
+        if(fbs.getUser()!=null) etPhone.setText(fbs.getUser().getPhone());
 
         ChangePhone.setOnClickListener(new View.OnClickListener() {
             @Override

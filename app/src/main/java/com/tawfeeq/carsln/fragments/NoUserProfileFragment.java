@@ -92,7 +92,6 @@ public class NoUserProfileFragment extends Fragment {
         // Additional Links..............
         twitter = getView().findViewById(R.id.TwitterLogo);
         github = getView().findViewById(R.id.GithubLogo);
-        discord = getView().findViewById(R.id.DiscordLogo);
 
         twitter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,15 +106,6 @@ public class NoUserProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String website = "https://github.com/ItsTender";
-                Uri uri = Uri.parse(website);
-                startActivity(new Intent(Intent.ACTION_VIEW, uri));
-            }
-        });
-
-        discord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String website = "https://discord.com/invite/G3Wsceyh";
                 Uri uri = Uri.parse(website);
                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
             }

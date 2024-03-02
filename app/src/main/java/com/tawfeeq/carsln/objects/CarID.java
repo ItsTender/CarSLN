@@ -1,6 +1,9 @@
 package com.tawfeeq.carsln.objects;
 
+import com.google.firebase.Timestamp;
+
 public class CarID {
+
     private String id; // the ID of the Listing in the FireStore.
     private boolean SellLend; // if the User wants to Sell the Car the Var will be 'TRUE' else if the User only wants to Lend his Car the Var will be 'FALSE'
     private String Email; // The User's Email Address according to the Listing.
@@ -20,10 +23,9 @@ public class CarID {
     private String Secondphoto; // Second Photo of Five
     private String ThirdPhoto; // Third Photo of Five
     private String FourthPhoto; // Fourth Photo of Five
-
     private String FifthPhoto; // Fifth Photo of Five
     private String Notes; // The Seller's Notes about the Car.
-
+    private com.google.firebase.Timestamp timestamp;
 
     public CarID() {
     }
@@ -54,6 +56,15 @@ public class CarID {
     // protected Cars(Parcel in) {}
 
     // @Override public void writeToParcel(Parcel dest, int flags) {}
+
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public String getColor() {
         return Color;

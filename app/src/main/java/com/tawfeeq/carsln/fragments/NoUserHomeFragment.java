@@ -153,6 +153,7 @@ public class NoUserHomeFragment extends Fragment {
                                 CarID car = dataSnapshot.toObject(CarID.class);
                                 car.setCarPhoto(dataSnapshot.getString("photo"));
                                 car.setId(dataSnapshot.getId());
+                                car.setTimestamp(dataSnapshot.getTimestamp("timestamp"));
                                 Market.add(car);
 
                             }
@@ -206,6 +207,7 @@ public class NoUserHomeFragment extends Fragment {
 
 
         if (fbs.getMarketList() == null) {
+
             fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -214,6 +216,7 @@ public class NoUserHomeFragment extends Fragment {
                         CarID car = dataSnapshot.toObject(CarID.class);
                         car.setCarPhoto(dataSnapshot.getString("photo"));
                         car.setId(dataSnapshot.getId());
+                        car.setTimestamp(dataSnapshot.getTimestamp("timestamp"));
                         Market.add(car);
 
                     }

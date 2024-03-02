@@ -510,12 +510,15 @@
             android:id="@+id/GithubLogo"
             android:layout_width="28dp"
             android:layout_height="28dp"
+            android:layout_marginStart="140dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/github"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/TwitterLogo"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSLN"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
@@ -524,26 +527,16 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="140dp"
             android:layout_marginBottom="30dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/twitter_x"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/GithubLogo"
             app:layout_constraintTop_toBottomOf="@+id/tvSLN"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/DiscordLogo"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/discord"
-            app:layout_constraintStart_toEndOf="@+id/TwitterLogo"
-            app:layout_constraintTop_toBottomOf="@+id/tvSLN"
+            app:layout_constraintVertical_bias="0.0"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

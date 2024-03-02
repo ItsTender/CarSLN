@@ -106,7 +106,7 @@ public class DetailedPhotosFragment extends Fragment {
 
 
         if (Photo == null || Photo.isEmpty()) {
-            ivFirst.setImageResource(R.drawable.photo_iv);
+            ivFirst.setImageResource(R.drawable.photo_iv_null);
         } else {
             Glide.with(getActivity()).load(Photo).into(ivFirst);
         }

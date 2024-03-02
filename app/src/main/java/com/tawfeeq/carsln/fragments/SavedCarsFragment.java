@@ -131,6 +131,7 @@ public class SavedCarsFragment extends Fragment {
                                 CarID car = dataSnapshot.toObject(CarID.class);
                                 car.setCarPhoto(dataSnapshot.getString("photo"));
                                 car.setId(dataSnapshot.getId());
+                                car.setTimestamp(dataSnapshot.getTimestamp("timestamp"));
                                 Market.add(car);
 
                             }

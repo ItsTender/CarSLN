@@ -115,7 +115,6 @@ public class ProfileFragment extends Fragment {
         // Additional Links..............
          twitter = getView().findViewById(R.id.TwitterLogo);
          github = getView().findViewById(R.id.GithubLogo);
-         discord = getView().findViewById(R.id.DiscordLogo);
 
          twitter.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -134,15 +133,6 @@ public class ProfileFragment extends Fragment {
                  startActivity(new Intent(Intent.ACTION_VIEW, uri));
              }
          });
-
-        discord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String website = "https://discord.com/invite/G3Wsceyh";
-                Uri uri = Uri.parse(website);
-                startActivity(new Intent(Intent.ACTION_VIEW, uri));
-            }
-        });
 
         //Links End..................................................
 

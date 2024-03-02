@@ -464,9 +464,27 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:adjustViewBounds="true"
+        android:hapticFeedbackEnabled="true"
         android:scaleType="centerCrop"
         android:src="@drawable/trash_logo"
+        app:layout_constraintEnd_toStartOf="@+id/DetailedEditListing"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/DetailedEditListing"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:contentPadding="9dp"
+        android:adjustViewBounds="true"
+        android:background="@color/white"
         android:hapticFeedbackEnabled="true"
+        android:scaleType="centerCrop"
+        app:tint="@color/DarkGrey"
+        android:src="@drawable/baseline_edit_post_24"
         app:layout_constraintEnd_toStartOf="@+id/ivSavedCar"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearance="@style/RoundShape.App.50percent" />
