@@ -40,6 +40,8 @@ import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.model.AspectRatio;
 
 import java.io.File;
+import java.time.Year;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -199,10 +201,13 @@ public class EditPostFragment extends Fragment {
         }
 
 
+        int CurrentYear = Year.now().getValue();
+        String year = String.valueOf(CurrentYear);
         if(SpinnerYear.getSelectedItem()==null) {
-            String[] Years = {"Current Model Year", "2024", "2023", "2022", "2021",
-                    "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011",
-                    "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988"};
+            String[] Years = {"Current Model Year", year, String.valueOf(CurrentYear-1), String.valueOf(CurrentYear-2), String.valueOf(CurrentYear-3),
+                    String.valueOf(CurrentYear-4), String.valueOf(CurrentYear-5), String.valueOf(CurrentYear-6), String.valueOf(CurrentYear-7), String.valueOf(CurrentYear-8), String.valueOf(CurrentYear-9), String.valueOf(CurrentYear-10), String.valueOf(CurrentYear-11), String.valueOf(CurrentYear-12), String.valueOf(CurrentYear-13),
+                    String.valueOf(CurrentYear-14), String.valueOf(CurrentYear-15), String.valueOf(CurrentYear-16), String.valueOf(CurrentYear-17), String.valueOf(CurrentYear-18), String.valueOf(CurrentYear-19), String.valueOf(CurrentYear-20), String.valueOf(CurrentYear-21), String.valueOf(CurrentYear-22), String.valueOf(CurrentYear-23), String.valueOf(CurrentYear-24),
+                    String.valueOf(CurrentYear-25), String.valueOf(CurrentYear-26), String.valueOf(CurrentYear-27), String.valueOf(CurrentYear-28), String.valueOf(CurrentYear-29), String.valueOf(CurrentYear-30), String.valueOf(CurrentYear-31), String.valueOf(CurrentYear-32), String.valueOf(CurrentYear-33), String.valueOf(CurrentYear-34), String.valueOf(CurrentYear-35), String.valueOf(CurrentYear-36)};
             ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Years);
             YearsAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerYear.setAdapter(YearsAdapter);
@@ -210,7 +215,7 @@ public class EditPostFragment extends Fragment {
 
 
         if(SpinnerTestYear.getSelectedItem()==null) {
-            String[] TestYear = {"Current Test Year", "2024", "2025", "2026", "2027", "2028"};
+            String[] TestYear = {"Current Test Year", year, String.valueOf(CurrentYear+1), String.valueOf(CurrentYear+2), String.valueOf(CurrentYear+3), String.valueOf(CurrentYear+4), String.valueOf(CurrentYear+5)};
             ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestYear);
             TestYearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerTestYear.setAdapter(TestYearAdapter);
@@ -860,26 +865,32 @@ public class EditPostFragment extends Fragment {
 
                 if(HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                     return;
                 }
                 if(HP.length()>4){
                     Toast.makeText(getActivity(), "Horse Power Field is too Much", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                     return;
                 }
                 if(User.length()>3){
                     Toast.makeText(getActivity(), "Owners Field is too Much", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                     return;
                 }
                 if(engine.length()>40){
                     Toast.makeText(getActivity(), "Engine Field Characters have Surpassed their limit", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                     return;
                 }
                 if(Kilo.length()>7){
                     Toast.makeText(getActivity(), "Kilometre Field is too Much", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                     return;
                 }
                 if(notes.length()>300){
                     Toast.makeText(getActivity(), "Notes Field Characters are over 300", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                     return;
                 }
 
@@ -905,13 +916,15 @@ public class EditPostFragment extends Fragment {
                 if(area.equals("Current Location District")){
                     area = currentCar.getLocation();
                 }
+
                 String test;
                 if(testmonth.equals("Current Test Month") && testyear.equals("Current Test Year")){
                     test = currentCar.getNextTest();
                 }else if(!testmonth.equals("Current Test Month") && !testyear.equals("Current Test Year")){
                     test = testmonth + "/" + testyear;
                 }else {
-                    Toast.makeText(getActivity(), "One of the Two Test Fields are is missing", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "One of the Two Test Fields is missing", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                     return;
                 }
 

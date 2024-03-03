@@ -323,21 +323,30 @@
         app:cardBackgroundColor="@color/white"
         android:layout_alignParentBottom="true">
 
-
-        <Button
-            android:id="@+id/btnSearch"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAddProfileCard"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/Blue700"
+            android:layout_height="50dp"
+            android:background="@drawable/sln_background"
             android:layout_gravity="center"
-            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="180dp"
             android:layout_marginStart="8dp"
-            android:contentDescription="@string/Search"
-            android:hapticFeedbackEnabled="true"
-            android:text="Show Results"
-            android:textColor="@color/white"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            android:layout_marginEnd="8dp"
+            app:shapeAppearance="@style/RoundShape.App.50percent">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/sln_background"
+                android:contentDescription="@string/Search"
+                android:hapticFeedbackEnabled="true"
+                android:text="Show Results"
+                android:textColor="@color/white"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
 

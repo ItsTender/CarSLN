@@ -631,21 +631,33 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/btnApply"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnAddProfileCard"
                 android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="30dp"
-                android:backgroundTint="@color/Blue700"
-                android:hapticFeedbackEnabled="true"
-                android:text="Apply Changes"
-                android:textColor="@color/white"
+                android:background="@drawable/sln_background"
+                app:cardCornerRadius="180dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewselllend"
-                app:shapeAppearance="@style/RoundShape.App.50percent" />
+                app:shapeAppearance="@style/RoundShape.App.50percent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnApply"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sln_background"
+                    android:hapticFeedbackEnabled="true"
+                    android:text="Apply Changes"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
+                    app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

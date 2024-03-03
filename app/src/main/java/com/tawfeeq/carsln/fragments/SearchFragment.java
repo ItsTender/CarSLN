@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,7 +35,9 @@ import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.LastSearch;
 
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +50,7 @@ public class SearchFragment extends Fragment {
     EditText etPriceFrom,etPriceTo, etMan, etMod;
     Button btnSearch, btnResetSearch;
     ImageView ivClose;
+    TextView tvMaxYear;
     RecyclerView rc;
     FireBaseServices fbs;
     ArrayList<CarID> search, lstRst;
@@ -117,9 +121,15 @@ public class SearchFragment extends Fragment {
         SpinnerMan = getView().findViewById(R.id.SpinnerManufacturerSearch);
         SpinnerMod = getView().findViewById(R.id.SpinnerModelSearch);
         SpinnerArea = getView().findViewById(R.id.SpinnerAreaSearch);
+        tvMaxYear = getView().findViewById(R.id.textViewyearmax);
 
         // Navigation Bar Not Visible While Searching........
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+
+
+        int CurrentYear = Year.now().getValue();
+        String year = String.valueOf(CurrentYear);
+        tvMaxYear.setText(year);
 
 
         if(!fbs.getCurrentFragment().equals("Search")) fbs.setCurrentFragment("Search");

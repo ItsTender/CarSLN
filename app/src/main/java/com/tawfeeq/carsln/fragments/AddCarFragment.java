@@ -30,6 +30,8 @@ import com.tawfeeq.carsln.objects.Utils;
 import org.json.JSONObject;
 
 import java.net.URI;
+import java.time.Year;
+import java.util.Date;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -140,10 +142,13 @@ public class AddCarFragment extends Fragment {
         }
 
 
+        int CurrentYear = Year.now().getValue();
+        String year = String.valueOf(CurrentYear);
         if(SpinnerYear.getSelectedItem()==null) {
-            String[] Years = {"Model Year", "2024", "2023", "2022", "2021",
-                    "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011",
-                    "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988"};
+            String[] Years = {"Model Year", year, String.valueOf(CurrentYear-1), String.valueOf(CurrentYear-2), String.valueOf(CurrentYear-3),
+                    String.valueOf(CurrentYear-4), String.valueOf(CurrentYear-5), String.valueOf(CurrentYear-6), String.valueOf(CurrentYear-7), String.valueOf(CurrentYear-8), String.valueOf(CurrentYear-9), String.valueOf(CurrentYear-10), String.valueOf(CurrentYear-11), String.valueOf(CurrentYear-12), String.valueOf(CurrentYear-13),
+                    String.valueOf(CurrentYear-14), String.valueOf(CurrentYear-15), String.valueOf(CurrentYear-16), String.valueOf(CurrentYear-17), String.valueOf(CurrentYear-18), String.valueOf(CurrentYear-19), String.valueOf(CurrentYear-20), String.valueOf(CurrentYear-21), String.valueOf(CurrentYear-22), String.valueOf(CurrentYear-23), String.valueOf(CurrentYear-24),
+                    String.valueOf(CurrentYear-25), String.valueOf(CurrentYear-26), String.valueOf(CurrentYear-27), String.valueOf(CurrentYear-28), String.valueOf(CurrentYear-29), String.valueOf(CurrentYear-30), String.valueOf(CurrentYear-31), String.valueOf(CurrentYear-32), String.valueOf(CurrentYear-33), String.valueOf(CurrentYear-34), String.valueOf(CurrentYear-35), String.valueOf(CurrentYear-36)};
             ArrayAdapter<String> YearsAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Years);
             YearsAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerYear.setAdapter(YearsAdapter);
@@ -151,7 +156,7 @@ public class AddCarFragment extends Fragment {
 
 
         if(SpinnerTestYear.getSelectedItem()==null) {
-            String[] TestYear = {"Test Year Until", "2024", "2025", "2026", "2027", "2028"};
+            String[] TestYear = {"Test Year Until", year, String.valueOf(CurrentYear+1), String.valueOf(CurrentYear+2), String.valueOf(CurrentYear+3), String.valueOf(CurrentYear+4), String.valueOf(CurrentYear+5)};
             ArrayAdapter<String> TestYearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, TestYear);
             TestYearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerTestYear.setAdapter(TestYearAdapter);

@@ -17,70 +17,6 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewbhp"
-                android:layout_width="175dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="210dp"
-                android:outlineAmbientShadowColor="@color/black"
-                android:outlineSpotShadowColor="@color/black"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="8dp"
-                android:hapticFeedbackEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewyear">
-
-                <EditText
-                    android:id="@+id/etBHP"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Horse Power"
-                    android:inputType="number"
-                    android:minHeight="48dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewowners"
-                android:layout_width="175dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="210dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:outlineAmbientShadowColor="@color/black"
-                android:outlineSpotShadowColor="@color/black"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="8dp"
-                android:hapticFeedbackEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewgear">
-
-                <EditText
-                    android:id="@+id/etUsers"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Owners"
-                    android:inputType="number"
-                    android:minHeight="48dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewprice"
                 android:layout_width="354dp"
                 android:layout_height="50dp"
@@ -167,20 +103,40 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewgear"
-                android:layout_width="175dp"
+                android:id="@+id/cardViewmod"
+                android:layout_width="354dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="210dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
+                android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
-                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
+                app:layout_constraintTop_toBottomOf="@+id/cardViewman">
+
+                <Spinner
+                    android:id="@+id/SpinnerModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/black" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewgear"
+                android:layout_width="354dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:hapticFeedbackEnabled="true"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewyear">
 
                 <Spinner
                     android:id="@+id/SpinnerGear"
@@ -193,16 +149,14 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewyear"
-                android:layout_width="175dp"
+                android:layout_width="354dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="210dp"
+                android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
-                android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewmod">
@@ -212,6 +166,70 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/black" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewbhp"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="210dp"
+                android:hapticFeedbackEnabled="true"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewgear">
+
+                <EditText
+                    android:id="@+id/etBHP"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Horse Power"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewowners"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="210dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:hapticFeedbackEnabled="true"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewgear">
+
+                <EditText
+                    android:id="@+id/etUsers"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Owners"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
 
             </androidx.cardview.widget.CardView>
 
@@ -255,29 +273,6 @@
 
                 <Spinner
                     android:id="@+id/SpinnerManufacturer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/black" />
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewmod"
-                android:layout_width="354dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:outlineAmbientShadowColor="@color/black"
-                android:outlineSpotShadowColor="@color/black"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="8dp"
-                android:hapticFeedbackEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewman">
-
-                <Spinner
-                    android:id="@+id/SpinnerModel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/black" />
@@ -410,21 +405,34 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/btnAdd"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnAddProfileCard"
                 android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="30dp"
-                android:backgroundTint="@color/Blue700"
-                android:text="Next Step"
-                android:textColor="@color/white"
-                android:hapticFeedbackEnabled="true"
+                android:background="@drawable/sln_background"
+                app:cardCornerRadius="180dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewnotes"
-                app:shapeAppearance="@style/RoundShape.App.50percent" />
+                app:shapeAppearance="@style/RoundShape.App.50percent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sln_background"
+                    android:hapticFeedbackEnabled="true"
+                    android:text="Next Step"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
+                    app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

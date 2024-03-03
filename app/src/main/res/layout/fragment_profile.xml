@@ -56,22 +56,30 @@
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
-        <Button
-            android:id="@+id/btnAddProfile"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAddProfileCard"
             android:layout_width="200dp"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/Blue700"
-            android:text="Post New Listing"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:hapticFeedbackEnabled="true"
+            android:background="@drawable/sln_background"
+            app:cardCornerRadius="180dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewEmail"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            app:shapeAppearance="@style/RoundShape.App.50percent">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sln_background"
+                android:hapticFeedbackEnabled="true"
+                android:text="Post New Listing"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/profile"
@@ -86,7 +94,7 @@
             android:textSize="15dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAddProfile"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddProfileCard"
             tools:ignore="TextSizeCheck" />
 
         <LinearLayout
@@ -506,38 +514,36 @@
             app:layout_constraintTop_toBottomOf="@+id/view31" />
 
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/GithubLogo"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="10dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="30dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/github"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/TwitterLogo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSLN"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/TwitterLogo"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="140dp"
-            android:layout_marginBottom="30dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/twitter_x"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/GithubLogo"
-            app:layout_constraintTop_toBottomOf="@+id/tvSLN"
-            app:layout_constraintVertical_bias="0.0"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSLN">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/GithubLogo"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/github"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/TwitterLogo"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="20dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/twitter_x"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

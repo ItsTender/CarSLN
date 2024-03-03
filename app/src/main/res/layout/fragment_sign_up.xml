@@ -39,8 +39,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textViewsignup"
@@ -228,28 +227,38 @@
         </androidx.cardview.widget.CardView>
 
 
-        <Button
-            android:id="@+id/btnSignUp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAddProfileCard"
             android:layout_width="280dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/Blue700"
-            android:hapticFeedbackEnabled="true"
-            android:text="SIGNUP"
-            android:textColor="@color/white"
+            android:background="@drawable/sln_background"
+            app:cardCornerRadius="180dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewlocationsignup"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            app:shapeAppearance="@style/RoundShape.App.50percent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sln_background"
+                android:hapticFeedbackEnabled="true"
+                android:text="SIGNUP"
+                android:textColor="@color/white"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
 
 
         <TextView
             android:id="@+id/tvLogin"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="168dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginEnd="166dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:hapticFeedbackEnabled="true"
@@ -258,7 +267,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAddProfileCard" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

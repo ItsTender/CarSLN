@@ -199,15 +199,17 @@ public class DetailedFragment extends Fragment {
                                     getNavigationBar().setVisibility(View.VISIBLE);
                                     GoToUserListings();
                                 }
+
+                                dialog.dismiss();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(getActivity(), "Couldn't Deleted Your Car Listing, Try Again Later", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
                             }
                         });
 
-                        dialog.dismiss();
                     }
                 });
 

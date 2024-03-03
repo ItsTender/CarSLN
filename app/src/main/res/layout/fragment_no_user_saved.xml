@@ -93,21 +93,32 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewenc" />
 
 
-        <Button
-            android:id="@+id/btnConnectLogin"
-            android:layout_width="150dp"
-            android:layout_height="55dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAddProfileCard"
+            android:layout_width="145dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:backgroundTint="@color/Blue700"
-            android:hapticFeedbackEnabled="true"
-            android:text="Connect"
-            android:textColor="@color/white"
-            android:textSize="12sp"
+            android:background="@drawable/sln_background"
+            app:cardCornerRadius="180dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewenc1"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            app:shapeAppearance="@style/RoundShape.App.50percent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnConnectLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sln_background"
+                android:hapticFeedbackEnabled="true"
+                android:text="Connect"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tawfeeq.carsln.R;
@@ -26,7 +28,7 @@ import com.tawfeeq.carsln.objects.FireBaseServices;
 public class ContactUsFragment extends Fragment {
 
     FireBaseServices fbs;
-    TextView tvPhone, tvEmail;
+    LinearLayout cvEmail, cvPhone;
     ImageView ivBack;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,8 +83,8 @@ public class ContactUsFragment extends Fragment {
         super.onStart();
 
         fbs = FireBaseServices.getInstance();
-        tvPhone = getView().findViewById(R.id.tvtxtphone);
-        tvEmail = getView().findViewById(R.id.tvtxtmail);
+        cvPhone = getView().findViewById(R.id.LayoutPhoneContact);
+        cvEmail = getView().findViewById(R.id.LayoutEmailContact);
         ivBack = getView().findViewById(R.id.ContactUsGoBack);
 
 
@@ -112,7 +114,7 @@ public class ContactUsFragment extends Fragment {
             }
         });
 
-        tvPhone.setOnClickListener(new View.OnClickListener() {
+        cvPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -123,7 +125,7 @@ public class ContactUsFragment extends Fragment {
             }
         });
 
-        tvEmail.setOnClickListener(new View.OnClickListener() {
+        cvEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

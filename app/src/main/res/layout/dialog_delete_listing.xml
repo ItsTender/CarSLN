@@ -59,6 +59,7 @@
                 android:id="@+id/btnCancelDelete"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
+                android:layout_gravity="center"
                 android:backgroundTint="@color/white"
                 android:hapticFeedbackEnabled="true"
                 android:text="Cancel"
@@ -67,16 +68,33 @@
                 app:strokeColor="@color/black"
                 app:strokeWidth="2dp" />
 
-            <Button
-                android:id="@+id/btnConfirmDelete"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnAddProfileCard"
                 android:layout_width="100dp"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="20dp"
-                android:backgroundTint="@color/Blue700"
-                android:hapticFeedbackEnabled="true"
-                android:text="Delete"
-                android:textColor="@color/white"
-                app:shapeAppearance="@style/RoundShape.App.50percent" />
+                android:layout_gravity="center"
+                android:background="@drawable/sln_background"
+                app:cardCornerRadius="180dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
+                app:shapeAppearance="@style/RoundShape.App.50percent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnConfirmDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sln_background"
+                    android:hapticFeedbackEnabled="true"
+                    android:text="Delete"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
+                    app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
