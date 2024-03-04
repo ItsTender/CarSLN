@@ -24,7 +24,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sln_removebg_preview"
+                android:src="@drawable/carsln_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -33,15 +33,15 @@
             <TextView
                 android:id="@+id/tvSLN"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="6dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="14dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="CarSLN"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -57,26 +57,10 @@
                 android:gravity="center"
                 android:text="Selling, Lending, Negotiating"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="13.5sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
                 app:layout_constraintTop_toBottomOf="@+id/tvSLN" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivNoAccountHomepfp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="11dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/slnpfp"
-                android:hapticFeedbackEnabled="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearance="@style/RoundShape.App.50percent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

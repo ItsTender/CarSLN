@@ -33,7 +33,7 @@
             android:layout_width="145dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/sln_background"
             app:cardCornerRadius="180dp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -208,7 +208,7 @@ public class SettingsFragment extends Fragment {
                         Toast.makeText(getActivity(), "The Username is too Short", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (newusername.length() > 30) {
+                    if (newusername.length() > 20) {
                         Toast.makeText(getActivity(), "The Username is too Long", Toast.LENGTH_SHORT).show();
                         return;
                     }

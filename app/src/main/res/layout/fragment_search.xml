@@ -363,7 +363,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:src="@drawable/sln_removebg_preview" />
+            android:src="@drawable/carsln_logo" />
 
 
         <ImageView

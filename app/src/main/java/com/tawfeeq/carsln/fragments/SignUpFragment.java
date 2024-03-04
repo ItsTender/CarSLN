@@ -150,15 +150,16 @@ public class SignUpFragment extends Fragment {
                 String confirm = etConfirm.getText().toString();
                 String phone = etPhone.getText().toString();
                 String location = SpinnerLocation.getSelectedItem().toString();
+
                 if (username.trim().isEmpty() || Name.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()||phone.trim().isEmpty()||location.equals("Select Your District")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (username.length()<3) {
+                if (Name.length()<3) {
                     Toast.makeText(getActivity(), "The Username is too Short", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (username.length()>30) {
+                if (Name.length()>20) {
                     Toast.makeText(getActivity(), "The Username is too Long", Toast.LENGTH_SHORT).show();
                     return;
                 }

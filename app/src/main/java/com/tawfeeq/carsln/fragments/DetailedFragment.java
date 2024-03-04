@@ -335,7 +335,7 @@ public class DetailedFragment extends Fragment {
 
                             String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
                             String phoneNumber = usr.getPhone();
-                            String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+                            String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
 
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             intent.setData(Uri.parse("sms:" + phoneNumber));
@@ -354,7 +354,7 @@ public class DetailedFragment extends Fragment {
 
                             String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
                             String phoneNumber = usr.getPhone();
-                            String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+                            String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
 
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
                             startActivity(intent);
@@ -452,7 +452,7 @@ public class DetailedFragment extends Fragment {
 
                         String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
                         String phoneNumber = usr.getPhone();
-                        String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+                        String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
 
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse("sms:" + phoneNumber));
@@ -471,7 +471,7 @@ public class DetailedFragment extends Fragment {
 
                         String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
                         String phoneNumber = usr.getPhone();
-                        String message = "Hello, I Saw Your " + CarName + " Listing On CarSLN and I'm Interested in it";
+                        String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
 
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
                         startActivity(intent);

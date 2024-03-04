@@ -38,7 +38,6 @@ import java.util.ArrayList;
  */
 public class NoUserHomeFragment extends Fragment {
 
-    ImageView ivPFP;
     RecyclerView rcNew, rcUsed;
     private ForYouCarsAdapter adapterNew, adapterUsed;
     private FireBaseServices fbs;
@@ -100,7 +99,6 @@ public class NoUserHomeFragment extends Fragment {
         super.onStart();
 
         fbs = FireBaseServices.getInstance();
-        ivPFP = getView().findViewById(R.id.ivNoAccountHomepfp);
         rcNew = getView().findViewById(R.id.RecyclerNewCars);
         rcUsed = getView().findViewById(R.id.RecyclerUsedCars);
         mainSearch =getView().findViewById(R.id.cardViewsearchNoAccountHome);
@@ -108,6 +106,8 @@ public class NoUserHomeFragment extends Fragment {
         tvShowNew = getView().findViewById(R.id.textViewMoreNewCars);
         tvShowUsed =getView().findViewById(R.id.textViewMoreUsedCars);
 
+        // to Assure that the Navigation Bar is Visible in this state........
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
 
         if(!fbs.getCurrentFragment().equals("NoUserHome")) fbs.setCurrentFragment("NoUserHome");
 
@@ -127,13 +127,6 @@ public class NoUserHomeFragment extends Fragment {
             public void onClick(View view) {
                 setNavigationBarSearch();
                 GoToSearch();
-            }
-        });
-
-        ivPFP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setNavigationBarProfile();
             }
         });
 

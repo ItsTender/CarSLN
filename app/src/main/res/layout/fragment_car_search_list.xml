@@ -84,11 +84,12 @@
             android:layout_height="30dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/white"
             android:hapticFeedbackEnabled="true"
             android:pointerIcon="none"
-            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewsearch" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsearch"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textViewcountresults"

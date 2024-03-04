@@ -113,6 +113,8 @@ public class AllCarsFragment extends Fragment {
         tvShowNew = getView().findViewById(R.id.textViewMoreNewCars);
         tvShowUsed =getView().findViewById(R.id.textViewMoreUsedCars);
 
+        // to Assure that the Navigation Bar is Visible in this state........
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
 
         if(!fbs.getCurrentFragment().equals("AllCars")) fbs.setCurrentFragment("AllCars");
 
