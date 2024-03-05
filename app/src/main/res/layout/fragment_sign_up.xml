@@ -199,7 +199,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="Phone Number"
-                android:inputType="phone"
+                android:inputType="number"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black" />
 

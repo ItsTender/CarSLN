@@ -55,7 +55,9 @@ public class UserProfile {
     public ArrayList<String> getSavedCars() {
         return SavedCars;
     }
+
     public void setSavedCars(ArrayList<String> savedCars) {
         SavedCars = savedCars;
     }
+
 }

@@ -39,6 +39,8 @@ import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.UserProfile;
 
+import org.w3c.dom.Text;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -262,6 +264,7 @@ public class DetailedFragment extends Fragment {
 
                 TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
                 TextView username = dialogSeller.findViewById(R.id.tvSellerUsername);
+                TextView tvnum = dialogSeller.findViewById(R.id.tvtxtcall);
                 ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
                 CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
                 CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
@@ -277,6 +280,9 @@ public class DetailedFragment extends Fragment {
 
                         mail.setText(str);
                         username.setText(usr.getUsername());
+
+                        String phone = usr.getPhone();
+                        tvnum.setText(phone.substring(0,3) + "-" + phone.substring(3));
 
                         pfp = documentSnapshot.getString("userPhoto");
                         if (pfp == null || pfp.isEmpty())
@@ -356,7 +362,7 @@ public class DetailedFragment extends Fragment {
                             String phoneNumber = usr.getPhone();
                             String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
 
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + "+972" + phoneNumber + "&text=" + message));
                             startActivity(intent);
 
                         }
@@ -379,6 +385,7 @@ public class DetailedFragment extends Fragment {
 
             TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
             TextView username = dialogSeller.findViewById(R.id.tvSellerUsername);
+            TextView tvnum = dialogSeller.findViewById(R.id.tvtxtcall);
             ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
             CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
             CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
@@ -394,6 +401,9 @@ public class DetailedFragment extends Fragment {
 
                     mail.setText(str);
                     username.setText(usr.getUsername());
+
+                    String phone = usr.getPhone();
+                    tvnum.setText(phone.substring(0,3) + "-" + phone.substring(3));
 
                     pfp = documentSnapshot.getString("userPhoto");
                     if (pfp == null || pfp.isEmpty())
@@ -473,7 +483,7 @@ public class DetailedFragment extends Fragment {
                         String phoneNumber = usr.getPhone();
                         String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
 
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message));
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + "+972" + phoneNumber + "&text=" + message));
                         startActivity(intent);
 
                     }

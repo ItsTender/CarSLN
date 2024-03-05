@@ -92,7 +92,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="New Phone Number"
-            android:inputType="text"
+            android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
 

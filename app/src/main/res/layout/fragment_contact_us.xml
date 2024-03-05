@@ -221,7 +221,7 @@
                     android:fontFamily="sans-serif"
                     android:gravity="center"
                     android:hapticFeedbackEnabled="true"
-                    android:text="+972 58-412-3696"
+                    android:text="+972 058-4123696"
                     android:textColor="@color/Broncos_Navy"
                     android:textSize="15sp"
                     android:textStyle="bold" />

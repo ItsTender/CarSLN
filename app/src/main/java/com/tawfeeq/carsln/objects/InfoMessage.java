@@ -26,7 +26,9 @@ public class InfoMessage {
 
         return instance;
     }
+
     public void LogoutMessage(Context context, FragmentTransaction ft) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Are You Sure You Want to Logout");
         FireBaseServices fbs = FireBaseServices.getInstance();
@@ -46,7 +48,6 @@ public class InfoMessage {
                     dialog.dismiss();
             }
         });
-
 
         AlertDialog dialog = builder.create();
         dialog.show();

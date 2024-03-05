@@ -77,7 +77,8 @@
                 android:text="Post New Listing"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                app:shapeAppearance="@style/RoundShape.App.50percent" />
+                app:shapeAppearance="@style/RoundShape.App.50percent"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </androidx.cardview.widget.CardView>
 
@@ -537,7 +538,7 @@
                 android:id="@+id/TwitterLogo"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="24dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/twitter_x"

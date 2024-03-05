@@ -137,7 +137,6 @@ public class SettingsFragment extends Fragment {
 
         if(fbs.getUser()!=null) {
 
-            // Get User Profile Photo.....
 
             pfp = fbs.getUser().getUserPhoto();
 
@@ -148,12 +147,13 @@ public class SettingsFragment extends Fragment {
             }
 
             tvUsername.setText(fbs.getUser().getUsername());
-            tvPhone.setText(fbs.getUser().getPhone());
+
+            String phone = fbs.getUser().getPhone();
+            tvPhone.setText(phone.substring(0,3) + "-" + phone.substring(3));
+
             tvLocation.setText(fbs.getUser().getLocation());
 
         }
-
-        // Ends................................................
 
 
         ivUser.setOnLongClickListener(new View.OnLongClickListener() {
@@ -294,7 +294,7 @@ public class SettingsFragment extends Fragment {
 
                             Toast.makeText(getActivity(), "Phone Number Updated", Toast.LENGTH_LONG).show();
                             fbs.getUser().setPhone(newphone);
-                            tvPhone.setText(newphone);
+                            tvPhone.setText(newphone.substring(0,3) + "-" + newphone.substring(3));
                             dialogPhone.dismiss();
                         }
                     }).addOnFailureListener(new OnFailureListener() {

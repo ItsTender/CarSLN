@@ -36,12 +36,11 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif"
                 android:text="Manufacturer+Model"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/DetailedPrice" />
 
@@ -65,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="38dp"
                 android:fontFamily="sans-serif"
                 android:text="Location"
                 android:textColor="@color/black"
@@ -77,7 +76,7 @@
                 android:id="@+id/imageView40"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="35dp"
                 android:src="@drawable/pinpoint_removebg_preview"
                 app:layout_constraintStart_toEndOf="@+id/DetailedLocationArea"
                 app:layout_constraintTop_toBottomOf="@+id/adView" />
@@ -123,13 +122,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="15dp"
-                android:outlineAmbientShadowColor="@color/black"
-                android:outlineSpotShadowColor="@color/black"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/DetailedMan">
@@ -140,8 +136,8 @@
                     android:layout_height="match_parent"
                     android:src="@color/white"
                     app:shapeAppearance="@style/RoundShape.App.15percent"
-                    app:strokeColor="@color/black"
-                    app:strokeWidth="2.5dp" />
+                    app:strokeColor="@color/Shadow"
+                    app:strokeWidth="1.5dp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -252,14 +248,16 @@
 
             <TextView
                 android:id="@+id/DetailedNotes"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
                 android:fontFamily="sans-serif"
                 android:text="Notes"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView40" />
 
@@ -372,7 +370,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="80dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -410,7 +408,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="38dp"
                 app:adSize="BANNER"
                 app:adUnitId="ca-app-pub-3940256099942544/6300978111"
                 app:layout_constraintEnd_toEndOf="parent"

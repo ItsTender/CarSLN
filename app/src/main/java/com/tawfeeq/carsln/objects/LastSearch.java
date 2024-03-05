@@ -105,4 +105,5 @@ public class LastSearch {
     public void setKiloTo(Float kiloTo) {
         KiloTo = kiloTo;
     }
+
 }

@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="16dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintSeller"
@@ -33,7 +31,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +99,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="Call Seller"
+                android:text="Call"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -197,7 +195,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="Message Seller"
+                android:text="Message"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />

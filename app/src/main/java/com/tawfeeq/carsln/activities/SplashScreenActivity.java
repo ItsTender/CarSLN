@@ -23,6 +23,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     FireBaseServices fbs;
     UserProfile usr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,43 +41,87 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         if(fbs.getAuth().getCurrentUser()!=null) {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+            if(isNetworkAvailable()) {
 
-                    fbs.setCarList(null);
-                    fbs.setSearchList(null);
-                    fbs.setLastSearch(null);
-                    fbs.setLastFilter("null");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                    String str = fbs.getAuth().getCurrentUser().getEmail();
-                    int n = str.indexOf("@");
-                    String user = str.substring(0, n);
+                        fbs.setCarList(null);
+                        fbs.setSearchList(null);
+                        fbs.setLastSearch(null);
+                        fbs.setLastFilter("null");
 
-                    fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        String str = fbs.getAuth().getCurrentUser().getEmail();
+                        int n = str.indexOf("@");
+                        String user = str.substring(0, n);
 
-                            usr = documentSnapshot.toObject(UserProfile.class);
-                            fbs.setUser(usr);
-                            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-                            finish();
+                        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
+                                usr = documentSnapshot.toObject(UserProfile.class);
+                                fbs.setUser(usr);
+                                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                                finish();
 
-                            Toast.makeText(SplashScreenActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
-                            fbs.setUser(null);
-                            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-                            finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
 
-                        }
-                    });
+                                Toast.makeText(SplashScreenActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                                fbs.setUser(null);
+                                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                                finish();
 
-                }
-            } ,880);
+                            }
+                        });
+
+                    }
+                }, 800);
+
+            } else {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        fbs.setCarList(null);
+                        fbs.setSearchList(null);
+                        fbs.setLastSearch(null);
+                        fbs.setLastFilter("null");
+
+                        String str = fbs.getAuth().getCurrentUser().getEmail();
+                        int n = str.indexOf("@");
+                        String user = str.substring(0, n);
+
+                        fbs.getStore().collection("Users").document(user).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                usr = documentSnapshot.toObject(UserProfile.class);
+                                fbs.setUser(usr);
+                                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                                finish();
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                                Toast.makeText(SplashScreenActivity.this, "Couldn't Retrieve User Info, Please Try Again Later!", Toast.LENGTH_SHORT).show();
+                                fbs.setUser(null);
+                                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                                finish();
+
+                            }
+                        });
+
+                    }
+                }, 1200);
+
+            }
 
         } else {
 

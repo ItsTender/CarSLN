@@ -34,6 +34,7 @@ public class Utils {
 
         return instance;
     }
+
     public void uploadImage(Context context, Uri selectedImageUri) {
         if (selectedImageUri != null) {
 
@@ -73,8 +74,11 @@ public class Utils {
                     Toast.makeText(context, "Failed to Upload Image", Toast.LENGTH_SHORT).show();
                 }
             });
+
         } else {
             Toast.makeText(context, "Choose an Image", Toast.LENGTH_SHORT).show();
         }
+
     }
+
 }
