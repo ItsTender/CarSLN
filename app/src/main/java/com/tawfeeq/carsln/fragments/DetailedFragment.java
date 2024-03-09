@@ -262,7 +262,6 @@ public class DetailedFragment extends Fragment {
                 dialogSeller.setContentView(R.layout.seller_page);
                 dialogSeller.setCancelable(true);
 
-                TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
                 TextView username = dialogSeller.findViewById(R.id.tvSellerUsername);
                 TextView tvnum = dialogSeller.findViewById(R.id.tvtxtcall);
                 ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
@@ -278,7 +277,6 @@ public class DetailedFragment extends Fragment {
 
                         usr = documentSnapshot.toObject(UserProfile.class);
 
-                        mail.setText(str);
                         username.setText(usr.getUsername());
 
                         String phone = usr.getPhone();
@@ -383,7 +381,6 @@ public class DetailedFragment extends Fragment {
             dialogSeller.setContentView(R.layout.seller_page);
             dialogSeller.setCancelable(true);
 
-            TextView mail = dialogSeller.findViewById(R.id.tvselleremail);
             TextView username = dialogSeller.findViewById(R.id.tvSellerUsername);
             TextView tvnum = dialogSeller.findViewById(R.id.tvtxtcall);
             ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
@@ -399,7 +396,6 @@ public class DetailedFragment extends Fragment {
 
                     usr = documentSnapshot.toObject(UserProfile.class);
 
-                    mail.setText(str);
                     username.setText(usr.getUsername());
 
                     String phone = usr.getPhone();

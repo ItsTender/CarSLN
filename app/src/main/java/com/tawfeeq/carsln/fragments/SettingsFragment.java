@@ -631,7 +631,7 @@ public class SettingsFragment extends Fragment {
         } else if(resultCode == UCrop.RESULT_ERROR) {
             // Close the UCrop.
         }
-        if (requestCode == 123 && resultCode == getActivity().RESULT_OK) {
+        if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data!=null) {
 
             Uri selectedImageUri = data.getData();
             startCropActivity(selectedImageUri);

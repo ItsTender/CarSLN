@@ -150,6 +150,7 @@ public class ViewPhotoFragment extends Fragment {
                             Toast.makeText(getActivity(), "Profile Photo Updated", Toast.LENGTH_LONG).show();
                             fbs.getUser().setUserPhoto(photo);
 
+                            ivUser.setImageResource(R.color.black);
                             Alert.setVisibility(View.VISIBLE);
 
                         }
@@ -265,7 +266,7 @@ public class ViewPhotoFragment extends Fragment {
         } else if(resultCode == UCrop.RESULT_ERROR) {
             // Close the UCrop.
         }
-        if (requestCode == 123 && resultCode == getActivity().RESULT_OK) {
+        if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data!=null) {
 
             Uri selectedImageUri = data.getData();
             startCropActivity(selectedImageUri);

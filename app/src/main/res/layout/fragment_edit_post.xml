@@ -245,9 +245,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewprice"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -273,9 +275,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewman"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -296,9 +300,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewmod"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -318,9 +324,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewgear"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -341,9 +349,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewyear"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -364,7 +374,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewbhp"
-                android:layout_width="175dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
@@ -396,7 +406,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewowners"
-                android:layout_width="175dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="210dp"
                 android:layout_marginTop="30dp"
@@ -428,9 +438,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewengine"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -457,9 +469,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewkm"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -485,9 +499,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewcolor"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -508,9 +524,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewlocation"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -531,7 +549,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewtestyear"
-                android:layout_width="175dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="210dp"
                 android:layout_marginTop="30dp"
@@ -556,7 +574,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewtestmonth"
-                android:layout_width="175dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
@@ -581,9 +599,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewnotes"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -611,9 +631,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewselllend"
-                android:layout_width="354dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
@@ -633,9 +655,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btnAddProfileCard"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="55dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/sln_background"
                 app:cardCornerRadius="180dp"

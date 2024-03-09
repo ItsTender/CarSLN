@@ -163,7 +163,7 @@
 
                         <TextView
                             android:id="@+id/DetailedYear"
-                            android:layout_width="44dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="28dp"
                             android:layout_gravity="center"
                             android:layout_marginStart="5dp"
@@ -171,7 +171,7 @@
                             android:gravity="center"
                             android:text="Year"
                             android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textSize="17dp" />
 
                     </LinearLayout>
 
@@ -202,7 +202,7 @@
                             android:fontFamily="sans-serif"
                             android:text="Owners"
                             android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textSize="17dp" />
 
                     </LinearLayout>
 
@@ -234,7 +234,7 @@
                             android:fontFamily="sans-serif"
                             android:text="kilometre"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
+                            android:textSize="17dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

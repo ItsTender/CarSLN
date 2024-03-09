@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         fbs.setRcListings(null);
         fbs.setCurrentFragment("");
 
-        if(fbs.getAuth().getCurrentUser()!=null) {
+        if(fbs.getAuth().getCurrentUser()!= null) {
 
             bnv.setSelectedItemId(R.id.market);
             bnv.setVisibility(View.VISIBLE);
