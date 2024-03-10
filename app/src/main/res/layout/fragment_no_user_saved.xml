@@ -78,10 +78,12 @@
 
         <TextView
             android:id="@+id/textViewenc1"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="33dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="33dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Login or Create a New Account to have the ability of Bookmarking and Saving Car Listings Freely"

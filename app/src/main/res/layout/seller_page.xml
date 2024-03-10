@@ -15,11 +15,11 @@
             android:id="@+id/tvSellerUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +28,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewSellerPage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -43,8 +43,8 @@
             android:id="@+id/imageViewDialogClose"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="14dp"
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/baseline_close_24"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,27 +55,38 @@
             android:id="@+id/cardViewCall"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="20dp"
             android:hapticFeedbackEnabled="true"
-            android:outlineAmbientShadowColor="@color/Blue700"
-            android:outlineSpotShadowColor="@color/Blue700"
-            app:cardBackgroundColor="@color/Blue700"
-            app:cardCornerRadius="8dp"
+            android:outlineAmbientShadowColor="@color/white"
+            android:outlineSpotShadowColor="@color/white"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="14dp"
             app:cardElevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSellerUsername">
 
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewwrap"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/white"
+                app:shapeAppearance="@style/RoundShape.App.30percent"
+                app:strokeColor="@color/Light_Grey"
+                app:strokeWidth="1.8dp" />
+
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView3"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="18dp"
-                app:srcCompat="@drawable/baseline_phone_24"
-                app:tint="@color/white" />
+                android:layout_marginStart="21dp"
+                app:srcCompat="@drawable/call"
+                app:tint="@color/Blue700" />
 
 
             <TextView
@@ -83,13 +94,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="70dp"
-                android:fontFamily="sans-serif"
+                android:layout_marginStart="65dp"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:text="Call"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textColor="@color/DarkGrey"
+                android:textSize="17sp" />
 
 
         </androidx.cardview.widget.CardView>
@@ -99,34 +109,36 @@
             android:id="@+id/cardViewWhatsapp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
             android:hapticFeedbackEnabled="true"
-            android:outlineAmbientShadowColor="@color/WhatsappGreen"
-            android:outlineSpotShadowColor="@color/WhatsappGreen"
+            android:outlineAmbientShadowColor="@color/white"
+            android:outlineSpotShadowColor="@color/white"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="14dp"
             app:cardElevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewCall">
+            app:layout_constraintTop_toBottomOf="@+id/cardViewSMS">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageViewwrap"
+                android:id="@+id/imageViewwrapw"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@color/white"
-                app:shapeAppearance="@style/RoundShape.App.15percent"
+                app:shapeAppearance="@style/RoundShape.App.30percent"
                 app:strokeColor="@color/WhatsappGreen"
-                app:strokeWidth="2.5dp" />
+                app:strokeWidth="1.6dp" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView2"
-                android:layout_width="66dp"
-                android:layout_height="66dp"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/whatsapp"
                 app:shapeAppearance="@style/RoundShape.App.50percent" />
 
@@ -134,14 +146,13 @@
                 android:id="@+id/tvtxtwhatsapp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="sans-serif"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="65dp"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:text="Whatsapp"
                 android:textColor="@color/WhatsappGreen"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
 
         </androidx.cardview.widget.CardView>
@@ -150,42 +161,48 @@
             android:id="@+id/cardViewSMS"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:hapticFeedbackEnabled="true"
-            android:outlineAmbientShadowColor="@color/Blue700"
-            android:outlineSpotShadowColor="@color/Blue700"
-            app:cardBackgroundColor="@color/Blue700"
-            app:cardCornerRadius="8dp"
+            android:outlineAmbientShadowColor="@color/white"
+            android:outlineSpotShadowColor="@color/white"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="14dp"
             app:cardElevation="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewWhatsapp">
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCall">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewwrapm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/white"
+                app:shapeAppearance="@style/RoundShape.App.30percent"
+                app:strokeColor="@color/Light_Grey"
+                app:strokeWidth="1.8dp" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                app:tint="@color/white"
-                app:srcCompat="@drawable/baseline_message_24" />
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="17dp"
+                app:srcCompat="@drawable/message"
+                app:tint="@color/Blue700" />
 
             <TextView
                 android:id="@+id/tvtxtsms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="sans-serif"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="65dp"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:text="Message"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textColor="@color/DarkGrey"
+                android:textSize="18sp" />
 
 
         </androidx.cardview.widget.CardView>

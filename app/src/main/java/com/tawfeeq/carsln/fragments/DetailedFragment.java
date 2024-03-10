@@ -117,8 +117,6 @@ public class DetailedFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        getNavigationBar().setVisibility(View.GONE);
-
         fbs = FireBaseServices.getInstance();
         imageSlider = getView().findViewById(R.id.image_slider);
         btnSeller = getView().findViewById(R.id.btnShowSeller);
@@ -139,6 +137,8 @@ public class DetailedFragment extends Fragment {
         ivDelete =getView().findViewById(R.id.DetailedDeleteListing); // Delete Listing if you Posted it......
         ivEdit = getView().findViewById(R.id.DetailedEditListing); // Edit Listing Info if you Posted it......
 
+        // Keep the Navigation Bar Invisible while looking at the Car's Details!!!!
+        getNavigationBar().setVisibility(View.GONE);
 
         if(!fbs.getCurrentFragment().equals("Detailed")) fbs.setCurrentFragment("Detailed");
 

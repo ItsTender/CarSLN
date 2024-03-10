@@ -178,10 +178,10 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnAddProfileCard"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="55dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/sln_background"
             app:cardCornerRadius="180dp"

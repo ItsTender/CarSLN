@@ -30,37 +30,64 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-            <TextView
-                android:id="@+id/tvSLN"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginStart="6dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="CarSLN"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="11dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvSLN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="CarSLN"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tvSLNDefinition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="Selling, Lending, Negotiating"
+                    android:textColor="@color/black"
+                    android:textSize="13.5sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSLN" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLoginNoUserHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:shadowColor="@color/white"
+                android:text="LOGIN"
+                android:textColor="@color/Blue700"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tvSLNDefinition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="6dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="Selling, Lending, Negotiating"
-                android:textColor="@color/black"
-                android:textSize="13.5sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
-                app:layout_constraintTop_toBottomOf="@+id/tvSLN" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -125,12 +152,12 @@
                     app:shapeAppearance="@style/RoundShape.App.50percent">
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/btngoSearch"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="3dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/white"
                         android:contentDescription="@string/Search"
@@ -140,8 +167,8 @@
                         android:id="@+id/textViewsearchcustom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="58dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="55dp"
+                        android:layout_gravity="center_vertical"
                         android:fontFamily="sans-serif"
                         android:text="Search available cars"
                         android:textColor="@color/Shinygrey"

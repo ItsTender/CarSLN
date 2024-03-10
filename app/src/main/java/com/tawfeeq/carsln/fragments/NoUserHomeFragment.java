@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class NoUserHomeFragment extends Fragment {
     ArrayList<String> Saved;
     TextView tvShowNew, tvShowUsed;
     CardView mainSearch;
+    Button btnLogin;
     SwipeRefreshLayout refreshMain;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -102,6 +104,7 @@ public class NoUserHomeFragment extends Fragment {
         rcNew = getView().findViewById(R.id.RecyclerNewCars);
         rcUsed = getView().findViewById(R.id.RecyclerUsedCars);
         mainSearch =getView().findViewById(R.id.cardViewsearchNoAccountHome);
+        btnLogin = getView().findViewById(R.id.btnLoginNoUserHome);
         refreshMain = getView().findViewById(R.id.RefreshNoAccountHome);
         tvShowNew = getView().findViewById(R.id.textViewMoreNewCars);
         tvShowUsed =getView().findViewById(R.id.textViewMoreUsedCars);
@@ -127,6 +130,14 @@ public class NoUserHomeFragment extends Fragment {
             public void onClick(View view) {
                 setNavigationBarSearch();
                 GoToSearch();
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+                GoToLogin();
             }
         });
 
@@ -317,6 +328,14 @@ public class NoUserHomeFragment extends Fragment {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new SearchFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void GoToLogin() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new LogInFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 

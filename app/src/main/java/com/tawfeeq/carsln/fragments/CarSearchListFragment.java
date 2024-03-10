@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +47,7 @@ public class CarSearchListFragment extends Fragment {
     ArrayList<CarID> search, filteredsearch, market;
     RecyclerView rc;
     SearchCarsAdapter Adapter;
-    ImageButton btnSearch;
+    ImageView btnSearch;
     TextView tvSearch, tvResults;
     ArrayList<String> Saved;
     Spinner Filter;

@@ -124,12 +124,12 @@
                     app:shapeAppearance="@style/RoundShape.App.50percent">
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/btngoSearch"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="3dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/white"
                         android:contentDescription="@string/Search"
@@ -139,8 +139,8 @@
                         android:id="@+id/textViewsearchcustom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="58dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="55dp"
+                        android:layout_gravity="center_vertical"
                         android:fontFamily="sans-serif"
                         android:text="Search available cars"
                         android:textColor="@color/Shinygrey"
@@ -198,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:text="New Cars"
                     android:textColor="@color/black"
                     android:textSize="22sp"
@@ -242,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:text="Used Cars"
                     android:textColor="@color/black"
                     android:textSize="22sp"
