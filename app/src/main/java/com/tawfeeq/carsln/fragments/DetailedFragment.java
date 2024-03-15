@@ -33,6 +33,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.tawfeeq.carsln.activities.SplashScreenActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.activities.MainActivity;
@@ -55,7 +56,7 @@ import java.util.Locale;
 public class DetailedFragment extends Fragment {
 
     FireBaseServices fbs;
-    TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvEngine, tvLocation, tvTest, tvColor, tvNotes;
+    TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvEngine, tvLocation, tvTest, tvColor, tvNotes, tvOwnership;
     ImageView  ivSaved, ivBack, ivDelete, ivEdit;
     Button btnSeller;
     boolean isFound;
@@ -131,6 +132,7 @@ public class DetailedFragment extends Fragment {
         tvTest = getView().findViewById(R.id.DetailedTestUntil);
         tvColor = getView().findViewById(R.id.DetailedColor);
         tvNotes = getView().findViewById(R.id.DetailedNotes);
+        tvOwnership = getView().findViewById(R.id.DetailedOwnership);
         tvEngine = getView().findViewById(R.id.DetailedEngine);
         ivSaved = getView().findViewById(R.id.ivSavedCar); // the Saved Icon......
         ivBack =getView().findViewById(R.id.DetailedGoBack); // Goes Back To Wherever the User Was.
@@ -142,8 +144,12 @@ public class DetailedFragment extends Fragment {
 
         if(!fbs.getCurrentFragment().equals("Detailed")) fbs.setCurrentFragment("Detailed");
 
+        if(fbs.getSelectedCar()!=null) currentCar = fbs.getSelectedCar();
+        else {
+            startActivity(new Intent(getContext(), MainActivity.class));
+        }
 
-        currentCar = fbs.getSelectedCar();
+
         usr = new UserProfile();
 
         String str = fbs.getSelectedCar().getEmail();
@@ -628,6 +634,7 @@ public class DetailedFragment extends Fragment {
         tvLocation.setText(currentCar.getLocation());
         tvTest.setText(currentCar.getNextTest());
         tvColor.setText(currentCar.getColor());
+        tvOwnership.setText(currentCar.getOwnership());
 
         if(currentCar.getUsers()==1){
             String Owners= String.valueOf(currentCar.getUsers()); tvUsers.setText(Owners + " Owner");

@@ -180,7 +180,7 @@ public class SettingsFragment extends Fragment {
         Dialog dialogUsername = new Dialog(getActivity());
         dialogUsername.setContentView(R.layout.change_username_dialog);
         dialogUsername.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-        dialogUsername.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogUsername.getWindow().setBackgroundDrawableResource(R.color.white);
         dialogUsername.setCancelable(true);
 
         Button ChangeUsername = dialogUsername.findViewById(R.id.btnChangeUsername);
@@ -259,7 +259,7 @@ public class SettingsFragment extends Fragment {
         Dialog dialogPhone = new Dialog(getActivity());
         dialogPhone.setContentView(R.layout.change_phone_dialog);
         dialogPhone.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-        dialogPhone.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogPhone.getWindow().setBackgroundDrawableResource(R.color.white);
         dialogPhone.setCancelable(true);
 
         Button ChangePhone = dialogPhone.findViewById(R.id.btnChangePhone);
@@ -335,7 +335,7 @@ public class SettingsFragment extends Fragment {
         Dialog dialogLocation = new Dialog(getActivity());
         dialogLocation.setContentView(R.layout.change_location_dialog);
         dialogLocation.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-        dialogLocation.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogLocation.getWindow().setBackgroundDrawableResource(R.color.white);
         dialogLocation.setCancelable(true);
 
         Button ChangeLocation = dialogLocation.findViewById(R.id.btnChangeLocation);
@@ -414,7 +414,7 @@ public class SettingsFragment extends Fragment {
         Dialog dialogPass = new Dialog(getActivity());
         dialogPass.setContentView(R.layout.change_password_dialog);
         dialogPass.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-        dialogPass.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialogPass.getWindow().setBackgroundDrawableResource(R.color.white);
         dialogPass.setCancelable(true);
 
         Button ChangePass = dialogPass.findViewById(R.id.btnChangePass);

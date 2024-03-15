@@ -45,7 +45,7 @@ import java.util.UUID;
 public class AddPhotosFragment extends Fragment {
 
     FireBaseServices fbs;
-    String Man, Mod,Transmission,Engine,color,Location,NextTest,Notes;
+    String Man, Mod,Transmission,Engine,color,Location,NextTest,Notes,Ownership;
     Integer Price,Power,Year,Users,Kilometre;
     int PressedPhoto;
     Boolean selllend;
@@ -117,6 +117,7 @@ public class AddPhotosFragment extends Fragment {
         Location=bundle.getString("Area");
         NextTest=bundle.getString("Test");
         Notes=bundle.getString("Notes");
+        Ownership=bundle.getString("Ownership");
 
 
         return view;
@@ -149,7 +150,7 @@ public class AddPhotosFragment extends Fragment {
                 if(FourthPhoto == null ) FourthPhoto ="";
                 if(FifthPhoto == null ) FifthPhoto ="";
 
-                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes);
+                Cars Add = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,Power,Price,Year,Transmission,Engine,Kilometre,Users,color,Location,NextTest,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,Notes,Ownership);
 
                 Dialog loading = new Dialog(getActivity());
                 loading.setContentView(R.layout.loading_dialog);

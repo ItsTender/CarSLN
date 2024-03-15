@@ -56,7 +56,7 @@ public class EditPostFragment extends Fragment {
     Cars newCar;
     Utils utils;
     EditText Price,BHP,Users,Kilometre,Engine,etNotes;
-    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear;
+    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear, SpinnerOwnership;
     ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto, ivFourthPhoto, ivFifthPhoto, Back;
     ImageView dFirst, dSecond, dThird, dFourth, dFifth;
     String FirstPhoto = fbs.getSelectedCar().getPhoto(), SecondPhoto = fbs.getSelectedCar().getSecondphoto(), ThirdPhoto = fbs.getSelectedCar().getThirdPhoto(), FourthPhoto = fbs.getSelectedCar().getFourthPhoto(), FifthPhoto = fbs.getSelectedCar().getFifthPhoto();
@@ -115,7 +115,8 @@ public class EditPostFragment extends Fragment {
         super.onStart();
 
         fbs = FireBaseServices.getInstance();
-        currentCar = fbs.getSelectedCar();
+        if(fbs.getSelectedCar()!=null) currentCar = fbs.getSelectedCar();
+        else ((MainActivity) getActivity()).setSavedGoToMarket();
         utils=Utils.getInstance();
         Apply = getView().findViewById(R.id.btnApply);
         Back = getView().findViewById(R.id.EditListingGoBack);
@@ -144,6 +145,7 @@ public class EditPostFragment extends Fragment {
         SpinnerTestMonth = getView().findViewById(R.id.SpinnerNextTestMonth);
         SpinnerColor = getView().findViewById(R.id.SpinnerCarColor);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationArea);
+        SpinnerOwnership = getView().findViewById(R.id.SpinnerOwnership);
 
 
         if(!fbs.getCurrentFragment().equals("EditPost")) fbs.setCurrentFragment("EditPost");
@@ -243,6 +245,14 @@ public class EditPostFragment extends Fragment {
             ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
             LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerLocation.setAdapter(LocationAdapter);
+        }
+
+
+        if(SpinnerOwnership.getSelectedItem()==null) {
+            String[] Ownership = {"Current Ownership Type", "New Car", "Private", "Rental", "Private Leasing", "Company Leasing", "Taxi"};
+            ArrayAdapter<String> OwnershipAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Ownership);
+            OwnershipAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerOwnership.setAdapter(OwnershipAdapter);
         }
 
 
@@ -858,6 +868,7 @@ public class EditPostFragment extends Fragment {
                 String area = SpinnerLocation.getSelectedItem().toString();
                 String testyear = SpinnerTestYear.getSelectedItem().toString();
                 String testmonth = SpinnerTestMonth.getSelectedItem().toString();
+                String ownership = SpinnerOwnership.getSelectedItem().toString();
                 boolean selllend;
                 if(SellLend.equals("Sell the Car")) selllend=true;
                 else selllend=false;
@@ -916,6 +927,9 @@ public class EditPostFragment extends Fragment {
                 if(area.equals("Current Location District")){
                     area = currentCar.getLocation();
                 }
+                if(ownership.equals("Current Ownership Type")){
+                    ownership = currentCar.getOwnership();
+                }
 
                 String test;
                 if(testmonth.equals("Current Test Month") && testyear.equals("Current Test Year")){
@@ -934,10 +948,8 @@ public class EditPostFragment extends Fragment {
                 int userhands= Integer.parseInt(User);
                 int KM= Integer.parseInt(Kilo);
 
-                newCar = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,engine,KM,userhands,Color,area,test,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,notes);
+                newCar = new Cars(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,engine,KM,userhands,Color,area,test,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,notes,ownership);
                 newCar.setTimestamp(currentCar.getTimestamp());
-                CarID Changed = new CarID(selllend,fbs.getAuth().getCurrentUser().getEmail(),Man,Mod,power,price,Yahr,transmission,engine,KM,userhands,Color,area,test,FirstPhoto,SecondPhoto,ThirdPhoto,FourthPhoto,FifthPhoto,notes);
-                Changed.setId(currentCar.getId());
 
                 fbs.getStore().collection("MarketPlace").document(currentCar.getId()).set(newCar).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

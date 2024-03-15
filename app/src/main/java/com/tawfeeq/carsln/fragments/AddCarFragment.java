@@ -49,7 +49,7 @@ public class AddCarFragment extends Fragment {
     FireBaseServices fbs;
     Cars AddCar;
     EditText Price,BHP,Users,Kilometre,Engine,etNotes;
-    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear;
+    Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear, SpinnerOwnership;
     Button Add,Return;
     ImageView IV, Close;
     String photo;
@@ -126,6 +126,7 @@ public class AddCarFragment extends Fragment {
         SpinnerTestMonth = getView().findViewById(R.id.SpinnerNextTestMonth);
         SpinnerColor = getView().findViewById(R.id.SpinnerCarColor);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationArea);
+        SpinnerOwnership = getView().findViewById(R.id.SpinnerOwnership);
 
         // Navigation Bar Not Visible While Posting a Listing........
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
@@ -184,6 +185,14 @@ public class AddCarFragment extends Fragment {
             ArrayAdapter<String> LocationAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Location);
             LocationAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerLocation.setAdapter(LocationAdapter);
+        }
+
+
+        if(SpinnerOwnership.getSelectedItem()==null) {
+            String[] Ownership = {"Select Ownership Type", "New Car", "Private", "Rental", "Private Leasing", "Company Leasing", "Taxi"};
+            ArrayAdapter<String> OwnershipAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Ownership);
+            OwnershipAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerOwnership.setAdapter(OwnershipAdapter);
         }
 
 
@@ -686,8 +695,9 @@ public class AddCarFragment extends Fragment {
                 String area = SpinnerLocation.getSelectedItem().toString();
                 String testyear = SpinnerTestYear.getSelectedItem().toString();
                 String testmonth = SpinnerTestMonth.getSelectedItem().toString();
+                String ownership = SpinnerOwnership.getSelectedItem().toString();
 
-                if(SellLend.equals("Car Offer Type")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location District")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")) {
+                if(SellLend.equals("Car Offer Type")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location District")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")||ownership.equals("Select Ownership Type")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -742,9 +752,9 @@ public class AddCarFragment extends Fragment {
                 bundle.putString("Area", area);
                 bundle.putString("Test", test);
                 bundle.putString("Notes", notes);
+                bundle.putString("Ownership", ownership);
 
-
-                // Text Car Characteristics.
+                // Text Characteristics.
 
                 gtn.setArguments(bundle);
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();

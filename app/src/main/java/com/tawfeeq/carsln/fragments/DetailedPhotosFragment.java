@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -93,9 +94,10 @@ public class DetailedPhotosFragment extends Fragment {
 
         if(!fbs.getCurrentFragment().equals("DetailedPhotos")) fbs.setCurrentFragment("DetailedPhotos");
 
-
-
-        currentCar = fbs.getSelectedCar();
+        if(fbs.getSelectedCar()!=null) currentCar = fbs.getSelectedCar();
+        else{
+            startActivity(new Intent(getContext(), MainActivity.class));
+        }
 
 
         Photo = currentCar.getPhoto();

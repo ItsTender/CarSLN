@@ -31,7 +31,7 @@
         android:id="@+id/constraintphotoInfo"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:id="@+id/viewphotolinear"
@@ -74,6 +74,7 @@
             android:id="@+id/ViewPhotoChangePFP"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="16dp"
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/baseline_create_24"

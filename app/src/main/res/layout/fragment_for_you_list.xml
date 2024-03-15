@@ -40,7 +40,7 @@
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
-    </androidx.cardview.widget.CardView>>
+    </androidx.cardview.widget.CardView>
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

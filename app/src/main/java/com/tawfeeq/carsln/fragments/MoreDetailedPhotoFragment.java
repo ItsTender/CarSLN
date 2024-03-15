@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 
@@ -89,8 +91,12 @@ public class MoreDetailedPhotoFragment extends Fragment {
         fbs = FireBaseServices.getInstance();
         Back = getView().findViewById(R.id.MoreDetailedGoBack);
         ivPhoto = getView().findViewById(R.id.MoreDetailedPhoto);
-        currentCar = fbs.getSelectedCar();
 
+
+        if(fbs.getSelectedCar()!=null) currentCar = fbs.getSelectedCar();
+        else{
+            startActivity(new Intent(getContext(), MainActivity.class));
+        }
 
         if(!fbs.getCurrentFragment().equals("MoreDetailedPhoto")) fbs.setCurrentFragment("MoreDetailedPhoto");
 

@@ -25,12 +25,13 @@ public class CarID {
     private String FourthPhoto; // Fourth Photo of Five
     private String FifthPhoto; // Fifth Photo of Five
     private String Notes; // The Seller's Notes about the Car.
+    private String Ownership;
     private com.google.firebase.Timestamp timestamp;
 
     public CarID() {
     }
 
-    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto, String fourthPhoto, String fifthPhoto, String notes) {
+    public CarID(boolean sellLend, String email, String manufacturer, String model, int BHP, int price, int year, String transmission, String engine, int kilometre, int users, String color, String location, String nextTest, String photo, String secondphoto, String thirdPhoto, String fourthPhoto, String fifthPhoto, String notes, String ownership) {
         SellLend = sellLend;
         Email = email;
         Manufacturer = manufacturer;
@@ -51,6 +52,7 @@ public class CarID {
         FourthPhoto = fourthPhoto;
         FifthPhoto = fifthPhoto;
         Notes = notes;
+        Ownership = ownership;
     }
 
     // protected Cars(Parcel in) {}
@@ -64,6 +66,14 @@ public class CarID {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getOwnership() {
+        return Ownership;
+    }
+
+    public void setOwnership(String ownership) {
+        Ownership = ownership;
     }
 
     public String getColor() {
