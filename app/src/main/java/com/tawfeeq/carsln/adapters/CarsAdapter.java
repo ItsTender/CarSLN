@@ -205,7 +205,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
     class CarsHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtCar,txtYear,txtKilo,txtPrice,txtOwners,txtHP;
+        private TextView txtCar,txtYear,txtKilo,txtPrice,txtOwners,txtEngineHP;
         private ImageView ivCar;// shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
         private ImageView ivSaved;
         public CarsHolder(@NonNull View itemView) {
@@ -215,7 +215,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
             txtYear= itemView.findViewById(R.id.tvtxtYear);
             txtOwners = itemView.findViewById(R.id.tvtxtOwners);
             txtKilo = itemView.findViewById(R.id.tvtxtKilometre);
-            txtHP = itemView.findViewById(R.id.tvtxtHP);
+            txtEngineHP = itemView.findViewById(R.id.tvtxtEngineHP);
             txtPrice= itemView.findViewById(R.id.tvtxtPrice);
             ivCar= itemView.findViewById(R.id.CarRes);
             ivSaved = itemView.findViewById(R.id.ivSavedCarAdapter);
@@ -231,7 +231,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsHolder> {
 
 
             txtCar.setText(car.getManufacturer() + " " + car.getModel());
-            txtHP.setText(formatter.format(car.getBHP()) + " horse power");
+            txtEngineHP.setText(car.getEngine() + " (" + formatter.format(car.getBHP()) + " hp)");
             String year = String.valueOf(car.getYear());
             txtYear.setText(year);
             txtKilo.setText(formatter.format(car.getKilometre()) + " km");

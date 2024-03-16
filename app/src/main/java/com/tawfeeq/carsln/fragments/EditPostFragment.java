@@ -889,7 +889,7 @@ public class EditPostFragment extends Fragment {
                     loading.dismiss();
                     return;
                 }
-                if(engine.length()>40){
+                if(engine.length()>33){
                     Toast.makeText(getActivity(), "Engine Field Characters have Surpassed their limit", Toast.LENGTH_SHORT).show();
                     loading.dismiss();
                     return;

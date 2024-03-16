@@ -20,7 +20,7 @@
             android:gravity="center"
             android:text="Delete Car Listing"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayoutSellerInfo"
-            android:layout_width="220dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
@@ -57,24 +57,24 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCancelDelete"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/white"
                 android:hapticFeedbackEnabled="true"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:text="Cancel"
                 android:textColor="@color/black"
-                app:shapeAppearance="@style/RoundShape.App.50percent"
-                app:strokeColor="@color/black"
-                app:strokeWidth="2dp" />
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btnAddProfileCard"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="20dp"
                 android:layout_gravity="center"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/sln_background"
                 app:cardCornerRadius="180dp"
                 app:layout_constraintEnd_toEndOf="parent"

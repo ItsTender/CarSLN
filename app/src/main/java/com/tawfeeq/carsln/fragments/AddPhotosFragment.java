@@ -179,12 +179,48 @@ public class AddPhotosFragment extends Fragment {
             }
         });
 
+
+
+        Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.post_alert);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        dialog.setCancelable(true);
+
+        Button btnClose = dialog.findViewById(R.id.btnConfirmClose);
+        Button btnCancel = dialog.findViewById(R.id.btnCancelClose);
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                setNavigationBarCarsMarket();
+
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
+
+                setNavigationBarVisible();
+                dialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
         Close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoToAddCar();
+                dialog.show();
             }
         });
+
+        
 
         ivFirstPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -321,6 +357,10 @@ public class AddPhotosFragment extends Fragment {
 
     private void setNavigationBarVisible(){
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
+    }
+
+    private void setNavigationBarCarsMarket() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
     }
 
     public void GoToAddCar(){

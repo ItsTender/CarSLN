@@ -709,7 +709,7 @@ public class AddCarFragment extends Fragment {
                     Toast.makeText(getActivity(), "Owners Field is too Much", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(engine.length()>40){
+                if(engine.length()>33){
                     Toast.makeText(getActivity(), "Engine Field Characters have Surpassed their limit", Toast.LENGTH_SHORT).show();
                     return;
                 }

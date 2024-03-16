@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="sans-serif"
                 android:text="Car Model"
                 android:textColor="@color/black"
@@ -95,28 +95,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="Price Range"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewselllendSearch" />
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
 
             <TextView
                 android:id="@+id/textViewpricemax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif"
                 android:text="+200,000"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewselllendSearch" />
+                app:layout_constraintBottom_toTopOf="@+id/rngPrice"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.slider.RangeSlider
                 android:id="@+id/rngPrice"
@@ -143,28 +143,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="Kilometre Range"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewlocationSearch" />
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
 
             <TextView
                 android:id="@+id/textViewkilomax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif"
                 android:text="+200,000"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewlocationSearch" />
+                app:layout_constraintBottom_toTopOf="@+id/rngKilometre"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.slider.RangeSlider
                 android:id="@+id/rngKilometre"
@@ -173,7 +173,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="31dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="105dp"
                 android:stepSize="10000"
                 android:value="0"
                 android:valueFrom="0"
@@ -188,33 +188,48 @@
                 app:trackColor="@color/Light_Grey"
                 app:values="@array/rangesliderkilotere" />
 
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/Shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewmodSearch"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
             <TextView
                 android:id="@+id/textViewyear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="Year Range"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewmodSearch" />
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <TextView
                 android:id="@+id/textViewyearmax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif"
                 android:text="2024"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewmodSearch" />
+                app:layout_constraintBottom_toTopOf="@+id/rngYears"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.slider.RangeSlider
                 android:id="@+id/rngYears"
@@ -236,19 +251,34 @@
                 app:trackColor="@color/Light_Grey"
                 app:values="@array/rangeslideryears" />
 
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/Shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rngYears"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
             <TextView
                 android:id="@+id/textViewoffertype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="Offer Type"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rngYears" />
+                app:layout_constraintTop_toBottomOf="@+id/view1" />
 
 
             <androidx.cardview.widget.CardView
@@ -274,19 +304,48 @@
 
             </androidx.cardview.widget.CardView>
 
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/Shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewselllendSearch"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/Shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewlocationSearch"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
             <TextView
                 android:id="@+id/textViewAreaSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="Location By Area"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rngPrice" />
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
 
 
             <androidx.cardview.widget.CardView
@@ -310,6 +369,20 @@
                     android:backgroundTint="@color/black" />
 
             </androidx.cardview.widget.CardView>
+
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/Shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rngPrice"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

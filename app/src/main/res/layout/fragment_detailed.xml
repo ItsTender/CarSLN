@@ -86,7 +86,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +106,7 @@
 
                 <TextView
                     android:id="@+id/DetailedHP"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"
@@ -302,8 +302,8 @@
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -323,7 +323,7 @@
 
                 <TextView
                     android:id="@+id/DetailedGear"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="45dp"
                     android:layout_marginTop="5dp"
@@ -338,8 +338,8 @@
             <LinearLayout
                 android:id="@+id/linearLayout5"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -358,7 +358,7 @@
 
                 <TextView
                     android:id="@+id/DetailedTestUntil"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"
@@ -373,8 +373,8 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -394,7 +394,7 @@
 
                 <TextView
                     android:id="@+id/DetailedColor"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"
@@ -408,9 +408,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="85dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -431,7 +431,7 @@
 
                 <TextView
                     android:id="@+id/DetailedOwnership"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"
