@@ -3,12 +3,16 @@ package com.tawfeeq.carsln.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.objects.FireBaseServices;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +20,10 @@ import com.tawfeeq.carsln.R;
  * create an instance of this fragment.
  */
 public class HelpFragment extends Fragment {
+
+    FireBaseServices fbs;
+    ImageView ivBack;
+    TextView tvContactUs;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,6 +72,59 @@ public class HelpFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_help, container, false);
     }
 
-    // How to Use Different Features in the App!!!!
-    // TODO: Make a user guide after everything is done.
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        fbs = FireBaseServices.getInstance();
+        ivBack = getView().findViewById(R.id.HelpGoBack);
+        tvContactUs = getView().findViewById(R.id.tvGoToConactUS);
+
+
+        if(!fbs.getCurrentFragment().equals("Help")) fbs.setCurrentFragment("Help");
+
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(fbs.getAuth().getCurrentUser()!=null){
+
+                    FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
+
+                } else {
+
+                    FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayoutMain, new NoUserProfileFragment());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
+
+                }
+
+            }
+        });
+
+
+        tvContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                GoToConactUs();
+            }
+        });
+
+    }
+
+    public void GoToConactUs() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ContactUsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+
+    }
+
 }

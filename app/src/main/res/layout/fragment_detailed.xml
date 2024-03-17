@@ -106,7 +106,7 @@
 
                 <TextView
                     android:id="@+id/DetailedHP"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"
@@ -323,7 +323,7 @@
 
                 <TextView
                     android:id="@+id/DetailedGear"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="45dp"
                     android:layout_marginTop="5dp"
@@ -358,7 +358,7 @@
 
                 <TextView
                     android:id="@+id/DetailedTestUntil"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"
@@ -394,7 +394,7 @@
 
                 <TextView
                     android:id="@+id/DetailedColor"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"
@@ -431,7 +431,7 @@
 
                 <TextView
                     android:id="@+id/DetailedOwnership"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="5dp"

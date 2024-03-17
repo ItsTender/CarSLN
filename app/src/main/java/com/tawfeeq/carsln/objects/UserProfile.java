@@ -3,6 +3,7 @@ package com.tawfeeq.carsln.objects;
 import java.util.ArrayList;
 
 public class UserProfile {
+
     private String userPhoto;
     private String Username;
     private String Phone;
@@ -10,6 +11,7 @@ public class UserProfile {
     private ArrayList<String> SavedCars;
 
     public UserProfile() {
+        // Empty Profile...................
     }
 
     public UserProfile(String userPhoto, String username, String phone, String Location) {

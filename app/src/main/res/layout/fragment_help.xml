@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HelpFragment">
@@ -9,6 +10,405 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ConstraintHelp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewUserListings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif"
+                android:text="Help"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/HelpGoBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:hapticFeedbackEnabled="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView79"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginTop="50dp"
+            android:outlineAmbientShadowColor="@color/Blue700"
+            android:outlineSpotShadowColor="@color/Blue700"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ConstraintHelp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/carsln_logo"
+                app:contentPadding="6dp"
+                app:shapeAppearance="@style/RoundShape.App.15percent"
+                app:strokeColor="@color/Blue700"
+                app:strokeWidth="2.5dp"
+                tools:layout_editor_absoluteX="183dp"
+                tools:layout_editor_absoluteY="80dp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/textViewenc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif"
+            android:text="Welcome to CarSLN's Help tab"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView79" />
+
+        <TextView
+            android:id="@+id/textViewenc1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif"
+            android:text="We're here to ensure your experience selling your vehicle is smooth and straightforward. Whether you're a seasoned seller or a first-timer, this section is designed to address any questions or concerns you might have. From listing your car to navigating negotiations and finalizing the sale, we've got you covered. If you need assistance with any aspect of the process, don't hesitate to reach out to our support team through the Contact Us Tab in your Profile. Your satisfaction is our priority, and we're committed to helping you sell your car with ease."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc1"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
+        <TextView
+            android:id="@+id/posting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Posting a Car Listing"
+            android:textColor="@color/Blue700"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="TextSizeCheck" />
+
+
+        <TextView
+            android:id="@+id/textViewenc2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="To Post a Listing, simply click on the Add icon on the Navigation bar or the Post a Listing Button in your Profile and follow the prompts to enter all the relevant details about your vehicle. Make sure to include accurate information such as Manufacturer, Model, Year, Kilometre, and Condition to attract potential buyers. You can also upload high-quality photos to showcase your car's features. Once your listing is live, interested buyers can easily find and contact you through the app. If you have any questions or you can't find your Car Manufacturer/Model, our support team is here to help."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/posting" />
+
+
+        <TextView
+            android:id="@+id/textViewenc3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="after Successfully Posting you Car Listing you can Manage it by Clicking on it and editing your Listing's info or maybe flatout Deleting it after it was Sold."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc2" />
+
+
+        <TextView
+            android:id="@+id/textViewencspecial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="*only available to registered CarSLN Users."
+            android:textColor="@color/Broncos_Navy"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc3" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewencspecial"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
+        <TextView
+            android:id="@+id/buying"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Buying a Car"
+            android:textColor="@color/Blue700"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view1"
+            tools:ignore="TextSizeCheck" />
+
+
+        <TextView
+            android:id="@+id/textViewenc4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="When you find a car that catches your eye, you have multiple options to connect with the seller. You can either give them a Call, send them a Message, or even reach out via WhatsApp. This flexibility ensures that you can communicate with sellers in the way that suits you best. Again, If you have any questions or need assistance while browsing or contacting sellers, don't hesitate to reach out to our support team."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buying" />
+
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc4"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
+        <TextView
+            android:id="@+id/searching"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Searching for a Car"
+            android:textColor="@color/Blue700"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            tools:ignore="TextSizeCheck" />
+
+
+        <TextView
+            android:id="@+id/textViewenc5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="Our app offers a user-friendly search feature that allows you to browse through lots of car listings with ease. Simply enter your desired Manufacturer, Model, Year, Price range, and other specifications to narrow down the options. You can also utilize filters that sort the list according to Date, Price, Kilometre and Year. Once you've found a few promising listings, feel free to Save or Bookmark them for later or compare them side by side to make an informed decision. If you need assistance navigating the search function or have any questions about specific listings, our support team is here to help."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searching" />
+
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc5"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
+        <TextView
+            android:id="@+id/bookmarkingorsaving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Bookmarking Car Listings"
+            android:textColor="@color/Blue700"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            tools:ignore="TextSizeCheck" />
+
+
+        <TextView
+            android:id="@+id/textViewenc6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="Want to keep track of the Car Listings you like? Simply tap the bookmark icon next to any listing to save it for later. This makes it easy to revisit and compare your favorite options. To view your bookmarked listings, just click the Saved icon on the Navigation bar or the Saved Cars option in your Profile. Need help? Contact our support team anytime."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookmarkingorsaving" />
+
+        <TextView
+            android:id="@+id/textViewencspecial2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="*only available to registered CarSLN Users."
+            android:textColor="@color/Broncos_Navy"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc6" />
+
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewencspecial2"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+
+        <TextView
+            android:id="@+id/tvGoToConactUSd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="sans-serif"
+            android:text="for any further info, "
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <TextView
+            android:id="@+id/tvGoToConactUS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif"
+            android:text="Contact Us here"
+            android:textColor="@color/Blue700"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tvGoToConactUSd"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</ScrollView>

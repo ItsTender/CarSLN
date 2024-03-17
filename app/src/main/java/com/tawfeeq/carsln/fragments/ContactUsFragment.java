@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,12 +14,24 @@ import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.objects.Report;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +42,9 @@ public class ContactUsFragment extends Fragment {
 
     FireBaseServices fbs;
     LinearLayout cvEmail, cvPhone;
+    Spinner SpinnerReason;
+    EditText etContent, etEmail;
+    Button btnSubmit;
     ImageView ivBack;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -86,9 +102,29 @@ public class ContactUsFragment extends Fragment {
         cvPhone = getView().findViewById(R.id.LayoutPhoneContact);
         cvEmail = getView().findViewById(R.id.LayoutEmailContact);
         ivBack = getView().findViewById(R.id.ContactUsGoBack);
+        etEmail = getView().findViewById(R.id.etEmail);
+        SpinnerReason = getView().findViewById(R.id.SpinnerReportReason);
+        etContent = getView().findViewById(R.id.etMultiLineReportContent);
+        btnSubmit = getView().findViewById(R.id.btnSubmitReport);
 
 
         if(!fbs.getCurrentFragment().equals("ContactUs")) fbs.setCurrentFragment("ContactUs");
+
+
+        if(fbs.getAuth().getCurrentUser()!=null){
+
+            etEmail.setText(fbs.getAuth().getCurrentUser().getEmail());
+            etEmail.setEnabled(false);
+
+        }
+
+
+        if(SpinnerReason.getSelectedItem()==null) {
+            String[] Reasons = {"Select Report Reason", "Missing Car information", "Unable to Create a CarSLN Account", "Report a Bug or Crash", "Report a Car Listing", "Report a CarSLN User", "Report Spam", "I Don't see my Report Reasoning here"};
+            ArrayAdapter<String> ReasonsAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Reasons);
+            ReasonsAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+            SpinnerReason.setAdapter(ReasonsAdapter);
+        }
 
 
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +172,69 @@ public class ContactUsFragment extends Fragment {
             }
         });
 
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String email;
+                String reason = SpinnerReason.getSelectedItem().toString();
+                String content = etContent.getText().toString();
+
+                if(fbs.getAuth().getCurrentUser()==null) {
+
+                    email = etEmail.getText().toString();
+
+                    if (email.trim().isEmpty()) {
+                        Toast.makeText(getActivity(), "Missing Email Address", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(!isEmailValid(email)){
+                        Toast.makeText(getActivity(), "Email Address is not Valid", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                }
+                else email = fbs.getAuth().getCurrentUser().getEmail();
+
+                if(reason.equals("Select Report Reason")){
+                    Toast.makeText(getActivity(), "Missing Report Reason", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(content.trim().isEmpty()){
+                    Toast.makeText(getActivity(), "Missing Report Content", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Sending the Report..........................
+                Report report = new Report(email,reason,content);
+
+                fbs.getStore().collection("Reports").add(report).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+
+                        Toast.makeText(getActivity(), "Successfully Sent your Report", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        Toast.makeText(getActivity(), "Successfully Sent your Report", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+
+    }
+
+    public boolean isEmailValid(String email)
+    {
+        final String EMAIL_PATTERN =
+                "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        final Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
 }

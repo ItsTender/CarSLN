@@ -421,7 +421,7 @@ public class MainActivity extends AppCompatActivity {
                 if(currentCar.getSecondphoto() == null || currentCar.getSecondphoto().isEmpty() || currentCar.getSecondphoto().equals("")) GoToDetailed(); // Car Listing only has one Photo.
                 else GoToDetailedPhotos(); // Car Listing more than one Photo.
 
-            }else if(fragment.equals("ContactUs")){
+            }else if(fragment.equals("ContactUs") || fragment.equals("Help")){
 
                 if(fbs.getAuth().getCurrentUser()!=null){
 
@@ -448,6 +448,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     // Ends................................................................
 
 

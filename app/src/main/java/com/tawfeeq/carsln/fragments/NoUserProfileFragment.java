@@ -28,7 +28,7 @@ public class NoUserProfileFragment extends Fragment {
     FireBaseServices fbs;
     Button btn;
     ImageView twitter, github, discord;
-    LinearLayout ContactUs;
+    LinearLayout ContactUs, Help;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,6 +84,7 @@ public class NoUserProfileFragment extends Fragment {
         fbs = FireBaseServices.getInstance();
         btn = getView().findViewById(R.id.btnConnectLogin);
         ContactUs = getView().findViewById(R.id.linearLayoutcontactus);
+        Help = getView().findViewById(R.id.linearLayouthelp);
 
 
         if(!fbs.getCurrentFragment().equals("NoUserProfile")) fbs.setCurrentFragment("NoUserProfile");
@@ -122,6 +123,13 @@ public class NoUserProfileFragment extends Fragment {
             }
         });
 
+        Help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToHelp();
+            }
+        });
+
         ContactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,6 +143,14 @@ public class NoUserProfileFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ContactUsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void GoToHelp() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new HelpFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }

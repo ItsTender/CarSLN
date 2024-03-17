@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment {
     ArrayList<String> Saved;
     Button addcar;
     ImageView twitter, github, discord;
-    LinearLayout userlistings, saved, search, settings, logout, contactus;
+    LinearLayout userlistings, saved, search, settings, logout, help, contactus;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -110,6 +110,7 @@ public class ProfileFragment extends Fragment {
         settings = getView().findViewById(R.id.linearLayoutsettings);
         logout = getView().findViewById(R.id.linearLayoutlogout);
         contactus = getView().findViewById(R.id.linearLayoutcontactus);
+        help = getView().findViewById(R.id.linearLayouthelp);
 
 
         // Additional Links..............
@@ -251,6 +252,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToHelp();
+            }
+        });
+
         contactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -264,6 +272,14 @@ public class ProfileFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new ContactUsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void GoToHelp() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new HelpFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }

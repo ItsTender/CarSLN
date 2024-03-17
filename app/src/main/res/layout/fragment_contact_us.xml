@@ -53,8 +53,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView79"
-            android:layout_width="110dp"
-            android:layout_height="100dp"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
             android:layout_marginTop="50dp"
             android:outlineAmbientShadowColor="@color/Blue700"
             android:outlineSpotShadowColor="@color/Blue700"
@@ -68,11 +68,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:src="@drawable/carsln_logo"
+                app:contentPadding="6dp"
                 app:shapeAppearance="@style/RoundShape.App.15percent"
-                app:srcCompat="@drawable/baseline_email_24"
                 app:strokeColor="@color/Blue700"
-                app:strokeWidth="2dp"
-                app:tint="@color/Blue700"
+                app:strokeWidth="2.5dp"
                 tools:layout_editor_absoluteX="183dp"
                 tools:layout_editor_absoluteY="80dp" />
 
@@ -88,7 +88,7 @@
             android:fontFamily="sans-serif"
             android:text="Want to Contact Us?"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Whatever the Problem may be, Our Dev team will provide you with the information you need"
+            android:text="Whatever the Problem may be, Our Dev team will provide you with the information you need. you can also Contact Us for further information about us and not only the App"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,32 +114,15 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewenc" />
 
 
-        <TextView
-            android:id="@+id/textViewenc2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="you can also Contact Us for further information about us and not only the App"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewenc1" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/sln_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewenc2">
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc1">
 
             <TextView
                 android:id="@+id/textViewenget"
@@ -162,10 +145,8 @@
                 android:id="@+id/LayoutPhoneContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="22dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="38dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -207,23 +188,9 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="Contact Us Through this Phone Number"
+                    android:text="Contact Us Through our Phone Number"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvtxtphone"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:hapticFeedbackEnabled="true"
-                    android:text="+972 058-4123696"
-                    android:textColor="@color/Broncos_Navy"
-                    android:textSize="15sp"
                     android:textStyle="bold" />
 
 
@@ -233,10 +200,8 @@
                 android:id="@+id/LayoutEmailContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="38dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/LayoutPhoneContact"
@@ -275,30 +240,207 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="Contact Us Through this Email Adress"
+                    android:text="Contact Us Through our Email Adress"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardViewemail" />
 
-                <TextView
-                    android:id="@+id/tvtxtmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:hapticFeedbackEnabled="true"
-                    android:text="tawfeeqshahoud@gmail.com"
-                    android:textColor="@color/Broncos_Navy"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearOR"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+            <View
+                android:id="@+id/viewforgotcont"
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvForgot"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+            <TextView
+                android:id="@+id/tvsignuplogin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="OR"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/viewforgot"
+                app:layout_constraintStart_toEndOf="@+id/viewforgotcont"
+                app:layout_constraintTop_toBottomOf="@+id/tvForgot" />
+
+
+            <View
+                android:id="@+id/viewforgot"
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvForgot"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textViewenReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="Send a Report"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearOR" />
+
+
+        <TextView
+            android:id="@+id/textViewenc3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="If you come across any issues or encounter suspicious activity while using CarSLN, we encourage you to report it to us through sending a detailed report here"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenReport" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewemailsender"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:hapticFeedbackEnabled="true"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc3">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="Enter your Email"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewReason"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:hapticFeedbackEnabled="true"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewemailsender">
+
+            <Spinner
+                android:id="@+id/SpinnerReportReason"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:hapticFeedbackEnabled="true"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewReason">
+
+            <EditText
+                android:id="@+id/etMultiLineReportContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Enter Report Content....."
+                android:inputType="textMultiLine"
+                android:minHeight="200dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAddProfileCard"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/sln_background"
+            app:cardCornerRadius="180dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewContent"
+            app:shapeAppearance="@style/RoundShape.App.50percent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubmitReport"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sln_background"
+                android:hapticFeedbackEnabled="true"
+                android:text="Submit Report"
+                android:textColor="@color/white"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

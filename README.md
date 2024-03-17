@@ -1,7 +1,7 @@
 <a name="Top"></a>
 
 <div align="center">
-<img src="https://github.com/ItsTender/CarSLN/assets/146520652/c2676459-4bc8-476c-94b5-d5ceb9c1b75e" alt="CarSLN Logo" width="300" height="300">
+<img src="app/src/main/res/drawable/carsln_rounded.png" alt="CarSLN Logo" width="300"> 
 </div>
 
 <h1> CarSLN

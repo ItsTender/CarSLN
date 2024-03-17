@@ -10,28 +10,33 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.util.ArrayList;
 
 public class FireBaseServices {
+
     private static FireBaseServices instance;
     private FirebaseAuth auth;
     private FirebaseFirestore store;
     private FirebaseStorage storage;
 
     //--------------------------------------
+
     private Uri selectedImageURL;
     private UserProfile user;
 
     //--------------------------------------
+
     private CarID selectedCar;
     private ArrayList<CarID> SearchList;
     private ArrayList<CarID> CarList;
     private ArrayList<CarID> MarketList;
 
     //--------------------------------------
+
     private String From;
     private String currentFragment; // Checking the Last Fragment the User was in, for Back Pressed in the MainActivity!!
     private String LastFilter;
     private LastSearch lastSearch;
 
     //--------------------------------------
+
     // To Save the Scrolling Position for Each Recycler!!
     private Parcelable rcForYou;
     private Parcelable rcSearch;

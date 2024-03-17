@@ -15,8 +15,7 @@ public class InfoMessage {
 
     private static InfoMessage instance;
 
-    public InfoMessage()
-    {
+    public InfoMessage() {
     }
 
     public static InfoMessage getInstance()
@@ -32,6 +31,7 @@ public class InfoMessage {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Are You Sure You Want to Logout");
         FireBaseServices fbs = FireBaseServices.getInstance();
+
         builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
@@ -51,6 +51,7 @@ public class InfoMessage {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+
     }
 
     private void GoToLogIn(Context context, FragmentTransaction ft) {
@@ -63,4 +64,5 @@ public class InfoMessage {
     private void setNavigationBarGone(Context context) {
         ((MainActivity) context).getBottomNavigationView().setVisibility(View.GONE);
     }
+
 }
