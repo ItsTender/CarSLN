@@ -1,7 +1,6 @@
-<a name="Top"></a>
 
 <div align="center">
-<img src="app/src/main/res/drawable/carsln_rounded.png" alt="CarSLN Logo" width="300"> 
+<img src="app/src/main/res/drawable/carsln_rounded.png" alt="CarSLN Logo" width="250" name="Top"> 
 </div>
 
 <h1> CarSLN
@@ -73,7 +72,7 @@ and This App might as well be the Biggest so Far in my Journey of Becoming a Rea
 
 
 
-
+<div align="right">[ <a href="#Top">↑ Back to top ↑</a> ]</div>
 
 
 
