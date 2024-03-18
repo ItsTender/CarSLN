@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(fragment.equals("AllCars") || fragment.equals("NoUserHome")){
 
-                // Keep App Open!!!!!!!!!!
+                // Keep App Open in the Home Screen !!!!!!!!!!
 
             } else if(fragment.equals("Login")){
 
@@ -294,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
                 btnClose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        bnv.setSelectedItemId(R.id.market); // Simple, Might turn this into a Stack.....
+                        bnv.setSelectedItemId(R.id.market);
                         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.FrameLayoutMain, new AllCarsFragment());
                         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
@@ -384,11 +384,9 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.FrameLayoutMain, new CarSearchListFragment());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
                 ft.commit();
-                // Simple, Might turn this into a Stack.....
                 bnv.setVisibility(View.VISIBLE);
 
-            }
-            else if(fragment.equals("Settings") || fragment.equals("UserListings")){
+            }else if(fragment.equals("Settings") || fragment.equals("UserListings")){
 
                 FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
@@ -396,6 +394,13 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
 
                 fbs.setFrom("");
+
+            }else if(fragment.equals("NoUserSettings") || fragment.equals("NoUserListings")){
+
+                FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new NoUserProfileFragment());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
 
             }else if(fragment.equals("ViewPhoto")){
 
@@ -441,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
 
             }else {
 
-                bnv.setSelectedItemId(R.id.market); // Simple, Might turn this into a Stack.....
+                bnv.setSelectedItemId(R.id.market);
 
             }
 

@@ -133,7 +133,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:text="GET IN TOUCH"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -145,7 +145,7 @@
                 android:id="@+id/LayoutPhoneContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginBottom="38dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -186,12 +186,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:text="Contact Us Through our Phone Number"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
@@ -200,7 +199,7 @@
                 android:id="@+id/LayoutEmailContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginBottom="38dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -238,12 +237,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:text="Contact Us Through our Email Adress"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardViewemail" />
 
@@ -252,58 +250,26 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <LinearLayout
-            android:id="@+id/linearOR"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="22dp"
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/Shadow"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-            <View
-                android:id="@+id/viewforgotcont"
-                android:layout_width="150dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:background="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvForgot"
-                app:shapeAppearance="@style/RoundShape.App.8percent" />
-
-            <TextView
-                android:id="@+id/tvsignuplogin"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="OR"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/viewforgot"
-                app:layout_constraintStart_toEndOf="@+id/viewforgotcont"
-                app:layout_constraintTop_toBottomOf="@+id/tvForgot" />
-
-
-            <View
-                android:id="@+id/viewforgot"
-                android:layout_width="150dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:background="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvForgot"
-                app:shapeAppearance="@style/RoundShape.App.8percent" />
-
-        </LinearLayout>
-
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:shapeAppearance="@style/RoundShape.App.8percent" />
 
         <TextView
             android:id="@+id/textViewenReport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="sans-serif"
             android:text="Send a Report"
             android:textColor="@color/black"
@@ -311,7 +277,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearOR" />
+            app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
         <TextView

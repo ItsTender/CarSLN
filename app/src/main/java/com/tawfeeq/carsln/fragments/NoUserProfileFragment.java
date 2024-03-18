@@ -28,7 +28,7 @@ public class NoUserProfileFragment extends Fragment {
     FireBaseServices fbs;
     Button btn;
     ImageView twitter, github, discord;
-    LinearLayout ContactUs, Help;
+    LinearLayout userlistings, saved, search, settings, logout, help, contactus;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,8 +83,12 @@ public class NoUserProfileFragment extends Fragment {
 
         fbs = FireBaseServices.getInstance();
         btn = getView().findViewById(R.id.btnConnectLogin);
-        ContactUs = getView().findViewById(R.id.linearLayoutcontactus);
-        Help = getView().findViewById(R.id.linearLayouthelp);
+        userlistings = getView().findViewById(R.id.linearLayoutuserlinstings);
+        saved = getView().findViewById(R.id.linearLayoutSavedCars);
+        search = getView().findViewById(R.id.linearLayoutsearch);
+        settings = getView().findViewById(R.id.linearLayoutsettings);
+        contactus = getView().findViewById(R.id.linearLayoutcontactus);
+        help = getView().findViewById(R.id.linearLayouthelp);
 
 
         if(!fbs.getCurrentFragment().equals("NoUserProfile")) fbs.setCurrentFragment("NoUserProfile");
@@ -123,14 +127,44 @@ public class NoUserProfileFragment extends Fragment {
             }
         });
 
-        Help.setOnClickListener(new View.OnClickListener() {
+        userlistings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToNoUserListings();
+            }
+        });
+
+        saved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarSaved();
+                GoToNoUserSaved();
+            }
+        });
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToNoUserSettings();
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarSearch();
+                GoToSearch();
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GoToHelp();
             }
         });
 
-        ContactUs.setOnClickListener(new View.OnClickListener() {
+        contactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GoToContactUs();
@@ -152,6 +186,49 @@ public class NoUserProfileFragment extends Fragment {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new HelpFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void GoToNoUserListings() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserListingsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void GoToNoUserSettings() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserSettingsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void setNavigationBarSearch() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.searchcar);
+    }
+
+    private void GoToSearch(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new SearchFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void setNavigationBarAddCar() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.addcar);
+    }
+
+    private void setNavigationBarSaved() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.savedcars);
+    }
+
+    private void GoToNoUserSaved(){
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserSavedFragment());
         ft.commit();
     }
 

@@ -45,6 +45,7 @@ public class NoUserHomeFragment extends Fragment {
     private ArrayList<CarID> Market, lstNew, lstUsed;
     ArrayList<String> Saved;
     TextView tvShowNew, tvShowUsed;
+    ImageView ivPFP;
     CardView mainSearch;
     Button btnLogin;
     SwipeRefreshLayout refreshMain;
@@ -108,6 +109,7 @@ public class NoUserHomeFragment extends Fragment {
         refreshMain = getView().findViewById(R.id.RefreshNoAccountHome);
         tvShowNew = getView().findViewById(R.id.textViewMoreNewCars);
         tvShowUsed =getView().findViewById(R.id.textViewMoreUsedCars);
+        ivPFP = getView().findViewById(R.id.imageViewProfilePhotoNoUser);
 
         // to Assure that the Navigation Bar is Visible in this state........
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
@@ -138,6 +140,13 @@ public class NoUserHomeFragment extends Fragment {
             public void onClick(View view) {
                 ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
                 GoToLogin();
+            }
+        });
+
+        ivPFP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNavigationBarProfile();
             }
         });
 

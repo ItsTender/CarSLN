@@ -31,63 +31,40 @@
                 app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="11dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/tvSLN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:text="CarSLN"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/tvSLNDefinition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:text="Selling, Lending, Negotiating"
-                    android:textColor="@color/black"
-                    android:textSize="13.5sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/SLNLogoAllCars"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSLN" />
-
-            </LinearLayout>
-
             <Button
                 android:id="@+id/btnLoginNoUserHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="2dp"
                 android:backgroundTint="@color/white"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:shadowColor="@color/white"
-                android:text="LOGIN"
+                android:text="Connect"
                 android:textColor="@color/Blue700"
-                android:textSize="15sp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewProfilePhotoNoUser"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="11dp"
+                android:adjustViewBounds="true"
+                android:hapticFeedbackEnabled="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/slnpfp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

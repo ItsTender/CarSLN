@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.NoUserSavedFragment">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/ConstraintNoUserSaved"
-        android:layout_width="match_parent"
-        app:cardBackgroundColor="@color/white"
-        android:layout_height="60dp">
-
-        <TextView
-            android:id="@+id/textViewSaved"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif"
-            android:text="Saved Cars"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-    </androidx.cardview.widget.CardView>
+    tools:context=".fragments.NoUserSettingsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ConstraintNoUserSaved"
-        android:layout_marginTop="-1dp">
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView7"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="90dp"
-            android:outlineAmbientShadowColor="@color/Blue700"
-            android:outlineSpotShadowColor="@color/Blue700"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                app:shapeAppearance="@style/RoundShape.App.15percent"
-                app:srcCompat="@drawable/bookmark_filled"
-                app:contentPadding="2dp"
-                app:strokeColor="@color/Blue700"
-                app:strokeWidth="2dp"
-                tools:layout_editor_absoluteX="183dp"
-                tools:layout_editor_absoluteY="80dp" />
-
-        </androidx.cardview.widget.CardView>
+        android:layout_height="match_parent">
 
 
         <TextView
-            android:id="@+id/textViewenc"
+            android:id="@+id/textViewSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
-            android:text="Connect?"
+            android:text="Settings"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewProfilePhotoSettings"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="138dp"
+            android:adjustViewBounds="true"
+            android:hapticFeedbackEnabled="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/slnpfp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView7" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
+        <TextView
+            android:id="@+id/tvtxtPFPSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:text="Edit Profile Picture"
+            android:textColor="@color/Blue700"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhotoSettings" />
+
+
+        <TextView
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="65dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Edit Account Information"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtxtPFPSettings"
+            tools:ignore="TextSizeCheck" />
 
 
         <TextView
@@ -83,17 +83,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="33dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="33dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Login or Create a New Account to have the ability of Bookmarking and Saving Car Listings Freely"
+            android:text="You currently don't have an active logged in account, Login or Create a new Account to Access and Edit your personal Info"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewenc" />
+            app:layout_constraintTop_toBottomOf="@+id/settings" />
 
 
         <androidx.cardview.widget.CardView

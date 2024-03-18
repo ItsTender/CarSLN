@@ -300,8 +300,8 @@ public class ViewPhotoFragment extends Fragment {
             loading.show();
 
 
-            String imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
-            StorageReference imageRef = fbs.getStorage().getReference().child("images/" + selectedImageUri.getLastPathSegment());
+            String imageStr = "pfps/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
+            StorageReference imageRef = fbs.getStorage().getReference().child("pfps/" + selectedImageUri.getLastPathSegment());
 
             UploadTask uploadTask = imageRef.putFile(selectedImageUri);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

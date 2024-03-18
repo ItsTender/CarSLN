@@ -34,6 +34,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class SavedCarsFragment extends Fragment {
+
     RecyclerView rcListings;
     FireBaseServices fbs;
     ArrayList<CarID> lst;
@@ -93,7 +94,7 @@ public class SavedCarsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        fbs.setRcSaved(rcListings.getLayoutManager().onSaveInstanceState());
+        fbs.setRcSaved(rcListings.getLayoutManager().onSaveInstanceState()); // TODO: makes the App Crash sometimes..... fix it!
     }
 
     @Override
@@ -186,7 +187,6 @@ public class SavedCarsFragment extends Fragment {
             int i, j;
             String ID;
 
-
             for(i=Saved.size()-1 ; i>=0 ; i--){
                 ID = Saved.get(i);
                 for(j=0 ; j<Market.size() ; j++){
@@ -200,6 +200,7 @@ public class SavedCarsFragment extends Fragment {
 
             SettingFrameOnPause();
         }
+
     }
 
     private void SettingFrame() {

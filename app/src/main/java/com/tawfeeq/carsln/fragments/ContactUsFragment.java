@@ -177,13 +177,14 @@ public class ContactUsFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String email;
+                String email, type;
                 String reason = SpinnerReason.getSelectedItem().toString();
                 String content = etContent.getText().toString();
 
                 if(fbs.getAuth().getCurrentUser()==null) {
 
                     email = etEmail.getText().toString();
+                    type = "Guest";
 
                     if (email.trim().isEmpty()) {
                         Toast.makeText(getActivity(), "Missing Email Address", Toast.LENGTH_SHORT).show();
@@ -195,7 +196,10 @@ public class ContactUsFragment extends Fragment {
                     }
 
                 }
-                else email = fbs.getAuth().getCurrentUser().getEmail();
+                else {
+                    email = fbs.getAuth().getCurrentUser().getEmail();
+                    type = "Registered CarSLN User";
+                }
 
                 if(reason.equals("Select Report Reason")){
                     Toast.makeText(getActivity(), "Missing Report Reason", Toast.LENGTH_SHORT).show();
@@ -207,7 +211,7 @@ public class ContactUsFragment extends Fragment {
                 }
 
                 // Sending the Report..........................
-                Report report = new Report(email,reason,content);
+                Report report = new Report(email,type,reason,content);
 
                 fbs.getStore().collection("Reports").add(report).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
