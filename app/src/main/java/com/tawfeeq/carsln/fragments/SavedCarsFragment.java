@@ -111,6 +111,12 @@ public class SavedCarsFragment extends Fragment {
 
         lst=new ArrayList<CarID>();
 
+        if(fbs.getUser()!=null) Saved = fbs.getUser().getSavedCars();
+        else Saved = new ArrayList<String>();
+
+        if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
+        else Market = new ArrayList<CarID>();
+
 
         String str = fbs.getAuth().getCurrentUser().getEmail();
         int n = str.indexOf("@");
@@ -178,28 +184,20 @@ public class SavedCarsFragment extends Fragment {
         });
 
 
-        if(fbs.getUser()!=null) {
+        int i, j;
+        String ID;
 
-            Saved = fbs.getUser().getSavedCars();
+        for(i=Saved.size()-1 ; i>=0 ; i--){
+            ID = Saved.get(i);
+            for(j=0 ; j<Market.size() ; j++){
 
-            if(fbs.getMarketList()!=null) Market = fbs.getMarketList();
-            else Market = new ArrayList<CarID>();
-            int i, j;
-            String ID;
-
-            for(i=Saved.size()-1 ; i>=0 ; i--){
-                ID = Saved.get(i);
-                for(j=0 ; j<Market.size() ; j++){
-
-                    CarID car = Market.get(j);
-                    if(ID.equals(car.getId())) {
-                        lst.add(car);
-                    }
+                CarID car = Market.get(j);
+                if(ID.equals(car.getId())) {
+                    lst.add(car);
                 }
             }
-
-            SettingFrameOnPause();
         }
+        SettingFrameOnPause();
 
     }
 

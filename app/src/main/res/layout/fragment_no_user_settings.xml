@@ -77,52 +77,103 @@
             tools:ignore="TextSizeCheck" />
 
 
-        <TextView
-            android:id="@+id/textViewenc1"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCHANGEUSERNAME"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="33dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="33dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="You currently don't have an active logged in account, Login or Create a new Account to Access and Edit your personal Info"
-            android:textColor="@color/black"
-            android:textSize="16sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:hapticFeedbackEnabled="true"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settings" />
+            app:layout_constraintTop_toBottomOf="@+id/settings">
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/btnAddProfileCard"
-            android:layout_width="145dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/sln_background"
-            app:cardCornerRadius="180dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewenc1"
-            app:shapeAppearance="@style/RoundShape.App.50percent">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnConnectLogin"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/sln_background"
-                android:hapticFeedbackEnabled="true"
-                android:text="Connect"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                app:shapeAppearance="@style/RoundShape.App.50percent" />
+                android:layout_height="match_parent">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView7"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="28dp"
+                    android:outlineAmbientShadowColor="@color/Blue700"
+                    android:outlineSpotShadowColor="@color/Blue700"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        app:contentPadding="8dp"
+                        app:shapeAppearance="@style/RoundShape.App.15percent"
+                        app:srcCompat="@drawable/settings"
+                        app:strokeColor="@color/Blue700"
+                        app:strokeWidth="2dp"
+                        app:tint="@color/Blue700"
+                        tools:layout_editor_absoluteX="183dp"
+                        tools:layout_editor_absoluteY="80dp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/textViewenc1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="13dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="You currently don't have an active logged in account, Login or Create a new Account to Access and Edit your personal Info"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView7" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnAddProfileCard"
+                    android:layout_width="145dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/sln_background"
+                    app:cardCornerRadius="180dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewenc1"
+                    app:shapeAppearance="@style/RoundShape.App.50percent">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnConnectLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/sln_background"
+                        android:hapticFeedbackEnabled="true"
+                        android:text="Connect"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:shapeAppearance="@style/RoundShape.App.50percent"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

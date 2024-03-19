@@ -15,7 +15,6 @@
 
 <br />
 <br />
-<br />
 
 
 <h1> Moreover 
@@ -43,6 +42,7 @@ Noteable CarSLN Features:
 
 <br />
 
+
 <h1> About  Me & the Journey </h1>
 
 <a> I Consider myself a Deticated and Passionate Computers Enjoyer. I always loved Messing around with Computer Parts and Typing Code from a very Young age.
@@ -59,6 +59,7 @@ and This App might as well be the Biggest so Far in my Journey of Becoming a Rea
 
 <br />
 
+
 <h1> Contact </h1>
 
 <h4> 📧 Email Adress:
@@ -70,8 +71,9 @@ and This App might as well be the Biggest so Far in my Journey of Becoming a Rea
 </h4>
 
 
-
 <br />
+
+
 <div align="right">[ <a href="#Top">↑ Back to top ↑</a> ]</div>
 
 

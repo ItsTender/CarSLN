@@ -156,7 +156,7 @@ public class SearchFragment extends Fragment {
 
 
         if(SpinnerMan.getSelectedItem() == null) {
-            String[] ManList = {"All Car Manufacturers", "Audi", "Abarth", "Alfa Romeo", "Aston Martin", "BMW", "Bentley", "Citroen", "Cadillac", "Cupra", "Chevrolet",
+            String[] ManList = {"All Car Manufacturers", "Audi", "Abarth", "Alfa Romeo", "Aston Martin", "BMW", "Bentley", "BYD", "Citroen", "Cadillac", "Cupra", "Chevrolet",
                     "Dacia", "Dodge", "Fiat", "Ford", "Ferrari", "Genesis", "GMC", "Honda", "Hyundai", "Infiniti", "Isuzu", "Jeep", "Jaguar", "Kia", "Lamborghini", "Land Rover", "Lexus",
                     "Maserati", "Mazda", "Mini", "Mitsubishi", "Mercedes", "Nissan", "Opel", "Porsche", "Peugeot", "Renault", "Subaru", "Suzuki", "Seat", "Skoda", "Toyota", "Tesla", "Volkswagen", "Volvo"};
             //45 Manufacturers!!
@@ -185,6 +185,8 @@ public class SearchFragment extends Fragment {
                 "M2 Competition", "M3 Competition", "M4 Competition", "M5 Competition", "M6 Competition", "M8 Competition", "X1", "X2", "X3", "X4", "X5", "X6", "X6M", "X7", "Z3", "Z4"};
 
         String [] ModelBentley = {"All Models", "BE53", "Bentayga", "Continental GT", "Flying Spur"};
+
+        String [] ModelBYD = { "Atto3", "Han EV", "Seal", "Dolphin"};
 
         String [] ModelCitroen = {"All Models", "AX", "C Elysee", "C Zero", "C1", "C2", "C3", "C3 Aircross", "C4", "C4 X", "C5", "C6", "C8", "CX", "DS3", "DS3 Convertible", "DS4", "DS5", "XM", "ZX",
                 "BX", "C15", "Berlingo", "Berlingo Electric", "Jumper"};
@@ -266,7 +268,7 @@ public class SearchFragment extends Fragment {
 
         String [] ModelSubaru = {"All Models", "B3 Sedan", "B3 Hatchback", "B4", "B9", "BRZ", "SVX", "XV", "Outback", "Impreza", "Impreza WRX", "Impreza WRX STI", "Leone", "Levorg", "Legacy", "Forester", "Crosstrek", "E10", "E12", "GLF", "Baja", "Rex"};
 
-        String [] ModelSuzuki = {"All Models", "SX4", "SX4 Crossover", "XL7", "Ignis", "Alto", "Baleno", "Jimny", "Grand Vitara", "Wagon", "Vitara", "Liana", "Maruti", "Swift", "Celerio", "Samurai", "Splash", "X90", "Equator", "Carry"};
+        String [] ModelSuzuki = {"All Models", "SX4", "SX4 Crossover", "XL7", "Ignis", "Alto", "Baleno", "Jimny", "Grand Vitara", "Wagon", "Vitara", "Liana", "Maruti", "Swift", "Celerio", "Samurai", "Splash", "X90", "Equator", "Esteem", "Carry"};
 
         String [] ModelSeat = { "All Models","Ateca", "Ibiza", "Ibiza FR", "Alhambra", "Altea", "Altea XL", "Arona", "Arona FR", "Toledo", "Tarraco", "Leon", "Leon FR", "Mii", "Cordoba"};
 
@@ -332,6 +334,12 @@ public class SearchFragment extends Fragment {
                 if(item.equals("Bentley")) {
 
                     ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelBentley);
+                    ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+                    SpinnerMod.setAdapter(ModAdapter);
+                }
+                if(item.equals("BYD")) {
+
+                    ArrayAdapter<String> ModAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, ModelBYD);
                     ModAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
                     SpinnerMod.setAdapter(ModAdapter);
                 }
