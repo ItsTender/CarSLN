@@ -31,7 +31,8 @@ public class FireBaseServices {
     //--------------------------------------
 
     private String From;
-    private String currentFragment; // Checking the Last Fragment the User was in, for Back Pressed in the MainActivity!!
+    // Checking the Last Fragment the User was in, for BackPressed() in the MainActivity!!
+    private String currentFragment;
     private String LastFilter;
     private LastSearch lastSearch;
 
@@ -168,12 +169,15 @@ public class FireBaseServices {
 
     public FirebaseStorage getStorage() {return storage;}
 
+    // Constructing Method
     private FireBaseServices()
     {
         this.auth= FirebaseAuth.getInstance();
         this.store= FirebaseFirestore.getInstance();
         this.storage=FirebaseStorage.getInstance();
     }
+
+    // static Constructing Method
     public static FireBaseServices getInstance()
     {
         if(instance==null) instance = new FireBaseServices();

@@ -20,22 +20,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.logging.type.HttpRequest;
 import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.R;
-import com.tawfeeq.carsln.objects.Utils;
 
-import org.json.JSONObject;
-
-import java.net.URI;
 import java.time.Year;
-import java.util.Date;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +35,6 @@ import okhttp3.Response;
 
 public class AddCarFragment extends Fragment {
 
-    Utils utils;
     FireBaseServices fbs;
     Cars AddCar;
     EditText Price,BHP,Users,Kilometre,Engine,etNotes;
@@ -108,7 +97,6 @@ public class AddCarFragment extends Fragment {
         super.onStart();
 
         fbs=FireBaseServices.getInstance();
-        utils=Utils.getInstance();
         Close = getView().findViewById(R.id.imageViewAddCarClose);
         BHP = getView().findViewById(R.id.etBHP);
         Price = getView().findViewById(R.id.etPrice);
@@ -808,7 +796,6 @@ public class AddCarFragment extends Fragment {
 
             Uri selectedImageUri = data.getData();
             IV.setImageURI(selectedImageUri);
-            utils.uploadImage(getActivity(), selectedImageUri);
         }
     }
 }

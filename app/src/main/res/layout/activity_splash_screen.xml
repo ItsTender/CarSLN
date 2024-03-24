@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="By Tawfeeq Shahoud"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif-medium"
         android:textSize="16dp"
         android:textColor="@color/black"
         android:textStyle="bold"

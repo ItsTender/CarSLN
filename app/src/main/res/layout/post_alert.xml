@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="16dp"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
     android:backgroundTint="@color/white"
-    android:background="@color/white">
+    app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,12 +16,12 @@
             android:id="@+id/tvtxtLogoutConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Quit Post"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,16 +29,16 @@
 
         <TextView
             android:id="@+id/tvtxtLogoutMessage"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="25dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Once You Back Out, The Selected Options will not be Saved"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvtxtLogoutConfirm" />
@@ -48,8 +48,8 @@
             android:id="@+id/linearLayoutSellerInfo"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="18dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCancelClose"
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:backgroundTint="@color/white"
                 android:hapticFeedbackEnabled="true"
@@ -71,10 +71,10 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btnAddProfileCard"
-                android:layout_width="120dp"
+                android:layout_width="145dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="18dp"
                 android:background="@drawable/sln_background"
                 app:cardCornerRadius="180dp"
                 app:layout_constraintEnd_toEndOf="parent"

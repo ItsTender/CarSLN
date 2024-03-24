@@ -14,14 +14,14 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SLNLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="38dp"
             android:layout_marginEnd="131dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/carsln_logo"
+            android:src="@drawable/sln"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,11 +32,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif"
             android:text="Login to Your Account"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SLNLogo" />
@@ -210,6 +210,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearOR"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
+
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/LoginGoBack"

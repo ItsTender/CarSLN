@@ -186,7 +186,7 @@ public class SearchFragment extends Fragment {
 
         String [] ModelBentley = {"All Models", "BE53", "Bentayga", "Continental GT", "Flying Spur"};
 
-        String [] ModelBYD = { "Atto3", "Han EV", "Seal", "Dolphin"};
+        String [] ModelBYD = {"All Models", "Atto3", "Han EV", "Seal", "Dolphin"};
 
         String [] ModelCitroen = {"All Models", "AX", "C Elysee", "C Zero", "C1", "C2", "C3", "C3 Aircross", "C4", "C4 X", "C5", "C6", "C8", "CX", "DS3", "DS3 Convertible", "DS4", "DS5", "XM", "ZX",
                 "BX", "C15", "Berlingo", "Berlingo Electric", "Jumper"};

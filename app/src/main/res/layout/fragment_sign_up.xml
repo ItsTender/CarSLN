@@ -7,36 +7,9 @@
     tools:context=".fragments.SignUpFragment"
     android:background="@drawable/sln_log">
 
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/SignUpGoBack"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:hapticFeedbackEnabled="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/RoundShape.App.50percent"
-        app:tint="@color/black" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/SignClose"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:adjustViewBounds="true"
-        android:hapticFeedbackEnabled="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/baseline_close_24"
-        app:shapeAppearance="@style/RoundShape.App.50percent"
-        app:tint="@color/black" />
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="95dp"
+            android:layout_marginTop="85dp"
             android:fontFamily="sans-serif"
             android:text="Create Account"
             android:textColor="@color/black"
@@ -64,7 +37,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="35dp"
             android:fontFamily="sans-serif"
-            android:text="Signup to CarSLN and Revolutionize the Way You Buy, Sell, Lend or Rent Your Dream Car!"
+            android:text="Sign up to CarSLN and Revolutionize the Way You Buy, Sell, Lend or Rent Your Dream Car!"
             android:textColor="@color/black"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -272,5 +245,37 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/SignUpGoBack"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:hapticFeedbackEnabled="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/RoundShape.App.50percent"
+        app:tint="@color/black" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/SignClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:adjustViewBounds="true"
+        android:hapticFeedbackEnabled="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_close_24"
+        app:shapeAppearance="@style/RoundShape.App.50percent"
+        app:tint="@color/black" />
 
 </RelativeLayout>

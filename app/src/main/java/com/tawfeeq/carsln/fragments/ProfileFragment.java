@@ -6,10 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.transition.Slide;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +18,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.tawfeeq.carsln.objects.CarID;
-import com.tawfeeq.carsln.adapters.CarsAdapter;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
-import com.tawfeeq.carsln.objects.InfoMessage;
 
 import java.util.ArrayList;
 
@@ -36,7 +32,6 @@ import java.util.ArrayList;
 public class ProfileFragment extends Fragment {
 
     FireBaseServices fbs;
-    InfoMessage infomsg;
     TextView tvUser, tvEmail;
     ImageView ivPFP;
     String pfp;
@@ -99,7 +94,6 @@ public class ProfileFragment extends Fragment {
         super.onStart();
 
         fbs= FireBaseServices.getInstance();
-        infomsg = InfoMessage.getInstance();
         tvUser =getView().findViewById(R.id.tvUsername);
         tvEmail = getView().findViewById(R.id.textViewEmail);
         ivPFP = getView().findViewById(R.id.imageViewProfilePhoto);

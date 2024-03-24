@@ -29,19 +29,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.Cars;
 import com.tawfeeq.carsln.objects.FireBaseServices;
-import com.tawfeeq.carsln.objects.Utils;
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.model.AspectRatio;
 
 import java.io.File;
 import java.time.Year;
-import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -54,7 +51,6 @@ public class EditPostFragment extends Fragment {
     FireBaseServices fbs = FireBaseServices.getInstance();
     CarID currentCar;
     Cars newCar;
-    Utils utils;
     EditText Price,BHP,Users,Kilometre,Engine,etNotes;
     Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear, SpinnerOwnership;
     ImageView ivFirstPhoto, ivSecondPhoto, ivThirdPhoto, ivFourthPhoto, ivFifthPhoto, Back;
@@ -117,7 +113,6 @@ public class EditPostFragment extends Fragment {
         fbs = FireBaseServices.getInstance();
         if(fbs.getSelectedCar()!=null) currentCar = fbs.getSelectedCar();
         else ((MainActivity) getActivity()).setSavedGoToMarket();
-        utils=Utils.getInstance();
         Apply = getView().findViewById(R.id.btnApply);
         Back = getView().findViewById(R.id.EditListingGoBack);
         ivFirstPhoto = getView().findViewById(R.id.ivFirstCarPhoto);

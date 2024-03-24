@@ -171,7 +171,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="22dp"
             android:fontFamily="sans-serif"
-            android:text="after Successfully Posting you Car Listing you can Manage it by Clicking on it and editing your Listing's info or maybe flatout Deleting it after it was Sold."
+            android:text="after Successfully Posting your Car Listing you can Manage it by Clicking on it and editing your Listing's info or maybe flatout Deleting it after it was sold or if you changed your mind about selling it."
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -383,8 +383,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="22dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="28dp"
             android:fontFamily="sans-serif"
             android:text="for any further info, "
             android:textColor="@color/black"
@@ -398,14 +398,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="31dp"
             android:fontFamily="sans-serif-medium"
             android:text="Contact Us here"
             android:textColor="@color/Blue700"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/tvGoToConactUSd"
             app:layout_constraintTop_toBottomOf="@+id/view4" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

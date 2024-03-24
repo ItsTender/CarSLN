@@ -120,7 +120,7 @@ public class ContactUsFragment extends Fragment {
 
 
         if(SpinnerReason.getSelectedItem()==null) {
-            String[] Reasons = {"Select Report Reason", "Missing Car information", "Unable to Create a CarSLN Account", "Report a Bug or Crash", "Report a Car Listing", "Report a CarSLN User", "Report Spam", "I Don't see my Report Reasoning here"};
+            String[] Reasons = {"Select Report Reason", "Missing Car information", "Problems with CarSLN Account", "Unable to Create a CarSLN Account", "Report a Bug or Crash", "Report a Car Listing", "Report a CarSLN User", "Report Spam", "I Don't see my Report Reasoning here"};
             ArrayAdapter<String> ReasonsAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, Reasons);
             ReasonsAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerReason.setAdapter(ReasonsAdapter);

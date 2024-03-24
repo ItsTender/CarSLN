@@ -61,10 +61,8 @@ public class MainActivity extends AppCompatActivity {
         // To Make the App not Flip.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         fbs = FireBaseServices.getInstance();
         bnv= findViewById(R.id.bottomNavigationView);
-
 
         fbs.setCarList(null);
         fbs.setSearchList(null);
@@ -271,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(fragment.equals("AllCars") || fragment.equals("NoUserHome")){
 
-                // Keep App Open in the Home Screen !!!!!!!!!!
+                super.onBackPressed();
 
             } else if(fragment.equals("Login")){
 

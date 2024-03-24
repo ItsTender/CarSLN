@@ -10,7 +10,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
@@ -32,13 +31,11 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
-import com.tawfeeq.carsln.objects.Utils;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
@@ -51,7 +48,6 @@ import java.util.UUID;
  */
 public class SettingsFragment extends Fragment {
 
-    Utils utils;
     FireBaseServices fbs;
     RelativeLayout Username, Phone, Location, Password, Logout;
     TextView tvPFP, tvUsername, tvPhone, tvLocation;
@@ -109,7 +105,6 @@ public class SettingsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        utils= Utils.getInstance();
         fbs= FireBaseServices.getInstance();
         tvPFP = getView().findViewById(R.id.tvtxtPFPSettings);
         tvUsername = getView().findViewById(R.id.tvCurrentUsername);

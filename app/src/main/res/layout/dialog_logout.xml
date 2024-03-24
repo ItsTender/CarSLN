@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
     android:backgroundTint="@color/white"
     app:cardCornerRadius="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tvtxtLogoutConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Confirm Logout"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvtxtLogoutMessage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
-
-            <TextView
-                android:id="@+id/tvtxtLogoutConfirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="Confirm Logout"
-                android:textColor="@color/black"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvtxtLogoutMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="25dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="Are You Sure You Want to Logout?"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvtxtLogoutConfirm" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Are You Sure You Want to Logout of your Account?"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtxtLogoutConfirm" />
 
 
-            <LinearLayout
-                android:id="@+id/linearLayoutSellerInfo"
+        <LinearLayout
+            android:id="@+id/linearLayoutSellerInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="18dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtxtLogoutMessage">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvtxtLogoutMessage">
+                android:backgroundTint="@color/white"
+                android:hapticFeedbackEnabled="true"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:text="Cancel"
+                android:textColor="@color/black"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCancelLogout"
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
-                    android:backgroundTint="@color/white"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnAddProfileCard"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="18dp"
+                android:background="@drawable/sln_background"
+                app:cardCornerRadius="180dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
+                app:shapeAppearance="@style/RoundShape.App.50percent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnConfirmLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sln_background"
                     android:hapticFeedbackEnabled="true"
-                    android:outlineAmbientShadowColor="@color/white"
-                    android:outlineSpotShadowColor="@color/white"
-                    android:text="Cancel"
-                    android:textColor="@color/black"
+                    android:text="Logout"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
                     app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btnAddProfileCard"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/sln_background"
-                    app:cardCornerRadius="180dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
-                    app:shapeAppearance="@style/RoundShape.App.50percent">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnConfirmLogout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/sln_background"
-                        android:hapticFeedbackEnabled="true"
-                        android:text="Logout"
-                        android:textColor="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
-                        app:shapeAppearance="@style/RoundShape.App.50percent" />
+            </androidx.cardview.widget.CardView>
 
 
-                </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
