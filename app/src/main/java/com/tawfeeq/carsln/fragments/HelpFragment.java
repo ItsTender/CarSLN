@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -78,7 +79,7 @@ public class HelpFragment extends Fragment {
 
         fbs = FireBaseServices.getInstance();
         ivBack = getView().findViewById(R.id.HelpGoBack);
-        tvContactUs = getView().findViewById(R.id.tvGoToConactUS);
+        tvContactUs = getView().findViewById(R.id.tvGoToConactUS); tvContactUs.setPaintFlags(tvContactUs.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
         if(!fbs.getCurrentFragment().equals("Help")) fbs.setCurrentFragment("Help");

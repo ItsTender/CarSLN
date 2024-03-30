@@ -378,33 +378,50 @@
 
 
         <TextView
+            android:id="@+id/textViewenc7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="sans-serif"
+            android:text="Thank you for choosing CarSLN to assist you with your automotive needs. We hope this Help section has provided you with the information you were seeking. Should you require further assistance or have any feedback to share, please don't hesitate to reach out to our support team."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <TextView
             android:id="@+id/tvGoToConactUSd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="22dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
             android:fontFamily="sans-serif"
             android:text="for any further info, "
             android:textColor="@color/black"
             android:textSize="15.5sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view4" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc7" />
 
         <TextView
             android:id="@+id/tvGoToConactUS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="31dp"
+            android:layout_marginTop="11dp"
             android:fontFamily="sans-serif-medium"
             android:text="Contact Us here"
             android:textColor="@color/Blue700"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/tvGoToConactUSd"
-            app:layout_constraintTop_toBottomOf="@+id/view4" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

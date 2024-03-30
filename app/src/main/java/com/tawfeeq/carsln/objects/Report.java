@@ -1,5 +1,7 @@
 package com.tawfeeq.carsln.objects;
 
+import com.google.firebase.Timestamp;
+
 public class Report {
 
     private String email;
@@ -7,6 +9,8 @@ public class Report {
     private String reason;
     private String content;
     // Report contents are (Sender Email for further comm, reason on report for easier evaluation, content for extra info on the matter)!!!!
+    private com.google.firebase.Timestamp timestamp;
+
 
     public Report() {
         // Empty Report.........
@@ -17,6 +21,15 @@ public class Report {
         this.userType = userType;
         this.reason = reason;
         this.content = content;
+        timestamp = new com.google.firebase.Timestamp(com.google.firebase.Timestamp.now().toDate());
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getUserType() {
