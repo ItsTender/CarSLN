@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Change Car Photos"
                 android:textColor="@color/black"
@@ -35,13 +35,13 @@
                 android:id="@+id/cardView2"
                 android:layout_width="220dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="20dp"
                 android:hapticFeedbackEnabled="true"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/editpost">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivFirstCarPhoto"
@@ -58,13 +58,13 @@
                     android:id="@+id/DeleteFirstPhoto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_gravity="end"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:adjustViewBounds="true"
                     android:hapticFeedbackEnabled="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/trash_logo"
-                    android:layout_gravity="end"
                     app:shapeAppearance="@style/RoundShape.App.50percent" />
 
             </androidx.cardview.widget.CardView>
@@ -233,7 +233,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="65dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Edit Post Information"
                 android:textColor="@color/black"
@@ -261,7 +261,7 @@
 
                 <EditText
                     android:id="@+id/etPrice"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/white"
                     android:ems="10"
@@ -712,7 +712,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"

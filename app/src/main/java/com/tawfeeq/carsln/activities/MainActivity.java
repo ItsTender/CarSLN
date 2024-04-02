@@ -368,7 +368,42 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-            }else if(fragment.equals("DetailedPhotos") || fragment.equals("EditPost")){
+            }else if(fragment.equals("EditPost")){
+
+
+                Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.post_alert);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                dialog.setCancelable(true);
+                dialog.show();
+
+                Button btnClose = dialog.findViewById(R.id.btnConfirmClose);
+                Button btnCancel = dialog.findViewById(R.id.btnCancelClose);
+
+
+                btnClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.FrameLayoutMain, new DetailedFragment());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.commit();
+
+                        dialog.dismiss();
+                    }
+                });
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+            }else if(fragment.equals("DetailedPhotos")){
 
                 GoToDetailed();
 

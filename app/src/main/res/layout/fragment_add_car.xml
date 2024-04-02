@@ -296,12 +296,29 @@
             </androidx.cardview.widget.CardView>
 
 
+            <TextView
+                android:id="@+id/addpost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="42dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Add Post Information"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewownership"
+                tools:ignore="TextSizeCheck" />
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewselllend"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
@@ -310,7 +327,7 @@
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewownership">
+                app:layout_constraintTop_toBottomOf="@+id/addpost">
 
                 <Spinner
                     android:id="@+id/SpinnerSellLend"
@@ -321,12 +338,29 @@
             </androidx.cardview.widget.CardView>
 
 
+            <TextView
+                android:id="@+id/addcar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="92dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Add Car Information"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextSizeCheck" />
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewman"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:outlineAmbientShadowColor="@color/black"
@@ -335,7 +369,7 @@
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/addcar">
 
                 <Spinner
                     android:id="@+id/SpinnerManufacturer"
@@ -552,10 +586,10 @@
             android:id="@+id/textViewAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:layout_gravity="center"
+            android:layout_marginTop="0dp"
             android:fontFamily="sans-serif"
-            android:text="Post a New Listing"
+            android:text="Post a Listing"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
