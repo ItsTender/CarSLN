@@ -125,7 +125,6 @@ public class HelpFragment extends Fragment {
         ft.replace(R.id.FrameLayoutMain, new ContactUsFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
-
     }
 
 }

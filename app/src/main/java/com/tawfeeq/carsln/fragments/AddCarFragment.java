@@ -2,6 +2,7 @@ package com.tawfeeq.carsln.fragments;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tawfeeq.carsln.activities.MainActivity;
@@ -37,6 +39,7 @@ public class AddCarFragment extends Fragment {
 
     FireBaseServices fbs;
     Cars AddCar;
+    TextView tvContactUs;
     EditText Price,BHP,Users,Kilometre,Engine,etNotes;
     Spinner SpinnerGear, SpinnerYear, SpinnerSellLend, SpinnerMan, SpinnerMod, SpinnerColor, SpinnerLocation, SpinnerTestMonth, SpinnerTestYear, SpinnerOwnership;
     Button Add,Return;
@@ -113,6 +116,8 @@ public class AddCarFragment extends Fragment {
         SpinnerColor = getView().findViewById(R.id.SpinnerCarColor);
         SpinnerLocation = getView().findViewById(R.id.SpinnerLocationArea);
         SpinnerOwnership = getView().findViewById(R.id.SpinnerOwnership);
+
+        tvContactUs = getView().findViewById(R.id.tvGoToConactUS); tvContactUs.setPaintFlags(tvContactUs.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         // Navigation Bar Not Visible While Posting a Listing........
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
@@ -662,6 +667,16 @@ public class AddCarFragment extends Fragment {
             }
         });
 
+        tvContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                setNavigationBarProfile();
+                GoToConactUs();
+                setNavigationBarVisible();
+            }
+        });
+
 
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -771,12 +786,24 @@ public class AddCarFragment extends Fragment {
         ft.commit();
     }
 
+    public void GoToConactUs() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new ContactUsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
     private void setNavigationBarVisible(){
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
     }
 
     private void setNavigationBarCarsMarket() {
         ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.market);
+    }
+
+    private void setNavigationBarProfile() {
+        ((MainActivity) getActivity()).getBottomNavigationView().setSelectedItemId(R.id.profile);
     }
 
     public void ImageChooser() {

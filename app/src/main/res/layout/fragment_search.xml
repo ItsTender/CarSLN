@@ -173,7 +173,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="31dp"
-                android:layout_marginBottom="105dp"
+                android:layout_marginBottom="90dp"
                 android:stepSize="10000"
                 android:value="0"
                 android:valueFrom="0"

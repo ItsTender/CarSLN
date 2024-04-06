@@ -6,10 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AddPhotosFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ConstraintImages">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ConstraintImages"
         android:layout_centerInParent="true">
 
 
@@ -19,9 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Add Photos to your Car Listing"
+            android:text="Add Car Photos"
             android:textColor="@color/black"
             android:textSize="17dp"
             android:textStyle="bold"
@@ -29,11 +33,29 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextSizeCheck" />
 
+
+        <TextView
+            android:id="@+id/textViewenc1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:text="Adding photos to your car listing is not only simple but also incredibly rewarding. By uploading clear and captivating images of your vehicle in the section, you're not just creating a listing but an experience for potential buyers."
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addphotos" />
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
-            android:layout_width="200dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="180dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="20dp"
             android:hapticFeedbackEnabled="true"
             app:cardBackgroundColor="@color/white"
@@ -41,7 +63,7 @@
             app:layout_constraintBottom_toTopOf="@+id/cardView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addphotos">
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc1">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivFirstCarPhoto"
@@ -170,7 +192,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/sln_background"
             app:cardCornerRadius="180dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -194,6 +216,9 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 
 
     <androidx.cardview.widget.CardView

@@ -405,7 +405,7 @@
             android:fontFamily="sans-serif"
             android:text="for any further info, "
             android:textColor="@color/black"
-            android:textSize="15.5sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewenc7" />
@@ -415,11 +415,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Contact Us here"
+            android:text="Contact us"
             android:textColor="@color/Blue700"
-            android:textSize="15sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/tvGoToConactUSd"
             app:layout_constraintTop_toBottomOf="@+id/textViewenc7" />
 

@@ -313,6 +313,24 @@
                 tools:ignore="TextSizeCheck" />
 
 
+            <TextView
+                android:id="@+id/textViewencpost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:text="provide key information about your car listing, ensuring a smooth and efficient selling experience."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addpost" />
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewselllend"
                 android:layout_width="match_parent"
@@ -327,7 +345,7 @@
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addpost">
+                app:layout_constraintTop_toBottomOf="@+id/textViewencpost">
 
                 <Spinner
                     android:id="@+id/SpinnerSellLend"
@@ -344,7 +362,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="92dp"
+                android:layout_marginTop="90dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Add Car Information"
                 android:textColor="@color/black"
@@ -354,6 +372,67 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
+
+            <TextView
+                android:id="@+id/textViewenc1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="sans-serif"
+                android:text="fill in details about your vehicle. From make and model to kilometre and year. Don't forget to include any special features or upgrades in the notes field too, the more information you provide, the easier it is for potential buyers or enthusiasts to find your car."
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addcar" />
+
+
+            <TextView
+                android:id="@+id/tvGoToConactUSd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="sans-serif"
+                android:text="Can't find your make and model or other car info?"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewenc1" />
+
+
+            <TextView
+                android:id="@+id/tvGoToConactUSd1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="don't hesistate and feel free to "
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGoToConactUSd" />
+
+            <TextView
+                android:id="@+id/tvGoToConactUS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Contact us"
+                android:textColor="@color/Blue700"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/tvGoToConactUSd1"
+                app:layout_constraintTop_toBottomOf="@+id/tvGoToConactUSd" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewman"
@@ -369,7 +448,7 @@
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addcar">
+                app:layout_constraintTop_toBottomOf="@+id/tvGoToConactUSd1">
 
                 <Spinner
                     android:id="@+id/SpinnerManufacturer"
