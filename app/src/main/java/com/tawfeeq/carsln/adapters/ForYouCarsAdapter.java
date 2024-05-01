@@ -1,12 +1,14 @@
 package com.tawfeeq.carsln.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +34,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.ForYouCarsHolder> {
-
 
     private Context context;
     private  CarsAdapter.OnItemClickListener CarsListener;
@@ -110,6 +111,26 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                     ft.replace(R.id.FrameLayoutMain, gtn);
                     ft.commit();
+                }
+                else {
+
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
                 }
             }
         };
@@ -203,7 +224,7 @@ public class ForYouCarsAdapter extends RecyclerView.Adapter<ForYouCarsAdapter.Fo
     class ForYouCarsHolder extends RecyclerView.ViewHolder {
 
         private TextView txtCar,txtKilo,txtYear,txtPrice,txtOwners;
-        private ImageView ivCar;// shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
+        private ImageView ivCar;
         private ImageView ivSaved;
         public ForYouCarsHolder(@NonNull View itemView) {
             super(itemView);

@@ -133,13 +133,34 @@ public class LogInFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                // checks the User's Internet Connection
+                if(!isConnected()) {
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    return;
+                }
+
                 String username = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 if (username.trim().isEmpty() || pass.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Email Or Password Field is Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
 
                 Dialog loading = new Dialog(getActivity());
                 loading.setContentView(R.layout.loading_dialog);
@@ -171,7 +192,9 @@ public class LogInFragment extends Fragment {
         });
     }
 
-
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
+    }
 
     private void GoToFragmentCars() {
 

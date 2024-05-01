@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/no_network"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvtxtLogoutMessage"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Network Not Available, Please Try Again Later"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAddProfileCard"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="26dp"
+            android:background="@drawable/sln_background"
+            app:cardCornerRadius="180dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtxtLogoutMessage"
+            app:shapeAppearance="@style/RoundShape.App.50percent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnOK"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sln_background"
+                android:hapticFeedbackEnabled="true"
+                android:text="Continue"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewlocation"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        app:itemIconSize="32dp"
+        app:itemIconSize="30dp"
         app:menu="@menu/menu_nav"
         app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@drawable/nav_item_color_state"

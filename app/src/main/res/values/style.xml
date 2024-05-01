@@ -33,6 +33,13 @@
 
     </style>
 
+    <style name="RoundShape.App.img" parent="">
+
+        <item name="cornerFamily"> rounded </item>
+        <item name="cornerSize"> 8% </item>
+
+    </style>
+
 
     <style name="CustomCardViewCorners" parent="@style/Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>

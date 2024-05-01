@@ -441,10 +441,10 @@
 
         <ImageView
             android:id="@+id/imageViewSearchClose"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical"
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/arrow_logo" />
 

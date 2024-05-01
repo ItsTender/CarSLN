@@ -144,6 +144,29 @@ public class SignUpFragment extends Fragment {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // checks the User's Internet Connection
+                if(!isConnected()) {
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    return;
+                }
+
                 String username = etEmail.getText().toString();
                 String Name = etUsername.getText().toString();
                 String pass = etPassword.getText().toString();
@@ -195,6 +218,10 @@ public class SignUpFragment extends Fragment {
                 loading.dismiss();
             }
         });
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     private void CreateUserProfile(String email, String pass, String username ,String phone, String location) {

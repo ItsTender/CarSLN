@@ -18,11 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:layout_gravity="center"
-            android:fontFamily="sans-serif"
+            android:fontFamily="sans-serif-medium"
             android:text="Saved Cars"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
     </androidx.cardview.widget.CardView>
 

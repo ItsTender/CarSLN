@@ -667,13 +667,39 @@ public class AddCarFragment extends Fragment {
             }
         });
 
-        tvContactUs.setOnClickListener(new View.OnClickListener() {
+
+        Dialog contactdialog = new Dialog(getActivity());
+        contactdialog.setContentView(R.layout.post_alert);
+        contactdialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        contactdialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        contactdialog.setCancelable(true);
+
+        Button GoToContactUs = contactdialog.findViewById(R.id.btnConfirmClose);
+        Button CancelContactUs = contactdialog.findViewById(R.id.btnCancelClose);
+
+
+        GoToContactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 setNavigationBarProfile();
                 GoToConactUs();
                 setNavigationBarVisible();
+                contactdialog.dismiss();
+            }
+        });
+
+        CancelContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                contactdialog.dismiss();
+            }
+        });
+
+        tvContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                contactdialog.show();
             }
         });
 
@@ -684,7 +710,23 @@ public class AddCarFragment extends Fragment {
 
                 // checks the User's Internet Connection
                 if(!isConnected()) {
-                    Toast.makeText(getActivity(), "Network Not Available, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
                     return;
                 }
 

@@ -709,10 +709,23 @@ public class SearchFragment extends Fragment {
                     });
                 }else {
 
-                    Toast.makeText(getActivity(), "Network Not Available, Please Try Again Later", Toast.LENGTH_SHORT).show();
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
 
-                    GoToFragmentSearchCar();
-                    setNavigationBarVisible();
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
                     loading.dismiss();
                 }
             }

@@ -94,7 +94,7 @@ public class SavedCarsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        fbs.setRcSaved(rcListings.getLayoutManager().onSaveInstanceState()); // TODO: makes the App Crash sometimes..... fix it!
+        fbs.setRcSaved(rcListings.getLayoutManager().onSaveInstanceState());
     }
 
     @Override

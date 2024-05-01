@@ -415,7 +415,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
-                android:text="don't hesistate and feel free to "
+                android:text="feel free to "
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -667,11 +667,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="sans-serif-medium"
             android:text="Post a Listing"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -679,10 +678,10 @@
 
         <ImageView
             android:id="@+id/imageViewAddCarClose"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/arrow_logo" />
 

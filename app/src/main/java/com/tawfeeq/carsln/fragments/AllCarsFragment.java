@@ -123,7 +123,7 @@ public class AllCarsFragment extends Fragment {
 
         if(fbs.getUser()!=null) {
             Saved = fbs.getUser().getSavedCars();
-            tvUsername.setText(fbs.getUser().getUsername());
+            tvUsername.setText("Hello, " + fbs.getUser().getUsername());
         }
         else Saved = new ArrayList<String>();
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,7 @@
     tools:context=".fragments.SettingsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -82,11 +83,14 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:foreground="?attr/selectableItemBackground"
             android:hapticFeedbackEnabled="true"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settings">
@@ -399,4 +403,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
+</ScrollView>

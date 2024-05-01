@@ -7,7 +7,8 @@
     android:outlineSpotShadowColor="@color/black"
     android:outlineAmbientShadowColor="@color/black"
     android:hapticFeedbackEnabled="true"
-    android:layout_margin="12dp"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="18dp"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,7 +41,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/RoundShape.App.8percent"
-                tools:srcCompat="@drawable/photo_iv" />
+                tools:srcCompat="@drawable/photo_iv_null" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

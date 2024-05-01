@@ -64,7 +64,7 @@
             android:fontFamily="sans-serif"
             android:text="Connect?"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
             android:gravity="center"
             android:text="You currently don't have an active logged in account, Login or Create a new Account to Access and Edit your personal Info"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewenc" />

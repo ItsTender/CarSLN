@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -124,14 +125,36 @@ public class ForgotPassFragment extends Fragment {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                {
-                    // Data Validation ( The Given Info is Correct )
-                    String Mail = etEmail.getText().toString();
-                    if (Mail.trim().isEmpty()) {
-                        Toast.makeText(getActivity(), "Email Field is Missing", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+
+                // checks the User's Internet Connection
+                if(!isConnected()) {
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    return;
                 }
+
+                // Data Validation ( The Given Info is Correct )
+                String Mail = etEmail.getText().toString();
+                if (Mail.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Email Field is Missing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 fbs.getAuth().sendPasswordResetEmail(etEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -155,6 +178,10 @@ public class ForgotPassFragment extends Fragment {
             }
         });
 
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     private void GoToLoginFragment() {

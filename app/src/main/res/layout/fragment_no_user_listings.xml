@@ -25,18 +25,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="sans-serif-medium"
             android:text="Your Car Listings"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/NoUserListingsGoBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
             android:adjustViewBounds="true"
             android:hapticFeedbackEnabled="true"
             android:scaleType="centerCrop"
@@ -78,20 +77,20 @@
     </androidx.cardview.widget.CardView>
 
 
-        <TextView
-            android:id="@+id/textViewenc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:fontFamily="sans-serif"
-            android:text="Connect?"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView7" />
+    <TextView
+        android:id="@+id/textViewenc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:text="Connect?"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView7" />
 
 
     <TextView
@@ -106,7 +105,7 @@
         android:gravity="center"
         android:text="Login or Create a New Account to have the ability of Posting Car Listings on the CarSLN MarketPlace"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"

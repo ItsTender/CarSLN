@@ -1,5 +1,6 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.objects.Report;
 
@@ -181,6 +183,29 @@ public class ContactUsFragment extends Fragment {
                 String reason = SpinnerReason.getSelectedItem().toString();
                 String content = etContent.getText().toString();
 
+
+                // checks the User's Internet Connection
+                if(!isConnected()) {
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    return;
+                }
+
                 if(fbs.getAuth().getCurrentUser()==null) {
 
                     email = etEmail.getText().toString();
@@ -230,6 +255,10 @@ public class ContactUsFragment extends Fragment {
             }
         });
 
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     public boolean isEmailValid(String email)

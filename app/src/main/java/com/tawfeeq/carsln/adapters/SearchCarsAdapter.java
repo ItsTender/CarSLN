@@ -1,12 +1,14 @@
 package com.tawfeeq.carsln.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -110,6 +112,26 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
                     ft.replace(R.id.FrameLayoutMain, gtn);
                     ft.commit();
                 }
+                else {
+
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                }
             }
         };
 
@@ -206,18 +228,17 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
 
     class SearchCarsHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtCar,txtHP,txtYear,txtKilo,txtPrice,txtOwners;
-        private ImageView ivCar;// shows the car photo from the firestore string url, if the photo url is "" then show the stock image (R.drawable.carplain.jpg)
+        private TextView txtCar,txtYear,txtPrice,txtOwners,txtEngineHP;
+        private ImageView ivCar;
         private ImageView ivSaved;
         public SearchCarsHolder(@NonNull View itemView) {
             super(itemView);
 
             txtCar= itemView.findViewById(R.id.tvtxtCarName);
-            txtHP= itemView.findViewById(R.id.tvtxtHP);
             txtOwners = itemView.findViewById(R.id.tvtxtOwners);
             txtYear= itemView.findViewById(R.id.tvtxtYear);
-            txtKilo = itemView.findViewById(R.id.tvtxtKilometre);
             txtPrice= itemView.findViewById(R.id.tvtxtPrice);
+            txtEngineHP = itemView.findViewById(R.id.tvtxtEngineHP);
             ivCar= itemView.findViewById(R.id.CarRes);
             ivSaved = itemView.findViewById(R.id.ivSavedCarAdapter);
 
@@ -232,10 +253,9 @@ public class SearchCarsAdapter extends RecyclerView.Adapter<SearchCarsAdapter.Se
 
 
             txtCar.setText(car.getManufacturer() + " " + car.getModel());
-            txtHP.setText(formatter.format(car.getBHP()) + " horse power");
+            txtEngineHP.setText(car.getEngine() + " (" + formatter.format(car.getBHP()) + " hp)");
             String year = String.valueOf(car.getYear());
             txtYear.setText(year);
-            txtKilo.setText(formatter.format(car.getKilometre()) + " km");
 
 
             if(car.getUsers()==1){

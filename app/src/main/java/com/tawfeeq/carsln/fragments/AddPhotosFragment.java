@@ -144,6 +144,28 @@ public class AddPhotosFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                // checks the User's Internet Connection
+                if(!isConnected()) {
+                    // No Connection Dialog!
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.dialog_no_network);
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    Button btn = dialog.findViewById(R.id.btnOK);
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    return;
+                }
+
                 if(FirstPhoto == null) FirstPhoto ="";
                 if(SecondPhoto == null) SecondPhoto="";
                 if(ThirdPhoto == null ) ThirdPhoto ="";
@@ -275,6 +297,10 @@ public class AddPhotosFragment extends Fragment {
         });
 
 
+    }
+
+    private boolean isConnected(){
+        return ((MainActivity) getActivity()).isNetworkAvailable();
     }
 
     public void ImageChooser() {

@@ -779,18 +779,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="sans-serif-medium"
             android:text="Edit Post"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/EditListingGoBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/arrow_logo" />
 

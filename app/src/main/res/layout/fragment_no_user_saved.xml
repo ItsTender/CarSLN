@@ -18,11 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:layout_gravity="center"
-            android:fontFamily="sans-serif"
+            android:fontFamily="sans-serif-medium"
             android:text="Saved Cars"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
     </androidx.cardview.widget.CardView>
 
@@ -70,7 +69,7 @@
             android:fontFamily="sans-serif"
             android:text="Connect?"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +88,7 @@
             android:gravity="center"
             android:text="Login or Create a New Account to have the ability of Bookmarking and Saving Car Listings Freely"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
