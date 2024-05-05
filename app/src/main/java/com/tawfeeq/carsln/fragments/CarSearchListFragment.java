@@ -652,18 +652,6 @@ public class CarSearchListFragment extends Fragment {
         });
 
 
-        tvSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GoBackSearch();
-            }
-        });
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GoBackSearch();
-            }
-        });
         GoSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -215,16 +215,6 @@ public class ViewPhotoFragment extends Fragment {
         ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
     }
 
-    private void GoToSellerPage() {
-
-        Fragment gtn = new SellerPageFragment();
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.replace(R.id.FrameLayoutMain, gtn);
-        ft.commit();
-
-    }
-
     private void GoToSettings() {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();

@@ -85,7 +85,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif"
-            android:text="Want to Contact Us?"
+            android:text="Welcome to the Contact Us tab"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"

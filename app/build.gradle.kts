@@ -47,7 +47,8 @@ dependencies {
     // Additional Features from Github/Other Places........
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
     implementation ("com.squareup.picasso:picasso:2.8")
-    implementation ("com.github.bumptech.glide:glide:4.10.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
     implementation ("com.airbnb.android:lottie:5.2.0")
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation ("com.github.yalantis:ucrop:2.2.8-native")

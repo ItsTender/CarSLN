@@ -85,7 +85,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif"
-            android:text="Welcome to CarSLN's Help tab"
+            android:text="Welcome to the Help tab"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
