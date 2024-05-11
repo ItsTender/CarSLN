@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintCustom"
         android:layout_width="match_parent"
-        android:layout_height="105dp">
+        android:layout_height="104dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewsearch"
@@ -18,9 +18,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:foreground="?attr/selectableItemBackground"
             android:hapticFeedbackEnabled="true"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="25dp"
@@ -54,14 +51,30 @@
 
         </androidx.cardview.widget.CardView>
 
+        <Spinner
+            android:id="@+id/SpinnerFiltering"
+            android:layout_width="58dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/white"
+            android:contextClickable="false"
+            android:foreground="@color/white"
+            android:hapticFeedbackEnabled="true"
+            android:pointerIcon="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewsearch"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textViewSort"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="3dp"
+            android:background="@color/white"
             android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
             android:text="Sort"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -73,7 +86,7 @@
             android:id="@+id/ivfilterlist"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="13dp"
             android:layout_marginEnd="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -81,18 +94,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewsearch" />
 
-        <Spinner
-            android:id="@+id/SpinnerFiltering"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/white"
-            android:hapticFeedbackEnabled="true"
-            android:pointerIcon="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewsearch"
-            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textViewcountresults"

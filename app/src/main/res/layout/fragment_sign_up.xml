@@ -220,6 +220,9 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/sln_background"
                 android:hapticFeedbackEnabled="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:foreground="?attr/selectableItemBackground"
                 android:text="SIGNUP"
                 android:textColor="@color/white"
                 app:shapeAppearance="@style/RoundShape.App.50percent" />
