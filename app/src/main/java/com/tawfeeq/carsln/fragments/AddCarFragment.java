@@ -127,7 +127,7 @@ public class AddCarFragment extends Fragment {
 
 
         if(SpinnerGear.getSelectedItem()==null) {
-            String[] GearList = {"Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT", "iManual"};
+            String[] GearList = {"Select Gear Type", "Automatic", "Manual", "PDK", "DCT", "CVT", "SAT", "iManual"};
             ArrayAdapter<String> GearAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, GearList);
             GearAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerGear.setAdapter(GearAdapter);
@@ -137,7 +137,7 @@ public class AddCarFragment extends Fragment {
         int CurrentYear = Year.now().getValue();
         String year = String.valueOf(CurrentYear);
         if(SpinnerYear.getSelectedItem()==null) {
-            String[] Years = {"Model Year", year, String.valueOf(CurrentYear-1), String.valueOf(CurrentYear-2), String.valueOf(CurrentYear-3),
+            String[] Years = {"Select Model Year", year, String.valueOf(CurrentYear-1), String.valueOf(CurrentYear-2), String.valueOf(CurrentYear-3),
                     String.valueOf(CurrentYear-4), String.valueOf(CurrentYear-5), String.valueOf(CurrentYear-6), String.valueOf(CurrentYear-7), String.valueOf(CurrentYear-8), String.valueOf(CurrentYear-9), String.valueOf(CurrentYear-10), String.valueOf(CurrentYear-11), String.valueOf(CurrentYear-12), String.valueOf(CurrentYear-13),
                     String.valueOf(CurrentYear-14), String.valueOf(CurrentYear-15), String.valueOf(CurrentYear-16), String.valueOf(CurrentYear-17), String.valueOf(CurrentYear-18), String.valueOf(CurrentYear-19), String.valueOf(CurrentYear-20), String.valueOf(CurrentYear-21), String.valueOf(CurrentYear-22), String.valueOf(CurrentYear-23), String.valueOf(CurrentYear-24),
                     String.valueOf(CurrentYear-25), String.valueOf(CurrentYear-26), String.valueOf(CurrentYear-27), String.valueOf(CurrentYear-28), String.valueOf(CurrentYear-29), String.valueOf(CurrentYear-30), String.valueOf(CurrentYear-31), String.valueOf(CurrentYear-32), String.valueOf(CurrentYear-33), String.valueOf(CurrentYear-34), String.valueOf(CurrentYear-35), String.valueOf(CurrentYear-36)};
@@ -188,7 +188,7 @@ public class AddCarFragment extends Fragment {
 
 
         if(SpinnerSellLend.getSelectedItem()==null) {
-            String[] HowSellLend = {"Car Offer Type", "Sell the Car", "Lend the Car"};
+            String[] HowSellLend = {"Select Offer Type", "Sell the Car", "Lend the Car"};
             ArrayAdapter<String> SellLendAdapter = new ArrayAdapter<>(requireContext(), R.layout.my_selected_item, HowSellLend);
             SellLendAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
             SpinnerSellLend.setAdapter(SellLendAdapter);
@@ -209,7 +209,7 @@ public class AddCarFragment extends Fragment {
         // Here is the Whole list of Models For Each Car Manufacturer (45 lists and the No Manufacturer List)
 
 
-        String [] ModelNon = {"Choose Manufacturer"};
+        String [] ModelNon = {"Choose Car Model"};
 
         String [] ModelAudi = { "100", "80", "A1", "A3", "A4", "A5", "A6", "A7", "A8", "E-tron", "E-tron GT", "E-tron Q4", "Q2", "Q3", "Q4", "Q5",
                 "Q6", "Q7", "Q8", "R8", "RS3 Sedan", "RS3 Hatchback", "RS4", "RS4 Avant", "RS5", "RS6", "RS6 Avant", "RS7", "RSQ3", "RSQ8", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "SQ7", "SQ8", "TT", "TT RS"};
@@ -748,7 +748,7 @@ public class AddCarFragment extends Fragment {
                 String testmonth = SpinnerTestMonth.getSelectedItem().toString();
                 String ownership = SpinnerOwnership.getSelectedItem().toString();
 
-                if(SellLend.equals("Car Offer Type")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Manufacturer")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Year")|| transmission.equals("Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location District")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")||ownership.equals("Select Ownership Type")) {
+                if(SellLend.equals("Select Offer Type")||Man.equals("Choose Car Manufacturer")||Mod.equals("Choose Car Model")||HP.trim().isEmpty()||prc.trim().isEmpty()||notes.trim().isEmpty()||year.equals("Select Model Year")|| transmission.equals("Select Gear Type") ||User.trim().isEmpty()||engine.trim().isEmpty()||Kilo.trim().isEmpty()||Color.equals("Select Car Color")||area.equals("Select Location District")||testyear.equals("Test Year Until")||testmonth.equals("Test Month Until")||ownership.equals("Select Ownership Type")) {
                     Toast.makeText(getActivity(), "Some Fields Are Missing", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -779,9 +779,9 @@ public class AddCarFragment extends Fragment {
                 int Yahr= Integer.parseInt(year);
                 int userhands= Integer.parseInt(User);
                 int KM= Integer.parseInt(Kilo);
-                boolean selllend = true;
+                boolean selllend;
                 if(SellLend.equals("Sell the Car")) selllend=true;
-                else if(SellLend.equals("Lend the Car")) selllend=false;
+                else selllend=false;
                 String test = testmonth + "/" + testyear;
 
 

@@ -27,7 +27,7 @@ CarSLN is my Current App Project For Selling and Lending Cars as well as Negotia
 
 First and Foremost, CarSLN is an Android App Written in Java and is Currently being Developed in Android Studio, and Hopefully it will be Listed on the Play Store Later On.
 
-Noteable CarSLN Features:
+Notable CarSLN Features:
 
 - Animated Splash Screen and Loading Screens
 - Custom Car Search and SearchList with Sorting
@@ -45,10 +45,12 @@ Noteable CarSLN Features:
 
 <h1> About  Me & the Journey </h1>
 
-<a> I Consider myself a Deticated and Passionate Computers Enjoyer. I always loved Messing around with Computer Parts and Typing Code from a very Young age.
+<a> I Consider myself a Dedicated and Passionate Computer Enjoyer. I always loved Messing around with Computer Parts and Typing Code from a very Young age.
 and This App might as well be the Biggest so Far in my Journey of Becoming a Real Computer Engineer! </a>
 
-<a> I began Working on this App as early as the end of September or in other words nearly the Start of 12th Grade, it was Rough at the Begining but i made it here at last after many challenges and obstacles....... </a>
+<a> I began Working on this App as early as the end of September or in other words nearly the Start of 12th Grade, it was Rough at the Beginning but i made it here at last after many challenges and obstacles.......... </a>
+
+<a> This project will not be forgotten even after the end of high school and will be updated constantly, and there are many new features still in mind for future updates! </a>
 
 <h4> Many Thanks to my Teacher
         <a href="https://www.github.com/yamenr">
@@ -62,7 +64,7 @@ and This App might as well be the Biggest so Far in my Journey of Becoming a Rea
 
 <h1> Contact </h1>
 
-<h4> 📧 Email Adress:
+<h4> 📧 Email Address:
         <a href="mailto:tawfeeqshahoud@gmail.com"> tawfeeqshahoud@gmail.com </a>
 </h4>
 
@@ -75,10 +77,6 @@ and This App might as well be the Biggest so Far in my Journey of Becoming a Rea
 
 
 <div align="right">[ <a href="#Top">↑ Back to top ↑</a> ]</div>
-
-
-
-
 
 
 

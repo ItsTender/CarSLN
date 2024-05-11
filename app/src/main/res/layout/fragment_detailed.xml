@@ -407,12 +407,11 @@
 
 
             <LinearLayout
+                android:id="@+id/linearLayout9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="85dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -441,6 +440,36 @@
                     android:textSize="18sp" />
 
             </LinearLayout>
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/LighterShadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout9"
+                app:shapeAppearance="@style/RoundShape.App.8percent" />
+
+            <TextView
+                android:id="@+id/DateCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="85dp"
+                android:fontFamily="sans-serif"
+                android:text="Date"
+                android:textColor="@color/black"
+                android:textSize="14.5sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhoto" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewPFP" />
 
 
         <TextView
@@ -43,20 +43,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewProfilePhoto"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginStart="138dp"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewPFP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="138dp"
-            android:adjustViewBounds="true"
             android:hapticFeedbackEnabled="true"
-            android:scaleType="centerCrop"
+            android:outlineAmbientShadowColor="@color/white"
+            android:outlineSpotShadowColor="@color/white"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewProfilePhoto"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:adjustViewBounds="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:foreground="?attr/selectableItemBackground"
+                android:hapticFeedbackEnabled="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
 
 
         <androidx.cardview.widget.CardView
