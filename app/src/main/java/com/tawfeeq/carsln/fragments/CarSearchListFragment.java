@@ -678,12 +678,8 @@ public class CarSearchListFragment extends Fragment {
 
     private void SettingFrame() {
 
-        fbs.setRcSearch(null);
-
-        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new SearchCarsAdapter(getActivity(), search, Saved);
         rc.setAdapter(Adapter);
-
     }
 
     private void SettingFrameOnPause() {

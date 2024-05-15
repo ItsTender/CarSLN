@@ -100,8 +100,6 @@ public class LogInFragment extends Fragment {
         tvForgot =getView().findViewById(R.id.tvForgot);
         Back = getView().findViewById(R.id.LoginGoBack);
 
-        // Navigation Bar Not Visible While Logging in........
-        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
 
         if(!fbs.getCurrentFragment().equals("Login")) fbs.setCurrentFragment("Login");
 

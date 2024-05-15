@@ -206,12 +206,8 @@ public class UserListingsFragment extends Fragment {
 
     private void SettingFrame() {
 
-        fbs.setRcListings(null);
-
-        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcListings.setAdapter(Adapter);
-
     }
 
     private void SettingFrameOnPause() {

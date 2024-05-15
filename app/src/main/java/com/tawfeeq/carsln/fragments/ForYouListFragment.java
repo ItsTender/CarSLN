@@ -314,12 +314,8 @@ public class ForYouListFragment extends Fragment {
 
     private void SettingFrame() {
 
-        fbs.setRcForYou(null);
-
-        rcForYou.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcForYou.setAdapter(Adapter);
-
     }
 
     private void SettingFrameOnPause() {

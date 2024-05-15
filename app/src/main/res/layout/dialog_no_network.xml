@@ -12,22 +12,42 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-
-        <com.google.android.material.imageview.ShapeableImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/shapeableImageView"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/no_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:outlineAmbientShadowColor="@color/Blue700"
+            android:outlineSpotShadowColor="@color/Blue700"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shapeableImageViewin"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/no_network"
+                app:contentPadding="-5dp"
+                app:contentPaddingTop="1.38dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.15percent"
+                app:strokeColor="@color/Blue700"
+                app:strokeWidth="2.5dp" />
+
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tvtxtLogoutMessage"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="25dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
@@ -44,7 +64,7 @@
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="18dp"
             android:layout_marginBottom="26dp"
             android:background="@drawable/sln_background"
             app:cardCornerRadius="180dp"
@@ -59,10 +79,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/sln_background"
-                android:hapticFeedbackEnabled="true"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:foreground="?attr/selectableItemBackground"
+                android:hapticFeedbackEnabled="true"
                 android:text="Continue"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"

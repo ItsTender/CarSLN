@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.storage.StorageReference;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.fragments.AddCarFragment;
 import com.tawfeeq.carsln.fragments.AllCarsFragment;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             bnv.setSelectedItemId(R.id.market);
             bnv.setVisibility(View.VISIBLE);
             setSavedGoToMarket();
+            System.out.println(fbs.getStorage().getReference().child("pfps/"));
         }
         else {
 
@@ -102,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     GoToFragmentCarSearchList();
                 }
                 else if (item.getItemId() == R.id.addcar) {
+                    bnv.setVisibility(View.GONE);
                     if(fbs.getAuth().getCurrentUser()!=null) GoToFragmentAdd();
                     else GoToLogin();
                 }

@@ -7,9 +7,13 @@
     tools:context=".fragments.ForgotPassFragment"
     android:background="@drawable/sln_log">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SLNLogo"
@@ -177,48 +181,53 @@
             android:id="@+id/tvSignUp"
             android:layout_width="280dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/white"
             android:hapticFeedbackEnabled="true"
             android:text="Create New Account"
             android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearOR"
             app:shapeAppearance="@style/RoundShape.App.50percent" />
 
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ForgotPassGoBack"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:adjustViewBounds="true"
-            android:hapticFeedbackEnabled="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/baseline_arrow_back_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            app:tint="@color/black" />
-
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ForgotPassClose"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:adjustViewBounds="true"
-            android:hapticFeedbackEnabled="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/baseline_close_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/RoundShape.App.50percent"
-            app:tint="@color/black" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ForgotPassGoBack"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:hapticFeedbackEnabled="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/RoundShape.App.50percent"
+        app:tint="@color/black" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ForgotPassClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:adjustViewBounds="true"
+        android:hapticFeedbackEnabled="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/RoundShape.App.50percent"
+        app:tint="@color/black" />
 
 </RelativeLayout>

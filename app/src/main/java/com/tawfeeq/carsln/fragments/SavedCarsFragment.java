@@ -203,9 +203,6 @@ public class SavedCarsFragment extends Fragment {
 
     private void SettingFrame() {
 
-        fbs.setRcSaved(null);
-
-        rcListings.setLayoutManager(new LinearLayoutManager(getActivity()));
         Adapter = new CarsAdapter(getActivity(), lst, Saved);
         rcListings.setAdapter(Adapter);
     }

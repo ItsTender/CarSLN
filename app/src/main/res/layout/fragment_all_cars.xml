@@ -104,9 +104,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="9dp"
+                    android:layout_marginEnd="8dp"
                     android:text="You Can Always Search Through the Car Market Here and Find the Right Car For You and Your Needs."
                     android:textColor="@color/black"
                     android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewcarsearch" />
 
@@ -120,6 +122,9 @@
                     android:hapticFeedbackEnabled="true"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="25dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewcarsearchenc"
