@@ -32,7 +32,8 @@ Notable CarSLN Features:
 - Animated Splash Screen and Loading Screens
 - Custom Car Search and SearchList with Sorting
 - Extensive Car Attributes and Photos for All Car Listings
-- Multiple Ways Of Contacting Car Sellers (Call, Message, Whatsapp)
+- Multiple Ways Of Contacting Car Sellers (Call, Message)
+- In-App Messaging/Chatting Page with all registered Car Sellers in the App
 - Car Bookmarking for Cars that interest you or Cars that you might Need Later On
 - Login with Custom Users and Custom Attributes (Username, Phone Number, ProfilePhoto)
 - Fully Fledged Car Adding Page with Lists of all Available  Car Manufacturers and Car Models
