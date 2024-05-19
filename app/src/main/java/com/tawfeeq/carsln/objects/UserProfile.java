@@ -62,4 +62,14 @@ public class UserProfile {
         SavedCars = savedCars;
     }
 
+    public Users toUsers (){
+
+        Users tousers;
+        if(SavedCars==null||SavedCars.isEmpty()) {
+            tousers = new Users(this.userPhoto, this.Username, this.Phone, this.Location, new ArrayList<String>());
+        }else tousers = new Users(this.userPhoto, this.Username, this.Phone, this.Location, this.SavedCars);
+
+        return tousers;
+    }
+
 }

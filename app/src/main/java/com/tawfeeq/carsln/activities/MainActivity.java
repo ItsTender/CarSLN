@@ -28,6 +28,7 @@ import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.fragments.AddCarFragment;
 import com.tawfeeq.carsln.fragments.AllCarsFragment;
 import com.tawfeeq.carsln.fragments.CarSearchListFragment;
+import com.tawfeeq.carsln.fragments.ChatFragment;
 import com.tawfeeq.carsln.fragments.DetailedFragment;
 import com.tawfeeq.carsln.fragments.DetailedPhotosFragment;
 import com.tawfeeq.carsln.fragments.ForYouListFragment;
@@ -39,6 +40,7 @@ import com.tawfeeq.carsln.fragments.ProfileFragment;
 import com.tawfeeq.carsln.fragments.SavedCarsFragment;
 import com.tawfeeq.carsln.fragments.SearchFragment;
 import com.tawfeeq.carsln.fragments.SettingsFragment;
+import com.tawfeeq.carsln.fragments.UserChatsFragment;
 import com.tawfeeq.carsln.fragments.UserListingsFragment;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
@@ -478,6 +480,16 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+            }else if(fragment.equals("Chat")){
+
+                if(bnv.getSelectedItemId()==R.id.profile){
+                    GoToChats();
+                    bnv.setVisibility(View.VISIBLE);
+                }else {
+                    GoToDetailedClose();
+                    bnv.setVisibility(View.VISIBLE);
+                }
+
             }else {
 
                 bnv.setSelectedItemId(R.id.market);
@@ -488,12 +500,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     // Ends................................................................
 
 
 
 
+    private void GoToChats() {
 
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new UserChatsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        ft.commit();
+    }
 
     private void GoToDetailedPhotos() {
 
@@ -579,6 +598,14 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new DetailedFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void GoToDetailedClose() {
+
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new DetailedFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         ft.commit();
     }
 

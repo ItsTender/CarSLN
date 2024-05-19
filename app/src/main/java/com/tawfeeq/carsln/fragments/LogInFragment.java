@@ -175,6 +175,7 @@ public class LogInFragment extends Fragment {
                                 // To DO
                                 Toast.makeText(getActivity(), "Welcome Back", Toast.LENGTH_LONG).show();
                                 fbs.setUser(null);
+                                fbs.setUsers(null);
                                 setNewSavedandGoToProfile();
                                 setNavigationBarVisible();
                             } else {

@@ -1,15 +1,54 @@
 {
   "project_info": {
     "project_number": "107764214909",
+    "firebase_url": "https://carsln-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "carsln",
     "storage_bucket": "carsln.appspot.com"
   },
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:107764214909:android:38599f190fc03373055514",
+        "android_client_info": {
+          "package_name": "com.av.avmessenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaEPF7eB_jHl4-KLuPziC2Sqag1EnY_ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:107764214909:android:c502d6afda24cce0055514",
         "android_client_info": {
           "package_name": "com.tawfeeq.carsln"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaEPF7eB_jHl4-KLuPziC2Sqag1EnY_ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107764214909:android:077814f675b21190055514",
+        "android_client_info": {
+          "package_name": "come.example.example"
         }
       },
       "oauth_client": [],

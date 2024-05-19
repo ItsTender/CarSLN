@@ -254,6 +254,7 @@ public class SignUpFragment extends Fragment {
                 if (task.isSuccessful()) {
                     Toast.makeText(getActivity(), "Welcome To CarSLN", Toast.LENGTH_LONG).show();
                     fbs.setUser(null);
+                    fbs.setUsers(null);
                     setNewSavedandGoToProfile();
                     setNavigationBarVisible();
                 } else {

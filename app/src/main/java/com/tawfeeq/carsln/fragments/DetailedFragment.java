@@ -308,6 +308,26 @@ public class DetailedFragment extends Fragment {
                             Glide.with(getActivity()).load(pfp).into(iv);
                         }
 
+                        btnSLN.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                if(usr!=null) {
+
+                                    Fragment gtn = new ChatFragment();
+                                    Users users = usr.toUsers();
+                                    users.setDocID(user);
+
+                                    fbs.setSelectedUser(users);
+
+                                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                                    ft.replace(R.id.FrameLayoutMain, gtn);
+                                    ft.commit();
+                                }
+                            }
+                        });
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -323,21 +343,6 @@ public class DetailedFragment extends Fragment {
 
                         dialogSeller.show();
 
-                    }
-                });
-
-                btnSLN.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        Users userID = new Users(usr.getUserPhoto(), usr.getUsername(), usr.getPhone(), usr.getLocation(), usr.getSavedCars());
-                        userID.setDocID(user);
-                        fbs.setSelectedUser(userID);
-
-                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        ft.replace(R.id.FrameLayoutMain, new ChatFragment());
-                        ft.commit();
                     }
                 });
 
