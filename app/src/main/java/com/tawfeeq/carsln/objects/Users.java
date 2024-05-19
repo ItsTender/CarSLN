@@ -15,12 +15,12 @@ public class Users {
         // Empty Profile...................
     }
 
-    public Users(String userPhoto, String username, String phone, String Location) {
+    public Users(String userPhoto, String username, String phone, String Location, ArrayList<String> SavedCars) {
         this.userPhoto = userPhoto;
         Username = username;
         Phone = phone;
         this.Location = Location;
-        SavedCars = new ArrayList<String>();
+        this.SavedCars = SavedCars;
     }
 
     public String getDocID() {

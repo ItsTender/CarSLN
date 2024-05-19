@@ -39,6 +39,7 @@ import com.tawfeeq.carsln.objects.FireBaseServices;
 import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
 import com.tawfeeq.carsln.objects.UserProfile;
+import com.tawfeeq.carsln.objects.Users;
 
 import org.w3c.dom.Text;
 
@@ -328,7 +329,15 @@ public class DetailedFragment extends Fragment {
                 btnSLN.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // TODO: Go to the new Chat Page!
+
+                        Users userID = new Users(usr.getUserPhoto(), usr.getUsername(), usr.getPhone(), usr.getLocation(), usr.getSavedCars());
+                        userID.setDocID(user);
+                        fbs.setSelectedUser(userID);
+
+                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ft.replace(R.id.FrameLayoutMain, new ChatFragment());
+                        ft.commit();
                     }
                 });
 

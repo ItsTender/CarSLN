@@ -2,13 +2,28 @@ package com.tawfeeq.carsln.fragments;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.activities.MainActivity;
+import com.tawfeeq.carsln.adapters.MessagesAdapter;
+import com.tawfeeq.carsln.objects.FireBaseServices;
+import com.tawfeeq.carsln.objects.MessageModel;
+import com.tawfeeq.carsln.objects.Users;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +31,19 @@ import com.tawfeeq.carsln.R;
  * create an instance of this fragment.
  */
 public class ChatFragment extends Fragment {
+
+    FireBaseServices fbs;
+    Users user;
+    TextView username;
+    ImageView pfp, back;
+    //FirebaseDatabase db;
+    CardView btnSend;
+    EditText txtMessage;
+
+    String senderRoom, receiverRoom;
+    RecyclerView rc;
+    ArrayList<MessageModel> messagesArrayList;
+    MessagesAdapter messagesAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,8 +96,52 @@ public class ChatFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        // TODO: create a new chatting function and recycler, all using the firebase realtime database!
-        // TODO: after that create a new notification system....................
+        fbs = FireBaseServices.getInstance();
+        user = fbs.getSelectedUser();
+        //db = FirebaseDatabase.getInstance();
+        username = getView().findViewById(R.id.tvUsernameMessaging); username.setText(user.getUsername());
+        messagesArrayList = new ArrayList<>();
+        btnSend = getView().findViewById(R.id.sendbtn);
+        txtMessage = getView().findViewById(R.id.etMsg);
+        rc = getView().findViewById(R.id.RecyclerMessages);
+        back = getView().findViewById(R.id.MessageChatBack);
+
+
+        ((MainActivity) getActivity()).getBottomNavigationView().setVisibility(View.GONE);
+
+
+        pfp = getView().findViewById(R.id.ivUserChatPFP);
+        if (user.getUserPhoto() == null || user.getUserPhoto().isEmpty())
+        {
+            pfp.setImageResource(R.drawable.slnpfp);
+        }
+        else {
+            Glide.with(getActivity()).load(user.getUserPhoto()).into(pfp);
+        }
+
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setStackFromEnd(true);
+        rc.setLayoutManager(linearLayoutManager);
+        //messagesAdapter = new MessagesAdapter(getActivity(),messagesArrayList);
+        //rc.setAdapter(messagesAdapter);
+
+
+        String str = fbs.getAuth().getCurrentUser().getEmail();
+        int n = str.indexOf("@");
+        String userID = str.substring(0, n);
+
+
+        senderRoom = userID+user.getDocID();
+        receiverRoom = user.getDocID()+userID;
+
+
+
+
+
+
+
 
     }
 

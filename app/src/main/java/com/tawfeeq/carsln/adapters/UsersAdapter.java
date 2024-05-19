@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.tawfeeq.carsln.activities.MainActivity;
 import com.tawfeeq.carsln.R;
+import com.tawfeeq.carsln.fragments.ChatFragment;
 import com.tawfeeq.carsln.fragments.DetailedFragment;
 import com.tawfeeq.carsln.objects.CarID;
 import com.tawfeeq.carsln.objects.FireBaseServices;
@@ -85,12 +86,15 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersHolder>
 
                 fbs = FireBaseServices.getInstance();
                 if(isConnected() && users.get(position)!=null) {
-                    Fragment gtn = new DetailedFragment();
+                    Fragment gtn = new ChatFragment();
                     //Bundle bundle = new Bundle();
 
                     fbs.setSelectedUser(users.get(position));
 
-                    // TODO: Go to the new Chats Fragment!!!!!
+                    FragmentTransaction ft = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    ft.replace(R.id.FrameLayoutMain, gtn);
+                    ft.commit();
 
                 }
                 else {
