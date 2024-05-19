@@ -244,6 +244,7 @@ public class AllCarsFragment extends Fragment {
         });
 
             if (fbs.getMarketList() == null) {
+
                 fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

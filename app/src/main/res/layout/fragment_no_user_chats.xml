@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.NoUserChatsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ConstraintNoUserListings"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewUserListings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Your Car Listings"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/NoUserChatsGoBack"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
+                android:hapticFeedbackEnabled="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="90dp"
+            android:outlineAmbientShadowColor="@color/Blue700"
+            android:outlineSpotShadowColor="@color/Blue700"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ConstraintNoUserListings">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                app:shapeAppearance="@style/RoundShape.App.15percent"
+                app:srcCompat="@drawable/baseline_chat_24"
+                app:tint="@color/Blue700"
+                android:paddingTop="3dp"
+                app:contentPadding="10dp"
+                app:strokeColor="@color/Blue700"
+                app:strokeWidth="2dp"
+                tools:layout_editor_absoluteX="183dp"
+                tools:layout_editor_absoluteY="80dp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/textViewenc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif"
+            android:text="Connect?"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView7" />
+
+
+        <TextView
+            android:id="@+id/textViewenc1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="33dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Login or Create a New Account to have the ability of Posting Car Listings on the CarSLN MarketPlace"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAddProfileCard"
+            android:layout_width="145dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/sln_background"
+            app:cardCornerRadius="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewenc1"
+            app:shapeAppearance="@style/RoundShape.App.50percent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnConnectLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sln_background"
+                android:hapticFeedbackEnabled="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Connect"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:shapeAppearance="@style/RoundShape.App.50percent" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

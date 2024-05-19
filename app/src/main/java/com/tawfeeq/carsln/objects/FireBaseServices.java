@@ -24,6 +24,8 @@ public class FireBaseServices {
     //--------------------------------------
 
     private CarID selectedCar;
+    private Users selectedUser;
+    private ArrayList<Users> users;
     private ArrayList<CarID> SearchList;
     private ArrayList<CarID> CarList;
     private ArrayList<CarID> MarketList;
@@ -118,12 +120,28 @@ public class FireBaseServices {
         MarketList = marketList;
     }
 
+    public Users getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(Users selectedUser) {
+        this.selectedUser = selectedUser;
+    }
+
     public CarID getSelectedCar() {
         return selectedCar;
     }
 
     public void setSelectedCar(CarID selectedCar) {
         this.selectedCar = selectedCar;
+    }
+
+    public ArrayList<Users> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<Users> users) {
+        this.users = users;
     }
 
     public ArrayList<CarID> getCarList() {

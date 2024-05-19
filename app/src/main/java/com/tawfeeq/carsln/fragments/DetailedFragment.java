@@ -58,7 +58,7 @@ public class DetailedFragment extends Fragment {
     FireBaseServices fbs;
     TextView tvMan, tvPrice, tvPower, tvYear, tvUsers, tvKilometre, tvTransmission, tvEngine, tvLocation, tvTest, tvColor, tvNotes, tvOwnership, tvDate;
     ImageView  ivSaved, ivBack, ivDelete, ivEdit;
-    Button btnSeller;
+    Button btnSeller, btnSLN;
     boolean isFound;
     String pfp;
     CarID currentCar;
@@ -121,6 +121,7 @@ public class DetailedFragment extends Fragment {
         fbs = FireBaseServices.getInstance();
         imageSlider = getView().findViewById(R.id.image_slider);
         btnSeller = getView().findViewById(R.id.btnShowSeller);
+        btnSLN = getView().findViewById(R.id.btnSLNMessage);
         tvMan=getView().findViewById(R.id.DetailedMan);
         tvPrice =getView().findViewById(R.id.DetailedPrice);
         tvPower =getView().findViewById(R.id.DetailedHP);
@@ -234,6 +235,16 @@ public class DetailedFragment extends Fragment {
                     }
                 });
 
+                btnSLN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        GoToProfile();
+                        setNavigationBarProfile();
+                        getNavigationBar().setVisibility(View.VISIBLE);
+                    }
+                });
+
                 btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -274,7 +285,6 @@ public class DetailedFragment extends Fragment {
                 ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
                 CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
                 CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
-                CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
                 ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
 
 
@@ -312,6 +322,13 @@ public class DetailedFragment extends Fragment {
 
                         dialogSeller.show();
 
+                    }
+                });
+
+                btnSLN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // TODO: Go to the new Chat Page!
                     }
                 });
 
@@ -357,22 +374,6 @@ public class DetailedFragment extends Fragment {
                     }
                 });
 
-                btnWhatsapp.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        if(usr!=null) {
-
-                            String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
-                            String phoneNumber = usr.getPhone();
-                            String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
-
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + "+972" + phoneNumber + "&text=" + message));
-                            startActivity(intent);
-
-                        }
-                    }
-                });
 
             }
 
@@ -393,7 +394,6 @@ public class DetailedFragment extends Fragment {
             ImageView iv = dialogSeller.findViewById(R.id.imageViewSellerPage);
             CardView btnCall = dialogSeller.findViewById(R.id.cardViewCall);
             CardView btnSMS = dialogSeller.findViewById(R.id.cardViewSMS);
-            CardView btnWhatsapp = dialogSeller.findViewById(R.id.cardViewWhatsapp);
             ImageView back = dialogSeller.findViewById(R.id.imageViewDialogClose);
 
 
@@ -434,6 +434,14 @@ public class DetailedFragment extends Fragment {
                 }
             });
 
+            btnSLN.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // TODO: login to unlock this feature!
+                    Toast.makeText(getActivity(), "Login or Create a new account to unlock this feature!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -470,23 +478,6 @@ public class DetailedFragment extends Fragment {
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse("sms:" + phoneNumber));
                         intent.putExtra("sms_body",message);
-                        startActivity(intent);
-
-                    }
-                }
-            });
-
-            btnWhatsapp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    if(usr!=null) {
-
-                        String CarName = currentCar.getYear() + " " + currentCar.getManufacturer() + " " + currentCar.getModel();
-                        String phoneNumber = usr.getPhone();
-                        String message = "Hello, I Saw Your " + CarName + " Listed On CarSLN and I'm Interested in it";
-
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + "+972" + phoneNumber + "&text=" + message));
                         startActivity(intent);
 
                     }

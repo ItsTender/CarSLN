@@ -38,8 +38,8 @@ public class ProfileFragment extends Fragment {
     ArrayList<CarID> lst;
     ArrayList<String> Saved;
     Button addcar;
-    ImageView twitter, github, discord;
-    LinearLayout userlistings, saved, search, settings, logout, help, contactus;
+    ImageView twitter, github;
+    LinearLayout userlistings, saved, chats, search, settings, logout, help, contactus;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -105,6 +105,7 @@ public class ProfileFragment extends Fragment {
         logout = getView().findViewById(R.id.linearLayoutlogout);
         contactus = getView().findViewById(R.id.linearLayoutcontactus);
         help = getView().findViewById(R.id.linearLayouthelp);
+        chats = getView().findViewById(R.id.linearLayoutChats);
 
 
         // Additional Links..............
@@ -203,6 +204,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        chats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToUserChats();
+            }
+        });
+
         ivPFP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -298,6 +306,14 @@ public class ProfileFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new UserListingsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void GoToUserChats() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new UserChatsFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }

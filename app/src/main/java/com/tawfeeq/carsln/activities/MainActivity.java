@@ -420,7 +420,7 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
                 bnv.setVisibility(View.VISIBLE);
 
-            }else if(fragment.equals("Settings") || fragment.equals("UserListings")){
+            }else if(fragment.equals("Settings") || fragment.equals("UserListings") || fragment.equals("UserChats")){
 
                 FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayoutMain, new ProfileFragment());
@@ -429,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
 
                 fbs.setFrom("");
 
-            }else if(fragment.equals("NoUserSettings") || fragment.equals("NoUserListings")){
+            }else if(fragment.equals("NoUserSettings") || fragment.equals("NoUserListings") || fragment.equals("NoUserChats")){
 
                 FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayoutMain, new NoUserProfileFragment());

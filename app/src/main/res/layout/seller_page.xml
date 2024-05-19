@@ -30,7 +30,7 @@
             android:id="@+id/imageViewSellerPage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="25dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,17 +56,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="22dp"
             android:layout_marginEnd="20dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:foreground="?attr/selectableItemBackground"
             android:hapticFeedbackEnabled="true"
             android:outlineAmbientShadowColor="@color/white"
             android:outlineSpotShadowColor="@color/white"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="14dp"
             app:cardElevation="2dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:foreground="?attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSellerUsername">
@@ -109,76 +109,23 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewWhatsapp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="30dp"
-            android:hapticFeedbackEnabled="true"
-            android:outlineAmbientShadowColor="@color/white"
-            android:outlineSpotShadowColor="@color/white"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="3dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:foreground="?attr/selectableItemBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewSMS">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageViewwrapw"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@color/white"
-                app:shapeAppearance="@style/RoundShape.App.30percent"
-                app:strokeColor="@color/WhatsappGreen"
-                app:strokeWidth="1.6dp" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView2"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/whatsapp"
-                app:shapeAppearance="@style/RoundShape.App.50percent" />
-
-            <TextView
-                android:id="@+id/tvtxtwhatsapp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="65dp"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:text="Whatsapp"
-                android:textColor="@color/WhatsappGreen"
-                android:textSize="18sp" />
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:id="@+id/cardViewSMS"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:foreground="?attr/selectableItemBackground"
             android:hapticFeedbackEnabled="true"
             android:outlineAmbientShadowColor="@color/white"
             android:outlineSpotShadowColor="@color/white"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="14dp"
             app:cardElevation="2dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewCall">

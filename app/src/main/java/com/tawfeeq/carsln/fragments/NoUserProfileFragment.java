@@ -28,7 +28,7 @@ public class NoUserProfileFragment extends Fragment {
     FireBaseServices fbs;
     Button btn;
     ImageView twitter, github, discord;
-    LinearLayout userlistings, saved, search, settings, logout, help, contactus;
+    LinearLayout userlistings, saved, chats, search, settings, logout, help, contactus;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,6 +89,7 @@ public class NoUserProfileFragment extends Fragment {
         settings = getView().findViewById(R.id.linearLayoutsettings);
         contactus = getView().findViewById(R.id.linearLayoutcontactus);
         help = getView().findViewById(R.id.linearLayouthelp);
+        chats = getView().findViewById(R.id.linearLayoutChats);
 
 
         if(!fbs.getCurrentFragment().equals("NoUserProfile")) fbs.setCurrentFragment("NoUserProfile");
@@ -139,6 +140,13 @@ public class NoUserProfileFragment extends Fragment {
             public void onClick(View view) {
                 setNavigationBarSaved();
                 GoToNoUserSaved();
+            }
+        });
+
+        chats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToNoUserChats();
             }
         });
 
@@ -193,6 +201,14 @@ public class NoUserProfileFragment extends Fragment {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, new NoUserListingsFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    private void GoToNoUserChats() {
+
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new NoUserChatsFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
