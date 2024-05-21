@@ -48,4 +48,10 @@ public class MessageID {
         this.timeStamp = timeStamp;
     }
 
+    public boolean isSameMessage(MessageID other){
+
+        return this.message.equals(other.getMessage()) && this.senderID.equals(other.getSenderID()) && this.timeStamp == other.getTimeStamp();
+
+    }
+
 }

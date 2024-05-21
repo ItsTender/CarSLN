@@ -462,7 +462,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="85dp"
+                android:layout_marginBottom="95dp"
                 android:fontFamily="sans-serif"
                 android:text="Date"
                 android:textColor="@color/black"

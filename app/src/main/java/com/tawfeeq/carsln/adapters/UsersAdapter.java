@@ -1,10 +1,15 @@
 package com.tawfeeq.carsln.adapters;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,6 +126,16 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersHolder>
             }
         });
 
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + user.getPhone()));
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -132,20 +147,23 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersHolder>
 
     class UsersHolder extends RecyclerView.ViewHolder {
 
-        ImageView iv;
-        TextView username;
+        ImageView iv, call;
+        TextView username, phone;
 
         public UsersHolder(@NonNull View itemView) {
             super(itemView);
 
             iv = itemView.findViewById(R.id.ivUserChat);
+            call = itemView.findViewById(R.id.ivCallUser);
             username = itemView.findViewById(R.id.username);
+            phone = itemView.findViewById(R.id.phone);
 
         }
 
         void SetDetails (Users user){
 
             username.setText(user.getUsername());
+            phone.setText(String.valueOf(user.getPhone()));
 
             if (user.getUserPhoto() == null || user.getUserPhoto().isEmpty())
             {

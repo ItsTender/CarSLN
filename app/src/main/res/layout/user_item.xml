@@ -18,12 +18,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivUserChat"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="9dp"
             android:layout_marginVertical="12dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -33,22 +38,44 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="74dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="sans-serif-medium"
                 android:text="Name"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="4dp"
+                android:text="Phone"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
         </LinearLayout>
 
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivCallUser"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                app:srcCompat="@drawable/call"
+                app:tint="@color/Blue700" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

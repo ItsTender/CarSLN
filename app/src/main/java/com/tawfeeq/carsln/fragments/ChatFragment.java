@@ -1,5 +1,7 @@
 package com.tawfeeq.carsln.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -53,6 +55,7 @@ public class ChatFragment extends Fragment {
     FirebaseDatabase db;
     CardView btnSend;
     EditText txtMessage;
+    ImageView call;
 
     String senderRoom, receiverRoom;
     RecyclerView rc;
@@ -114,6 +117,7 @@ public class ChatFragment extends Fragment {
         db = FirebaseDatabase.getInstance();
         username = getView().findViewById(R.id.tvUsernameMessaging);
         pfp = getView().findViewById(R.id.ivUserChatPFP);
+        call = getView().findViewById(R.id.ivCallMessaging);
 
         if(fbs.getSelectedUser()!=null) user = fbs.getSelectedUser();
 
@@ -148,6 +152,20 @@ public class ChatFragment extends Fragment {
                     GoToDetailed();
                 }
 
+            }
+        });
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(user!=null) {
+
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + user.getPhone()));
+                    startActivity(intent);
+
+                }
             }
         });
 
@@ -188,9 +206,9 @@ public class ChatFragment extends Fragment {
                         messagesArrayList.add(messages);
 
                     }
-                    messagesAdapter.notifyDataSetChanged();
+                    messagesAdapter = new MessagesAdapter(getActivity(), messagesArrayList);
+                    rc.setAdapter(messagesAdapter);
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
