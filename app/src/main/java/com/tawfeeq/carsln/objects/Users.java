@@ -12,7 +12,6 @@ public class Users {
     private String docID;
 
     public Users() {
-        // Empty Profile...................
     }
 
     public Users(String userPhoto, String username, String phone, String Location, ArrayList<String> SavedCars) {

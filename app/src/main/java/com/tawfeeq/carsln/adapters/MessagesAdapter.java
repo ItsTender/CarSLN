@@ -51,6 +51,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         if (viewType == ITEM_SEND){
             View view = LayoutInflater.from(context).inflate(R.layout.layout_sender, parent, false);
             return new senderVierwHolder(view);
@@ -58,11 +59,11 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             View view = LayoutInflater.from(context).inflate(R.layout.layout_receiver, parent, false);
             return new reciverViewHolder(view);
         }
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder,@SuppressLint("RecyclerView") int position) {
+
         MessageID messages = messagesAdpterArrayList.get(position);
 
         if (holder.getClass()==senderVierwHolder.class){
@@ -155,6 +156,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
+
         MessageID messages = messagesAdpterArrayList.get(position);
 
         String str = fbs.getAuth().getCurrentUser().getEmail();

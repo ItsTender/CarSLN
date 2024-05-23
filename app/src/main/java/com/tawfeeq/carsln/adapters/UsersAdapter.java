@@ -163,7 +163,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersHolder>
         void SetDetails (Users user){
 
             username.setText(user.getUsername());
-            phone.setText(String.valueOf(user.getPhone()));
+
+            String num = user.getPhone();
+            phone.setText(num.substring(0,3) + "-" + num.substring(3));
 
             if (user.getUserPhoto() == null || user.getUserPhoto().isEmpty())
             {

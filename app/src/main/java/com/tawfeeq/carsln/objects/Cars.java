@@ -13,7 +13,7 @@ import java.sql.Date;
 
 public class Cars {
 
-    private boolean SellLend; // if the User wants to Sell the Car the Var will be 'TRUE' else if the User only wants to Lend his Car the Var will be 'FALSE'
+    private boolean SellLend;
     private String Email;
     private String Manufacturer;
     private String Model;

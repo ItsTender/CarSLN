@@ -117,9 +117,9 @@
                 <TextView
                     android:id="@+id/tvtxtPrice"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="36dp"
+                    android:layout_height="26dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="36dp"
                     android:fontFamily="sans-serif"
                     android:text="Price₪"
                     android:textColor="@color/black"

@@ -355,10 +355,12 @@ public class CarSearchListFragment extends Fragment {
                 else { // Search Was Never Used Since the App Was Opened!
 
                     if(isConnected()) {
-                        search = new ArrayList<CarID>();
+
                         fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                                search = new ArrayList<CarID>();
                                 for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
 
                                     CarID car = dataSnapshot.toObject(CarID.class);

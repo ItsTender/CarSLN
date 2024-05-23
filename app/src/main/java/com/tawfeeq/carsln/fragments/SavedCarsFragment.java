@@ -129,10 +129,11 @@ public class SavedCarsFragment extends Fragment {
 
                 if (isConnected()) {
 
-                    Market = new ArrayList<CarID>();
                     fbs.getStore().collection("MarketPlace").orderBy("timestamp", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                            Market = new ArrayList<CarID>();
                             for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
 
                                 CarID car = dataSnapshot.toObject(CarID.class);

@@ -39,7 +39,7 @@ public class FireBaseServices {
 
     //--------------------------------------
 
-    // To Save the Scrolling Position for Each Recycler!!
+    // Save the Scrolling Position for Each RecyclerView
     private Parcelable rcForYou;
     private Parcelable rcSearch;
     private Parcelable rcSaved;
