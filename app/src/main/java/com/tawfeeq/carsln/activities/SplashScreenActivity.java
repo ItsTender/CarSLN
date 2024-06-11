@@ -35,7 +35,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         // To Make the App not Flip.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         fbs = FireBaseServices.getInstance();
 
 

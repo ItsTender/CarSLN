@@ -16,6 +16,38 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ForgotPassGoBack"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:hapticFeedbackEnabled="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
+            app:tint="@color/black" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ForgotPassClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            android:hapticFeedbackEnabled="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundShape.App.50percent"
+            app:tint="@color/black" />
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SLNLogo"
             android:layout_width="160dp"
             android:layout_height="160dp"
@@ -33,15 +65,17 @@
 
         <TextView
             android:id="@+id/textViewforgot"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="45dp"
             android:fontFamily="sans-serif"
             android:text="Reset Your Password"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SLNLogo" />
 
@@ -51,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="45dp"
             android:fontFamily="sans-serif"
             android:text="Please Enter Your Email Adress, We Will Send You an email to Reset Your Password"
             android:textColor="@color/black"
@@ -181,7 +215,7 @@
             android:id="@+id/tvSignUp"
             android:layout_width="280dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="18dp"
             android:backgroundTint="@color/white"
             android:hapticFeedbackEnabled="true"
             android:text="Create New Account"
@@ -196,38 +230,5 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ForgotPassGoBack"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:hapticFeedbackEnabled="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/RoundShape.App.50percent"
-        app:tint="@color/black" />
-
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ForgotPassClose"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:adjustViewBounds="true"
-        android:hapticFeedbackEnabled="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/baseline_close_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/RoundShape.App.50percent"
-        app:tint="@color/black" />
 
 </RelativeLayout>

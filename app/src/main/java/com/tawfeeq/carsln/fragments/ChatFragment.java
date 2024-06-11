@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,7 +135,7 @@ public class ChatFragment extends Fragment {
         }
 
         messagesArrayList = new ArrayList<>();
-        btnSend = getView().findViewById(R.id.sendbtn);
+        btnSend = getView().findViewById(R.id.sendbtn); btnSend.setVisibility(View.GONE);
         txtMessage = getView().findViewById(R.id.etMsg);
         rc = getView().findViewById(R.id.RecyclerMessages);
         back = getView().findViewById(R.id.MessageChatBack);
@@ -195,16 +197,16 @@ public class ChatFragment extends Fragment {
             DatabaseReference chatreference = db.getReference().child("chats").child(senderRoom).child("messages");
 
 
-            // Refresh Chat!!
+            // Apply and Refresh Chat in real time!!
             chatreference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     messagesArrayList.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
                         MessageID messages = dataSnapshot.getValue(MessageID.class);
                         messages.setId(dataSnapshot.getKey());
                         messagesArrayList.add(messages);
-
                     }
                     messagesAdapter = new MessagesAdapter(getActivity(), messagesArrayList);
                     rc.setAdapter(messagesAdapter);
@@ -216,12 +218,28 @@ public class ChatFragment extends Fragment {
             });
 
 
-            // send new Message!!
+            // Show/Hide send button according to text field!!
+            txtMessage.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if((txtMessage.getText().toString()).trim().isEmpty()) btnSend.setVisibility(View.GONE);
+                    else btnSend.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+
+
+            // Send new Message!!
             btnSend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String message = txtMessage.getText().toString();
-                    if (message.isEmpty()) {
+                    if (message.trim().isEmpty()) {
                         Toast.makeText(getActivity(), "Enter a Message First", Toast.LENGTH_SHORT).show();
                         return;
                     }

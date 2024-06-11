@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.FrameLayoutMain, new NoUserHomeFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
-
     }
 
     public void setSavedGoToMarket() {
